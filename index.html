@@ -12,6 +12,9 @@
             --primary-color: #4a6bff;
             --primary-light: #7d96ff;
             --primary-dark: #2a4bcc;
+            --secondary-color: #ff6b6b;
+            --success-color: #4caf50;
+            --warning-color: #ff9800;
             --text-color: #333;
             --text-light: #666;
             --bg-color: #f5f7fa;
@@ -29,6 +32,9 @@
             --primary-color: #6b8cff;
             --primary-light: #8fa5ff;
             --primary-dark: #4a6bff;
+            --secondary-color: #ff8a8a;
+            --success-color: #66bb6a;
+            --warning-color: #ffa726;
             --text-color: #f0f0f0;
             --text-light: #b0b0b0;
             --bg-color: #1a1a1a;
@@ -448,8 +454,81 @@
             to { transform: rotate(360deg); }
         }
 
+        /* Task list styles */
+        .task-list {
+            margin-top: 15px;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            border-radius: var(--radius-sm);
+            background: var(--card-bg);
+            margin-bottom: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .task-checkbox {
+            margin-right: 12px;
+            width: 18px;
+            height: 18px;
+        }
+
+        .task-name {
+            flex-grow: 1;
+        }
+
+        .task-due {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-left: 12px;
+        }
+
+        .task-completed {
+            text-decoration: line-through;
+            opacity: 0.7;
+        }
+
+        /* Pomodoro timer styles */
+        .timer-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .timer-display {
+            font-size: 48px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: var(--primary-color);
+        }
+
+        .timer-btn {
+            padding: 10px 20px;
+            margin: 0 5px;
+            border-radius: var(--radius-sm);
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .timer-start {
+            background: var(--success-color);
+            color: white;
+        }
+
+        .timer-pause {
+            background: var(--warning-color);
+            color: white;
+        }
+
+        .timer-reset {
+            background: var(--secondary-color);
+            color: white;
+        }
+
         /* Dark mode transition */
-        body, .mode-btn, .action-btn, .update-card, .modal-content {
+        body, .mode-btn, .action-btn, .update-card, .modal-content, .task-item {
             transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
         }
     </style>
@@ -571,12 +650,141 @@
                         <option value="work">Work</option>
                         <option value="shopping">Shopping</option>
                         <option value="health">Health</option>
+                        <option value="finance">Finance</option>
+                        <option value="education">Education</option>
                     </select>
                 </div>
             </div>
             <div class="modal-footer">
                 <button class="modal-btn modal-btn-secondary" id="cancelTask">Cancel</button>
                 <button class="modal-btn modal-btn-primary" id="saveTask">Save Task</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Todo List -->
+    <div class="modal" id="todoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">To-Do List</h3>
+                <button class="close-modal" id="closeTodoModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                    <input type="text" id="newTodoInput" placeholder="Add new task" style="flex-grow: 1; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--text-light); background: var(--card-bg); color: var(--text-color);">
+                    <button id="addTodoBtn" style="padding: 10px 15px; background: var(--primary-color); color: white; border: none; border-radius: var(--radius-sm);">Add</button>
+                </div>
+                <div class="task-list" id="taskList">
+                    <!-- Tasks will be added here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn modal-btn-secondary" id="closeTodoBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Pomodoro Timer -->
+    <div class="modal" id="pomodoroModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Focus Timer</h3>
+                <button class="close-modal" id="closePomodoroModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="timer-container">
+                    <div class="timer-display" id="timerDisplay">25:00</div>
+                    <div>
+                        <button class="timer-btn timer-start" id="startTimer">Start</button>
+                        <button class="timer-btn timer-pause" id="pauseTimer" disabled>Pause</button>
+                        <button class="timer-btn timer-reset" id="resetTimer">Reset</button>
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <label style="display: block; margin-bottom: 8px;">Timer Duration (minutes):</label>
+                        <input type="number" id="timerDuration" min="1" max="120" value="25" style="width: 60px; padding: 8px; border-radius: var(--radius-sm); border: 1px solid var(--text-light); background: var(--card-bg); color: var(--text-color);">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn modal-btn-secondary" id="closePomodoroBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Grocery List -->
+    <div class="modal" id="groceryModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Grocery List</h3>
+                <button class="close-modal" id="closeGroceryModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                    <input type="text" id="newGroceryInput" placeholder="Add grocery item" style="flex-grow: 1; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--text-light); background: var(--card-bg); color: var(--text-color);">
+                    <button id="addGroceryBtn" style="padding: 10px 15px; background: var(--primary-color); color: white; border: none; border-radius: var(--radius-sm);">Add</button>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 8px;">Category:</label>
+                    <select id="groceryCategory" style="width: 100%; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--text-light); background: var(--card-bg); color: var(--text-color);">
+                        <option value="produce">Produce</option>
+                        <option value="dairy">Dairy</option>
+                        <option value="meat">Meat</option>
+                        <option value="bakery">Bakery</option>
+                        <option value="frozen">Frozen</option>
+                        <option value="pantry">Pantry</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="task-list" id="groceryList">
+                    <!-- Grocery items will be added here -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn modal-btn-secondary" id="closeGroceryBtn">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Meal Planner -->
+    <div class="modal" id="mealModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Meal Planner</h3>
+                <button class="close-modal" id="closeMealModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="margin-bottom: 20px;">
+                    <h4 style="margin-bottom: 10px;">Plan Meals for:</h4>
+                    <select id="mealPlanDay" style="width: 100%; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--text-light); background: var(--card-bg); color: var(--text-color); margin-bottom: 15px;">
+                        <option value="monday">Monday</option>
+                        <option value="tuesday">Tuesday</option>
+                        <option value="wednesday">Wednesday</option>
+                        <option value="thursday">Thursday</option>
+                        <option value="friday">Friday</option>
+                        <option value="saturday">Saturday</option>
+                        <option value="sunday">Sunday</option>
+                    </select>
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 8px;">Breakfast:</label>
+                    <input type="text" id="breakfastInput" style="width: 100%; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--text-light); background: var(--card-bg); color: var(--text-color);">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 8px;">Lunch:</label>
+                    <input type="text" id="lunchInput" style="width: 100%; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--text-light); background: var(--card-bg); color: var(--text-color);">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 8px;">Dinner:</label>
+                    <input type="text" id="dinnerInput" style="width: 100%; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--text-light); background: var(--card-bg); color: var(--text-color);">
+                </div>
+                <div style="margin-bottom: 15px;">
+                    <label style="display: block; margin-bottom: 8px;">Snacks:</label>
+                    <input type="text" id="snacksInput" style="width: 100%; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--text-light); background: var(--card-bg); color: var(--text-color);">
+                </div>
+                <button id="saveMealPlan" style="width: 100%; padding: 12px; background: var(--primary-color); color: white; border: none; border-radius: var(--radius-sm); margin-top: 10px;">Save Meal Plan</button>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn modal-btn-secondary" id="closeMealBtn">Close</button>
             </div>
         </div>
     </div>
@@ -595,6 +803,14 @@
             recognition: null,
             tasks: [],
             events: [],
+            groceries: [],
+            mealPlans: {},
+            pomodoro: {
+                duration: 25 * 60,
+                remaining: 25 * 60,
+                interval: null,
+                running: false
+            },
             userPreferences: {
                 theme: 'system',
                 notifications: true,
@@ -614,6 +830,10 @@
             // Modals
             settingsModal: document.getElementById('settingsModal'),
             taskModal: document.getElementById('taskModal'),
+            todoModal: document.getElementById('todoModal'),
+            pomodoroModal: document.getElementById('pomodoroModal'),
+            groceryModal: document.getElementById('groceryModal'),
+            mealModal: document.getElementById('mealModal'),
             // Buttons
             profileBtn: document.getElementById('profileBtn'),
             viewAllActions: document.getElementById('viewAllActions'),
@@ -636,6 +856,36 @@
             taskName: document.getElementById('taskName'),
             taskDueDate: document.getElementById('taskDueDate'),
             taskCategory: document.getElementById('taskCategory'),
+            // Todo modal elements
+            closeTodoModal: document.getElementById('closeTodoModal'),
+            closeTodoBtn: document.getElementById('closeTodoBtn'),
+            newTodoInput: document.getElementById('newTodoInput'),
+            addTodoBtn: document.getElementById('addTodoBtn'),
+            taskList: document.getElementById('taskList'),
+            // Pomodoro modal elements
+            closePomodoroModal: document.getElementById('closePomodoroModal'),
+            closePomodoroBtn: document.getElementById('closePomodoroBtn'),
+            timerDisplay: document.getElementById('timerDisplay'),
+            startTimer: document.getElementById('startTimer'),
+            pauseTimer: document.getElementById('pauseTimer'),
+            resetTimer: document.getElementById('resetTimer'),
+            timerDuration: document.getElementById('timerDuration'),
+            // Grocery modal elements
+            closeGroceryModal: document.getElementById('closeGroceryModal'),
+            closeGroceryBtn: document.getElementById('closeGroceryBtn'),
+            newGroceryInput: document.getElementById('newGroceryInput'),
+            addGroceryBtn: document.getElementById('addGroceryBtn'),
+            groceryCategory: document.getElementById('groceryCategory'),
+            groceryList: document.getElementById('groceryList'),
+            // Meal modal elements
+            closeMealModal: document.getElementById('closeMealModal'),
+            closeMealBtn: document.getElementById('closeMealBtn'),
+            mealPlanDay: document.getElementById('mealPlanDay'),
+            breakfastInput: document.getElementById('breakfastInput'),
+            lunchInput: document.getElementById('lunchInput'),
+            dinnerInput: document.getElementById('dinnerInput'),
+            snacksInput: document.getElementById('snacksInput'),
+            saveMealPlan: document.getElementById('saveMealPlan'),
             // Toast
             toast: document.getElementById('toast'),
             toastMessage: document.getElementById('toastMessage'),
@@ -677,10 +927,40 @@
             
             // Apply theme preference
             applyThemePreference();
+            
+            // Load tasks
+            const savedTasks = localStorage.getItem('oneTapTasks');
+            if (savedTasks) {
+                appState.tasks = JSON.parse(savedTasks);
+            }
+            
+            // Load groceries
+            const savedGroceries = localStorage.getItem('oneTapGroceries');
+            if (savedGroceries) {
+                appState.groceries = JSON.parse(savedGroceries);
+            }
+            
+            // Load meal plans
+            const savedMealPlans = localStorage.getItem('oneTapMealPlans');
+            if (savedMealPlans) {
+                appState.mealPlans = JSON.parse(savedMealPlans);
+            }
         }
 
         function savePreferences() {
             localStorage.setItem('oneTapPreferences', JSON.stringify(appState.userPreferences));
+        }
+
+        function saveTasks() {
+            localStorage.setItem('oneTapTasks', JSON.stringify(appState.tasks));
+        }
+
+        function saveGroceries() {
+            localStorage.setItem('oneTapGroceries', JSON.stringify(appState.groceries));
+        }
+
+        function saveMealPlans() {
+            localStorage.setItem('oneTapMealPlans', JSON.stringify(appState.mealPlans));
         }
 
         function applyThemePreference() {
@@ -744,37 +1024,49 @@
                     { icon: '📋', label: 'To-Do List', action: 'showTodoList' },
                     { icon: '🛒', label: 'Groceries', action: 'showGroceryList' },
                     { icon: '🍳', label: 'Meal Plan', action: 'showMealPlan' },
-                    { icon: '🧹', label: 'Chores', action: 'showChores' }
+                    { icon: '🧹', label: 'Chores', action: 'showChores' },
+                    { icon: '💰', label: 'Budget', action: 'showBudget' },
+                    { icon: '🧘', label: 'Meditation', action: 'startMeditation' }
                 ],
                 work: [
                     { icon: '📂', label: 'Files', action: 'showFiles' },
                     { icon: '📅', label: 'Calendar', action: 'showCalendar' },
                     { icon: '⏱️', label: 'Focus Timer', action: 'startTimer' },
-                    { icon: '📊', label: 'Reports', action: 'showReports' }
+                    { icon: '📊', label: 'Reports', action: 'showReports' },
+                    { icon: '📝', label: 'Notes', action: 'showNotes' },
+                    { icon: '📧', label: 'Email', action: 'showEmail' }
                 ],
                 school: [
                     { icon: '📚', label: 'Homework', action: 'showHomework' },
                     { icon: '🖊️', label: 'Whiteboard', action: 'showWhiteboard' },
                     { icon: '📄', label: 'Notes', action: 'showNotes' },
-                    { icon: '📤', label: 'Submit Work', action: 'showSubmitWork' }
+                    { icon: '📤', label: 'Submit Work', action: 'showSubmitWork' },
+                    { icon: '📖', label: 'Study Plan', action: 'showStudyPlan' },
+                    { icon: '🧮', label: 'Calculator', action: 'showCalculator' }
                 ],
                 social: [
                     { icon: '✉️', label: 'Messages', action: 'showMessages' },
                     { icon: '📞', label: 'Calls', action: 'showCalls' },
                     { icon: '🎉', label: 'Events', action: 'showEvents' },
-                    { icon: '📎', label: 'Share Files', action: 'showShareFiles' }
+                    { icon: '📎', label: 'Share Files', action: 'showShareFiles' },
+                    { icon: '👥', label: 'Contacts', action: 'showContacts' },
+                    { icon: '📱', label: 'Social Media', action: 'showSocialMedia' }
                 ],
                 health: [
                     { icon: '💧', label: 'Water', action: 'showWaterTracker' },
                     { icon: '😴', label: 'Sleep', action: 'showSleepTracker' },
                     { icon: '🚶', label: 'Walking', action: 'showStepTracker' },
-                    { icon: '🧘', label: 'Meditation', action: 'showMeditation' }
+                    { icon: '🧘', label: 'Meditation', action: 'startMeditation' },
+                    { icon: '🏋️', label: 'Workout', action: 'showWorkout' },
+                    { icon: '🍎', label: 'Nutrition', action: 'showNutrition' }
                 ],
                 ai: [
                     { icon: '💬', label: 'Ask AI', action: 'showAIChat' },
                     { icon: '✍️', label: 'Write with AI', action: 'showAIWriter' },
                     { icon: '📌', label: 'Organize', action: 'showAIAssistant' },
-                    { icon: '🌐', label: 'Translate', action: 'showAITranslate' }
+                    { icon: '🌐', label: 'Translate', action: 'showAITranslate' },
+                    { icon: '📊', label: 'Analyze', action: 'showAIAnalyze' },
+                    { icon: '🎨', label: 'Create', action: 'showAICreate' }
                 ]
             };
             
@@ -793,6 +1085,7 @@
                 appState.recognition = new webkitSpeechRecognition();
                 appState.recognition.continuous = false;
                 appState.recognition.interimResults = false;
+                appState.recognition.lang = 'en-US';
                 
                 appState.recognition.onstart = function() {
                     elements.voiceBtn.classList.add('listening');
@@ -836,12 +1129,43 @@
                 setActiveMode('school');
             } else if (command.includes('add task') || command.includes('create task')) {
                 showTaskModal();
+            } else if (command.includes('to do list') || command.includes('todo list')) {
+                showTodoModal();
+            } else if (command.includes('grocery') || command.includes('shopping')) {
+                showGroceryModal();
+            } else if (command.includes('meal') || command.includes('food')) {
+                showMealModal();
+            } else if (command.includes('timer') || command.includes('pomodoro')) {
+                showPomodoroModal();
             } else if (command.includes('dark mode')) {
                 toggleTheme(true);
             } else if (command.includes('light mode')) {
                 toggleTheme(false);
+            } else if (command.includes('add') && command.includes('to do')) {
+                const task = command.replace('add', '').replace('to do', '').trim();
+                if (task) {
+                    addTaskFromVoice(task);
+                }
             } else {
                 showToast(`Command not recognized: "${command}"`);
+            }
+        }
+
+        function addTaskFromVoice(taskText) {
+            const task = {
+                id: Date.now(),
+                name: taskText,
+                dueDate: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString().slice(0, 16),
+                category: 'personal',
+                completed: false
+            };
+            
+            appState.tasks.push(task);
+            saveTasks();
+            showToast(`Task added: "${taskText}"`);
+            
+            if (elements.todoModal.style.display === 'flex') {
+                renderTodoList();
             }
         }
 
@@ -974,6 +1298,40 @@
             elements.cancelTask.addEventListener('click', () => hideModal(elements.taskModal));
             elements.saveTask.addEventListener('click', saveTask);
             
+            // Todo modal
+            elements.closeTodoModal.addEventListener('click', () => hideModal(elements.todoModal));
+            elements.closeTodoBtn.addEventListener('click', () => hideModal(elements.todoModal));
+            elements.addTodoBtn.addEventListener('click', addTodo);
+            elements.newTodoInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addTodo();
+                }
+            });
+            
+            // Pomodoro modal
+            elements.closePomodoroModal.addEventListener('click', () => hideModal(elements.pomodoroModal));
+            elements.closePomodoroBtn.addEventListener('click', () => hideModal(elements.pomodoroModal));
+            elements.startTimer.addEventListener('click', startPomodoro);
+            elements.pauseTimer.addEventListener('click', pausePomodoro);
+            elements.resetTimer.addEventListener('click', resetPomodoro);
+            elements.timerDuration.addEventListener('change', updatePomodoroDuration);
+            
+            // Grocery modal
+            elements.closeGroceryModal.addEventListener('click', () => hideModal(elements.groceryModal));
+            elements.closeGroceryBtn.addEventListener('click', () => hideModal(elements.groceryModal));
+            elements.addGroceryBtn.addEventListener('click', addGrocery);
+            elements.newGroceryInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    addGrocery();
+                }
+            });
+            
+            // Meal modal
+            elements.closeMealModal.addEventListener('click', () => hideModal(elements.mealModal));
+            elements.closeMealBtn.addEventListener('click', () => hideModal(elements.mealModal));
+            elements.saveMealPlan.addEventListener('click', saveMealPlan);
+            elements.mealPlanDay.addEventListener('change', loadMealPlan);
+            
             // Profile button
             elements.profileBtn.addEventListener('click', function() {
                 showToast('Profile view coming soon!');
@@ -993,22 +1351,31 @@
         function handleAction(action) {
             switch(action) {
                 case 'showTodoList':
-                    showTaskModal();
+                    showTodoModal();
                     break;
                 case 'showGroceryList':
-                    showToast('Opening grocery list');
+                    showGroceryModal();
                     break;
                 case 'showMealPlan':
-                    showToast('Opening meal planner');
+                    showMealModal();
+                    break;
+                case 'startTimer':
+                    showPomodoroModal();
                     break;
                 case 'showCalendar':
                     showToast('Opening calendar');
                     break;
-                case 'startTimer':
-                    showToast('Starting focus timer');
-                    break;
                 case 'showAIChat':
                     showToast('Opening AI chat');
+                    break;
+                case 'showWaterTracker':
+                    showToast('Opening water tracker');
+                    break;
+                case 'showSleepTracker':
+                    showToast('Opening sleep tracker');
+                    break;
+                case 'startMeditation':
+                    showToast('Starting meditation session');
                     break;
                 default:
                     showToast(`Action: ${action}`);
@@ -1043,33 +1410,246 @@
                 completed: false
             };
             
-            // In a real app, this would save to a database
             appState.tasks.push(task);
+            saveTasks();
             hideModal(elements.taskModal);
             showToast('Task added successfully!');
             
-            // Update the UI or refresh task list
-            if (appState.currentMode === 'home') {
-                renderQuickActions('home');
+            // Update the todo list if it's open
+            if (elements.todoModal.style.display === 'flex') {
+                renderTodoList();
             }
         }
 
+        function showTodoModal() {
+            showModal(elements.todoModal);
+            renderTodoList();
+        }
+
+        function renderTodoList() {
+            elements.taskList.innerHTML = appState.tasks.map(task => `
+                <div class="task-item">
+                    <input type="checkbox" class="task-checkbox" data-id="${task.id}" ${task.completed ? 'checked' : ''}>
+                    <div class="task-name ${task.completed ? 'task-completed' : ''}">${task.name}</div>
+                    <div class="task-due">${formatDueDate(task.dueDate)}</div>
+                </div>
+            `).join('');
+            
+            // Add event listeners to checkboxes
+            document.querySelectorAll('.task-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const taskId = parseInt(this.dataset.id);
+                    const task = appState.tasks.find(t => t.id === taskId);
+                    if (task) {
+                        task.completed = this.checked;
+                        saveTasks();
+                        renderTodoList();
+                    }
+                });
+            });
+        }
+
+        function formatDueDate(dateString) {
+            if (!dateString) return '';
+            
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        }
+
+        function addTodo() {
+            const taskName = elements.newTodoInput.value.trim();
+            if (!taskName) {
+                showToast('Please enter a task name');
+                return;
+            }
+            
+            const task = {
+                id: Date.now(),
+                name: taskName,
+                dueDate: '',
+                category: 'personal',
+                completed: false
+            };
+            
+            appState.tasks.push(task);
+            saveTasks();
+            elements.newTodoInput.value = '';
+            renderTodoList();
+            showToast('Task added');
+        }
+
+        function showPomodoroModal() {
+            showModal(elements.pomodoroModal);
+            updateTimerDisplay();
+        }
+
+        function updatePomodoroDuration() {
+            const minutes = parseInt(elements.timerDuration.value) || 25;
+            appState.pomodoro.duration = minutes * 60;
+            appState.pomodoro.remaining = minutes * 60;
+            updateTimerDisplay();
+        }
+
+        function startPomodoro() {
+            if (appState.pomodoro.running) return;
+            
+            appState.pomodoro.running = true;
+            elements.startTimer.disabled = true;
+            elements.pauseTimer.disabled = false;
+            
+            appState.pomodoro.interval = setInterval(() => {
+                appState.pomodoro.remaining--;
+                updateTimerDisplay();
+                
+                if (appState.pomodoro.remaining <= 0) {
+                    clearInterval(appState.pomodoro.interval);
+                    appState.pomodoro.running = false;
+                    showToast('Timer completed!');
+                    elements.startTimer.disabled = false;
+                    elements.pauseTimer.disabled = true;
+                }
+            }, 1000);
+        }
+
+        function pausePomodoro() {
+            if (!appState.pomodoro.running) return;
+            
+            clearInterval(appState.pomodoro.interval);
+            appState.pomodoro.running = false;
+            elements.startTimer.disabled = false;
+            elements.pauseTimer.disabled = true;
+        }
+
+        function resetPomodoro() {
+            clearInterval(appState.pomodoro.interval);
+            appState.pomodoro.running = false;
+            appState.pomodoro.remaining = appState.pomodoro.duration;
+            updateTimerDisplay();
+            elements.startTimer.disabled = false;
+            elements.pauseTimer.disabled = true;
+        }
+
+        function updateTimerDisplay() {
+            const minutes = Math.floor(appState.pomodoro.remaining / 60);
+            const seconds = appState.pomodoro.remaining % 60;
+            elements.timerDisplay.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+
+        function showGroceryModal() {
+            showModal(elements.groceryModal);
+            renderGroceryList();
+        }
+
+        function renderGroceryList() {
+            elements.groceryList.innerHTML = appState.groceries.map(item => `
+                <div class="task-item">
+                    <input type="checkbox" class="task-checkbox" data-id="${item.id}" ${item.completed ? 'checked' : ''}>
+                    <div class="task-name ${item.completed ? 'task-completed' : ''}">${item.name}</div>
+                    <div class="task-due">${item.category}</div>
+                </div>
+            `).join('');
+            
+            // Add event listeners to checkboxes
+            document.querySelectorAll('.task-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    const itemId = parseInt(this.dataset.id);
+                    const item = appState.groceries.find(i => i.id === itemId);
+                    if (item) {
+                        item.completed = this.checked;
+                        saveGroceries();
+                        renderGroceryList();
+                    }
+                });
+            });
+        }
+
+        function addGrocery() {
+            const itemName = elements.newGroceryInput.value.trim();
+            if (!itemName) {
+                showToast('Please enter an item name');
+                return;
+            }
+            
+            const item = {
+                id: Date.now(),
+                name: itemName,
+                category: elements.groceryCategory.value,
+                completed: false
+            };
+            
+            appState.groceries.push(item);
+            saveGroceries();
+            elements.newGroceryInput.value = '';
+            renderGroceryList();
+            showToast('Item added to grocery list');
+        }
+
+        function showMealModal() {
+            showModal(elements.mealModal);
+            loadMealPlan();
+        }
+
+        function loadMealPlan() {
+            const day = elements.mealPlanDay.value;
+            const plan = appState.mealPlans[day] || {};
+            
+            elements.breakfastInput.value = plan.breakfast || '';
+            elements.lunchInput.value = plan.lunch || '';
+            elements.dinnerInput.value = plan.dinner || '';
+            elements.snacksInput.value = plan.snacks || '';
+        }
+
+        function saveMealPlan() {
+            const day = elements.mealPlanDay.value;
+            
+            appState.mealPlans[day] = {
+                breakfast: elements.breakfastInput.value.trim(),
+                lunch: elements.lunchInput.value.trim(),
+                dinner: elements.dinnerInput.value.trim(),
+                snacks: elements.snacksInput.value.trim()
+            };
+            
+            saveMealPlans();
+            showToast('Meal plan saved');
+        }
+
         function loadInitialData() {
-            // In a real app, this would fetch from an API
-            setTimeout(() => {
-                // Simulate loading tasks
+            // Load sample tasks if none exist
+            if (appState.tasks.length === 0) {
                 appState.tasks = [
                     { id: 1, name: 'Buy groceries', dueDate: '2023-06-15T18:00', category: 'shopping', completed: false },
                     { id: 2, name: 'Finish project report', dueDate: '2023-06-14T12:00', category: 'work', completed: false }
                 ];
-                
-                // Simulate loading events
-                appState.events = [
-                    { id: 1, title: 'Team Meeting', start: '2023-06-14T14:00', end: '2023-06-14T15:00', location: 'Zoom' }
+                saveTasks();
+            }
+            
+            // Load sample groceries if none exist
+            if (appState.groceries.length === 0) {
+                appState.groceries = [
+                    { id: 1, name: 'Milk', category: 'dairy', completed: false },
+                    { id: 2, name: 'Eggs', category: 'dairy', completed: true },
+                    { id: 3, name: 'Bread', category: 'bakery', completed: false }
                 ];
-                
-                showToast('Data loaded successfully');
-            }, 1000);
+                saveGroceries();
+            }
+            
+            // Load sample meal plans if none exist
+            if (Object.keys(appState.mealPlans).length === 0) {
+                appState.mealPlans = {
+                    monday: {
+                        breakfast: 'Oatmeal with fruits',
+                        lunch: 'Chicken salad',
+                        dinner: 'Grilled salmon with vegetables',
+                        snacks: 'Yogurt, almonds'
+                    }
+                };
+                saveMealPlans();
+            }
+            
+            // Load sample events
+            appState.events = [
+                { id: 1, title: 'Team Meeting', start: '2023-06-14T14:00', end: '2023-06-14T15:00', location: 'Zoom' }
+            ];
         }
 
         function checkPWAInstallation() {
