@@ -4,22 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OneTap - Life Made Simple</title>
+    <meta name="description" content="Your unified productivity platform">
+    <meta name="theme-color" content="#4a6bff">
+    <link rel="manifest" href="manifest.json">
     <style>
         :root {
             --primary-color: #4a6bff;
+            --primary-light: #7d96ff;
+            --primary-dark: #2a4bcc;
             --text-color: #333;
+            --text-light: #666;
             --bg-color: #f5f7fa;
             --card-bg: #fff;
+            --card-hover: #f0f2f5;
             --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            --shadow-hover: 0 6px 16px rgba(0,0,0,0.15);
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
             transition: all 0.3s ease;
         }
 
         .dark {
             --primary-color: #6b8cff;
+            --primary-light: #8fa5ff;
+            --primary-dark: #4a6bff;
             --text-color: #f0f0f0;
+            --text-light: #b0b0b0;
             --bg-color: #1a1a1a;
             --card-bg: #2d2d2d;
+            --card-hover: #3d3d3d;
             --shadow: 0 4px 12px rgba(0,0,0,0.3);
+            --shadow-hover: 0 6px 16px rgba(0,0,0,0.4);
         }
 
         * {
@@ -37,6 +53,7 @@
             max-width: 500px;
             margin: 0 auto;
             min-height: 100vh;
+            position: relative;
         }
 
         .app-header {
@@ -49,6 +66,7 @@
         h1 {
             font-size: 24px;
             color: var(--primary-color);
+            font-weight: 700;
         }
 
         .theme-toggle, .profile-btn {
@@ -57,6 +75,17 @@
             font-size: 24px;
             cursor: pointer;
             color: var(--text-color);
+            padding: 8px;
+            border-radius: 50%;
+            transition: background 0.2s;
+        }
+
+        .theme-toggle:hover, .profile-btn:hover {
+            background: rgba(0,0,0,0.1);
+        }
+
+        .dark .theme-toggle:hover, .dark .profile-btn:hover {
+            background: rgba(255,255,255,0.1);
         }
 
         .greeting {
@@ -66,59 +95,88 @@
         .greeting h2 {
             font-size: 20px;
             margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .greeting p {
+            color: var(--text-light);
+            font-size: 15px;
         }
 
         .voice-input {
             text-align: center;
             margin: 25px 0;
+            position: relative;
         }
 
         .voice-btn {
             background: var(--primary-color);
             color: white;
             border: none;
-            padding: 12px 25px;
+            padding: 14px 28px;
             border-radius: 50px;
             font-size: 16px;
             cursor: pointer;
             box-shadow: var(--shadow);
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .voice-btn:hover {
+            background: var(--primary-light);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-1px);
+        }
+
+        .voice-btn:active {
+            transform: translateY(0);
         }
 
         .voice-btn.listening {
             animation: pulse 1.5s infinite;
+            background: var(--primary-dark);
+        }
+
+        .voice-feedback {
+            margin-top: 10px;
+            font-size: 14px;
+            color: var(--text-light);
+            min-height: 20px;
         }
 
         @keyframes pulse {
             0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            50% { transform: scale(1.02); }
             100% { transform: scale(1); }
         }
 
         .mode-selector {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            margin: 20px 0;
+            gap: 12px;
+            margin: 25px 0;
         }
 
         .mode-btn {
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 15px 10px;
-            border-radius: 12px;
+            padding: 18px 10px;
+            border-radius: var(--radius-md);
             background: var(--card-bg);
             border: none;
             box-shadow: var(--shadow);
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: all 0.2s;
         }
 
         .mode-btn:hover {
             transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+            background: var(--card-hover);
         }
 
         .mode-btn.active {
@@ -126,73 +184,138 @@
             color: white;
         }
 
+        .mode-btn.active:hover {
+            background: var(--primary-light);
+        }
+
         .mode-icon {
             font-size: 28px;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+        }
+
+        .mode-label {
+            font-size: 14px;
+            font-weight: 500;
         }
 
         .quick-actions {
-            margin: 25px 0;
+            margin: 30px 0;
         }
 
-        .quick-actions h3 {
-            margin-bottom: 15px;
+        .section-title {
+            margin-bottom: 18px;
             font-size: 18px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title button {
+            background: none;
+            border: none;
+            color: var(--primary-color);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: var(--radius-sm);
+        }
+
+        .section-title button:hover {
+            background: rgba(0,0,0,0.05);
+        }
+
+        .dark .section-title button:hover {
+            background: rgba(255,255,255,0.05);
         }
 
         .action-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+            gap: 14px;
         }
 
         .action-btn {
             display: flex;
             align-items: center;
-            gap: 10px;
-            padding: 12px;
-            border-radius: 10px;
+            gap: 12px;
+            padding: 14px;
+            border-radius: var(--radius-md);
             background: var(--card-bg);
             border: none;
             box-shadow: var(--shadow);
             cursor: pointer;
             text-align: left;
+            transition: all 0.2s;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+            background: var(--card-hover);
+        }
+
+        .action-icon {
+            font-size: 20px;
+            flex-shrink: 0;
         }
 
         .updates-section {
-            margin: 25px 0;
-        }
-
-        .updates-section h3 {
-            margin-bottom: 15px;
-            font-size: 18px;
+            margin: 30px 0;
         }
 
         .update-card {
             background: var(--card-bg);
-            padding: 15px;
-            border-radius: 10px;
-            margin: 10px 0;
+            padding: 16px;
+            border-radius: var(--radius-md);
+            margin: 12px 0;
             box-shadow: var(--shadow);
+            transition: all 0.2s;
+        }
+
+        .update-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .update-card p {
+            margin-bottom: 8px;
+        }
+
+        .update-time {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-top: 4px;
         }
 
         .join-btn {
             background: var(--primary-color);
             color: white;
             border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
             margin-top: 8px;
             cursor: pointer;
             font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .join-btn:hover {
+            background: var(--primary-light);
         }
 
         .footer {
             display: flex;
             justify-content: space-around;
             margin-top: 30px;
-            padding-top: 15px;
+            padding-top: 20px;
             border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .dark .footer {
+            border-top: 1px solid rgba(255,255,255,0.1);
         }
 
         .footer button {
@@ -200,10 +323,133 @@
             border: none;
             color: var(--text-color);
             cursor: pointer;
+            padding: 8px 12px;
+            border-radius: var(--radius-sm);
+            font-size: 14px;
+            transition: all 0.2s;
+        }
+
+        .footer button:hover {
+            background: rgba(0,0,0,0.05);
+        }
+
+        .dark .footer button:hover {
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-light);
+        }
+
+        .modal-body {
+            margin-bottom: 20px;
+        }
+
+        .modal-footer {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+        }
+
+        .modal-btn {
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .modal-btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .modal-btn-secondary {
+            background: var(--card-hover);
+            color: var(--text-color);
+        }
+
+        /* Toast notification */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--card-bg);
+            color: var(--text-color);
+            padding: 12px 20px;
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-hover);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .toast.show {
+            opacity: 1;
+        }
+
+        /* Loading spinner */
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
         }
 
         /* Dark mode transition */
-        body, .mode-btn, .action-btn, .update-card {
+        body, .mode-btn, .action-btn, .update-card, .modal-content {
             transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
         }
     </style>
@@ -212,7 +458,7 @@
     <header class="app-header">
         <h1>OneTap</h1>
         <button class="theme-toggle" id="themeToggle">🌙</button>
-        <button class="profile-btn">👤</button>
+        <button class="profile-btn" id="profileBtn">👤</button>
     </header>
 
     <div class="greeting">
@@ -222,8 +468,9 @@
 
     <div class="voice-input">
         <button class="voice-btn" id="voiceBtn">
-            🎙️ <span>Tap to Speak</span>
+            🎙️ <span id="voiceBtnText">Tap to Speak</span>
         </button>
+        <div class="voice-feedback" id="voiceFeedback"></div>
     </div>
 
     <div class="mode-selector" id="modeSelector">
@@ -231,103 +478,223 @@
     </div>
 
     <div class="quick-actions">
-        <h3>Quick Actions</h3>
+        <h3 class="section-title">
+            Quick Actions
+            <button id="viewAllActions">View All</button>
+        </h3>
         <div class="action-grid" id="actionGrid">
             <!-- Actions will be added by JavaScript -->
         </div>
     </div>
 
     <div class="updates-section">
-        <h3>Updates</h3>
-        <div class="update-card">
+        <h3 class="section-title">
+            Updates
+            <button id="refreshUpdates">Refresh</button>
+        </h3>
+        <div class="update-card" id="meetingUpdate">
             <p>⚡ Upcoming meeting in 15 minutes</p>
+            <div class="update-time">Today, 2:00 PM - Team Sync</div>
             <button class="join-btn">Join Now</button>
         </div>
         <div class="update-card">
             <p>🛒 Grocery list - 3 items remaining</p>
+            <div class="update-time">Last updated 1 hour ago</div>
         </div>
     </div>
 
     <div class="footer">
-        <button>Settings</button>
-        <button>Help</button>
-        <button>Feedback</button>
+        <button id="settingsBtn">Settings</button>
+        <button id="helpBtn">Help</button>
+        <button id="feedbackBtn">Feedback</button>
+    </div>
+
+    <!-- Modal for Settings -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Settings</h3>
+                <button class="close-modal" id="closeSettings">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="margin-bottom: 20px;">
+                    <h4 style="margin-bottom: 10px;">Appearance</h4>
+                    <div style="display: flex; gap: 10px;">
+                        <button id="lightModeBtn" style="padding: 8px 12px; border-radius: var(--radius-sm); border: 1px solid var(--primary-color); background: var(--card-bg);">Light</button>
+                        <button id="darkModeBtn" style="padding: 8px 12px; border-radius: var(--radius-sm); border: 1px solid var(--primary-color); background: var(--card-bg);">Dark</button>
+                        <button id="systemModeBtn" style="padding: 8px 12px; border-radius: var(--radius-sm); border: 1px solid var(--primary-color); background: var(--card-bg);">System</button>
+                    </div>
+                </div>
+                <div style="margin-bottom: 20px;">
+                    <h4 style="margin-bottom: 10px;">Notifications</h4>
+                    <label style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                        <input type="checkbox" id="notificationsEnabled" checked>
+                        Enable notifications
+                    </label>
+                    <label style="display: flex; align-items: center; gap: 8px;">
+                        <input type="checkbox" id="soundEnabled">
+                        Enable sounds
+                    </label>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 10px;">Account</h4>
+                    <button id="logoutBtn" style="padding: 8px 16px; background: #ff4a4a; color: white; border: none; border-radius: var(--radius-sm);">Log Out</button>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn modal-btn-secondary" id="cancelSettings">Cancel</button>
+                <button class="modal-btn modal-btn-primary" id="saveSettings">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Task Creation -->
+    <div class="modal" id="taskModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Add New Task</h3>
+                <button class="close-modal" id="closeTaskModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div style="margin-bottom: 16px;">
+                    <label style="display: block; margin-bottom: 6px; font-weight: 500;">Task Name</label>
+                    <input type="text" id="taskName" style="width: 100%; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--text-light); background: var(--card-bg); color: var(--text-color);">
+                </div>
+                <div style="margin-bottom: 16px;">
+                    <label style="display: block; margin-bottom: 6px; font-weight: 500;">Due Date</label>
+                    <input type="datetime-local" id="taskDueDate" style="width: 100%; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--text-light); background: var(--card-bg); color: var(--text-color);">
+                </div>
+                <div>
+                    <label style="display: block; margin-bottom: 6px; font-weight: 500;">Category</label>
+                    <select id="taskCategory" style="width: 100%; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--text-light); background: var(--card-bg); color: var(--text-color);">
+                        <option value="personal">Personal</option>
+                        <option value="work">Work</option>
+                        <option value="shopping">Shopping</option>
+                        <option value="health">Health</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-btn modal-btn-secondary" id="cancelTask">Cancel</button>
+                <button class="modal-btn modal-btn-primary" id="saveTask">Save Task</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast">
+        <span id="toastMessage">Task added successfully!</span>
     </div>
 
     <script>
-        // App Data
-        const modes = [
-            { id: 'home', icon: '🏠', label: 'Home' },
-            { id: 'work', icon: '💼', label: 'Work' },
-            { id: 'school', icon: '🎓', label: 'School' },
-            { id: 'social', icon: '👥', label: 'Social' },
-            { id: 'health', icon: '🩺', label: 'Health' },
-            { id: 'ai', icon: '🧠', label: 'AI Help' }
-        ];
-
-        const quickActions = {
-            home: [
-                { icon: '📋', label: 'To-Do List' },
-                { icon: '🛒', label: 'Groceries' },
-                { icon: '🍳', label: 'Meal Plan' },
-                { icon: '🧹', label: 'Chores' }
-            ],
-            work: [
-                { icon: '📂', label: 'Files' },
-                { icon: '📅', label: 'Calendar' },
-                { icon: '⏱️', label: 'Focus Timer' },
-                { icon: '📊', label: 'Reports' }
-            ],
-            school: [
-                { icon: '📚', label: 'Homework' },
-                { icon: '🖊️', label: 'Whiteboard' },
-                { icon: '📄', label: 'Notes' },
-                { icon: '📤', label: 'Submit Work' }
-            ],
-            social: [
-                { icon: '✉️', label: 'Messages' },
-                { icon: '📞', label: 'Calls' },
-                { icon: '🎉', label: 'Events' },
-                { icon: '📎', label: 'Share Files' }
-            ],
-            health: [
-                { icon: '💧', label: 'Water' },
-                { icon: '😴', label: 'Sleep' },
-                { icon: '🚶', label: 'Walking' },
-                { icon: '🧘', label: 'Meditation' }
-            ],
-            ai: [
-                { icon: '💬', label: 'Ask AI' },
-                { icon: '✍️', label: 'Write with AI' },
-                { icon: '📌', label: 'Organize' },
-                { icon: '🌐', label: 'Translate' }
-            ]
+        // App Data and State
+        const appState = {
+            currentMode: 'home',
+            darkMode: false,
+            voiceActive: false,
+            recognition: null,
+            tasks: [],
+            events: [],
+            userPreferences: {
+                theme: 'system',
+                notifications: true,
+                sounds: false
+            }
         };
 
         // DOM Elements
-        const themeToggle = document.getElementById('themeToggle');
-        const voiceBtn = document.getElementById('voiceBtn');
-        const modeSelector = document.getElementById('modeSelector');
-        const actionGrid = document.getElementById('actionGrid');
-        const greetingText = document.getElementById('greetingText');
+        const elements = {
+            themeToggle: document.getElementById('themeToggle'),
+            voiceBtn: document.getElementById('voiceBtn'),
+            voiceBtnText: document.getElementById('voiceBtnText'),
+            voiceFeedback: document.getElementById('voiceFeedback'),
+            modeSelector: document.getElementById('modeSelector'),
+            actionGrid: document.getElementById('actionGrid'),
+            greetingText: document.getElementById('greetingText'),
+            // Modals
+            settingsModal: document.getElementById('settingsModal'),
+            taskModal: document.getElementById('taskModal'),
+            // Buttons
+            profileBtn: document.getElementById('profileBtn'),
+            viewAllActions: document.getElementById('viewAllActions'),
+            refreshUpdates: document.getElementById('refreshUpdates'),
+            joinBtn: document.querySelector('.join-btn'),
+            // Settings modal elements
+            closeSettings: document.getElementById('closeSettings'),
+            cancelSettings: document.getElementById('cancelSettings'),
+            saveSettings: document.getElementById('saveSettings'),
+            lightModeBtn: document.getElementById('lightModeBtn'),
+            darkModeBtn: document.getElementById('darkModeBtn'),
+            systemModeBtn: document.getElementById('systemModeBtn'),
+            notificationsEnabled: document.getElementById('notificationsEnabled'),
+            soundEnabled: document.getElementById('soundEnabled'),
+            logoutBtn: document.getElementById('logoutBtn'),
+            // Task modal elements
+            closeTaskModal: document.getElementById('closeTaskModal'),
+            cancelTask: document.getElementById('cancelTask'),
+            saveTask: document.getElementById('saveTask'),
+            taskName: document.getElementById('taskName'),
+            taskDueDate: document.getElementById('taskDueDate'),
+            taskCategory: document.getElementById('taskCategory'),
+            // Toast
+            toast: document.getElementById('toast'),
+            toastMessage: document.getElementById('toastMessage'),
+            // Footer buttons
+            settingsBtn: document.getElementById('settingsBtn'),
+            helpBtn: document.getElementById('helpBtn'),
+            feedbackBtn: document.getElementById('feedbackBtn')
+        };
 
         // Initialize the app
         document.addEventListener('DOMContentLoaded', function() {
-            // Set greeting based on time of day
+            // Load user preferences from local storage
+            loadPreferences();
+            
+            // Set initial UI state
             setGreeting();
-            
-            // Render mode buttons
             renderModes();
+            setActiveMode(appState.currentMode);
             
-            // Set initial mode to 'home'
-            setActiveMode('home');
+            // Initialize Web Speech API
+            initSpeechRecognition();
             
             // Set up event listeners
-            themeToggle.addEventListener('click', toggleTheme);
-            voiceBtn.addEventListener('click', toggleVoiceInput);
+            setupEventListeners();
+            
+            // Check for PWA installation
+            checkPWAInstallation();
+            
+            // Load initial data
+            loadInitialData();
         });
 
         // Functions
+        function loadPreferences() {
+            const savedPrefs = localStorage.getItem('oneTapPreferences');
+            if (savedPrefs) {
+                appState.userPreferences = JSON.parse(savedPrefs);
+            }
+            
+            // Apply theme preference
+            applyThemePreference();
+        }
+
+        function savePreferences() {
+            localStorage.setItem('oneTapPreferences', JSON.stringify(appState.userPreferences));
+        }
+
+        function applyThemePreference() {
+            if (appState.userPreferences.theme === 'system') {
+                const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                document.body.classList.toggle('dark', prefersDark);
+                elements.themeToggle.textContent = prefersDark ? '☀️' : '🌙';
+            } else {
+                const isDark = appState.userPreferences.theme === 'dark';
+                document.body.classList.toggle('dark', isDark);
+                elements.themeToggle.textContent = isDark ? '☀️' : '🌙';
+            }
+        }
+
         function setGreeting() {
             const hour = new Date().getHours();
             let greeting;
@@ -336,26 +703,32 @@
             else if (hour < 18) greeting = 'Good afternoon';
             else greeting = 'Good evening';
             
-            greetingText.textContent = `${greeting}, User!`;
+            // Get username from local storage or use default
+            const userName = localStorage.getItem('oneTapUserName') || 'User';
+            elements.greetingText.textContent = `${greeting}, ${userName}!`;
         }
 
         function renderModes() {
-            modeSelector.innerHTML = modes.map(mode => `
+            const modes = [
+                { id: 'home', icon: '🏠', label: 'Home' },
+                { id: 'work', icon: '💼', label: 'Work' },
+                { id: 'school', icon: '🎓', label: 'School' },
+                { id: 'social', icon: '👥', label: 'Social' },
+                { id: 'health', icon: '🩺', label: 'Health' },
+                { id: 'ai', icon: '🧠', label: 'AI Help' }
+            ];
+            
+            elements.modeSelector.innerHTML = modes.map(mode => `
                 <button class="mode-btn" data-mode="${mode.id}">
                     <span class="mode-icon">${mode.icon}</span>
-                    <span>${mode.label}</span>
+                    <span class="mode-label">${mode.label}</span>
                 </button>
             `).join('');
-            
-            // Add click event to mode buttons
-            document.querySelectorAll('.mode-btn').forEach(btn => {
-                btn.addEventListener('click', function() {
-                    setActiveMode(this.dataset.mode);
-                });
-            });
         }
 
         function setActiveMode(modeId) {
+            appState.currentMode = modeId;
+            
             // Update active mode button
             document.querySelectorAll('.mode-btn').forEach(btn => {
                 btn.classList.toggle('active', btn.dataset.mode === modeId);
@@ -366,33 +739,362 @@
         }
 
         function renderQuickActions(modeId) {
+            const quickActions = {
+                home: [
+                    { icon: '📋', label: 'To-Do List', action: 'showTodoList' },
+                    { icon: '🛒', label: 'Groceries', action: 'showGroceryList' },
+                    { icon: '🍳', label: 'Meal Plan', action: 'showMealPlan' },
+                    { icon: '🧹', label: 'Chores', action: 'showChores' }
+                ],
+                work: [
+                    { icon: '📂', label: 'Files', action: 'showFiles' },
+                    { icon: '📅', label: 'Calendar', action: 'showCalendar' },
+                    { icon: '⏱️', label: 'Focus Timer', action: 'startTimer' },
+                    { icon: '📊', label: 'Reports', action: 'showReports' }
+                ],
+                school: [
+                    { icon: '📚', label: 'Homework', action: 'showHomework' },
+                    { icon: '🖊️', label: 'Whiteboard', action: 'showWhiteboard' },
+                    { icon: '📄', label: 'Notes', action: 'showNotes' },
+                    { icon: '📤', label: 'Submit Work', action: 'showSubmitWork' }
+                ],
+                social: [
+                    { icon: '✉️', label: 'Messages', action: 'showMessages' },
+                    { icon: '📞', label: 'Calls', action: 'showCalls' },
+                    { icon: '🎉', label: 'Events', action: 'showEvents' },
+                    { icon: '📎', label: 'Share Files', action: 'showShareFiles' }
+                ],
+                health: [
+                    { icon: '💧', label: 'Water', action: 'showWaterTracker' },
+                    { icon: '😴', label: 'Sleep', action: 'showSleepTracker' },
+                    { icon: '🚶', label: 'Walking', action: 'showStepTracker' },
+                    { icon: '🧘', label: 'Meditation', action: 'showMeditation' }
+                ],
+                ai: [
+                    { icon: '💬', label: 'Ask AI', action: 'showAIChat' },
+                    { icon: '✍️', label: 'Write with AI', action: 'showAIWriter' },
+                    { icon: '📌', label: 'Organize', action: 'showAIAssistant' },
+                    { icon: '🌐', label: 'Translate', action: 'showAITranslate' }
+                ]
+            };
+            
             const actions = quickActions[modeId] || [];
-            actionGrid.innerHTML = actions.map(action => `
-                <button class="action-btn">
+            elements.actionGrid.innerHTML = actions.map(action => `
+                <button class="action-btn" data-action="${action.action}">
                     <span class="action-icon">${action.icon}</span>
                     <span>${action.label}</span>
                 </button>
             `).join('');
         }
 
-        function toggleTheme() {
-            document.body.classList.toggle('dark');
-            themeToggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+        function initSpeechRecognition() {
+            // Check if browser supports speech recognition
+            if ('webkitSpeechRecognition' in window) {
+                appState.recognition = new webkitSpeechRecognition();
+                appState.recognition.continuous = false;
+                appState.recognition.interimResults = false;
+                
+                appState.recognition.onstart = function() {
+                    elements.voiceBtn.classList.add('listening');
+                    elements.voiceBtnText.textContent = 'Listening...';
+                    elements.voiceFeedback.textContent = '';
+                };
+                
+                appState.recognition.onresult = function(event) {
+                    const transcript = event.results[0][0].transcript;
+                    elements.voiceFeedback.textContent = `You said: "${transcript}"`;
+                    processVoiceCommand(transcript);
+                };
+                
+                appState.recognition.onerror = function(event) {
+                    elements.voiceFeedback.textContent = `Error: ${event.error}`;
+                    elements.voiceBtn.classList.remove('listening');
+                    elements.voiceBtnText.textContent = 'Tap to Speak';
+                };
+                
+                appState.recognition.onend = function() {
+                    elements.voiceBtn.classList.remove('listening');
+                    elements.voiceBtnText.textContent = 'Tap to Speak';
+                };
+            } else {
+                elements.voiceBtn.disabled = true;
+                elements.voiceBtnText.textContent = 'Voice not supported';
+                elements.voiceFeedback.textContent = 'Voice recognition is not supported in your browser';
+            }
         }
 
-        function toggleVoiceInput() {
-            const isListening = voiceBtn.classList.toggle('listening');
-            const voiceText = voiceBtn.querySelector('span');
+        function processVoiceCommand(command) {
+            command = command.toLowerCase();
+            showToast(`Processing: "${command}"`);
             
-            if (isListening) {
-                voiceText.textContent = 'Listening...';
-                // In a real app, you would start voice recognition here
-                // using the Web Speech API
-                console.log('Voice input activated');
+            // Simple voice command processing
+            if (command.includes('home')) {
+                setActiveMode('home');
+            } else if (command.includes('work')) {
+                setActiveMode('work');
+            } else if (command.includes('school')) {
+                setActiveMode('school');
+            } else if (command.includes('add task') || command.includes('create task')) {
+                showTaskModal();
+            } else if (command.includes('dark mode')) {
+                toggleTheme(true);
+            } else if (command.includes('light mode')) {
+                toggleTheme(false);
             } else {
-                voiceText.textContent = 'Tap to Speak';
-                console.log('Voice input deactivated');
+                showToast(`Command not recognized: "${command}"`);
             }
+        }
+
+        function toggleTheme(forceDark) {
+            if (typeof forceDark === 'boolean') {
+                document.body.classList.toggle('dark', forceDark);
+                elements.themeToggle.textContent = forceDark ? '☀️' : '🌙';
+                appState.userPreferences.theme = forceDark ? 'dark' : 'light';
+                savePreferences();
+            } else {
+                const isDark = document.body.classList.toggle('dark');
+                elements.themeToggle.textContent = isDark ? '☀️' : '🌙';
+                appState.userPreferences.theme = isDark ? 'dark' : 'light';
+                savePreferences();
+            }
+        }
+
+        function showModal(modal) {
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function hideModal(modal) {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }
+
+        function showToast(message, duration = 3000) {
+            elements.toastMessage.textContent = message;
+            elements.toast.classList.add('show');
+            
+            setTimeout(() => {
+                elements.toast.classList.remove('show');
+            }, duration);
+        }
+
+        function setupEventListeners() {
+            // Theme toggle
+            elements.themeToggle.addEventListener('click', toggleTheme);
+            
+            // Voice button
+            elements.voiceBtn.addEventListener('click', function() {
+                if (appState.recognition) {
+                    if (elements.voiceBtn.classList.contains('listening')) {
+                        appState.recognition.stop();
+                    } else {
+                        appState.recognition.start();
+                    }
+                } else {
+                    showToast('Voice recognition not available');
+                }
+            });
+            
+            // Mode buttons (delegated)
+            elements.modeSelector.addEventListener('click', function(e) {
+                if (e.target.closest('.mode-btn')) {
+                    const mode = e.target.closest('.mode-btn').dataset.mode;
+                    setActiveMode(mode);
+                }
+            });
+            
+            // Action buttons (delegated)
+            elements.actionGrid.addEventListener('click', function(e) {
+                if (e.target.closest('.action-btn')) {
+                    const action = e.target.closest('.action-btn').dataset.action;
+                    handleAction(action);
+                }
+            });
+            
+            // Join meeting button
+            elements.joinBtn.addEventListener('click', function() {
+                showToast('Joining meeting...');
+                // In a real app, this would open the meeting link
+                setTimeout(() => {
+                    showToast('Meeting joined successfully');
+                }, 1500);
+            });
+            
+            // View all actions
+            elements.viewAllActions.addEventListener('click', function() {
+                showToast(`Showing all ${appState.currentMode} actions`);
+            });
+            
+            // Refresh updates
+            elements.refreshUpdates.addEventListener('click', function() {
+                showToast('Refreshing updates...');
+                setTimeout(() => {
+                    showToast('Updates refreshed');
+                }, 1000);
+            });
+            
+            // Settings modal
+            elements.settingsBtn.addEventListener('click', () => showModal(elements.settingsModal));
+            elements.closeSettings.addEventListener('click', () => hideModal(elements.settingsModal));
+            elements.cancelSettings.addEventListener('click', () => hideModal(elements.settingsModal));
+            
+            // Theme selection in settings
+            elements.lightModeBtn.addEventListener('click', function() {
+                appState.userPreferences.theme = 'light';
+                applyThemePreference();
+            });
+            
+            elements.darkModeBtn.addEventListener('click', function() {
+                appState.userPreferences.theme = 'dark';
+                applyThemePreference();
+            });
+            
+            elements.systemModeBtn.addEventListener('click', function() {
+                appState.userPreferences.theme = 'system';
+                applyThemePreference();
+            });
+            
+            // Save settings
+            elements.saveSettings.addEventListener('click', function() {
+                appState.userPreferences.notifications = elements.notificationsEnabled.checked;
+                appState.userPreferences.sounds = elements.soundEnabled.checked;
+                savePreferences();
+                showToast('Settings saved');
+                hideModal(elements.settingsModal);
+            });
+            
+            // Logout
+            elements.logoutBtn.addEventListener('click', function() {
+                showToast('Logged out successfully');
+                hideModal(elements.settingsModal);
+            });
+            
+            // Task modal
+            elements.closeTaskModal.addEventListener('click', () => hideModal(elements.taskModal));
+            elements.cancelTask.addEventListener('click', () => hideModal(elements.taskModal));
+            elements.saveTask.addEventListener('click', saveTask);
+            
+            // Profile button
+            elements.profileBtn.addEventListener('click', function() {
+                showToast('Profile view coming soon!');
+            });
+            
+            // Help button
+            elements.helpBtn.addEventListener('click', function() {
+                showToast('Help center will open shortly');
+            });
+            
+            // Feedback button
+            elements.feedbackBtn.addEventListener('click', function() {
+                showToast('Feedback form will appear here');
+            });
+        }
+
+        function handleAction(action) {
+            switch(action) {
+                case 'showTodoList':
+                    showTaskModal();
+                    break;
+                case 'showGroceryList':
+                    showToast('Opening grocery list');
+                    break;
+                case 'showMealPlan':
+                    showToast('Opening meal planner');
+                    break;
+                case 'showCalendar':
+                    showToast('Opening calendar');
+                    break;
+                case 'startTimer':
+                    showToast('Starting focus timer');
+                    break;
+                case 'showAIChat':
+                    showToast('Opening AI chat');
+                    break;
+                default:
+                    showToast(`Action: ${action}`);
+            }
+        }
+
+        function showTaskModal() {
+            // Set default due date to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const tomorrowStr = tomorrow.toISOString().slice(0, 16);
+            
+            elements.taskName.value = '';
+            elements.taskDueDate.value = tomorrowStr;
+            elements.taskCategory.value = 'personal';
+            
+            showModal(elements.taskModal);
+        }
+
+        function saveTask() {
+            const taskName = elements.taskName.value.trim();
+            if (!taskName) {
+                showToast('Please enter a task name');
+                return;
+            }
+            
+            const task = {
+                id: Date.now(),
+                name: taskName,
+                dueDate: elements.taskDueDate.value,
+                category: elements.taskCategory.value,
+                completed: false
+            };
+            
+            // In a real app, this would save to a database
+            appState.tasks.push(task);
+            hideModal(elements.taskModal);
+            showToast('Task added successfully!');
+            
+            // Update the UI or refresh task list
+            if (appState.currentMode === 'home') {
+                renderQuickActions('home');
+            }
+        }
+
+        function loadInitialData() {
+            // In a real app, this would fetch from an API
+            setTimeout(() => {
+                // Simulate loading tasks
+                appState.tasks = [
+                    { id: 1, name: 'Buy groceries', dueDate: '2023-06-15T18:00', category: 'shopping', completed: false },
+                    { id: 2, name: 'Finish project report', dueDate: '2023-06-14T12:00', category: 'work', completed: false }
+                ];
+                
+                // Simulate loading events
+                appState.events = [
+                    { id: 1, title: 'Team Meeting', start: '2023-06-14T14:00', end: '2023-06-14T15:00', location: 'Zoom' }
+                ];
+                
+                showToast('Data loaded successfully');
+            }, 1000);
+        }
+
+        function checkPWAInstallation() {
+            // Register service worker for PWA
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('sw.js').then(registration => {
+                        console.log('ServiceWorker registration successful');
+                    }).catch(err => {
+                        console.log('ServiceWorker registration failed: ', err);
+                    });
+                });
+            }
+            
+            // Show install prompt if applicable
+            let deferredPrompt;
+            
+            window.addEventListener('beforeinstallprompt', (e) => {
+                // Prevent the mini-infobar from appearing on mobile
+                e.preventDefault();
+                // Stash the event so it can be triggered later
+                deferredPrompt = e;
+                // Show custom install button if you want
+                showToast('OneTap can be installed as an app!');
+            });
         }
     </script>
 </body>
