@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OneTap - Life Made Simple</title>
+    <style>
+        :root {
+            --primary-color: #4a6bff;
+            --text-color: #333;
+            --bg-color: #f5f7fa;
+            --card-bg: #fff;
+            --shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .dark {
+            --primary-color: #6b8cff;
+            --text-color: #f0f0f0;
+            --bg-color: #1a1a1a;
+            --card-bg: #2d2d2d;
+            --shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            min-height: 100vh;
+        }
+
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .theme-toggle, .profile-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        .greeting {
+            margin: 20px 0;
+        }
+
+        .greeting h2 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .voice-input {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .voice-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .voice-btn.listening {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .mode-selector {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .mode-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 10px;
+            border-radius: 12px;
+            background: var(--card-bg);
+            border: none;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .mode-btn:hover {
+            transform: translateY(-3px);
+        }
+
+        .mode-btn.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .mode-icon {
+            font-size: 28px;
+            margin-bottom: 5px;
+        }
+
+        .quick-actions {
+            margin: 25px 0;
+        }
+
+        .quick-actions h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .action-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px;
+            border-radius: 10px;
+            background: var(--card-bg);
+            border: none;
+            box-shadow: var(--shadow);
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .updates-section {
+            margin: 25px 0;
+        }
+
+        .updates-section h3 {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .update-card {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .join-btn {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            margin-top: 8px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(0,0,0,0.1);
+        }
+
+        .footer button {
+            background: none;
+            border: none;
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        /* Dark mode transition */
+        body, .mode-btn, .action-btn, .update-card {
+            transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <header class="app-header">
+        <h1>OneTap</h1>
+        <button class="theme-toggle" id="themeToggle">🌙</button>
+        <button class="profile-btn">👤</button>
+    </header>
+
+    <div class="greeting">
+        <h2 id="greetingText">Good morning, User!</h2>
+        <p>What would you like to do today?</p>
+    </div>
+
+    <div class="voice-input">
+        <button class="voice-btn" id="voiceBtn">
+            🎙️ <span>Tap to Speak</span>
+        </button>
+    </div>
+
+    <div class="mode-selector" id="modeSelector">
+        <!-- Modes will be added by JavaScript -->
+    </div>
+
+    <div class="quick-actions">
+        <h3>Quick Actions</h3>
+        <div class="action-grid" id="actionGrid">
+            <!-- Actions will be added by JavaScript -->
+        </div>
+    </div>
+
+    <div class="updates-section">
+        <h3>Updates</h3>
+        <div class="update-card">
+            <p>⚡ Upcoming meeting in 15 minutes</p>
+            <button class="join-btn">Join Now</button>
+        </div>
+        <div class="update-card">
+            <p>🛒 Grocery list - 3 items remaining</p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <button>Settings</button>
+        <button>Help</button>
+        <button>Feedback</button>
+    </div>
+
+    <script>
+        // App Data
+        const modes = [
+            { id: 'home', icon: '🏠', label: 'Home' },
+            { id: 'work', icon: '💼', label: 'Work' },
+            { id: 'school', icon: '🎓', label: 'School' },
+            { id: 'social', icon: '👥', label: 'Social' },
+            { id: 'health', icon: '🩺', label: 'Health' },
+            { id: 'ai', icon: '🧠', label: 'AI Help' }
+        ];
+
+        const quickActions = {
+            home: [
+                { icon: '📋', label: 'To-Do List' },
+                { icon: '🛒', label: 'Groceries' },
+                { icon: '🍳', label: 'Meal Plan' },
+                { icon: '🧹', label: 'Chores' }
+            ],
+            work: [
+                { icon: '📂', label: 'Files' },
+                { icon: '📅', label: 'Calendar' },
+                { icon: '⏱️', label: 'Focus Timer' },
+                { icon: '📊', label: 'Reports' }
+            ],
+            school: [
+                { icon: '📚', label: 'Homework' },
+                { icon: '🖊️', label: 'Whiteboard' },
+                { icon: '📄', label: 'Notes' },
+                { icon: '📤', label: 'Submit Work' }
+            ],
+            social: [
+                { icon: '✉️', label: 'Messages' },
+                { icon: '📞', label: 'Calls' },
+                { icon: '🎉', label: 'Events' },
+                { icon: '📎', label: 'Share Files' }
+            ],
+            health: [
+                { icon: '💧', label: 'Water' },
+                { icon: '😴', label: 'Sleep' },
+                { icon: '🚶', label: 'Walking' },
+                { icon: '🧘', label: 'Meditation' }
+            ],
+            ai: [
+                { icon: '💬', label: 'Ask AI' },
+                { icon: '✍️', label: 'Write with AI' },
+                { icon: '📌', label: 'Organize' },
+                { icon: '🌐', label: 'Translate' }
+            ]
+        };
+
+        // DOM Elements
+        const themeToggle = document.getElementById('themeToggle');
+        const voiceBtn = document.getElementById('voiceBtn');
+        const modeSelector = document.getElementById('modeSelector');
+        const actionGrid = document.getElementById('actionGrid');
+        const greetingText = document.getElementById('greetingText');
+
+        // Initialize the app
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set greeting based on time of day
+            setGreeting();
+            
+            // Render mode buttons
+            renderModes();
+            
+            // Set initial mode to 'home'
+            setActiveMode('home');
+            
+            // Set up event listeners
+            themeToggle.addEventListener('click', toggleTheme);
+            voiceBtn.addEventListener('click', toggleVoiceInput);
+        });
+
+        // Functions
+        function setGreeting() {
+            const hour = new Date().getHours();
+            let greeting;
+            
+            if (hour < 12) greeting = 'Good morning';
+            else if (hour < 18) greeting = 'Good afternoon';
+            else greeting = 'Good evening';
+            
+            greetingText.textContent = `${greeting}, User!`;
+        }
+
+        function renderModes() {
+            modeSelector.innerHTML = modes.map(mode => `
+                <button class="mode-btn" data-mode="${mode.id}">
+                    <span class="mode-icon">${mode.icon}</span>
+                    <span>${mode.label}</span>
+                </button>
+            `).join('');
+            
+            // Add click event to mode buttons
+            document.querySelectorAll('.mode-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    setActiveMode(this.dataset.mode);
+                });
+            });
+        }
+
+        function setActiveMode(modeId) {
+            // Update active mode button
+            document.querySelectorAll('.mode-btn').forEach(btn => {
+                btn.classList.toggle('active', btn.dataset.mode === modeId);
+            });
+            
+            // Update quick actions
+            renderQuickActions(modeId);
+        }
+
+        function renderQuickActions(modeId) {
+            const actions = quickActions[modeId] || [];
+            actionGrid.innerHTML = actions.map(action => `
+                <button class="action-btn">
+                    <span class="action-icon">${action.icon}</span>
+                    <span>${action.label}</span>
+                </button>
+            `).join('');
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark');
+            themeToggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+        }
+
+        function toggleVoiceInput() {
+            const isListening = voiceBtn.classList.toggle('listening');
+            const voiceText = voiceBtn.querySelector('span');
+            
+            if (isListening) {
+                voiceText.textContent = 'Listening...';
+                // In a real app, you would start voice recognition here
+                // using the Web Speech API
+                console.log('Voice input activated');
+            } else {
+                voiceText.textContent = 'Tap to Speak';
+                console.log('Voice input deactivated');
+            }
+        }
+    </script>
+</body>
+</html>
