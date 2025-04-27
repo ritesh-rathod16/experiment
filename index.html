@@ -1,248 +1,1623 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Industry Manager OS</title>
-
-    <!-- Link to CSS Framework (Tailwind, for responsive design) -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <title>Industry Manager OS | All-in-One Workspace Platform</title>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- React and React DOM -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
+    <!-- Babel for JSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
     <style>
+        /* CSS Reset and Base Styles */
+        :root {
+            --primary-dark: #0a192f;
+            --primary-light: #172a45;
+            --accent-neon: #64ffda;
+            --accent-blue: #1e90ff;
+            --text-primary: #e6f1ff;
+            --text-secondary: #8892b0;
+            --success: #4CAF50;
+            --warning: #FFC107;
+            --danger: #F44336;
+            --info: #2196F3;
+            --dark-mode-bg: #0a192f;
+            --dark-mode-card: #112240;
+            --light-mode-bg: #f8f9fa;
+            --light-mode-card: #ffffff;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
-            font-family: 'Roboto', sans-serif;
-            background-color: #1A202C; /* Dark Mode */
-            color: #E2E8F0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-mode-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: var(--transition);
         }
-
-        .primary-btn {
-            background-color: #38A169;
-            color: white;
-            border-radius: 8px;
-            padding: 10px 20px;
-            text-align: center;
+        
+        body.light-mode {
+            background-color: var(--light-mode-bg);
+            color: #333;
         }
-
-        .secondary-btn {
-            background-color: #2D3748;
-            color: white;
-            border-radius: 8px;
-            padding: 10px 20px;
-            text-align: center;
+        
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            line-height: 1.2;
         }
-
-        .sidebar {
-            background-color: #2D3748;
-            color: white;
+        
+        h1 {
+            font-size: 2.5rem;
         }
-
-        .sidebar a {
-            padding: 15px;
-            display: block;
+        
+        h2 {
+            font-size: 2rem;
+        }
+        
+        h3 {
+            font-size: 1.75rem;
+        }
+        
+        h4 {
+            font-size: 1.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        a {
+            color: var(--accent-neon);
             text-decoration: none;
-            color: #CBD5E0;
-            border-bottom: 1px solid #4A5568;
+            transition: var(--transition);
         }
-
-        .sidebar a:hover {
-            background-color: #38A169;
-            color: white;
+        
+        a:hover {
+            color: var(--text-primary);
         }
-
-        .widget {
-            background-color: #2D3748;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
+        
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
-
-        .widget-title {
-            font-size: 18px;
-            font-weight: 600;
+        
+        .flex {
+            display: flex;
         }
-
-        .widget-content {
-            margin-top: 10px;
-            font-size: 14px;
-            color: #A0AEC0;
+        
+        .flex-col {
+            flex-direction: column;
         }
-
+        
+        .items-center {
+            align-items: center;
+        }
+        
+        .justify-between {
+            justify-content: space-between;
+        }
+        
+        .gap-4 {
+            gap: 1rem;
+        }
+        
+        .gap-8 {
+            gap: 2rem;
+        }
+        
+        .grid {
+            display: grid;
+        }
+        
+        .grid-cols-1 {
+            grid-template-columns: repeat(1, minmax(0, 1fr));
+        }
+        
+        .grid-cols-2 {
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+        
+        .grid-cols-3 {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+        
+        .grid-cols-4 {
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+        
+        .col-span-2 {
+            grid-column: span 2 / span 2;
+        }
+        
+        .col-span-3 {
+            grid-column: span 3 / span 3;
+        }
+        
+        /* Components */
         .card {
-            background-color: #2D3748;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            background-color: var(--dark-mode-card);
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
         }
-
+        
+        body.light-mode .card {
+            background-color: var(--light-mode-card);
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
         .card-header {
-            font-size: 20px;
-            font-weight: 600;
-        }
-
-        .metric-card {
-            background-color: #4A5568;
-            color: #E2E8F0;
-            padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        .task-card {
-            background-color: #1A202C;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 8px;
-        }
-
-        .task-title {
-            font-size: 16px;
-            font-weight: 500;
-        }
-
-        .task-due-date {
-            color: #CBD5E0;
-        }
-
-        .chat-widget {
-            background-color: #2D3748;
-            padding: 15px;
-            border-radius: 10px;
-            position: fixed;
-            right: 30px;
-            bottom: 30px;
-            width: 300px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .chat-widget-header {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 1rem;
+            margin-bottom: 1rem;
             display: flex;
             justify-content: space-between;
-            font-weight: 600;
-            color: white;
+            align-items: center;
         }
-
-        .chat-widget-body {
-            max-height: 200px;
-            overflow-y: auto;
-            margin-top: 10px;
+        
+        body.light-mode .card-header {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
         }
-
-        .chat-widget-footer input {
-            width: 80%;
-            padding: 8px;
-            border-radius: 8px;
-            background-color: #2D3748;
-            color: #E2E8F0;
-        }
-
-        .chat-widget-footer button {
-            padding: 8px 12px;
-            border-radius: 8px;
-            background-color: #38A169;
-            color: white;
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
             border: none;
+            outline: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent-neon);
+            color: var(--primary-dark);
+        }
+        
+        .btn-primary:hover {
+            background-color: #52d3b3;
+        }
+        
+        .btn-secondary {
+            background-color: var(--primary-light);
+            color: var(--text-primary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #1f3a68;
+        }
+        
+        .btn-danger {
+            background-color: var(--danger);
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background-color: #e53935;
+        }
+        
+        .btn-sm {
+            padding: 0.5rem 1rem;
+            font-size: 0.875rem;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .badge-success {
+            background-color: rgba(76, 175, 80, 0.2);
+            color: var(--success);
+        }
+        
+        .badge-warning {
+            background-color: rgba(255, 193, 7, 0.2);
+            color: var(--warning);
+        }
+        
+        .badge-danger {
+            background-color: rgba(244, 67, 54, 0.2);
+            color: var(--danger);
+        }
+        
+        .badge-info {
+            background-color: rgba(33, 150, 243, 0.2);
+            color: var(--info);
+        }
+        
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--primary-light);
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+        
+        /* Navigation */
+        .sidebar {
+            width: 280px;
+            height: 100vh;
+            position: fixed;
+            left: 0;
+            top: 0;
+            background-color: var(--primary-light);
+            padding: 1.5rem;
+            transition: var(--transition);
+            z-index: 100;
+            overflow-y: auto;
+        }
+        
+        body.light-mode .sidebar {
+            background-color: #e9ecef;
+        }
+        
+        .sidebar-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        body.light-mode .sidebar-header {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .sidebar-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent-neon);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .sidebar-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        
+        .nav-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            color: var(--text-secondary);
+            gap: 0.75rem;
+        }
+        
+        .nav-item:hover, .nav-item.active {
+            background-color: rgba(100, 255, 218, 0.1);
+            color: var(--accent-neon);
+        }
+        
+        .nav-item.active {
+            font-weight: 500;
+        }
+        
+        .nav-item i {
+            width: 24px;
+            text-align: center;
+        }
+        
+        /* Main Content */
+        .main-content {
+            margin-left: 280px;
+            padding: 2rem;
+            transition: var(--transition);
+            min-height: 100vh;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        body.light-mode .header {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 1.25rem;
+            transition: var(--transition);
+        }
+        
+        body.light-mode .theme-toggle {
+            color: #333;
+        }
+        
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            position: relative;
+        }
+        
+        .user-menu-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            cursor: pointer;
+        }
+        
+        body.light-mode .user-menu-btn {
+            color: #333;
+        }
+        
+        .user-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: var(--dark-mode-card);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 0.5rem 0;
+            min-width: 200px;
+            z-index: 50;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+        
+        body.light-mode .user-dropdown {
+            background-color: var(--light-mode-card);
+        }
+        
+        .user-menu:hover .user-dropdown {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .dropdown-item {
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+        
+        body.light-mode .dropdown-item {
+            color: #333;
+        }
+        
+        .dropdown-item:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+            color: var(--accent-neon);
+        }
+        
+        /* Dashboard Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+        
+        /* Task Kanban */
+        .kanban-board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+        
+        .kanban-column {
+            background-color: var(--dark-mode-card);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+        }
+        
+        body.light-mode .kanban-column {
+            background-color: var(--light-mode-card);
+        }
+        
+        .kanban-column-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        body.light-mode .kanban-column-header {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .kanban-tasks {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            min-height: 100px;
+        }
+        
+        .kanban-task {
+            background-color: var(--primary-light);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            cursor: move;
+            transition: var(--transition);
+        }
+        
+        body.light-mode .kanban-task {
+            background-color: #f1f3f5;
+        }
+        
+        .kanban-task:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .task-priority {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+        
+        .priority-high {
+            background-color: var(--danger);
+        }
+        
+        .priority-medium {
+            background-color: var(--warning);
+        }
+        
+        .priority-low {
+            background-color: var(--success);
+        }
+        
+        /* Wellness Widget */
+        .wellness-widget {
+            position: relative;
+            height: 100%;
+        }
+        
+        .wellness-score {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--accent-neon);
+        }
+        
+        .wellness-progress {
+            height: 8px;
+            background-color: var(--primary-light);
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        
+        body.light-mode .wellness-progress {
+            background-color: #e9ecef;
+        }
+        
+        .wellness-progress-bar {
+            height: 100%;
+            background-color: var(--accent-neon);
+            transition: width 0.5s ease;
+        }
+        
+        /* Quick Actions */
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        
+        .quick-action {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem 1rem;
+            background-color: var(--dark-mode-card);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            cursor: pointer;
+            text-align: center;
+        }
+        
+        body.light-mode .quick-action {
+            background-color: var(--light-mode-card);
+        }
+        
+        .quick-action:hover {
+            background-color: rgba(100, 255, 218, 0.1);
+            transform: translateY(-3px);
+        }
+        
+        .quick-action i {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--accent-neon);
+        }
+        
+        /* AI Suggestions */
+        .ai-suggestions {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .ai-suggestion {
+            background-color: var(--dark-mode-card);
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: var(--transition);
+        }
+        
+        body.light-mode .ai-suggestion {
+            background-color: var(--light-mode-card);
+        }
+        
+        .ai-suggestion:hover {
+            transform: translateY(-3px);
+        }
+        
+        .ai-suggestion-icon {
+            background-color: rgba(100, 255, 218, 0.1);
+            color: var(--accent-neon);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        /* CEO Dashboard */
+        .ceo-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .employee-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        
+        .employee-card {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            background-color: var(--dark-mode-card);
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+        
+        body.light-mode .employee-card {
+            background-color: var(--light-mode-card);
+        }
+        
+        .employee-card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .employee-status {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-left: auto;
+        }
+        
+        .status-active {
+            background-color: var(--success);
+        }
+        
+        .status-inactive {
+            background-color: var(--danger);
+        }
+        
+        .status-away {
+            background-color: var(--warning);
+        }
+        
+        /* Security Overview */
+        .security-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .security-metric {
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--dark-mode-card);
+            border-radius: var(--border-radius);
+        }
+        
+        body.light-mode .security-metric {
+            background-color: var(--light-mode-card);
+        }
+        
+        .security-metric-value {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 0.25rem;
+        }
+        
+        /* Activity Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+            margin-top: 1rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: var(--accent-neon);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--accent-neon);
+        }
+        
+        .timeline-time {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.25rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .sidebar {
+                width: 240px;
+                padding: 1rem;
+            }
+            
+            .main-content {
+                margin-left: 240px;
+            }
+            
+            .kanban-board {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .dashboard-grid, .ceo-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .security-metrics {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                position: fixed;
+                z-index: 1000;
+            }
+            
+            .sidebar.active {
+                transform: translateX(0);
+            }
+            
+            .main-content {
+                margin-left: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--primary-light);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent-neon);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #52d3b3;
+        }
+        
+        /* Print Styles */
+        @media print {
+            .sidebar, .header-actions {
+                display: none !important;
+            }
+            
+            .main-content {
+                margin-left: 0 !important;
+                padding: 0 !important;
+            }
+            
+            .card {
+                box-shadow: none !important;
+                break-inside: avoid;
+            }
         }
     </style>
 </head>
+<body class="dark-mode">
+    <div id="root"></div>
 
-<body>
-    <!-- Sidebar -->
-    <div class="sidebar fixed w-1/4 h-screen">
-        <div class="p-5">
-            <h2 class="text-2xl font-bold text-white">Industry Manager OS</h2>
-        </div>
-        <div>
-            <a href="#dashboard">Dashboard</a>
-            <a href="#tasks">Tasks</a>
-            <a href="#projects">Projects</a>
-            <a href="#profile">Profile</a>
-            <a href="#analytics">Analytics</a>
-            <a href="#settings">Settings</a>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="ml-1/4 p-10">
-        <header class="flex justify-between items-center mb-6">
-            <h1 class="text-4xl font-semibold">Dashboard</h1>
-            <button class="secondary-btn">Log Out</button>
-        </header>
-
-        <!-- Key Metrics Section -->
-        <section class="grid grid-cols-3 gap-6">
-            <div class="metric-card">
-                <h2>Tasks Completed</h2>
-                <p>120/150</p>
-            </div>
-            <div class="metric-card">
-                <h2>Work Efficiency</h2>
-                <p>85%</p>
-            </div>
-            <div class="metric-card">
-                <h2>Safety Compliance</h2>
-                <p>98%</p>
-            </div>
-        </section>
-
-        <!-- Widgets Section -->
-        <section class="grid grid-cols-2 gap-6">
-            <div class="widget">
-                <div class="widget-title">Task List</div>
-                <div class="widget-content">
-                    <div class="task-card">
-                        <div class="task-title">Fix Conveyor Belt</div>
-                        <div class="task-due-date">Due: 2 Days</div>
+    <script type="text/babel">
+        // Main App Component
+        const App = () => {
+            const [darkMode, setDarkMode] = React.useState(true);
+            const [sidebarOpen, setSidebarOpen] = React.useState(false);
+            const [user, setUser] = React.useState({
+                id: 'user-123',
+                name: 'Alex Johnson',
+                email: 'alex.johnson@example.com',
+                role: 'CEO',
+                avatar: 'AJ',
+                lastLogin: new Date(),
+                notifications: 3
+            });
+            
+            const toggleDarkMode = () => {
+                setDarkMode(!darkMode);
+                document.body.classList.toggle('light-mode');
+            };
+            
+            const toggleSidebar = () => {
+                setSidebarOpen(!sidebarOpen);
+            };
+            
+            // Sample data for the dashboard
+            const [tasks, setTasks] = React.useState({
+                todo: [
+                    {
+                        id: 'task-1',
+                        title: 'Review Q2 Financial Report',
+                        description: 'Analyze and provide feedback on the quarterly financial report',
+                        priority: 'high',
+                        dueDate: new Date(Date.now() + 86400000), // Tomorrow
+                        assignedBy: 'Sarah Miller'
+                    },
+                    {
+                        id: 'task-2',
+                        title: 'Update Security Policies',
+                        description: 'Review and update company security policies for remote work',
+                        priority: 'medium',
+                        dueDate: new Date(Date.now() + 259200000), // 3 days from now
+                        assignedBy: 'IT Department'
+                    }
+                ],
+                inProgress: [
+                    {
+                        id: 'task-3',
+                        title: 'Hiring Process Automation',
+                        description: 'Implement automation for the recruitment workflow',
+                        priority: 'high',
+                        dueDate: new Date(Date.now() + 172800000), // 2 days from now
+                        assignedBy: 'HR Team'
+                    }
+                ],
+                completed: [
+                    {
+                        id: 'task-4',
+                        title: 'Board Meeting Presentation',
+                        description: 'Prepare slides for the quarterly board meeting',
+                        priority: 'medium',
+                        dueDate: new Date(Date.now() - 86400000), // Yesterday
+                        assignedBy: 'Jane Smith',
+                        completedAt: new Date()
+                    }
+                ]
+            });
+            
+            const [wellness, setWellness] = React.useState({
+                score: 78,
+                suggestion: 'Your wellness score is good. Remember to take regular breaks!',
+                lastChecked: new Date()
+            });
+            
+            const [aiSuggestions, setAiSuggestions] = React.useState([
+                {
+                    id: 'suggestion-1',
+                    timeSlot: '10:00 AM - 11:00 AM',
+                    suggestion: 'Review the new marketing campaign drafts',
+                    type: 'marketing'
+                },
+                {
+                    id: 'suggestion-2',
+                    timeSlot: '2:30 PM - 3:00 PM',
+                    suggestion: 'Follow up with the product team about the upcoming release',
+                    type: 'product'
+                }
+            ]);
+            
+            const [employees, setEmployees] = React.useState([
+                {
+                    id: 'emp-1',
+                    name: 'Sarah Miller',
+                    role: 'CFO',
+                    status: 'active',
+                    currentTask: 'Budget Planning',
+                    lastActive: '5 min ago'
+                },
+                {
+                    id: 'emp-2',
+                    name: 'John Doe',
+                    role: 'CTO',
+                    status: 'active',
+                    currentTask: 'Code Review',
+                    lastActive: '15 min ago'
+                },
+                {
+                    id: 'emp-3',
+                    name: 'Emma Wilson',
+                    role: 'Marketing Director',
+                    status: 'away',
+                    currentTask: 'Campaign Strategy',
+                    lastActive: '1 hour ago'
+                },
+                {
+                    id: 'emp-4',
+                    name: 'Michael Brown',
+                    role: 'HR Manager',
+                    status: 'inactive',
+                    currentTask: 'None',
+                    lastActive: 'Offline'
+                },
+                {
+                    id: 'emp-5',
+                    name: 'Lisa Chen',
+                    role: 'Lead Developer',
+                    status: 'active',
+                    currentTask: 'Bug Fixing',
+                    lastActive: '2 min ago'
+                },
+                {
+                    id: 'emp-6',
+                    name: 'David Kim',
+                    role: 'UX Designer',
+                    status: 'active',
+                    currentTask: 'Prototype Design',
+                    lastActive: '10 min ago'
+                }
+            ]);
+            
+            const [securityStatus, setSecurityStatus] = React.useState({
+                vpnConnected: 24,
+                failedLogins: 2,
+                threatsDetected: 0,
+                lastScan: new Date()
+            });
+            
+            const handleTaskMove = (taskId, fromColumn, toColumn) => {
+                const taskToMove = tasks[fromColumn].find(task => task.id === taskId);
+                if (!taskToMove) return;
+                
+                setTasks(prev => ({
+                    ...prev,
+                    [fromColumn]: prev[fromColumn].filter(task => task.id !== taskId),
+                    [toColumn]: [...prev[toColumn], taskToMove]
+                }));
+            };
+            
+            const handleQuickAction = (actionId) => {
+                alert(`Quick action triggered: ${actionId}`);
+            };
+            
+            return (
+                <div className={`app ${darkMode ? 'dark-mode' : 'light-mode'}`}>
+                    <Sidebar 
+                        user={user} 
+                        sidebarOpen={sidebarOpen} 
+                        toggleSidebar={toggleSidebar} 
+                    />
+                    
+                    <div className="main-content">
+                        <Header 
+                            user={user} 
+                            darkMode={darkMode} 
+                            toggleDarkMode={toggleDarkMode} 
+                            toggleSidebar={toggleSidebar} 
+                        />
+                        
+                        {user.role === 'CEO' ? (
+                            <CEODashboard 
+                                employees={employees} 
+                                securityStatus={securityStatus} 
+                                tasks={tasks} 
+                            />
+                        ) : (
+                            <EmployeeDashboard 
+                                user={user} 
+                                tasks={tasks} 
+                                wellness={wellness} 
+                                aiSuggestions={aiSuggestions} 
+                                onTaskMove={handleTaskMove} 
+                                onQuickAction={handleQuickAction} 
+                            />
+                        )}
                     </div>
-                    <div class="task-card">
-                        <div class="task-title">Update Software</div>
-                        <div class="task-due-date">Due: 5 Days</div>
+                </div>
+            );
+        };
+        
+        // Sidebar Component
+        const Sidebar = ({ user, sidebarOpen, toggleSidebar }) => {
+            const navItems = [
+                { id: 'dashboard', label: 'Dashboard', icon: 'tachometer-alt' },
+                { id: 'tasks', label: 'Tasks', icon: 'tasks' },
+                { id: 'calendar', label: 'Calendar', icon: 'calendar' },
+                { id: 'messages', label: 'Messages', icon: 'envelope' },
+                { id: 'reports', label: 'Reports', icon: 'chart-bar' },
+                { id: 'team', label: 'Team', icon: 'users' },
+                { id: 'documents', label: 'Documents', icon: 'file-alt' },
+                { id: 'settings', label: 'Settings', icon: 'cog' }
+            ];
+            
+            return (
+                <aside className={`sidebar ${sidebarOpen ? 'active' : ''}`}>
+                    <div className="sidebar-header">
+                        <div className="sidebar-logo">
+                            <i className="fas fa-industry"></i>
+                            <span>IndustryOS</span>
+                        </div>
+                        <button 
+                            className="mobile-menu-btn" 
+                            onClick={toggleSidebar}
+                            style={{ display: 'none' }}
+                        >
+                            <i className="fas fa-times"></i>
+                        </button>
+                    </div>
+                    
+                    <nav className="sidebar-nav">
+                        {navItems.map(item => (
+                            <a 
+                                key={item.id} 
+                                href={`#${item.id}`} 
+                                className={`nav-item ${item.id === 'dashboard' ? 'active' : ''}`}
+                            >
+                                <i className={`fas fa-${item.icon}`}></i>
+                                <span>{item.label}</span>
+                            </a>
+                        ))}
+                    </nav>
+                    
+                    <div className="mt-auto pt-4">
+                        <div className="card">
+                            <div className="flex items-center gap-3">
+                                <div className="avatar">{user.avatar}</div>
+                                <div>
+                                    <h4 className="text-sm font-semibold">{user.name}</h4>
+                                    <p className="text-xs text-secondary">{user.role}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            );
+        };
+        
+        // Header Component
+        const Header = ({ user, darkMode, toggleDarkMode, toggleSidebar }) => {
+            const [currentTime, setCurrentTime] = React.useState(new Date());
+            
+            React.useEffect(() => {
+                const timer = setInterval(() => {
+                    setCurrentTime(new Date());
+                }, 60000); // Update every minute
+                
+                return () => clearInterval(timer);
+            }, []);
+            
+            const formattedDate = currentTime.toLocaleDateString('en-US', { 
+                weekday: 'long', 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            
+            const formattedTime = currentTime.toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+            
+            return (
+                <header className="header">
+                    <div>
+                        <h1>Dashboard</h1>
+                        <p className="text-secondary">
+                            {formattedDate} • {formattedTime}
+                        </p>
+                    </div>
+                    
+                    <div className="header-actions">
+                        <button 
+                            className="theme-toggle" 
+                            onClick={toggleDarkMode}
+                            aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+                        >
+                            <i className={darkMode ? 'fas fa-sun' : 'fas fa-moon'}></i>
+                        </button>
+                        
+                        <button 
+                            className="mobile-menu-btn" 
+                            onClick={toggleSidebar}
+                            style={{ display: 'none' }}
+                        >
+                            <i className="fas fa-bars"></i>
+                        </button>
+                        
+                        <button className="btn btn-secondary btn-sm">
+                            <i className="fas fa-bell"></i>
+                            {user.notifications > 0 && (
+                                <span className="badge badge-danger ml-1">
+                                    {user.notifications}
+                                </span>
+                            )}
+                        </button>
+                        
+                        <div className="user-menu">
+                            <button className="user-menu-btn">
+                                <div className="avatar">{user.avatar}</div>
+                                <span>{user.name}</span>
+                                <i className="fas fa-chevron-down"></i>
+                            </button>
+                            
+                            <div className="user-dropdown">
+                                <a href="#profile" className="dropdown-item">
+                                    <i className="fas fa-user"></i>
+                                    <span>Profile</span>
+                                </a>
+                                <a href="#settings" className="dropdown-item">
+                                    <i className="fas fa-cog"></i>
+                                    <span>Settings</span>
+                                </a>
+                                <a href="#logout" className="dropdown-item">
+                                    <i className="fas fa-sign-out-alt"></i>
+                                    <span>Logout</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+            );
+        };
+        
+        // Employee Dashboard Component
+        const EmployeeDashboard = ({ user, tasks, wellness, aiSuggestions, onTaskMove, onQuickAction }) => {
+            const quickActions = [
+                { id: 'join-meeting', label: 'Join Meeting', icon: 'video' },
+                { id: 'report-bug', label: 'Report Bug', icon: 'bug' },
+                { id: 'request-leave', label: 'Request Leave', icon: 'calendar' },
+                { id: 'submit-report', label: 'Submit Report', icon: 'file-alt' }
+            ];
+            
+            return (
+                <div className="dashboard-grid">
+                    {/* Welcome Card */}
+                    <div className="col-span-4">
+                        <div className="card">
+                            <h2>Good Morning, {user.name.split(' ')[0]}!</h2>
+                            <p className="text-secondary">Here's what's happening today</p>
+                            
+                            <div className="mt-4 grid grid-cols-2 gap-4">
+                                <div>
+                                    <h3 className="text-2xl font-bold">12</h3>
+                                    <p className="text-secondary">Tasks</p>
+                                </div>
+                                <div>
+                                    <h3 className="text-2xl font-bold">3</h3>
+                                    <p className="text-secondary">Meetings</p>
+                                </div>
+                                <div>
+                                    <h3 className="text-2xl font-bold">2</h3>
+                                    <p className="text-secondary">Messages</p>
+                                </div>
+                                <div>
+                                    <h3 className="text-2xl font-bold">1</h3>
+                                    <p className="text-secondary">Deadlines</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* Wellness Widget */}
+                    <div className="col-span-2">
+                        <div className="card wellness-widget">
+                            <div className="card-header">
+                                <h3>Wellness Score</h3>
+                                <i className="fas fa-heart"></i>
+                            </div>
+                            
+                            <div className="wellness-score">{wellness.score}</div>
+                            <p className="text-secondary mb-4">/100</p>
+                            
+                            <div className="wellness-progress">
+                                <div 
+                                    className="wellness-progress-bar" 
+                                    style={{ width: `${wellness.score}%` }}
+                                ></div>
+                            </div>
+                            
+                            <p>{wellness.suggestion}</p>
+                        </div>
+                    </div>
+                    
+                    {/* Quick Actions */}
+                    <div className="col-span-2">
+                        <div className="card">
+                            <div className="card-header">
+                                <h3>Quick Actions</h3>
+                                <i className="fas fa-bolt"></i>
+                            </div>
+                            
+                            <div className="quick-actions">
+                                {quickActions.map(action => (
+                                    <div 
+                                        key={action.id} 
+                                        className="quick-action"
+                                        onClick={() => onQuickAction(action.id)}
+                                    >
+                                        <i className={`fas fa-${action.icon}`}></i>
+                                        <span>{action.label}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* AI Suggestions */}
+                    <div className="col-span-4">
+                        <div className="card">
+                            <div className="card-header">
+                                <h3>AI Suggestions</h3>
+                                <i className="fas fa-robot"></i>
+                            </div>
+                            
+                            <div className="ai-suggestions">
+                                {aiSuggestions.map(suggestion => (
+                                    <div key={suggestion.id} className="ai-suggestion">
+                                        <div className="ai-suggestion-icon">
+                                            <i className="fas fa-lightbulb"></i>
+                                        </div>
+                                        <div>
+                                            <p className="font-semibold">{suggestion.timeSlot}</p>
+                                            <p className="text-secondary">{suggestion.suggestion}</p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* Task Kanban Board */}
+                    <div className="col-span-12">
+                        <div className="card">
+                            <div className="card-header">
+                                <h3>Task Management</h3>
+                                <button className="btn btn-primary btn-sm">
+                                    <i className="fas fa-plus mr-2"></i>
+                                    New Task
+                                </button>
+                            </div>
+                            
+                            <div className="kanban-board">
+                                <KanbanColumn 
+                                    title="To Do" 
+                                    tasks={tasks.todo} 
+                                    onTaskMove={onTaskMove} 
+                                    columnId="todo" 
+                                />
+                                <KanbanColumn 
+                                    title="In Progress" 
+                                    tasks={tasks.inProgress} 
+                                    onTaskMove={onTaskMove} 
+                                    columnId="inProgress" 
+                                />
+                                <KanbanColumn 
+                                    title="Completed" 
+                                    tasks={tasks.completed} 
+                                    onTaskMove={onTaskMove} 
+                                    columnId="completed" 
+                                />
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="widget">
-                <div class="widget-title">Team Updates</div>
-                <div class="widget-content">
-                    <p>New software update scheduled for 5 PM.</p>
-                    <p>Safety drill conducted today in all shifts.</p>
+            );
+        };
+        
+        // Kanban Column Component
+        const KanbanColumn = ({ title, tasks, onTaskMove, columnId }) => {
+            const handleDragOver = (e) => {
+                e.preventDefault();
+            };
+            
+            const handleDrop = (e) => {
+                e.preventDefault();
+                const data = e.dataTransfer.getData('text/plain');
+                const [taskId, fromColumn] = data.split('|');
+                
+                if (fromColumn !== columnId) {
+                    onTaskMove(taskId, fromColumn, columnId);
+                }
+            };
+            
+            return (
+                <div 
+                    className="kanban-column" 
+                    onDragOver={handleDragOver}
+                    onDrop={handleDrop}
+                >
+                    <div className="kanban-column-header">
+                        <h4>{title}</h4>
+                        <span className="badge badge-secondary">{tasks.length}</span>
+                    </div>
+                    
+                    <div className="kanban-tasks">
+                        {tasks.map(task => (
+                            <KanbanTask 
+                                key={task.id} 
+                                task={task} 
+                                columnId={columnId} 
+                            />
+                        ))}
+                    </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Task Management Section -->
-        <section class="my-10">
-            <div class="card">
-                <div class="card-header">Task Management</div>
-                <div class="task-card">
-                    <div class="task-title">Clean Machine Room</div>
-                    <div class="task-due-date">Due: 1 Day</div>
+            );
+        };
+        
+        // Kanban Task Component
+        const KanbanTask = ({ task, columnId }) => {
+            const handleDragStart = (e) => {
+                e.dataTransfer.setData('text/plain', `${task.id}|${columnId}`);
+            };
+            
+            const priorityClass = {
+                high: 'priority-high',
+                medium: 'priority-medium',
+                low: 'priority-low'
+            }[task.priority] || '';
+            
+            return (
+                <div 
+                    className="kanban-task" 
+                    draggable
+                    onDragStart={handleDragStart}
+                >
+                    <div className="flex items-center mb-2">
+                        <span className={`task-priority ${priorityClass}`}></span>
+                        <h4>{task.title}</h4>
+                    </div>
+                    
+                    <p className="text-secondary text-sm mb-2">{task.description}</p>
+                    
+                    <div className="flex justify-between items-center text-xs">
+                        <span className="text-secondary">
+                            Due: {task.dueDate.toLocaleDateString()}
+                        </span>
+                        <span className="text-secondary">
+                            Assigned by: {task.assignedBy}
+                        </span>
+                    </div>
                 </div>
-                <div class="task-card">
-                    <div class="task-title">Calibrate Robot Arms</div>
-                    <div class="task-due-date">Due: 3 Days</div>
+            );
+        };
+        
+        // CEO Dashboard Component
+        const CEODashboard = ({ employees, securityStatus, tasks }) => {
+            const [activeTab, setActiveTab] = React.useState('overview');
+            
+            return (
+                <div className="ceo-grid">
+                    {/* Overview Card */}
+                    <div className="col-span-8">
+                        <div className="card">
+                            <div className="card-header">
+                                <h3>Company Overview</h3>
+                                <div className="flex gap-2">
+                                    <button 
+                                        className={`btn btn-sm ${activeTab === 'overview' ? 'btn-primary' : 'btn-secondary'}`}
+                                        onClick={() => setActiveTab('overview')}
+                                    >
+                                        Overview
+                                    </button>
+                                    <button 
+                                        className={`btn btn-sm ${activeTab === 'financial' ? 'btn-primary' : 'btn-secondary'}`}
+                                        onClick={() => setActiveTab('financial')}
+                                    >
+                                        Financial
+                                    </button>
+                                    <button 
+                                        className={`btn btn-sm ${activeTab === 'operations' ? 'btn-primary' : 'btn-secondary'}`}
+                                        onClick={() => setActiveTab('operations')}
+                                    >
+                                        Operations
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            {activeTab === 'overview' && (
+                                <div className="grid grid-cols-3 gap-4">
+                                    <div className="card">
+                                        <h4 className="text-secondary">Revenue</h4>
+                                        <h3 className="text-2xl font-bold">$1.2M</h3>
+                                        <p className="text-success text-sm">
+                                            <i className="fas fa-arrow-up mr-1"></i>
+                                            12% from last month
+                                        </p>
+                                    </div>
+                                    <div className="card">
+                                        <h4 className="text-secondary">Expenses</h4>
+                                        <h3 className="text-2xl font-bold">$850K</h3>
+                                        <p className="text-danger text-sm">
+                                            <i className="fas fa-arrow-up mr-1"></i>
+                                            8% from last month
+                                        </p>
+                                    </div>
+                                    <div className="card">
+                                        <h4 className="text-secondary">Profit</h4>
+                                        <h3 className="text-2xl font-bold">$350K</h3>
+                                        <p className="text-success text-sm">
+                                            <i className="fas fa-arrow-up mr-1"></i>
+                                            15% from last month
+                                        </p>
+                                    </div>
+                                    <div className="col-span-3">
+                                        <div className="card">
+                                            <h4 className="text-secondary mb-4">Revenue Trend</h4>
+                                            <div className="h-64 bg-primary-light rounded flex items-center justify-center">
+                                                <p className="text-secondary">Revenue Chart Placeholder</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
+                            
+                            {activeTab === 'financial' && (
+                                <div>
+                                    <h4 className="text-secondary mb-4">Financial Metrics</h4>
+                                    <div className="h-64 bg-primary-light rounded flex items-center justify-center">
+                                        <p className="text-secondary">Financial Dashboard Placeholder</p>
+                                    </div>
+                                </div>
+                            )}
+                            
+                            {activeTab === 'operations' && (
+                                <div>
+                                    <h4 className="text-secondary mb-4">Operational Metrics</h4>
+                                    <div className="h-64 bg-primary-light rounded flex items-center justify-center">
+                                        <p className="text-secondary">Operations Dashboard Placeholder</p>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                    
+                    {/* Employee Activity */}
+                    <div className="col-span-4">
+                        <div className="card">
+                            <div className="card-header">
+                                <h3>Employee Activity</h3>
+                                <i className="fas fa-users"></i>
+                            </div>
+                            
+                            <div className="employee-grid">
+                                {employees.map(employee => (
+                                    <EmployeeCard 
+                                        key={employee.id} 
+                                        employee={employee} 
+                                    />
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* Security Overview */}
+                    <div className="col-span-4">
+                        <div className="card">
+                            <div className="card-header">
+                                <h3>Security Overview</h3>
+                                <i className="fas fa-shield-alt"></i>
+                            </div>
+                            
+                            <div className="security-metrics">
+                                <div className="security-metric">
+                                    <div className="security-metric-value">
+                                        {securityStatus.vpnConnected}
+                                    </div>
+                                    <p className="text-secondary">VPN Connected</p>
+                                </div>
+                                <div className="security-metric">
+                                    <div className="security-metric-value">
+                                        {securityStatus.failedLogins}
+                                    </div>
+                                    <p className="text-secondary">Failed Logins</p>
+                                </div>
+                                <div className="security-metric">
+                                    <div className="security-metric-value">
+                                        {securityStatus.threatsDetected}
+                                    </div>
+                                    <p className="text-secondary">Threats Detected</p>
+                                </div>
+                            </div>
+                            
+                            <div className="mt-4">
+                                <h4 className="text-secondary mb-2">Recent Security Events</h4>
+                                <div className="timeline">
+                                    <div className="timeline-item">
+                                        <p className="timeline-time">10:42 AM</p>
+                                        <p>New login from New York, NY</p>
+                                    </div>
+                                    <div className="timeline-item">
+                                        <p className="timeline-time">09:15 AM</p>
+                                        <p>Failed login attempt from unknown device</p>
+                                    </div>
+                                    <div className="timeline-item">
+                                        <p className="timeline-time">08:30 AM</p>
+                                        <p>Security scan completed - no threats found</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {/* Task Overview */}
+                    <div className="col-span-8">
+                        <div className="card">
+                            <div className="card-header">
+                                <h3>Company Task Overview</h3>
+                                <i className="fas fa-tasks"></i>
+                            </div>
+                            
+                            <div className="kanban-board">
+                                <KanbanColumn 
+                                    title="To Do" 
+                                    tasks={tasks.todo} 
+                                    columnId="todo" 
+                                />
+                                <KanbanColumn 
+                                    title="In Progress" 
+                                    tasks={tasks.inProgress} 
+                                    columnId="inProgress" 
+                                />
+                                <KanbanColumn 
+                                    title="Completed" 
+                                    tasks={tasks.completed} 
+                                    columnId="completed" 
+                                />
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Chat Widget (AI Chatbot) -->
-        <div class="chat-widget">
-            <div class="chat-widget-header">
-                <div>AI Assistant</div>
-                <div><i class="fas fa-times"></i></div>
-            </div>
-            <div class="chat-widget-body">
-                <div>AI: How can I assist you today?</div>
-            </div>
-            <div class="chat-widget-footer">
-                <input type="text" placeholder="Type a message..." />
-                <button>Send</button>
-            </div>
-        </div>
-    </div>
+            );
+        };
+        
+        // Employee Card Component
+        const EmployeeCard = ({ employee }) => {
+            const statusClass = {
+                active: 'status-active',
+                inactive: 'status-inactive',
+                away: 'status-away'
+            }[employee.status] || '';
+            
+            return (
+                <div className="employee-card">
+                    <div className="avatar">
+                        {employee.name.split(' ').map(n => n[0]).join('')}
+                    </div>
+                    <div>
+                        <h4 className="font-semibold">{employee.name}</h4>
+                        <p className="text-secondary text-sm">{employee.role}</p>
+                    </div>
+                    <div className={`employee-status ${statusClass}`}></div>
+                </div>
+            );
+        };
+        
+        // Render the app
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
 </body>
-
 </html>
