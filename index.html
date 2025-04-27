@@ -3,560 +3,227 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Industry Manager | The All-in-One Industrial Work OS</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Industry Manager OS</title>
     <style>
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #10b981;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --danger: #ef4444;
-            --warning: #f59e0b;
-        }
-        
-        * {
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
         }
-        
-        body {
-            background-color: #f1f5f9;
-            color: var(--dark);
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Header */
+
         header {
-            background-color: white;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        
-        nav {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            font-weight: 700;
-            font-size: 1.5rem;
-            color: var(--primary);
-        }
-        
-        .logo i {
-            margin-right: 10px;
-            font-size: 1.8rem;
-        }
-        
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-        
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .cta-button {
-            background-color: var(--primary);
-            color: white;
             padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: background-color 0.3s;
-        }
-        
-        .cta-button:hover {
-            background-color: var(--primary-dark);
+            background-color: #333;
             color: white;
+            align-items: center;
         }
-        
-        .mobile-menu {
-            display: none;
-            font-size: 1.5rem;
+
+        .nav-bar {
+            display: flex;
+            align-items: center;
             cursor: pointer;
         }
-        
-        /* Hero Section */
-        .hero {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            text-align: center;
-        }
-        
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--dark);
-        }
-        
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 40px;
-            color: #475569;
-        }
-        
-        .hero-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-        
-        .secondary-button {
+
+        .nav-bar div {
+            width: 25px;
+            height: 3px;
             background-color: white;
-            color: var(--primary);
-            border: 1px solid var(--primary);
-            padding: 10px 20px;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: all 0.3s;
+            margin: 4px 0;
         }
-        
-        .secondary-button:hover {
-            background-color: #f8fafc;
-        }
-        
-        .hero-image {
-            max-width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            margin-top: 40px;
-        }
-        
-        /* Features Section */
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-        
-        .section-title h2 {
-            font-size: 2.5rem;
-            color: var(--dark);
-            margin-bottom: 15px;
-        }
-        
-        .section-title p {
-            color: #64748b;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .features {
-            padding: 80px 0;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        
-        .feature-card {
-            background-color: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        
-        .feature-icon {
-            background-color: #dbeafe;
-            color: var(--primary);
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+
+        .profile {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
+            cursor: pointer;
         }
-        
-        .feature-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: var(--dark);
+
+        .profile img {
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            margin-right: 10px;
         }
-        
-        .feature-card p {
-            color: #64748b;
-        }
-        
-        /* Problem Section */
-        .problem {
-            padding: 80px 0;
+
+        .profile-details {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 20px;
             background-color: white;
-        }
-        
-        .problem-list {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .problem-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 20px;
-            padding: 20px;
+            padding: 10px;
             border-radius: 5px;
-            background-color: #f8fafc;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            color: #333;
         }
-        
-        .problem-item i {
-            color: var(--danger);
-            font-size: 1.2rem;
-            margin-right: 15px;
-            margin-top: 3px;
+
+        .profile:hover .profile-details {
+            display: block;
         }
-        
-        /* CTA Section */
-        .cta {
-            padding: 80px 0;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+
+        .nav-menu {
+            display: none;
+            background-color: #333;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 200px;
+            padding: 20px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-menu a {
             color: white;
-            text-align: center;
-        }
-        
-        .cta h2 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-        
-        .cta p {
-            max-width: 700px;
-            margin: 0 auto 40px;
-            opacity: 0.9;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 60px 0 20px;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-        
-        .footer-column h3 {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            color: #e2e8f0;
-        }
-        
-        .footer-column ul {
-            list-style: none;
-        }
-        
-        .footer-column ul li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-column ul li a {
-            color: #94a3b8;
             text-decoration: none;
-            transition: color 0.3s;
+            display: block;
+            padding: 10px 0;
         }
-        
-        .footer-column ul li a:hover {
-            color: white;
+
+        .nav-bar.open + .nav-menu {
+            display: block;
         }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
+
+        .main-content {
+            padding: 20px;
+        }
+
+        .task-management, .ceo-dashboard, .wellness, .reports {
             margin-top: 20px;
         }
-        
-        .social-links a {
-            color: white;
-            background-color: #334155;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s;
+
+        .task-list {
+            list-style: none;
+            padding: 0;
         }
-        
-        .social-links a:hover {
-            background-color: var(--primary);
+
+        .task-list li {
+            background-color: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #334155;
-            color: #94a3b8;
-            font-size: 0.9rem;
+
+        .task-list li span {
+            font-weight: bold;
         }
-        
-        /* Responsive */
+
+        .task-list li .priority {
+            color: red;
+        }
+
+        .wellness-score, .security-overview, .employee-activity {
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* For mobile responsiveness */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
-            .mobile-menu {
-                display: block;
-            }
-            
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
+            .profile img {
+                width: 30px;
+                height: 30px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+
     <header>
-        <div class="container">
-            <nav>
-                <div class="logo">
-                    <i class="fas fa-industry"></i>
-                    <span>Industry Manager</span>
-                </div>
-                <div class="nav-links">
-                    <a href="#features">Features</a>
-                    <a href="#problem">Problem</a>
-                    <a href="#solutions">Solutions</a>
-                    <a href="#pricing">Pricing</a>
-                    <a href="#" class="cta-button">Get Demo</a>
-                </div>
-                <div class="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-            </nav>
+        <!-- Navigation Menu -->
+        <div class="nav-bar" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <!-- Profile -->
+        <div class="profile">
+            <img src="https://via.placeholder.com/35" alt="Profile Picture">
+            <span>John Doe</span>
+            <div class="profile-details">
+                <p>John Doe</p>
+                <p>Position: Developer</p>
+                <p>Email: johndoe@example.com</p>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1>The All-in-One Industrial Work OS</h1>
-            <p>Unify tools, boost safety, and simplify work for modern industry. Replace 15+ apps with one intelligent platform designed for factories, construction, and field operations.</p>
-            <div class="hero-buttons">
-                <a href="#" class="cta-button">Start Free Trial</a>
-                <a href="#" class="secondary-button">Watch Demo</a>
-            </div>
-            <img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Industry Manager Dashboard" class="hero-image">
-        </div>
-    </section>
+    <!-- Navigation Menu Dropdown -->
+    <div class="nav-menu">
+        <a href="#">Home</a>
+        <a href="#">Tasks</a>
+        <a href="#">Reports</a>
+        <a href="#">Settings</a>
+    </div>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="container">
-            <div class="section-title">
-                <h2>Industrial-Grade Features</h2>
-                <p>Everything your team needs in one secure platform, accessible from any device on the shop floor or in the field.</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-universal-access"></i>
-                    </div>
-                    <h3>Unified Workspace</h3>
-                    <p>Single login with adaptive UI for all workers - dark mode, dyslexia fonts, and multilingual support in one industrial interface.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-qrcode"></i>
-                    </div>
-                    <h3>QR/NFC Tracking</h3>
-                    <p>Scan equipment to log tasks, time, and issues directly from the shop floor with voice or quick-tap functionality.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-heartbeat"></i>
-                    </div>
-                    <h3>Worker Wellness</h3>
-                    <p>AI detects fatigue and suggests breaks, plus instant access to mental health resources when needed most.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Predictive Safety</h3>
-                    <p>IoT sensors monitor equipment health and alert before failures occur, with automated OSHA compliance reporting.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-exchange-alt"></i>
-                    </div>
-                    <h3>Smart Shift Handovers</h3>
-                    <p>Digital notes and voice summaries ensure nothing falls through the cracks between day and night crews.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
-                    <h3>Green Operations</h3>
-                    <p>Edge computing reduces energy use, while consolidated tools lower your digital carbon footprint by 60%.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+    <div class="main-content">
 
-    <!-- Problem Section -->
-    <section class="problem" id="problem">
-        <div class="container">
-            <div class="section-title">
-                <h2>The SaaS Sprawl Problem</h2>
-                <p>Modern industry is drowning in disconnected tools. Here's what we fix:</p>
-            </div>
-            <div class="problem-list">
-                <div class="problem-item">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <div>
-                        <h3>App Overload</h3>
-                        <p>Teams juggle 15-25+ tools daily causing mental fatigue and wasted time switching between systems.</p>
-                    </div>
-                </div>
-                <div class="problem-item">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <div>
-                        <h3>Security Risks</h3>
-                        <p>50+ logins create phishing risks and password reuse vulnerabilities across your operation.</p>
-                    </div>
-                </div>
-                <div class="problem-item">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <div>
-                        <h3>Information Chaos</h3>
-                        <p>100+ daily notifications lead to burnout and critical priorities getting missed in the noise.</p>
-                    </div>
-                </div>
-                <div class="problem-item">
-                    <i class="fas fa-exclamation-triangle"></i>
-                    <div>
-                        <h3>Mobile-Unfriendly Tools</h3>
-                        <p>Most enterprise software fails on phones, causing delays when teams are in the field.</p>
-                    </div>
-                </div>
-            </div>
+        <!-- Smart Task Management -->
+        <div class="task-management">
+            <h2>Today's Tasks</h2>
+            <ul class="task-list">
+                <li><span>Fix API Bug</span> - <span class="priority">High</span></li>
+                <li><span>Review PR #42</span> - <span class="priority">Medium</span></li>
+                <li><span>Team Meeting @ 11AM</span></li>
+            </ul>
         </div>
-    </section>
 
-    <!-- CTA Section -->
-    <section class="cta">
-        <div class="container">
-            <h2>Ready to Transform Your Industrial Operations?</h2>
-            <p>Join forward-thinking manufacturers, construction firms, and energy companies using Industry Manager to boost productivity by 40% while cutting software costs in half.</p>
-            <a href="#" class="cta-button" style="background-color: white; color: var(--primary);">Get Started Today</a>
+        <!-- CEO Dashboard -->
+        <div class="ceo-dashboard">
+            <h2>CEO Dashboard</h2>
+            <div class="card">
+                <p>Employees: 65 (Active: ✅, Inactive: ❌)</p>
+                <p>Avg. Productivity: 89%</p>
+            </div>
+            <div class="card">
+                <h3>Security Overview</h3>
+                <p>VPN Status: Secure</p>
+                <p>Threat Alerts: None</p>
+            </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-column">
-                    <h3>Industry Manager</h3>
-                    <p>The all-in-one industrial work OS unifying tools, safety, and operations for modern industry.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                    </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Product</h3>
-                    <ul>
-                        <li><a href="#">Features</a></li>
-                        <li><a href="#">Pricing</a></li>
-                        <li><a href="#">Integrations</a></li>
-                        <li><a href="#">Roadmap</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Industries</h3>
-                    <ul>
-                        <li><a href="#">Manufacturing</a></li>
-                        <li><a href="#">Construction</a></li>
-                        <li><a href="#">Oil & Gas</a></li>
-                        <li><a href="#">Utilities</a></li>
-                    </ul>
-                </div>
-                <div class="footer-column">
-                    <h3>Company</h3>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Blog</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                <p>&copy; 2023 Industry Manager. All rights reserved.</p>
+        <!-- Wellness & Burnout Prevention -->
+        <div class="wellness">
+            <h2>Wellness & Burnout Prevention</h2>
+            <div class="wellness-score">
+                <p>Employee Wellness Score: 80%</p>
+                <p>Break Reminders: "Alex worked 10hrs, suggest a break."</p>
             </div>
         </div>
-    </footer>
+
+        <!-- Real-Time Reports & Analytics -->
+        <div class="reports">
+            <h2>Reports & Analytics</h2>
+            <div class="card">
+                <p>Team Productivity Trends</p>
+                <p>Bug Resolution Speed: Fast</p>
+                <p>Attendance & Leave Patterns: Regular</p>
+            </div>
+        </div>
+
+    </div>
 
     <script>
-        // Simple mobile menu toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
+        // Toggle navigation menu
+        function toggleMenu() {
+            const menu = document.querySelector('.nav-menu');
+            menu.classList.toggle('open');
+        }
     </script>
+
 </body>
 </html>
