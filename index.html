@@ -1,154 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Industry Manager OS</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-</head>
-<body>
-    <!-- Header Section with App Name -->
-    <header>
-        <div class="app-name">Industry Manager OS</div>
-        <div class="profile-section">
-            <img src="profile.jpg" alt="Profile Picture" class="profile-pic">
-            <span class="username">Welcome, User</span>
-        </div>
-    </header>
 
-    <!-- Sidebar (Navigation) -->
-    <nav class="sidebar">
-        <div class="nav-toggle" id="nav-toggle">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+    <!-- Link to CSS Framework (Tailwind, for responsive design) -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.3/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #1A202C; /* Dark Mode */
+            color: #E2E8F0;
+        }
+
+        .primary-btn {
+            background-color: #38A169;
+            color: white;
+            border-radius: 8px;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .secondary-btn {
+            background-color: #2D3748;
+            color: white;
+            border-radius: 8px;
+            padding: 10px 20px;
+            text-align: center;
+        }
+
+        .sidebar {
+            background-color: #2D3748;
+            color: white;
+        }
+
+        .sidebar a {
+            padding: 15px;
+            display: block;
+            text-decoration: none;
+            color: #CBD5E0;
+            border-bottom: 1px solid #4A5568;
+        }
+
+        .sidebar a:hover {
+            background-color: #38A169;
+            color: white;
+        }
+
+        .widget {
+            background-color: #2D3748;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .widget-title {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .widget-content {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #A0AEC0;
+        }
+
+        .card {
+            background-color: #2D3748;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .metric-card {
+            background-color: #4A5568;
+            color: #E2E8F0;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .task-card {
+            background-color: #1A202C;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+
+        .task-title {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .task-due-date {
+            color: #CBD5E0;
+        }
+
+        .chat-widget {
+            background-color: #2D3748;
+            padding: 15px;
+            border-radius: 10px;
+            position: fixed;
+            right: 30px;
+            bottom: 30px;
+            width: 300px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-widget-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            color: white;
+        }
+
+        .chat-widget-body {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 10px;
+        }
+
+        .chat-widget-footer input {
+            width: 80%;
+            padding: 8px;
+            border-radius: 8px;
+            background-color: #2D3748;
+            color: #E2E8F0;
+        }
+
+        .chat-widget-footer button {
+            padding: 8px 12px;
+            border-radius: 8px;
+            background-color: #38A169;
+            color: white;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar fixed w-1/4 h-screen">
+        <div class="p-5">
+            <h2 class="text-2xl font-bold text-white">Industry Manager OS</h2>
         </div>
-        <ul class="nav-list">
-            <li><a href="#dashboard">🖥️ Dashboard</a></li>
-            <li><a href="#tasks">✅ Smart Task Management</a></li>
-            <li><a href="#leave">🏥 Leave & Remote Work Management</a></li>
-            <li><a href="#ceo-dashboard">👨‍💻 CEO Super Dashboard</a></li>
-            <li><a href="#wellness">🧘‍♂️ Wellness & Burnout Prevention</a></li>
-        </ul>
-    </nav>
+        <div>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#tasks">Tasks</a>
+            <a href="#projects">Projects</a>
+            <a href="#profile">Profile</a>
+            <a href="#analytics">Analytics</a>
+            <a href="#settings">Settings</a>
+        </div>
+    </div>
 
     <!-- Main Content -->
-    <main>
-        <section id="dashboard">
-            <h1>📱 Personalized Dashboard</h1>
-            <div class="dashboard-content">
-                <!-- Dynamic Widgets based on role -->
-                <div class="widgets" id="widgets">
-                    <!-- Widgets for each role -->
-                    <div class="widget worker-widget">
-                        <h2>For Workers</h2>
-                        <ul>
-                            <li>Task List</li>
-                            <li>Shift Schedule</li>
-                            <li>Equipment Alerts</li>
-                        </ul>
+    <div class="ml-1/4 p-10">
+        <header class="flex justify-between items-center mb-6">
+            <h1 class="text-4xl font-semibold">Dashboard</h1>
+            <button class="secondary-btn">Log Out</button>
+        </header>
+
+        <!-- Key Metrics Section -->
+        <section class="grid grid-cols-3 gap-6">
+            <div class="metric-card">
+                <h2>Tasks Completed</h2>
+                <p>120/150</p>
+            </div>
+            <div class="metric-card">
+                <h2>Work Efficiency</h2>
+                <p>85%</p>
+            </div>
+            <div class="metric-card">
+                <h2>Safety Compliance</h2>
+                <p>98%</p>
+            </div>
+        </section>
+
+        <!-- Widgets Section -->
+        <section class="grid grid-cols-2 gap-6">
+            <div class="widget">
+                <div class="widget-title">Task List</div>
+                <div class="widget-content">
+                    <div class="task-card">
+                        <div class="task-title">Fix Conveyor Belt</div>
+                        <div class="task-due-date">Due: 2 Days</div>
                     </div>
-                    <div class="widget manager-widget">
-                        <h2>For Managers</h2>
-                        <ul>
-                            <li>Team Productivity</li>
-                            <li>Safety Compliance</li>
-                            <li>Incident Reports</li>
-                        </ul>
+                    <div class="task-card">
+                        <div class="task-title">Update Software</div>
+                        <div class="task-due-date">Due: 5 Days</div>
                     </div>
-                    <div class="widget executive-widget">
-                        <h2>For Executives</h2>
-                        <ul>
-                            <li>Financial KPIs</li>
-                            <li>Operational Efficiency Metrics</li>
-                        </ul>
-                    </div>
+                </div>
+            </div>
+
+            <div class="widget">
+                <div class="widget-title">Team Updates</div>
+                <div class="widget-content">
+                    <p>New software update scheduled for 5 PM.</p>
+                    <p>Safety drill conducted today in all shifts.</p>
                 </div>
             </div>
         </section>
 
-        <section id="tasks">
-            <h1>✅ Smart Task Management</h1>
-            <div class="task-management">
-                <p>Dynamic Task Assignment and Prioritization Engine</p>
-                <div class="task-action-buttons">
-                    <button onclick="logTask()">Log Task</button>
-                    <button onclick="assignTask()">Assign Task</button>
+        <!-- Task Management Section -->
+        <section class="my-10">
+            <div class="card">
+                <div class="card-header">Task Management</div>
+                <div class="task-card">
+                    <div class="task-title">Clean Machine Room</div>
+                    <div class="task-due-date">Due: 1 Day</div>
+                </div>
+                <div class="task-card">
+                    <div class="task-title">Calibrate Robot Arms</div>
+                    <div class="task-due-date">Due: 3 Days</div>
                 </div>
             </div>
         </section>
 
-        <section id="leave">
-            <h1>🏥 Leave & Remote Work Management</h1>
-            <div class="leave-management">
-                <p>Submit leave requests and track remote work status</p>
-                <button onclick="requestLeave()">Request Leave</button>
-                <button onclick="logRemoteWork()">Log Remote Work</button>
+        <!-- Chat Widget (AI Chatbot) -->
+        <div class="chat-widget">
+            <div class="chat-widget-header">
+                <div>AI Assistant</div>
+                <div><i class="fas fa-times"></i></div>
             </div>
-        </section>
-
-        <section id="ceo-dashboard">
-            <h1>👨‍💻 CEO Super Dashboard</h1>
-            <div class="ceo-dashboard">
-                <p>Real-time metrics, predictive analytics, and benchmarking for executives</p>
-                <div class="ceo-metrics">
-                    <div class="metric">
-                        <h3>Production Volume</h3>
-                        <span id="prodVolume">5000 Units</span>
-                    </div>
-                    <div class="metric">
-                        <h3>Downtime Costs</h3>
-                        <span id="downtimeCost">$2000</span>
-                    </div>
-                </div>
+            <div class="chat-widget-body">
+                <div>AI: How can I assist you today?</div>
             </div>
-        </section>
-
-        <section id="wellness">
-            <h1>🧘‍♂️ Wellness & Burnout Prevention</h1>
-            <div class="wellness-prevention">
-                <p>Monitor employee wellness and reduce burnout</p>
-                <button onclick="logWellness()">Track Wellness</button>
+            <div class="chat-widget-footer">
+                <input type="text" placeholder="Type a message..." />
+                <button>Send</button>
             </div>
-        </section>
-    </main>
-
-    <footer>
-        <p>Powered by Industry Manager OS</p>
-    </footer>
-
-    <!-- JavaScript for functionality -->
-    <script>
-        // Sidebar Toggle Functionality
-        document.getElementById('nav-toggle').addEventListener('click', function() {
-            document.querySelector('.sidebar').classList.toggle('active');
-        });
-
-        // Example function to log tasks
-        function logTask() {
-            alert("Task logged successfully!");
-        }
-
-        // Example function to assign tasks
-        function assignTask() {
-            alert("Task assigned successfully!");
-        }
-
-        // Example function to request leave
-        function requestLeave() {
-            alert("Leave requested successfully!");
-        }
-
-        // Example function to log remote work
-        function logRemoteWork() {
-            alert("Remote work logged successfully!");
-        }
-
-        // Example function to track wellness
-        function logWellness() {
-            alert("Wellness tracked successfully!");
-        }
-    </script>
+        </div>
+    </div>
 </body>
+
 </html>
