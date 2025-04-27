@@ -5,35 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Industry Manager OS</title>
     <style>
+        /* Global Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f2f5;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
-            display: flex;
-            flex-direction: column;
+            overflow-x: hidden;
         }
 
+        /* Header Styles */
         header {
             display: flex;
             justify-content: space-between;
-            padding: 10px 20px;
+            align-items: center;
             background-color: #333;
             color: white;
-            align-items: center;
+            padding: 10px 20px;
         }
 
         .nav-bar {
             display: flex;
-            align-items: center;
+            flex-direction: column;
             cursor: pointer;
         }
 
         .nav-bar div {
-            width: 25px;
+            width: 30px;
             height: 3px;
             background-color: white;
-            margin: 4px 0;
+            margin: 5px 0;
         }
 
         .profile {
@@ -43,8 +44,8 @@
         }
 
         .profile img {
-            width: 35px;
-            height: 35px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             margin-right: 10px;
         }
@@ -52,28 +53,58 @@
         .profile-details {
             display: none;
             position: absolute;
-            top: 60px;
+            top: 70px;
             right: 20px;
             background-color: white;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 20px;
+            border-radius: 8px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             color: #333;
+            width: 320px;
         }
 
         .profile:hover .profile-details {
             display: block;
         }
 
+        .profile-details h3 {
+            font-size: 24px;
+            margin: 0;
+        }
+
+        .profile-details p {
+            font-size: 14px;
+            color: #777;
+        }
+
+        .profile-details .section-title {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .profile-details .activity-history ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .profile-details .activity-history li {
+            font-size: 14px;
+            color: #444;
+        }
+
+        /* Sidebar Navigation */
         .nav-menu {
             display: none;
-            background-color: #333;
-            position: absolute;
-            top: 50px;
+            position: fixed;
+            top: 0;
             left: 0;
-            width: 200px;
+            width: 220px;
+            height: 100%;
+            background-color: #333;
             padding: 20px;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+            z-index: 999;
         }
 
         .nav-menu a {
@@ -81,69 +112,104 @@
             text-decoration: none;
             display: block;
             padding: 10px 0;
+            font-size: 16px;
         }
 
         .nav-bar.open + .nav-menu {
             display: block;
         }
 
+        /* Content Layout */
         .main-content {
+            margin-top: 60px;
             padding: 20px;
         }
 
-        .task-management, .ceo-dashboard, .wellness, .reports {
-            margin-top: 20px;
+        .section {
+            margin-bottom: 30px;
         }
 
-        .task-list {
-            list-style: none;
-            padding: 0;
+        .section h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
         }
 
-        .task-list li {
-            background-color: #fff;
-            padding: 10px;
-            margin: 5px 0;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        .section p {
+            font-size: 16px;
+            line-height: 1.6;
         }
 
-        .task-list li span {
-            font-weight: bold;
+        .section ul {
+            list-style-type: disc;
+            margin-left: 20px;
         }
 
-        .task-list li .priority {
-            color: red;
+        /* Dashboard & Task Widgets */
+        .dashboard {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
         }
 
-        .wellness-score, .security-overview, .employee-activity {
+        .widget {
             background-color: #fff;
             padding: 15px;
-            border-radius: 5px;
-            margin-top: 10px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            width: 23%;
+            text-align: center;
         }
 
-        .card {
-            background-color: #fff;
-            padding: 10px;
-            margin-top: 10px;
-            border-radius: 5px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        .widget h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
         }
 
-        /* For mobile responsiveness */
+        .widget p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .profile img {
-                width: 30px;
-                height: 30px;
+            .dashboard {
+                flex-direction: column;
+                align-items: center;
             }
+
+            .widget {
+                width: 80%;
+            }
+
+            .profile img {
+                width: 35px;
+                height: 35px;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
 
+    <!-- Header Section -->
     <header>
-        <!-- Navigation Menu -->
+        <!-- Navigation Bar Toggle -->
         <div class="nav-bar" onclick="toggleMenu()">
             <div></div>
             <div></div>
@@ -151,77 +217,121 @@
         </div>
 
         <!-- Profile -->
-        <div class="profile">
-            <img src="https://via.placeholder.com/35" alt="Profile Picture">
+        <div class="profile" onclick="toggleProfile()">
+            <img src="https://via.placeholder.com/40" alt="Profile Picture">
             <span>John Doe</span>
             <div class="profile-details">
-                <p>John Doe</p>
-                <p>Position: Developer</p>
-                <p>Email: johndoe@example.com</p>
+                <!-- Profile Information -->
+                <h3>John Doe</h3>
+                <p><strong>Username:</strong> johndoe123</p>
+                <p><strong>Job Title:</strong> Senior Developer</p>
+                <p><strong>Education:</strong> BSc in Computer Science, University of XYZ</p>
+
+                <p class="section-title">Bio</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur vulputate ligula ut risus sollicitudin, in convallis turpis fermentum.</p>
+
+                <p class="section-title">Activity History</p>
+                <ul>
+                    <li>Reviewed PR #42 - 2 hours ago</li>
+                    <li>Fixed Bug #102 - Yesterday</li>
+                    <li>Completed Task #312 - 3 days ago</li>
+                </ul>
+
+                <p class="section-title">Settings/Preferences</p>
+                <label>
+                    <input type="checkbox" checked> Enable Dark Mode
+                </label><br>
+                <label>
+                    <input type="checkbox"> Notifications
+                </label><br>
+                <label>
+                    <input type="checkbox"> Show Activity History
+                </label>
             </div>
         </div>
     </header>
 
-    <!-- Navigation Menu Dropdown -->
+    <!-- Sidebar Navigation Menu -->
     <div class="nav-menu">
         <a href="#">Home</a>
         <a href="#">Tasks</a>
         <a href="#">Reports</a>
         <a href="#">Settings</a>
+        <a href="#">Logout</a>
     </div>
 
+    <!-- Main Content Section -->
     <div class="main-content">
+        <section class="section">
+            <h2>🚀 Industry Manager OS: The Ultimate WorkOS for IT/Tech Teams</h2>
+            <p><strong>Modern, Secure, Stress-Free, and CEO-Controlled</strong></p>
+        </section>
 
-        <!-- Smart Task Management -->
-        <div class="task-management">
-            <h2>Today's Tasks</h2>
-            <ul class="task-list">
-                <li><span>Fix API Bug</span> - <span class="priority">High</span></li>
-                <li><span>Review PR #42</span> - <span class="priority">Medium</span></li>
-                <li><span>Team Meeting @ 11AM</span></li>
+        <!-- Core Features Section -->
+        <section class="section">
+            <h2>📌 Core Features</h2>
+            <ul>
+                <li>🔐 Secure Login & Role-Based Access</li>
+                <li>📱 Personalized Dashboard</li>
+                <li>✅ Smart Task Management</li>
+                <li>🏥 Leave & Remote Work Management</li>
+                <li>👨‍💻 CEO Super Dashboard</li>
+                <li>🧘‍♂️ Wellness & Burnout Prevention</li>
             </ul>
-        </div>
+        </section>
 
-        <!-- CEO Dashboard -->
-        <div class="ceo-dashboard">
-            <h2>CEO Dashboard</h2>
-            <div class="card">
-                <p>Employees: 65 (Active: ✅, Inactive: ❌)</p>
-                <p>Avg. Productivity: 89%</p>
+        <!-- Dashboard Section -->
+        <section class="section">
+            <h2>🖥️ Dashboard</h2>
+            <div class="dashboard">
+                <div class="widget">
+                    <h3>Today's Tasks</h3>
+                    <p>Review PR #42</p>
+                    <p>Fix API Bug</p>
+                    <p>Join Team Meeting</p>
+                </div>
+                <div class="widget">
+                    <h3>Employee Wellness</h3>
+                    <p>Wellness Score: 87%</p>
+                    <p>Suggested Break: 10:00 AM</p>
+                </div>
+                <div class="widget">
+                    <h3>Security Overview</h3>
+                    <p>VPN Status: Active</p>
+                    <p>Last Login: 1hr ago</p>
+                </div>
+                <div class="widget">
+                    <h3>Recent Activity</h3>
+                    <p>Reviewed Task #123</p>
+                    <p>Completed Bug Fix #105</p>
+                </div>
             </div>
-            <div class="card">
-                <h3>Security Overview</h3>
-                <p>VPN Status: Secure</p>
-                <p>Threat Alerts: None</p>
-            </div>
-        </div>
+        </section>
 
-        <!-- Wellness & Burnout Prevention -->
-        <div class="wellness">
-            <h2>Wellness & Burnout Prevention</h2>
-            <div class="wellness-score">
-                <p>Employee Wellness Score: 80%</p>
-                <p>Break Reminders: "Alex worked 10hrs, suggest a break."</p>
-            </div>
-        </div>
-
-        <!-- Real-Time Reports & Analytics -->
-        <div class="reports">
-            <h2>Reports & Analytics</h2>
-            <div class="card">
-                <p>Team Productivity Trends</p>
-                <p>Bug Resolution Speed: Fast</p>
-                <p>Attendance & Leave Patterns: Regular</p>
-            </div>
-        </div>
+        <!-- Additional Sections (Settings, Reports, etc.) -->
+        <section class="section">
+            <h2>📊 Reports & Analytics</h2>
+            <p>Here you can view various metrics, like employee productivity trends, bug resolution speed, and team attendance patterns.</p>
+        </section>
 
     </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Industry Manager OS. All rights reserved.</p>
+    </footer>
 
     <script>
-        // Toggle navigation menu
+        // Toggle the sidebar menu
         function toggleMenu() {
             const menu = document.querySelector('.nav-menu');
             menu.classList.toggle('open');
+        }
+
+        // Toggle the profile details section
+        function toggleProfile() {
+            const profileDetails = document.querySelector('.profile-details');
+            profileDetails.style.display = (profileDetails.style.display === 'block') ? 'none' : 'block';
         }
     </script>
 
