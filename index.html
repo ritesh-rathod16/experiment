@@ -3,1621 +3,1162 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Industry Manager OS | All-in-One Workspace Platform</title>
-    
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-    
-    <!-- React and React DOM -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    
-    <!-- Babel for JSX -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    
+    <title>Ritesh Rathod - Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* CSS Reset and Base Styles */
-        :root {
-            --primary-dark: #0a192f;
-            --primary-light: #172a45;
-            --accent-neon: #64ffda;
-            --accent-blue: #1e90ff;
-            --text-primary: #e6f1ff;
-            --text-secondary: #8892b0;
-            --success: #4CAF50;
-            --warning: #FFC107;
-            --danger: #F44336;
-            --info: #2196F3;
-            --dark-mode-bg: #0a192f;
-            --dark-mode-card: #112240;
-            --light-mode-bg: #f8f9fa;
-            --light-mode-card: #ffffff;
-            --border-radius: 8px;
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --transition: all 0.3s ease;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--dark-mode-bg);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-            transition: var(--transition);
+            font-family: 'Poppins', sans-serif;
         }
-        
-        body.light-mode {
-            background-color: var(--light-mode-bg);
-            color: #333;
+        .heading-font {
+            font-family: 'Playfair Display', serif;
         }
-        
-        /* Typography */
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 600;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-        
-        h1 {
-            font-size: 2.5rem;
-        }
-        
-        h2 {
-            font-size: 2rem;
-        }
-        
-        h3 {
-            font-size: 1.75rem;
-        }
-        
-        h4 {
-            font-size: 1.5rem;
-        }
-        
-        p {
-            margin-bottom: 1rem;
-        }
-        
-        a {
-            color: var(--accent-neon);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        
-        a:hover {
-            color: var(--text-primary);
-        }
-        
-        /* Layout */
-        .container {
-            width: 100%;
-            max-width: 1800px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        .flex {
-            display: flex;
-        }
-        
-        .flex-col {
-            flex-direction: column;
-        }
-        
-        .items-center {
-            align-items: center;
-        }
-        
-        .justify-between {
-            justify-content: space-between;
-        }
-        
-        .gap-4 {
-            gap: 1rem;
-        }
-        
-        .gap-8 {
-            gap: 2rem;
-        }
-        
-        .grid {
-            display: grid;
-        }
-        
-        .grid-cols-1 {
-            grid-template-columns: repeat(1, minmax(0, 1fr));
-        }
-        
-        .grid-cols-2 {
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-        }
-        
-        .grid-cols-3 {
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-        }
-        
-        .grid-cols-4 {
-            grid-template-columns: repeat(4, minmax(0, 1fr));
-        }
-        
-        .col-span-2 {
-            grid-column: span 2 / span 2;
-        }
-        
-        .col-span-3 {
-            grid-column: span 3 / span 3;
-        }
-        
-        /* Components */
-        .card {
-            background-color: var(--dark-mode-card);
-            border-radius: var(--border-radius);
-            padding: 1.5rem;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
-        
-        body.light-mode .card {
-            background-color: var(--light-mode-card);
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .card-header {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding-bottom: 1rem;
-            margin-bottom: 1rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        body.light-mode .card-header {
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--border-radius);
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
-            outline: none;
-        }
-        
-        .btn-primary {
-            background-color: var(--accent-neon);
-            color: var(--primary-dark);
-        }
-        
-        .btn-primary:hover {
-            background-color: #52d3b3;
-        }
-        
-        .btn-secondary {
-            background-color: var(--primary-light);
-            color: var(--text-primary);
-        }
-        
-        .btn-secondary:hover {
-            background-color: #1f3a68;
-        }
-        
-        .btn-danger {
-            background-color: var(--danger);
-            color: white;
-        }
-        
-        .btn-danger:hover {
-            background-color: #e53935;
-        }
-        
-        .btn-sm {
-            padding: 0.5rem 1rem;
-            font-size: 0.875rem;
-        }
-        
-        .badge {
-            display: inline-block;
-            padding: 0.25rem 0.5rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-        
-        .badge-success {
-            background-color: rgba(76, 175, 80, 0.2);
-            color: var(--success);
-        }
-        
-        .badge-warning {
-            background-color: rgba(255, 193, 7, 0.2);
-            color: var(--warning);
-        }
-        
-        .badge-danger {
-            background-color: rgba(244, 67, 54, 0.2);
-            color: var(--danger);
-        }
-        
-        .badge-info {
-            background-color: rgba(33, 150, 243, 0.2);
-            color: var(--info);
-        }
-        
-        .avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: var(--primary-light);
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-        
-        /* Navigation */
-        .sidebar {
-            width: 280px;
-            height: 100vh;
-            position: fixed;
-            left: 0;
-            top: 0;
-            background-color: var(--primary-light);
-            padding: 1.5rem;
-            transition: var(--transition);
-            z-index: 100;
-            overflow-y: auto;
-        }
-        
-        body.light-mode .sidebar {
-            background-color: #e9ecef;
-        }
-        
-        .sidebar-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        body.light-mode .sidebar-header {
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-        
-        .sidebar-logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--accent-neon);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .sidebar-nav {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-        
-        .nav-item {
-            display: flex;
-            align-items: center;
-            padding: 0.75rem 1rem;
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-            color: var(--text-secondary);
-            gap: 0.75rem;
-        }
-        
-        .nav-item:hover, .nav-item.active {
-            background-color: rgba(100, 255, 218, 0.1);
-            color: var(--accent-neon);
-        }
-        
-        .nav-item.active {
-            font-weight: 500;
-        }
-        
-        .nav-item i {
-            width: 24px;
-            text-align: center;
-        }
-        
-        /* Main Content */
-        .main-content {
-            margin-left: 280px;
-            padding: 2rem;
-            transition: var(--transition);
-            min-height: 100vh;
-        }
-        
-        .header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        body.light-mode .header {
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-        
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        
-        .theme-toggle {
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            cursor: pointer;
-            font-size: 1.25rem;
-            transition: var(--transition);
-        }
-        
-        body.light-mode .theme-toggle {
-            color: #333;
-        }
-        
-        .user-menu {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            position: relative;
-        }
-        
-        .user-menu-btn {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: none;
-            border: none;
-            color: var(--text-primary);
-            cursor: pointer;
-        }
-        
-        body.light-mode .user-menu-btn {
-            color: #333;
-        }
-        
-        .user-dropdown {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background-color: var(--dark-mode-card);
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            padding: 0.5rem 0;
-            min-width: 200px;
-            z-index: 50;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition);
-        }
-        
-        body.light-mode .user-dropdown {
-            background-color: var(--light-mode-card);
-        }
-        
-        .user-menu:hover .user-dropdown {
-            opacity: 1;
-            visibility: visible;
-        }
-        
-        .dropdown-item {
-            padding: 0.75rem 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: var(--text-primary);
-            transition: var(--transition);
-        }
-        
-        body.light-mode .dropdown-item {
-            color: #333;
-        }
-        
-        .dropdown-item:hover {
-            background-color: rgba(100, 255, 218, 0.1);
-            color: var(--accent-neon);
-        }
-        
-        /* Dashboard Grid */
-        .dashboard-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 1.5rem;
-        }
-        
-        /* Task Kanban */
-        .kanban-board {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-        }
-        
-        .kanban-column {
-            background-color: var(--dark-mode-card);
-            border-radius: var(--border-radius);
-            padding: 1rem;
-        }
-        
-        body.light-mode .kanban-column {
-            background-color: var(--light-mode-card);
-        }
-        
-        .kanban-column-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        body.light-mode .kanban-column-header {
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-        }
-        
-        .kanban-tasks {
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-            min-height: 100px;
-        }
-        
-        .kanban-task {
-            background-color: var(--primary-light);
-            border-radius: var(--border-radius);
-            padding: 1rem;
-            cursor: move;
-            transition: var(--transition);
-        }
-        
-        body.light-mode .kanban-task {
-            background-color: #f1f3f5;
-        }
-        
-        .kanban-task:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .task-priority {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            margin-right: 0.5rem;
-        }
-        
-        .priority-high {
-            background-color: var(--danger);
-        }
-        
-        .priority-medium {
-            background-color: var(--warning);
-        }
-        
-        .priority-low {
-            background-color: var(--success);
-        }
-        
-        /* Wellness Widget */
-        .wellness-widget {
-            position: relative;
-            height: 100%;
-        }
-        
-        .wellness-score {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            color: var(--accent-neon);
-        }
-        
-        .wellness-progress {
-            height: 8px;
-            background-color: var(--primary-light);
-            border-radius: 4px;
-            margin-bottom: 1rem;
-            overflow: hidden;
-        }
-        
-        body.light-mode .wellness-progress {
-            background-color: #e9ecef;
-        }
-        
-        .wellness-progress-bar {
-            height: 100%;
-            background-color: var(--accent-neon);
-            transition: width 0.5s ease;
-        }
-        
-        /* Quick Actions */
-        .quick-actions {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-        
-        .quick-action {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem 1rem;
-            background-color: var(--dark-mode-card);
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-            cursor: pointer;
-            text-align: center;
-        }
-        
-        body.light-mode .quick-action {
-            background-color: var(--light-mode-card);
-        }
-        
-        .quick-action:hover {
-            background-color: rgba(100, 255, 218, 0.1);
-            transform: translateY(-3px);
-        }
-        
-        .quick-action i {
-            font-size: 1.5rem;
-            margin-bottom: 0.75rem;
-            color: var(--accent-neon);
-        }
-        
-        /* AI Suggestions */
-        .ai-suggestions {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-        
-        .ai-suggestion {
-            background-color: var(--dark-mode-card);
-            border-radius: var(--border-radius);
-            padding: 1rem;
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            transition: var(--transition);
-        }
-        
-        body.light-mode .ai-suggestion {
-            background-color: var(--light-mode-card);
-        }
-        
-        .ai-suggestion:hover {
-            transform: translateY(-3px);
-        }
-        
-        .ai-suggestion-icon {
-            background-color: rgba(100, 255, 218, 0.1);
-            color: var(--accent-neon);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        
-        /* CEO Dashboard */
-        .ceo-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 1.5rem;
-        }
-        
-        .employee-grid {
+        .certificate-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1rem;
+            gap: 20px;
         }
-        
-        .employee-card {
+        .certificate-item {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        .certificate-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            z-index: 1000;
+        }
+        .chatbot-toggle {
+            background-color: #4F46E5;
+            color: white;
+            width: 60px;
+            height: 60px;
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 1rem;
-            background-color: var(--dark-mode-card);
-            border-radius: var(--border-radius);
-            transition: var(--transition);
-        }
-        
-        body.light-mode .employee-card {
-            background-color: var(--light-mode-card);
-        }
-        
-        .employee-card:hover {
-            transform: translateY(-3px);
-        }
-        
-        .employee-status {
-            width: 12px;
-            height: 12px;
+            justify-content: center;
             border-radius: 50%;
-            margin-left: auto;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.3);
+            transition: all 0.3s ease;
         }
-        
-        .status-active {
-            background-color: var(--success);
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
         }
-        
-        .status-inactive {
-            background-color: var(--danger);
+        .chatbot-window {
+            background-color: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            display: none;
+            height: 450px;
+            flex-direction: column;
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
-        
-        .status-away {
-            background-color: var(--warning);
+        .chatbot-header {
+            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
         }
-        
-        /* Security Overview */
-        .security-metrics {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1rem;
-            margin-bottom: 1.5rem;
+        .chatbot-messages {
+            flex-grow: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: #f9fafb;
         }
-        
-        .security-metric {
-            text-align: center;
-            padding: 1rem;
-            background-color: var(--dark-mode-card);
-            border-radius: var(--border-radius);
+        .chatbot-input {
+            padding: 12px;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            background-color: white;
         }
-        
-        body.light-mode .security-metric {
-            background-color: var(--light-mode-card);
+        .message {
+            margin-bottom: 12px;
+            padding: 10px 14px;
+            border-radius: 12px;
+            max-width: 85%;
+            line-height: 1.5;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
         }
-        
-        .security-metric-value {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 0.25rem;
+        .bot-message {
+            background-color: white;
+            border: 1px solid #e5e7eb;
+            align-self: flex-start;
+            border-top-left-radius: 4px;
         }
-        
-        /* Activity Timeline */
-        .timeline {
+        .user-message {
+            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+            color: white;
+            align-self: flex-end;
+            border-top-right-radius: 4px;
+        }
+        .nav-link {
             position: relative;
-            padding-left: 2rem;
-            margin-top: 1rem;
+            transition: all 0.3s ease;
         }
-        
-        .timeline::before {
+        .nav-link::after {
             content: '';
             position: absolute;
-            left: 7px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background-color: var(--accent-neon);
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #4F46E5;
+            transition: width 0.3s ease;
         }
-        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .emoji-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #4F46E5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            color: white;
+            margin: 0 auto 15px;
+            box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
+        }
+        .section-title {
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2.5rem;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            bottom: -8px;
+            left: 20%;
+            background: linear-gradient(90deg, #4F46E5, #7C3AED);
+            border-radius: 3px;
+        }
         .timeline-item {
             position: relative;
-            padding-bottom: 1.5rem;
+            padding-left: 30px;
+            margin-bottom: 30px;
         }
-        
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -2rem;
-            top: 0;
-            width: 12px;
-            height: 12px;
+            left: 0;
+            top: 5px;
+            width: 15px;
+            height: 15px;
             border-radius: 50%;
-            background-color: var(--accent-neon);
+            background: #4F46E5;
+            z-index: 1;
         }
-        
-        .timeline-time {
-            font-size: 0.875rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.25rem;
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 7px;
+            top: 20px;
+            width: 1px;
+            height: calc(100% - 20px);
+            background: #d1d5db;
         }
-        
-        /* Responsive */
-        @media (max-width: 1200px) {
-            .sidebar {
-                width: 240px;
-                padding: 1rem;
-            }
-            
-            .main-content {
-                margin-left: 240px;
-            }
-            
-            .kanban-board {
-                grid-template-columns: 1fr;
-            }
+        .timeline-item:last-child::after {
+            display: none;
         }
-        
-        @media (max-width: 992px) {
-            .dashboard-grid, .ceo-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .security-metrics {
-                grid-template-columns: 1fr;
-            }
+        .skill-badge {
+            display: inline-block;
+            background-color: #e0e7ff;
+            color: #4F46E5;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin: 0 5px 8px 0;
+            transition: all 0.3s ease;
         }
-        
-        @media (max-width: 768px) {
-            .sidebar {
-                transform: translateX(-100%);
-                position: fixed;
-                z-index: 1000;
-            }
-            
-            .sidebar.active {
-                transform: translateX(0);
-            }
-            
-            .main-content {
-                margin-left: 0;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
+        .skill-badge:hover {
+            background-color: #4F46E5;
+            color: white;
+            transform: translateY(-2px);
         }
-        
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #e0e7ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: #4F46E5;
+            margin-right: 15px;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
         }
-        
-        .fade-in {
-            animation: fadeIn 0.5s ease-in-out;
+        .contact-icon:hover {
+            background-color: #4F46E5;
+            color: white;
+            transform: scale(1.1);
         }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
+        .project-card {
+            transition: all 0.3s ease;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
-        
-        ::-webkit-scrollbar-track {
-            background: var(--primary-light);
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: var(--accent-neon);
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #52d3b3;
-        }
-        
-        /* Print Styles */
-        @media print {
-            .sidebar, .header-actions {
-                display: none !important;
-            }
-            
-            .main-content {
-                margin-left: 0 !important;
-                padding: 0 !important;
-            }
-            
-            .card {
-                box-shadow: none !important;
-                break-inside: avoid;
-            }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
-<body class="dark-mode">
-    <div id="root"></div>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <div class="text-2xl font-bold text-indigo-600 heading-font">Ritesh Rathod</div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="nav-link text-gray-700 hover:text-indigo-600">About</a>
+                    <a href="#experience" class="nav-link text-gray-700 hover:text-indigo-600">Experience</a>
+                    <a href="#education" class="nav-link text-gray-700 hover:text-indigo-600">Education</a>
+                    <a href="#skills" class="nav-link text-gray-700 hover:text-indigo-600">Skills</a>
+                    <a href="#certificates" class="nav-link text-gray-700 hover:text-indigo-600">Certificates</a>
+                    <a href="#projects" class="nav-link text-gray-700 hover:text-indigo-600">Projects</a>
+                    <a href="#contact" class="nav-link text-gray-700 hover:text-indigo-600">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button class="text-gray-700 focus:outline-none">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
 
-    <script type="text/babel">
-        // Main App Component
-        const App = () => {
-            const [darkMode, setDarkMode] = React.useState(true);
-            const [sidebarOpen, setSidebarOpen] = React.useState(false);
-            const [user, setUser] = React.useState({
-                id: 'user-123',
-                name: 'Alex Johnson',
-                email: 'alex.johnson@example.com',
-                role: 'CEO',
-                avatar: 'AJ',
-                lastLogin: new Date(),
-                notifications: 3
-            });
-            
-            const toggleDarkMode = () => {
-                setDarkMode(!darkMode);
-                document.body.classList.toggle('light-mode');
-            };
-            
-            const toggleSidebar = () => {
-                setSidebarOpen(!sidebarOpen);
-            };
-            
-            // Sample data for the dashboard
-            const [tasks, setTasks] = React.useState({
-                todo: [
-                    {
-                        id: 'task-1',
-                        title: 'Review Q2 Financial Report',
-                        description: 'Analyze and provide feedback on the quarterly financial report',
-                        priority: 'high',
-                        dueDate: new Date(Date.now() + 86400000), // Tomorrow
-                        assignedBy: 'Sarah Miller'
-                    },
-                    {
-                        id: 'task-2',
-                        title: 'Update Security Policies',
-                        description: 'Review and update company security policies for remote work',
-                        priority: 'medium',
-                        dueDate: new Date(Date.now() + 259200000), // 3 days from now
-                        assignedBy: 'IT Department'
-                    }
-                ],
-                inProgress: [
-                    {
-                        id: 'task-3',
-                        title: 'Hiring Process Automation',
-                        description: 'Implement automation for the recruitment workflow',
-                        priority: 'high',
-                        dueDate: new Date(Date.now() + 172800000), // 2 days from now
-                        assignedBy: 'HR Team'
-                    }
-                ],
-                completed: [
-                    {
-                        id: 'task-4',
-                        title: 'Board Meeting Presentation',
-                        description: 'Prepare slides for the quarterly board meeting',
-                        priority: 'medium',
-                        dueDate: new Date(Date.now() - 86400000), // Yesterday
-                        assignedBy: 'Jane Smith',
-                        completedAt: new Date()
-                    }
-                ]
-            });
-            
-            const [wellness, setWellness] = React.useState({
-                score: 78,
-                suggestion: 'Your wellness score is good. Remember to take regular breaks!',
-                lastChecked: new Date()
-            });
-            
-            const [aiSuggestions, setAiSuggestions] = React.useState([
-                {
-                    id: 'suggestion-1',
-                    timeSlot: '10:00 AM - 11:00 AM',
-                    suggestion: 'Review the new marketing campaign drafts',
-                    type: 'marketing'
-                },
-                {
-                    id: 'suggestion-2',
-                    timeSlot: '2:30 PM - 3:00 PM',
-                    suggestion: 'Follow up with the product team about the upcoming release',
-                    type: 'product'
-                }
-            ]);
-            
-            const [employees, setEmployees] = React.useState([
-                {
-                    id: 'emp-1',
-                    name: 'Sarah Miller',
-                    role: 'CFO',
-                    status: 'active',
-                    currentTask: 'Budget Planning',
-                    lastActive: '5 min ago'
-                },
-                {
-                    id: 'emp-2',
-                    name: 'John Doe',
-                    role: 'CTO',
-                    status: 'active',
-                    currentTask: 'Code Review',
-                    lastActive: '15 min ago'
-                },
-                {
-                    id: 'emp-3',
-                    name: 'Emma Wilson',
-                    role: 'Marketing Director',
-                    status: 'away',
-                    currentTask: 'Campaign Strategy',
-                    lastActive: '1 hour ago'
-                },
-                {
-                    id: 'emp-4',
-                    name: 'Michael Brown',
-                    role: 'HR Manager',
-                    status: 'inactive',
-                    currentTask: 'None',
-                    lastActive: 'Offline'
-                },
-                {
-                    id: 'emp-5',
-                    name: 'Lisa Chen',
-                    role: 'Lead Developer',
-                    status: 'active',
-                    currentTask: 'Bug Fixing',
-                    lastActive: '2 min ago'
-                },
-                {
-                    id: 'emp-6',
-                    name: 'David Kim',
-                    role: 'UX Designer',
-                    status: 'active',
-                    currentTask: 'Prototype Design',
-                    lastActive: '10 min ago'
-                }
-            ]);
-            
-            const [securityStatus, setSecurityStatus] = React.useState({
-                vpnConnected: 24,
-                failedLogins: 2,
-                threatsDetected: 0,
-                lastScan: new Date()
-            });
-            
-            const handleTaskMove = (taskId, fromColumn, toColumn) => {
-                const taskToMove = tasks[fromColumn].find(task => task.id === taskId);
-                if (!taskToMove) return;
-                
-                setTasks(prev => ({
-                    ...prev,
-                    [fromColumn]: prev[fromColumn].filter(task => task.id !== taskId),
-                    [toColumn]: [...prev[toColumn], taskToMove]
-                }));
-            };
-            
-            const handleQuickAction = (actionId) => {
-                alert(`Quick action triggered: ${actionId}`);
-            };
-            
-            return (
-                <div className={`app ${darkMode ? 'dark-mode' : 'light-mode'}`}>
-                    <Sidebar 
-                        user={user} 
-                        sidebarOpen={sidebarOpen} 
-                        toggleSidebar={toggleSidebar} 
-                    />
-                    
-                    <div className="main-content">
-                        <Header 
-                            user={user} 
-                            darkMode={darkMode} 
-                            toggleDarkMode={toggleDarkMode} 
-                            toggleSidebar={toggleSidebar} 
-                        />
-                        
-                        {user.role === 'CEO' ? (
-                            <CEODashboard 
-                                employees={employees} 
-                                securityStatus={securityStatus} 
-                                tasks={tasks} 
-                            />
-                        ) : (
-                            <EmployeeDashboard 
-                                user={user} 
-                                tasks={tasks} 
-                                wellness={wellness} 
-                                aiSuggestions={aiSuggestions} 
-                                onTaskMove={handleTaskMove} 
-                                onQuickAction={handleQuickAction} 
-                            />
-                        )}
+    <!-- Hero Section -->
+    <section class="py-24 bg-gradient-to-r from-indigo-600 to-purple-700 text-white">
+        <div class="container mx-auto px-6 text-center">
+            <h1 class="text-4xl md:text-6xl font-bold mb-6 heading-font">Ritesh Rathod</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">Chief Technology Officer | Python Developer | Solutions Architect</p>
+            <div class="flex justify-center space-x-4">
+                <a href="https://linkedin.com/in/ritesh-rathod-34a5a3329" target="_blank" class="bg-white text-indigo-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300 flex items-center">
+                    <i class="fab fa-linkedin mr-2"></i> LinkedIn
+                </a>
+                <a href="https://github.com/ritesh-rathod16" target="_blank" class="bg-white text-indigo-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300 flex items-center">
+                    <i class="fab fa-github mr-2"></i> GitHub
+                </a>
+                <a href="https://www.instagram.com/ritesh_rathod_official/" target="_blank" class="bg-white text-indigo-600 px-6 py-3 rounded-full font-semibold hover:bg-gray-100 transition duration-300 flex items-center">
+                    <i class="fab fa-instagram mr-2"></i> Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 heading-font section-title">About Me</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-10">
+                    <div class="relative">
+                        <img src="https://via.placeholder.com/500" alt="Ritesh Rathod" class="rounded-xl shadow-xl w-full">
+                        <div class="absolute -bottom-5 -right-5 bg-indigo-600 text-white p-4 rounded-full shadow-lg">
+                            <span class="text-2xl">🚀</span>
+                        </div>
                     </div>
                 </div>
-            );
-        };
-        
-        // Sidebar Component
-        const Sidebar = ({ user, sidebarOpen, toggleSidebar }) => {
-            const navItems = [
-                { id: 'dashboard', label: 'Dashboard', icon: 'tachometer-alt' },
-                { id: 'tasks', label: 'Tasks', icon: 'tasks' },
-                { id: 'calendar', label: 'Calendar', icon: 'calendar' },
-                { id: 'messages', label: 'Messages', icon: 'envelope' },
-                { id: 'reports', label: 'Reports', icon: 'chart-bar' },
-                { id: 'team', label: 'Team', icon: 'users' },
-                { id: 'documents', label: 'Documents', icon: 'file-alt' },
-                { id: 'settings', label: 'Settings', icon: 'cog' }
-            ];
-            
-            return (
-                <aside className={`sidebar ${sidebarOpen ? 'active' : ''}`}>
-                    <div className="sidebar-header">
-                        <div className="sidebar-logo">
-                            <i className="fas fa-industry"></i>
-                            <span>IndustryOS</span>
-                        </div>
-                        <button 
-                            className="mobile-menu-btn" 
-                            onClick={toggleSidebar}
-                            style={{ display: 'none' }}
-                        >
-                            <i className="fas fa-times"></i>
-                        </button>
-                    </div>
-                    
-                    <nav className="sidebar-nav">
-                        {navItems.map(item => (
-                            <a 
-                                key={item.id} 
-                                href={`#${item.id}`} 
-                                className={`nav-item ${item.id === 'dashboard' ? 'active' : ''}`}
-                            >
-                                <i className={`fas fa-${item.icon}`}></i>
-                                <span>{item.label}</span>
-                            </a>
-                        ))}
-                    </nav>
-                    
-                    <div className="mt-auto pt-4">
-                        <div className="card">
-                            <div className="flex items-center gap-3">
-                                <div className="avatar">{user.avatar}</div>
-                                <div>
-                                    <h4 className="text-sm font-semibold">{user.name}</h4>
-                                    <p className="text-xs text-secondary">{user.role}</p>
+                <div class="md:w-1/2">
+                    <div class="bg-gray-50 p-6 rounded-xl">
+                        <p class="text-lg mb-6">
+                            <span class="font-semibold text-indigo-600">Proudly Serving as CTO at PhoenixAlgo!</span> At PhoenixAlgo, we're revolutionizing education through innovative technology, and I'm honored to lead the charge as Chief Technology Officer.
+                        </p>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <div class="emoji-circle">🎨</div>
+                                <div class="ml-4">
+                                    <h4 class="font-semibold text-lg">Designing Visual Content</h4>
+                                    <p class="text-gray-600">Crafting compelling visuals that communicate our mission and inspire our community.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="emoji-circle">💻</div>
+                                <div class="ml-4">
+                                    <h4 class="font-semibold text-lg">Website Development</h4>
+                                    <p class="text-gray-600">Building and maintaining a seamless, user-friendly platform to deliver exceptional educational services.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="emoji-circle">👥</div>
+                                <div class="ml-4">
+                                    <h4 class="font-semibold text-lg">Team Leadership</h4>
+                                    <p class="text-gray-600">Working alongside talented individuals to drive innovation, solve challenges, and bring our vision to life.</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </aside>
-            );
-        };
-        
-        // Header Component
-        const Header = ({ user, darkMode, toggleDarkMode, toggleSidebar }) => {
-            const [currentTime, setCurrentTime] = React.useState(new Date());
-            
-            React.useEffect(() => {
-                const timer = setInterval(() => {
-                    setCurrentTime(new Date());
-                }, 60000); // Update every minute
-                
-                return () => clearInterval(timer);
-            }, []);
-            
-            const formattedDate = currentTime.toLocaleDateString('en-US', { 
-                weekday: 'long', 
-                year: 'numeric', 
-                month: 'long', 
-                day: 'numeric' 
-            });
-            
-            const formattedTime = currentTime.toLocaleTimeString('en-US', { 
-                hour: '2-digit', 
-                minute: '2-digit' 
-            });
-            
-            return (
-                <header className="header">
-                    <div>
-                        <h1>Dashboard</h1>
-                        <p className="text-secondary">
-                            {formattedDate} • {formattedTime}
+                        <p class="mt-6 text-gray-700">
+                            Every day, I'm inspired by the opportunity to make education more accessible, engaging, and impactful for learners worldwide. It's a privilege to contribute to a team that's shaping the future of learning.
                         </p>
                     </div>
-                    
-                    <div className="header-actions">
-                        <button 
-                            className="theme-toggle" 
-                            onClick={toggleDarkMode}
-                            aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
-                        >
-                            <i className={darkMode ? 'fas fa-sun' : 'fas fa-moon'}></i>
-                        </button>
-                        
-                        <button 
-                            className="mobile-menu-btn" 
-                            onClick={toggleSidebar}
-                            style={{ display: 'none' }}
-                        >
-                            <i className="fas fa-bars"></i>
-                        </button>
-                        
-                        <button className="btn btn-secondary btn-sm">
-                            <i className="fas fa-bell"></i>
-                            {user.notifications > 0 && (
-                                <span className="badge badge-danger ml-1">
-                                    {user.notifications}
-                                </span>
-                            )}
-                        </button>
-                        
-                        <div className="user-menu">
-                            <button className="user-menu-btn">
-                                <div className="avatar">{user.avatar}</div>
-                                <span>{user.name}</span>
-                                <i className="fas fa-chevron-down"></i>
-                            </button>
-                            
-                            <div className="user-dropdown">
-                                <a href="#profile" className="dropdown-item">
-                                    <i className="fas fa-user"></i>
-                                    <span>Profile</span>
-                                </a>
-                                <a href="#settings" className="dropdown-item">
-                                    <i className="fas fa-cog"></i>
-                                    <span>Settings</span>
-                                </a>
-                                <a href="#logout" className="dropdown-item">
-                                    <i className="fas fa-sign-out-alt"></i>
-                                    <span>Logout</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </header>
-            );
-        };
-        
-        // Employee Dashboard Component
-        const EmployeeDashboard = ({ user, tasks, wellness, aiSuggestions, onTaskMove, onQuickAction }) => {
-            const quickActions = [
-                { id: 'join-meeting', label: 'Join Meeting', icon: 'video' },
-                { id: 'report-bug', label: 'Report Bug', icon: 'bug' },
-                { id: 'request-leave', label: 'Request Leave', icon: 'calendar' },
-                { id: 'submit-report', label: 'Submit Report', icon: 'file-alt' }
-            ];
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 heading-font section-title">Experience</h2>
             
-            return (
-                <div className="dashboard-grid">
-                    {/* Welcome Card */}
-                    <div className="col-span-4">
-                        <div className="card">
-                            <h2>Good Morning, {user.name.split(' ')[0]}!</h2>
-                            <p className="text-secondary">Here's what's happening today</p>
-                            
-                            <div className="mt-4 grid grid-cols-2 gap-4">
-                                <div>
-                                    <h3 className="text-2xl font-bold">12</h3>
-                                    <p className="text-secondary">Tasks</p>
-                                </div>
-                                <div>
-                                    <h3 className="text-2xl font-bold">3</h3>
-                                    <p className="text-secondary">Meetings</p>
-                                </div>
-                                <div>
-                                    <h3 className="text-2xl font-bold">2</h3>
-                                    <p className="text-secondary">Messages</p>
-                                </div>
-                                <div>
-                                    <h3 className="text-2xl font-bold">1</h3>
-                                    <p className="text-secondary">Deadlines</p>
-                                </div>
-                            </div>
+            <div class="max-w-4xl mx-auto">
+                <div class="timeline-item bg-white rounded-xl shadow-sm p-6 mb-8">
+                    <div class="flex flex-col md:flex-row justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold">Chief Technology Officer</h3>
+                            <p class="text-indigo-600">Phoenix Algo · Full-time</p>
+                        </div>
+                        <div class="text-gray-500 mt-2 md:mt-0">
+                            Feb 2025 - Present · 3 mos
                         </div>
                     </div>
-                    
-                    {/* Wellness Widget */}
-                    <div className="col-span-2">
-                        <div className="card wellness-widget">
-                            <div className="card-header">
-                                <h3>Wellness Score</h3>
-                                <i className="fas fa-heart"></i>
+                    <p class="mt-4 text-gray-700">
+                        Nagpur, Maharashtra, India · Remote
+                    </p>
+                    <div class="mt-4">
+                        <p>🚀 Proudly Serving as CTO at PhoenixAlgo! At PhoenixAlgo, we're revolutionizing education through innovative technology, and I'm honored to lead the charge as Chief Technology Officer.</p>
+                        <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="flex items-start">
+                                <div class="text-indigo-600 mr-3 mt-1">•</div>
+                                <p>Designing Posters & Visual Content</p>
                             </div>
-                            
-                            <div className="wellness-score">{wellness.score}</div>
-                            <p className="text-secondary mb-4">/100</p>
-                            
-                            <div className="wellness-progress">
-                                <div 
-                                    className="wellness-progress-bar" 
-                                    style={{ width: `${wellness.score}%` }}
-                                ></div>
+                            <div class="flex items-start">
+                                <div class="text-indigo-600 mr-3 mt-1">•</div>
+                                <p>Managing Website Development</p>
                             </div>
-                            
-                            <p>{wellness.suggestion}</p>
-                        </div>
-                    </div>
-                    
-                    {/* Quick Actions */}
-                    <div className="col-span-2">
-                        <div className="card">
-                            <div className="card-header">
-                                <h3>Quick Actions</h3>
-                                <i className="fas fa-bolt"></i>
+                            <div class="flex items-start">
+                                <div class="text-indigo-600 mr-3 mt-1">•</div>
+                                <p>Leading & Collaborating with Teams</p>
                             </div>
-                            
-                            <div className="quick-actions">
-                                {quickActions.map(action => (
-                                    <div 
-                                        key={action.id} 
-                                        className="quick-action"
-                                        onClick={() => onQuickAction(action.id)}
-                                    >
-                                        <i className={`fas fa-${action.icon}`}></i>
-                                        <span>{action.label}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                    
-                    {/* AI Suggestions */}
-                    <div className="col-span-4">
-                        <div className="card">
-                            <div className="card-header">
-                                <h3>AI Suggestions</h3>
-                                <i className="fas fa-robot"></i>
-                            </div>
-                            
-                            <div className="ai-suggestions">
-                                {aiSuggestions.map(suggestion => (
-                                    <div key={suggestion.id} className="ai-suggestion">
-                                        <div className="ai-suggestion-icon">
-                                            <i className="fas fa-lightbulb"></i>
-                                        </div>
-                                        <div>
-                                            <p className="font-semibold">{suggestion.timeSlot}</p>
-                                            <p className="text-secondary">{suggestion.suggestion}</p>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                    
-                    {/* Task Kanban Board */}
-                    <div className="col-span-12">
-                        <div className="card">
-                            <div className="card-header">
-                                <h3>Task Management</h3>
-                                <button className="btn btn-primary btn-sm">
-                                    <i className="fas fa-plus mr-2"></i>
-                                    New Task
-                                </button>
-                            </div>
-                            
-                            <div className="kanban-board">
-                                <KanbanColumn 
-                                    title="To Do" 
-                                    tasks={tasks.todo} 
-                                    onTaskMove={onTaskMove} 
-                                    columnId="todo" 
-                                />
-                                <KanbanColumn 
-                                    title="In Progress" 
-                                    tasks={tasks.inProgress} 
-                                    onTaskMove={onTaskMove} 
-                                    columnId="inProgress" 
-                                />
-                                <KanbanColumn 
-                                    title="Completed" 
-                                    tasks={tasks.completed} 
-                                    onTaskMove={onTaskMove} 
-                                    columnId="completed" 
-                                />
+                            <div class="flex items-start">
+                                <div class="text-indigo-600 mr-3 mt-1">•</div>
+                                <p>Developing Educational Technology Solutions</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            );
-        };
-        
-        // Kanban Column Component
-        const KanbanColumn = ({ title, tasks, onTaskMove, columnId }) => {
-            const handleDragOver = (e) => {
-                e.preventDefault();
-            };
-            
-            const handleDrop = (e) => {
-                e.preventDefault();
-                const data = e.dataTransfer.getData('text/plain');
-                const [taskId, fromColumn] = data.split('|');
                 
-                if (fromColumn !== columnId) {
-                    onTaskMove(taskId, fromColumn, columnId);
-                }
-            };
-            
-            return (
-                <div 
-                    className="kanban-column" 
-                    onDragOver={handleDragOver}
-                    onDrop={handleDrop}
-                >
-                    <div className="kanban-column-header">
-                        <h4>{title}</h4>
-                        <span className="badge badge-secondary">{tasks.length}</span>
+                <div class="timeline-item bg-white rounded-xl shadow-sm p-6">
+                    <div class="flex flex-col md:flex-row justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold">Operation Management</h3>
+                            <p class="text-indigo-600">Ecell-SVPCET · Part-time</p>
+                        </div>
+                        <div class="text-gray-500 mt-2 md:mt-0">
+                            Feb 2025 - Present · 3 mos
+                        </div>
                     </div>
-                    
-                    <div className="kanban-tasks">
-                        {tasks.map(task => (
-                            <KanbanTask 
-                                key={task.id} 
-                                task={task} 
-                                columnId={columnId} 
-                            />
-                        ))}
-                    </div>
-                </div>
-            );
-        };
-        
-        // Kanban Task Component
-        const KanbanTask = ({ task, columnId }) => {
-            const handleDragStart = (e) => {
-                e.dataTransfer.setData('text/plain', `${task.id}|${columnId}`);
-            };
-            
-            const priorityClass = {
-                high: 'priority-high',
-                medium: 'priority-medium',
-                low: 'priority-low'
-            }[task.priority] || '';
-            
-            return (
-                <div 
-                    className="kanban-task" 
-                    draggable
-                    onDragStart={handleDragStart}
-                >
-                    <div className="flex items-center mb-2">
-                        <span className={`task-priority ${priorityClass}`}></span>
-                        <h4>{task.title}</h4>
-                    </div>
-                    
-                    <p className="text-secondary text-sm mb-2">{task.description}</p>
-                    
-                    <div className="flex justify-between items-center text-xs">
-                        <span className="text-secondary">
-                            Due: {task.dueDate.toLocaleDateString()}
-                        </span>
-                        <span className="text-secondary">
-                            Assigned by: {task.assignedBy}
-                        </span>
-                    </div>
-                </div>
-            );
-        };
-        
-        // CEO Dashboard Component
-        const CEODashboard = ({ employees, securityStatus, tasks }) => {
-            const [activeTab, setActiveTab] = React.useState('overview');
-            
-            return (
-                <div className="ceo-grid">
-                    {/* Overview Card */}
-                    <div className="col-span-8">
-                        <div className="card">
-                            <div className="card-header">
-                                <h3>Company Overview</h3>
-                                <div className="flex gap-2">
-                                    <button 
-                                        className={`btn btn-sm ${activeTab === 'overview' ? 'btn-primary' : 'btn-secondary'}`}
-                                        onClick={() => setActiveTab('overview')}
-                                    >
-                                        Overview
-                                    </button>
-                                    <button 
-                                        className={`btn btn-sm ${activeTab === 'financial' ? 'btn-primary' : 'btn-secondary'}`}
-                                        onClick={() => setActiveTab('financial')}
-                                    >
-                                        Financial
-                                    </button>
-                                    <button 
-                                        className={`btn btn-sm ${activeTab === 'operations' ? 'btn-primary' : 'btn-secondary'}`}
-                                        onClick={() => setActiveTab('operations')}
-                                    >
-                                        Operations
-                                    </button>
-                                </div>
+                    <p class="mt-4 text-gray-700">
+                        Nagpur, Maharashtra, India · On-site
+                    </p>
+                    <div class="mt-4">
+                        <p>🚀 I am working as an Operations Manager at E-Cell, where I oversee the planning and execution of entrepreneurship-focused events, workshops, and initiatives.</p>
+                        <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="flex items-start">
+                                <div class="text-indigo-600 mr-3 mt-1">•</div>
+                                <p>Coordinating teams and resources</p>
                             </div>
-                            
-                            {activeTab === 'overview' && (
-                                <div className="grid grid-cols-3 gap-4">
-                                    <div className="card">
-                                        <h4 className="text-secondary">Revenue</h4>
-                                        <h3 className="text-2xl font-bold">$1.2M</h3>
-                                        <p className="text-success text-sm">
-                                            <i className="fas fa-arrow-up mr-1"></i>
-                                            12% from last month
-                                        </p>
-                                    </div>
-                                    <div className="card">
-                                        <h4 className="text-secondary">Expenses</h4>
-                                        <h3 className="text-2xl font-bold">$850K</h3>
-                                        <p className="text-danger text-sm">
-                                            <i className="fas fa-arrow-up mr-1"></i>
-                                            8% from last month
-                                        </p>
-                                    </div>
-                                    <div className="card">
-                                        <h4 className="text-secondary">Profit</h4>
-                                        <h3 className="text-2xl font-bold">$350K</h3>
-                                        <p className="text-success text-sm">
-                                            <i className="fas fa-arrow-up mr-1"></i>
-                                            15% from last month
-                                        </p>
-                                    </div>
-                                    <div className="col-span-3">
-                                        <div className="card">
-                                            <h4 className="text-secondary mb-4">Revenue Trend</h4>
-                                            <div className="h-64 bg-primary-light rounded flex items-center justify-center">
-                                                <p className="text-secondary">Revenue Chart Placeholder</p>
-                                            </div>
-                                        </div>
-                                    </div>
+                            <div class="flex items-start">
+                                <div class="text-indigo-600 mr-3 mt-1">•</div>
+                                <p>Managing event logistics</p>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-indigo-600 mr-3 mt-1">•</div>
+                                <p>Ensuring smooth operations</p>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="text-indigo-600 mr-3 mt-1">•</div>
+                                <p>Supporting entrepreneurial ecosystem</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 heading-font section-title">Education</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-gray-50 rounded-xl shadow-sm p-8 mb-8">
+                    <div class="flex flex-col md:flex-row justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold">Bachelor of Technology - BTech, Computer Science And Business System</h3>
+                            <p class="text-indigo-600">St. Vincent Pallotti College of Engineering & Technology</p>
+                        </div>
+                        <div class="text-gray-500 mt-2 md:mt-0">
+                            Aug 2024 - Aug 2028
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <div class="flex items-start">
+                            <div class="emoji-circle">📚</div>
+                            <div class="ml-4">
+                                <h4 class="font-semibold">Key Focus Areas</h4>
+                                <p class="text-gray-600">Computer Science fundamentals integrated with business systems and management principles.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 rounded-xl shadow-sm p-8">
+                    <div class="flex flex-col md:flex-row justify-between">
+                        <div>
+                            <h3 class="text-xl font-bold">High School</h3>
+                            <p class="text-indigo-600">St. Xaviers High School, Nagpur</p>
+                        </div>
+                        <div class="text-gray-500 mt-2 md:mt-0">
+                            2023 - 2024
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <p class="mb-4">Completed high school with honors in PCM, CS, English. Participated in Sports Tournaments.</p>
+                        <div class="flex items-start">
+                            <div class="emoji-circle">🏆</div>
+                            <div class="ml-4">
+                                <h4 class="font-semibold">Achievements</h4>
+                                <p class="text-gray-600">Academic excellence in science and technology subjects with active participation in extracurricular activities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 heading-font section-title">Skills</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="bg-white rounded-xl shadow-sm p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-xl font-bold mb-4 flex items-center">
+                                <span class="emoji-circle mr-4" style="width: 50px; height: 50px; font-size: 24px;">💻</span>
+                                Technical Skills
+                            </h3>
+                            <div class="flex flex-wrap">
+                                <span class="skill-badge">Python</span>
+                                <span class="skill-badge">Django</span>
+                                <span class="skill-badge">Flask</span>
+                                <span class="skill-badge">C Programming</span>
+                                <span class="skill-badge">HTML/CSS</span>
+                                <span class="skill-badge">JavaScript</span>
+                                <span class="skill-badge">AWS</span>
+                                <span class="skill-badge">Cloud Architecture</span>
+                                <span class="skill-badge">Web Development</span>
+                                <span class="skill-badge">Automation</span>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold mb-4 flex items-center">
+                                <span class="emoji-circle mr-4" style="width: 50px; height: 50px; font-size: 24px;">🧠</span>
+                                Professional Skills
+                            </h3>
+                            <div class="flex flex-wrap">
+                                <span class="skill-badge">Technical Leadership</span>
+                                <span class="skill-badge">Team Management</span>
+                                <span class="skill-badge">Project Planning</span>
+                                <span class="skill-badge">Solutions Architecture</span>
+                                <span class="skill-badge">Problem Solving</span>
+                                <span class="skill-badge">Innovation</span>
+                                <span class="skill-badge">Communication</span>
+                                <span class="skill-badge">Mentoring</span>
+                                <span class="skill-badge">Strategic Thinking</span>
+                                <span class="skill-badge">Collaboration</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 heading-font section-title">Certificates</h2>
+            
+            <div class="certificate-grid">
+                <!-- C Programming Certificate -->
+                <div class="certificate-item bg-white rounded-xl shadow-sm overflow-hidden">
+                    <img src="C_Programming_Course_Certificate.png" alt="C Programming Certificate" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">Programming in C Certification</h3>
+                        <p class="text-gray-600 mb-2">Infosys</p>
+                        <p class="text-sm text-gray-500">Issued Dec 2024</p>
+                        <div class="mt-4">
+                            <span class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">C (Programming Language)</span>
+                            <span class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mb-2">Problem Solving</span>
+                        </div>
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="text-xs text-gray-500">Credential ID: INF12345</span>
+                            <button class="text-indigo-600 text-sm font-medium hover:text-indigo-800">View Credential</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Python Crash Course -->
+                <div class="certificate-item bg-white rounded-xl shadow-sm overflow-hidden">
+                    <img src="Crash_Course_On_Python.png" alt="Python Crash Course" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">Crash Course on Python</h3>
+                        <p class="text-gray-600 mb-2">Google</p>
+                        <p class="text-sm text-gray-500">Issued Mar 2025</p>
+                        <div class="mt-4">
+                            <span class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Python (Programming Language)</span>
+                            <span class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mb-2">Google Certification</span>
+                        </div>
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="text-xs text-gray-500">Credential ID: GOOG45678</span>
+                            <button class="text-indigo-600 text-sm font-medium hover:text-indigo-800">View Credential</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hackathon Certificate -->
+                <div class="certificate-item bg-white rounded-xl shadow-sm overflow-hidden">
+                    <img src="Hackathon.jpg" alt="Hackathon Certificate" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">Hackathon Certificate</h3>
+                        <p class="text-gray-600 mb-2">St. Vincent Pallotti College of Engineering & Technology</p>
+                        <p class="text-sm text-gray-500">Jan 2025</p>
+                        <div class="mt-4">
+                            <span class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Teamwork</span>
+                            <span class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mb-2">Leadership</span>
+                            <span class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mb-2">Innovation</span>
+                        </div>
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="text-xs text-gray-500">1st Place Winner</span>
+                            <button class="text-indigo-600 text-sm font-medium hover:text-indigo-800">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- iBase Technology Certificate -->
+                <div class="certificate-item bg-white rounded-xl shadow-sm overflow-hidden">
+                    <img src="iBase_Technology_Certificate.png" alt="iBase Technology Certificate" class="w-full h-48 object-cover">
+                    <div class="p-6">
+                        <h3 class="font-bold text-lg mb-2">7-Day Internship as a Trainee Developer</h3>
+                        <p class="text-gray-600 mb-2">iBase Electrosoft LLP</p>
+                        <p class="text-sm text-gray-500">Issued Mar 2025</p>
+                        <div class="mt-4">
+                            <span class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">Python</span>
+                            <span class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mb-2">Practical Software Development</span>
+                            <span class="inline-block bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mb-2">Industry Training</span>
+                        </div>
+                        <div class="mt-4 flex justify-between items-center">
+                            <span class="text-xs text-gray-500">Completed with distinction</span>
+                            <button class="text-indigo-600 text-sm font-medium hover:text-indigo-800">View Credential</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="#" class="inline-block bg-indigo-600 text-white px-6 py-3 rounded-full font-medium hover:bg-indigo-700 transition duration-300">
+                    View All Certificates
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 heading-font section-title">Projects</h2>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="project-card bg-white p-6 rounded-xl">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/3 mb-4 md:mb-0">
+                            <img src="https://via.placeholder.com/300x200" alt="Whiteboard Education" class="rounded-lg w-full h-full object-cover">
+                        </div>
+                        <div class="md:w-2/3 md:pl-6">
+                            <h3 class="text-xl font-bold mb-2">Whiteboard Education</h3>
+                            <p class="text-gray-600 mb-4">An educational platform designed to enhance learning experiences through interactive tools and collaborative features.</p>
+                            <div class="flex flex-wrap mb-4">
+                                <span class="skill-badge">Web Development</span>
+                                <span class="skill-badge">HTML/CSS</span>
+                                <span class="skill-badge">JavaScript</span>
+                                <span class="skill-badge">EdTech</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="emoji-circle" style="width: 40px; height: 40px; font-size: 18px;">🌐</div>
+                                <a href="https://ritesh-rathod16.github.io/Whiteboard_Education/" target="_blank" class="ml-3 text-indigo-600 hover:text-indigo-800 font-medium">Live Demo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-card bg-white p-6 rounded-xl mt-8">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="md:w-1/3 mb-4 md:mb-0">
+                            <img src="https://via.placeholder.com/300x200" alt="PhoenixAlgo Platform" class="rounded-lg w-full h-full object-cover">
+                        </div>
+                        <div class="md:w-2/3 md:pl-6">
+                            <h3 class="text-xl font-bold mb-2">PhoenixAlgo EdTech Platform</h3>
+                            <p class="text-gray-600 mb-4">A comprehensive educational technology platform providing innovative learning solutions and tools.</p>
+                            <div class="flex flex-wrap mb-4">
+                                <span class="skill-badge">Python</span>
+                                <span class="skill-badge">Django</span>
+                                <span class="skill-badge">AWS</span>
+                                <span class="skill-badge">EdTech</span>
+                                <span class="skill-badge">Team Leadership</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="emoji-circle" style="width: 40px; height: 40px; font-size: 18px;">🚀</div>
+                                <span class="ml-3 text-gray-600">Proprietary Platform</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 heading-font section-title">Contact Me</h2>
+            
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-sm h-full">
+                        <h3 class="text-xl font-bold mb-6 heading-font">Get in Touch</h3>
+                        <p class="mb-6">Feel free to reach out for collaborations or just a friendly hello! I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.</p>
+                        
+                        <div class="space-y-5">
+                            <div class="flex items-center">
+                                <div class="contact-icon">
+                                    <i class="fas fa-envelope"></i>
                                 </div>
-                            )}
-                            
-                            {activeTab === 'financial' && (
                                 <div>
-                                    <h4 className="text-secondary mb-4">Financial Metrics</h4>
-                                    <div className="h-64 bg-primary-light rounded flex items-center justify-center">
-                                        <p className="text-secondary">Financial Dashboard Placeholder</p>
-                                    </div>
+                                    <h4 class="font-semibold">Email</h4>
+                                    <a href="mailto:ritesh.rathod016@gmail.com" class="text-gray-600 hover:text-indigo-600">ritesh.rathod016@gmail.com</a>
                                 </div>
-                            )}
+                            </div>
                             
-                            {activeTab === 'operations' && (
+                            <div class="flex items-center">
+                                <div class="contact-icon">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </div>
                                 <div>
-                                    <h4 className="text-secondary mb-4">Operational Metrics</h4>
-                                    <div className="h-64 bg-primary-light rounded flex items-center justify-center">
-                                        <p className="text-secondary">Operations Dashboard Placeholder</p>
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                    
-                    {/* Employee Activity */}
-                    <div className="col-span-4">
-                        <div className="card">
-                            <div className="card-header">
-                                <h3>Employee Activity</h3>
-                                <i className="fas fa-users"></i>
-                            </div>
-                            
-                            <div className="employee-grid">
-                                {employees.map(employee => (
-                                    <EmployeeCard 
-                                        key={employee.id} 
-                                        employee={employee} 
-                                    />
-                                ))}
-                            </div>
-                        </div>
-                    </div>
-                    
-                    {/* Security Overview */}
-                    <div className="col-span-4">
-                        <div className="card">
-                            <div className="card-header">
-                                <h3>Security Overview</h3>
-                                <i className="fas fa-shield-alt"></i>
-                            </div>
-                            
-                            <div className="security-metrics">
-                                <div className="security-metric">
-                                    <div className="security-metric-value">
-                                        {securityStatus.vpnConnected}
-                                    </div>
-                                    <p className="text-secondary">VPN Connected</p>
-                                </div>
-                                <div className="security-metric">
-                                    <div className="security-metric-value">
-                                        {securityStatus.failedLogins}
-                                    </div>
-                                    <p className="text-secondary">Failed Logins</p>
-                                </div>
-                                <div className="security-metric">
-                                    <div className="security-metric-value">
-                                        {securityStatus.threatsDetected}
-                                    </div>
-                                    <p className="text-secondary">Threats Detected</p>
+                                    <h4 class="font-semibold">LinkedIn</h4>
+                                    <a href="https://linkedin.com/in/ritesh-rathod-34a5a3329" target="_blank" class="text-gray-600 hover:text-indigo-600">linkedin.com/in/ritesh-rathod-34a5a3329</a>
                                 </div>
                             </div>
                             
-                            <div className="mt-4">
-                                <h4 className="text-secondary mb-2">Recent Security Events</h4>
-                                <div className="timeline">
-                                    <div className="timeline-item">
-                                        <p className="timeline-time">10:42 AM</p>
-                                        <p>New login from New York, NY</p>
-                                    </div>
-                                    <div className="timeline-item">
-                                        <p className="timeline-time">09:15 AM</p>
-                                        <p>Failed login attempt from unknown device</p>
-                                    </div>
-                                    <div className="timeline-item">
-                                        <p className="timeline-time">08:30 AM</p>
-                                        <p>Security scan completed - no threats found</p>
-                                    </div>
+                            <div class="flex items-center">
+                                <div class="contact-icon">
+                                    <i class="fab fa-github"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">GitHub</h4>
+                                    <a href="https://github.com/ritesh-rathod16" target="_blank" class="text-gray-600 hover:text-indigo-600">github.com/ritesh-rathod16</a>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    
-                    {/* Task Overview */}
-                    <div className="col-span-8">
-                        <div className="card">
-                            <div className="card-header">
-                                <h3>Company Task Overview</h3>
-                                <i className="fas fa-tasks"></i>
-                            </div>
                             
-                            <div className="kanban-board">
-                                <KanbanColumn 
-                                    title="To Do" 
-                                    tasks={tasks.todo} 
-                                    columnId="todo" 
-                                />
-                                <KanbanColumn 
-                                    title="In Progress" 
-                                    tasks={tasks.inProgress} 
-                                    columnId="inProgress" 
-                                />
-                                <KanbanColumn 
-                                    title="Completed" 
-                                    tasks={tasks.completed} 
-                                    columnId="completed" 
-                                />
+                            <div class="flex items-center">
+                                <div class="contact-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-semibold">Instagram</h4>
+                                    <a href="https://www.instagram.com/ritesh_rathod_official/" target="_blank" class="text-gray-600 hover:text-indigo-600">instagram.com/ritesh_rathod_official</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            );
-        };
-        
-        // Employee Card Component
-        const EmployeeCard = ({ employee }) => {
-            const statusClass = {
-                active: 'status-active',
-                inactive: 'status-inactive',
-                away: 'status-away'
-            }[employee.status] || '';
+                
+                <div class="md:w-1/2">
+                    <div class="bg-gray-50 p-8 rounded-xl shadow-sm">
+                        <div class="text-center mb-6">
+                            <h3 class="text-xl font-bold heading-font">Send Me a Message</h3>
+                            <p class="text-gray-600">Fill up the form below to send me a message</p>
+                        </div>
+                        <div>
+                            <form action="https://api.web3forms.com/submit" method="POST" id="form">
+                                <input type="hidden" name="access_key" value="3ad2ac7d-5205-4c7f-b856-de35b9a592f3" />
+                                <input type="hidden" name="subject" value="New Message from Portfolio Website" />
+                                <input type="checkbox" name="botcheck" id="" style="display: none;" />
+
+                                <div class="mb-6">
+                                    <label for="name" class="block mb-2 text-sm font-medium text-gray-700">Full Name</label>
+                                    <input type="text" name="name" id="name" placeholder="John Doe" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" />
+                                </div>
+                                <div class="mb-6">
+                                    <label for="email" class="block mb-2 text-sm font-medium text-gray-700">Email Address</label>
+                                    <input type="email" name="email" id="email" placeholder="you@company.com" required class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" />
+                                </div>
+                                <div class="mb-6">
+                                    <label for="phone" class="block mb-2 text-sm font-medium text-gray-700">Phone Number</label>
+                                    <input type="text" name="phone" id="phone" placeholder="+1 (555) 1234-567" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" />
+                                </div>
+                                <div class="mb-6">
+                                    <label for="message" class="block mb-2 text-sm font-medium text-gray-700">Your Message</label>
+                                    <textarea rows="5" name="message" id="message" placeholder="Your Message" class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent" required></textarea>
+                                </div>
+                                <div class="mb-6">
+                                    <button type="submit" class="w-full px-6 py-3 bg-indigo-600 text-white font-medium rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition duration-150">
+                                        Send Message
+                                    </button>
+                                </div>
+                                <p class="text-sm text-center text-gray-500" id="result"></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <h2 class="text-2xl font-bold heading-font">Ritesh Rathod</h2>
+                    <p class="text-gray-400 mt-2">Chief Technology Officer | Python Developer | Solutions Architect</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="https://linkedin.com/in/ritesh-rathod-34a5a3329" target="_blank" class="text-gray-400 hover:text-white transition duration-300 text-xl">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com/ritesh-rathod16" target="_blank" class="text-gray-400 hover:text-white transition duration-300 text-xl">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.instagram.com/ritesh_rathod_official/" target="_blank" class="text-gray-400 hover:text-white transition duration-300 text-xl">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="mailto:ritesh.rathod016@gmail.com" class="text-gray-400 hover:text-white transition duration-300 text-xl">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2025 Ritesh Rathod. All rights reserved.</p>
+                <p class="mt-2 text-sm">Designed with ❤️ by Ritesh Rathod</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Chatbot -->
+    <div class="chatbot-container">
+        <div class="flex justify-end">
+            <button id="chatbot-toggle" class="chatbot-toggle">
+                <i class="fas fa-robot text-2xl"></i>
+            </button>
+        </div>
+        <div id="chatbot-window" class="chatbot-window">
+            <div class="chatbot-header">
+                <i class="fas fa-robot mr-2"></i> Ritesh's AI Assistant
+                <button id="chatbot-close" class="float-right focus:outline-none hover:text-gray-200">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="chatbot-messages" class="chatbot-messages">
+                <div class="message bot-message">
+                    Hello! I'm Ritesh's AI assistant. How can I help you today? You can ask about:
+                    <ul class="list-disc pl-5 mt-2">
+                        <li>Ritesh's experience and skills</li>
+                        <li>His education and certifications</li>
+                        <li>Projects he's worked on</li>
+                        <li>How to contact him</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input" placeholder="Ask me anything about Ritesh..." class="flex-grow px-4 py-2 border border-gray-300 rounded-l-lg focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                <button id="chatbot-send" class="bg-indigo-600 text-white px-4 py-2 rounded-r-lg hover:bg-indigo-700 focus:outline-none">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Form submission
+        const form = document.getElementById("form");
+        const result = document.getElementById("result");
+
+        form.addEventListener("submit", function (e) {
+            const formData = new FormData(form);
+            e.preventDefault();
+            var object = {};
+            formData.forEach((value, key) => {
+                object[key] = value;
+            });
+            var json = JSON.stringify(object);
+            result.innerHTML = "Please wait...";
+
+            fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json"
+                },
+                body: json
+            })
+                .then(async (response) => {
+                    let json = await response.json();
+                    if (response.status == 200) {
+                        result.innerHTML = json.message;
+                        result.classList.remove("text-gray-500");
+                        result.classList.add("text-green-500");
+                    } else {
+                        console.log(response);
+                        result.innerHTML = json.message;
+                        result.classList.remove("text-gray-500");
+                        result.classList.add("text-red-500");
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                    result.innerHTML = "Something went wrong!";
+                })
+                .then(function () {
+                    form.reset();
+                    setTimeout(() => {
+                        result.style.display = "none";
+                    }, 5000);
+                });
+        });
+
+        // Chatbot functionality
+        const chatbotToggle = document.getElementById("chatbot-toggle");
+        const chatbotWindow = document.getElementById("chatbot-window");
+        const chatbotClose = document.getElementById("chatbot-close");
+        const chatbotMessages = document.getElementById("chatbot-messages");
+        const chatbotInput = document.getElementById("chatbot-input");
+        const chatbotSend = document.getElementById("chatbot-send");
+
+        chatbotToggle.addEventListener("click", function() {
+            chatbotWindow.style.display = chatbotWindow.style.display === "flex" ? "none" : "flex";
+        });
+
+        chatbotClose.addEventListener("click", function() {
+            chatbotWindow.style.display = "none";
+        });
+
+        function addMessage(text, isUser) {
+            const messageDiv = document.createElement("div");
+            messageDiv.classList.add("message");
+            messageDiv.classList.add(isUser ? "user-message" : "bot-message");
             
-            return (
-                <div className="employee-card">
-                    <div className="avatar">
-                        {employee.name.split(' ').map(n => n[0]).join('')}
-                    </div>
-                    <div>
-                        <h4 className="font-semibold">{employee.name}</h4>
-                        <p className="text-secondary text-sm">{employee.role}</p>
-                    </div>
-                    <div className={`employee-status ${statusClass}`}></div>
-                </div>
-            );
+            // Preserve line breaks and lists in bot messages
+            if (!isUser && text.includes('\n')) {
+                const lines = text.split('\n');
+                messageDiv.innerHTML = lines.map(line => {
+                    if (line.startsWith('- ') || line.startsWith('• ')) {
+                        return `<div class="flex items-start"><div class="mr-2">•</div><div>${line.substring(2)}</div></div>`;
+                    }
+                    return `<div>${line}</div>`;
+                }).join('');
+            } else {
+                messageDiv.textContent = text;
+            }
+            
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        // AI Chatbot Configuration
+        const chatbotConfig = {
+          greetings: [
+            "Hello! I'm here to tell you about Ritesh Rathod. What would you like to know?",
+            "Hi there! I can answer questions about Ritesh's professional background. How can I help?",
+            "Welcome! I'm Ritesh's AI assistant. Ask me about his skills, experience, or education."
+          ],
+          
+          responses: {
+            "about": {
+              default: `Ritesh Rathod is a technology professional and educator currently serving as Chief Technology Officer at PhoenixAlgo. 
+              He specializes in Python development, cloud solutions, and educational technology innovation.`,
+              detailed: `Ritesh is passionate about using technology to transform education. As CTO at PhoenixAlgo, he leads the development 
+              of innovative learning platforms while also mentoring the next generation of developers. His expertise spans:
+              - Python programming and automation
+              - Cloud architecture (AWS)
+              - Full-stack web development
+              - Technical team leadership`
+            },
+            
+            "experience": {
+              default: `Ritesh has held these key positions:
+              - Chief Technology Officer at PhoenixAlgo (EdTech startup)
+              - Operations Manager at Ecell-SVPCET
+              - Trainee Developer at iBase Electrosoft`,
+              phoenix: `As CTO at PhoenixAlgo (Feb 2025-Present):
+              - Leads technology strategy for EdTech startup
+              - Designs scalable web architectures
+              - Manages full-stack development
+              - Mentors technical teams
+              - Creates educational content and visuals`,
+              ecell: `As Operations Manager at Ecell-SVPCET (Feb 2025-Present):
+              - Coordinates entrepreneurship events
+              - Manages student innovation programs
+              - Bridges industry-academia connections
+              - Oversees campus innovation initiatives`
+            },
+            
+            "skills": {
+              default: `Ritesh's core technical skills include:
+              - Python (Django, Flask, Automation)
+              - AWS Cloud Solutions
+              - Web Development (HTML/CSS, JavaScript)
+              - C Programming
+              - Technical Leadership`,
+              python: `Python Expertise:
+              - Completed Google's Python Crash Course
+              - Infosys Python Certification
+              - 7-day intensive Python internship
+              - Specializes in automation and backend development`,
+              cloud: `Cloud/DevOps Skills:
+              - AWS Solutions Architecture certified
+              - Experience designing scalable hosting
+              - Infrastructure planning
+              - Cost-optimized cloud solutions`
+            },
+            
+            "education": {
+              default: `Ritesh's education:
+              - Pursuing BTech in Computer Science at St. Vincent Pallotti College (2024-2028)
+              - High School from St. Xaviers High School, Nagpur (2023-2024)`,
+              college: `At St. Vincent Pallotti College:
+              - Computer Science And Business System program
+              - Active in hackathons and entrepreneurship cells
+              - Developed strong foundations in CS and business integration`,
+              school: `At St. Xaviers High School:
+              - Completed with honors in PCM, CS, English
+              - Active participant in sports tournaments
+              - Developed early interest in technology`
+            },
+            
+            "projects": {
+              default: `Notable Projects:
+              - Whiteboard Education Platform (https://ritesh-rathod16.github.io/Whiteboard_Education/)
+              - PhoenixAlgo EdTech Solutions
+              - Various hackathon projects`,
+              whiteboard: `Whiteboard Education:
+              - Interactive learning platform
+              - Features real-time collaboration tools
+              - Designed for modern classrooms
+              - View at: https://ritesh-rathod16.github.io/Whiteboard_Education/`
+            },
+            
+            "certificates": {
+              default: `Key Certifications:
+              - Google: Crash Course on Python
+              - AWS: Solutions Architecture
+              - Infosys: C Programming & Python
+              - iBase: Python Internship
+              - Coursera: Python Concepts`,
+              google: `Google Python Certification:
+              - Completed Mar 2025
+              - Covers core syntax, data structures
+              - Focus on automation scripting
+              - Verify at: https://coursera.org/verify/RH90LEA0502E`,
+              aws: `AWS Solutions Architecture:
+              - Completed Mar 2025
+              - Designing scalable hosting
+              - Cost optimization strategies
+              - Practical architecture tasks`
+            },
+            
+            "contact": {
+              default: `Contact Ritesh through:
+              - Email: ritesh.rathod016@gmail.com
+              - LinkedIn: linkedin.com/in/ritesh-rathod-34a5a3329
+              - GitHub: github.com/ritesh-rathod16
+              - Instagram: instagram.com/ritesh_rathod_official/
+              Or use the contact form on this site!`
+            },
+            
+            "social": {
+              default: `Connect with Ritesh:
+              - LinkedIn: Professional network - linkedin.com/in/ritesh-rathod-34a5a3329
+              - GitHub: View code projects - github.com/ritesh-rathod16
+              - Instagram: Personal updates - instagram.com/ritesh_rathod_official/`
+            },
+            
+            "help": {
+              default: `I can tell you about:
+              - Ritesh's background (type 'about')
+              - Professional experience ('experience')
+              - Technical skills ('skills')
+              - Education ('education')
+              - Projects ('projects')
+              - Certifications ('certificates')
+              - How to contact ('contact')
+              Or ask your specific question!`
+            }
+          },
+          
+          fallbacks: [
+            "I'm not sure I understand. Try asking about Ritesh's experience, skills, or education.",
+            "Could you rephrase that? I can tell you about Ritesh's professional background.",
+            "For more details, you can check Ritesh's LinkedIn or GitHub profiles directly."
+          ]
         };
-        
-        // Render the app
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
+
+        function generateResponse(userInput) {
+          const input = userInput.toLowerCase().trim();
+          
+          // Greetings
+          if (/(hi|hello|hey)/i.test(input)) {
+            return randomChoice(chatbotConfig.greetings);
+          }
+          
+          // About Ritesh
+          if (/(who is ritesh|about|background|bio)/i.test(input)) {
+            if (/(detail|more)/i.test(input)) {
+              return chatbotConfig.responses.about.detailed;
+            }
+            return chatbotConfig.responses.about.default;
+          }
+          
+          // Experience
+          if (/(experience|work|job|career)/i.test(input)) {
+            if (/(phoenix|cto)/i.test(input)) {
+              return chatbotConfig.responses.experience.phoenix;
+            }
+            if (/(ecell|operation)/i.test(input)) {
+              return chatbotConfig.responses.experience.ecell;
+            }
+            return chatbotConfig.responses.experience.default;
+          }
+          
+          // Skills
+          if (/(skill|tech|what can|expert)/i.test(input)) {
+            if (/(python)/i.test(input)) {
+              return chatbotConfig.responses.skills.python;
+            }
+            if (/(cloud|aws|devops)/i.test(input)) {
+              return chatbotConfig.responses.skills.cloud;
+            }
+            return chatbotConfig.responses.skills.default;
+          }
+          
+          // Education
+          if (/(educat|school|college|study|degree)/i.test(input)) {
+            if (/(college|university|btech)/i.test(input)) {
+              return chatbotConfig.responses.education.college;
+            }
+            if (/(school|high school)/i.test(input)) {
+              return chatbotConfig.responses.education.school;
+            }
+            return chatbotConfig.responses.education.default;
+          }
+          
+          // Projects
+          if (/(project|work|build)/i.test(input)) {
+            if (/(whiteboard|education)/i.test(input)) {
+              return chatbotConfig.responses.projects.whiteboard;
+            }
+            return chatbotConfig.responses.projects.default;
+          }
+          
+          // Certificates
+          if (/(certif|qualif|course)/i.test(input)) {
+            if (/(google|python)/i.test(input)) {
+              return chatbotConfig.responses.certificates.google;
+            }
+            if (/(aws|cloud|solution)/i.test(input)) {
+              return chatbotConfig.responses.certificates.aws;
+            }
+            return chatbotConfig.responses.certificates.default;
+          }
+          
+          // Contact
+          if (/(contact|reach|email|connect)/i.test(input)) {
+            return chatbotConfig.responses.contact.default;
+          }
+          
+          // Social Media
+          if (/(social|media|linkedin|github|instagram)/i.test(input)) {
+            return chatbotConfig.responses.social.default;
+          }
+          
+          // Help
+          if (/(help|what can you|support)/i.test(input)) {
+            return chatbotConfig.responses.help.default;
+          }
+          
+          // Fallback
+          return randomChoice(chatbotConfig.fallbacks);
+        }
+
+        function randomChoice(arr) {
+          return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        function processUserInput() {
+          const userMessage = chatbotInput.value.trim();
+          if (!userMessage) return;
+          
+          addMessage(userMessage, true);
+          chatbotInput.value = "";
+          
+          // Show typing indicator
+          const typingIndicator = document.createElement("div");
+          typingIndicator.className = "message bot-message";
+          typingIndicator.innerHTML = '<div class="flex space-x-1"><div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div><div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div><div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></div></div>';
+          chatbotMessages.appendChild(typingIndicator);
+          chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+          
+          // Generate response after delay
+          setTimeout(() => {
+            chatbotMessages.removeChild(typingIndicator);
+            const response = generateResponse(userMessage);
+            addMessage(response, false);
+            
+            // Add follow-up suggestions for broad queries
+            if (userMessage.length < 5 || 
+                /(hi|hello|about|who)/i.test(userMessage)) {
+              setTimeout(() => {
+                addMessage("You might want to ask about:\n- Ritesh's current role at PhoenixAlgo\n- His Python certifications\n- How to contact him", false);
+              }, 500);
+            }
+          }, 1000 + Math.random() * 1000); // Random delay for natural feel
+        }
+
+        chatbotSend.addEventListener("click", processUserInput);
+        chatbotInput.addEventListener("keypress", function(e) {
+            if (e.key === "Enter") {
+                processUserInput();
+            }
+        });
     </script>
 </body>
 </html>
