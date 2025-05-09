@@ -3,2164 +3,1875 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WhiteBoard Pro</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Ritesh Rathod | Computer Science Student & Developer</title>
     <style>
+        /* Global Styles */
         :root {
-            --primary-color: #4361ee;
-            --secondary-color: #3a0ca3;
-            --accent-color: #f72585;
-            --light-color: #f8f9fa;
-            --dark-color: #212529;
-            --text-color: #2b2d42;
-            --white: #ffffff;
-            --black: #000000;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            --border-radius: 12px;
-            --sidebar-width: 80px;
-            --panel-width: 320px;
-            --header-height: 60px;
-            --footer-height: 50px;
+            --primary-color: #2563eb;
+            --primary-light: #3b82f6;
+            --secondary-color: #1e293b;
+            --accent-color: #dc2626;
+            --light-color: #f8fafc;
+            --dark-color: #0f172a;
+            --success-color: #10b981;
+            --card-bg: #ffffff;
+            --text-color: #334155;
+            --text-light: #64748b;
         }
         
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
         
         body {
-            margin: 0;
-            padding: 0;
-            background-color: var(--light-color);
+            line-height: 1.6;
             color: var(--text-color);
-            height: 100vh;
-            overflow: hidden;
+            background-color: #f1f5f9;
+            scroll-behavior: smooth;
         }
         
-        /* Logo Animation */
-        @keyframes logoFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
         }
         
-        @keyframes logoGlow {
-            0% { filter: drop-shadow(0 0 5px rgba(67, 97, 238, 0.5)); }
-            50% { filter: drop-shadow(0 0 15px rgba(67, 97, 238, 0.8)); }
-            100% { filter: drop-shadow(0 0 5px rgba(67, 97, 238, 0.5)); }
-        }
-        
-        @keyframes gradientFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        
-        /* Layout */
         .container {
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
         
-        .header {
-            background-color: var(--white);
-            color: var(--dark-color);
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--primary-color);
+            color: #fff;
             padding: 12px 24px;
-            height: var(--header-height);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: var(--shadow);
-            z-index: 100;
-        }
-        
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .logo-img {
-            height: 32px;
-            animation: logoFloat 3s ease-in-out infinite, logoGlow 4s ease-in-out infinite;
-        }
-        
-        .logo-text {
-            font-size: 1.3rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            letter-spacing: -0.5px;
-        }
-        
-        .header-controls {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-        }
-        
-        .user-count {
-            background-color: var(--primary-color);
-            padding: 6px 16px;
-            border-radius: var(--border-radius);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--white);
-            box-shadow: 0 2px 8px rgba(67, 97, 238, 0.3);
-            transition: var(--transition);
-        }
-        
-        .user-count:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.4);
-        }
-        
-        .more-menu {
-            position: relative;
-        }
-        
-        .more-btn {
-            background: none;
             border: none;
-            color: var(--dark-color);
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 8px;
-            border-radius: 50%;
-            transition: var(--transition);
-            position: relative;
-        }
-        
-        .more-btn:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-            transform: rotate(90deg);
-        }
-        
-        .more-btn .dot {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            background-color: var(--accent-color);
-            border-radius: 50%;
-            top: 4px;
-            right: 4px;
-            opacity: 0;
-            transition: var(--transition);
-        }
-        
-        .more-btn.has-notification .dot {
-            opacity: 1;
-        }
-        
-        .dropdown-menu {
-            position: absolute;
-            right: 0;
-            top: 100%;
-            background-color: var(--white);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            padding: 8px 0;
-            min-width: 200px;
-            z-index: 1000;
-            display: none;
-            animation: fadeIn 0.2s ease-out;
-            backdrop-filter: blur(10px);
-            background-color: rgba(255, 255, 255, 0.9);
-        }
-        
-        .dropdown-menu.show {
-            display: block;
-        }
-        
-        .dropdown-item {
-            padding: 10px 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.9rem;
-            position: relative;
-        }
-        
-        .dropdown-item:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-        }
-        
-        .dropdown-item .badge {
-            position: absolute;
-            right: 12px;
-            background-color: var(--accent-color);
-            color: white;
-            font-size: 0.7rem;
-            padding: 2px 6px;
-            border-radius: 10px;
-        }
-        
-        .dropdown-divider {
-            height: 1px;
-            background-color: rgba(0, 0, 0, 0.1);
-            margin: 8px 0;
-        }
-        
-        .main {
-            display: flex;
-            flex: 1;
-            overflow: hidden;
-            position: relative;
-            height: calc(100vh - var(--header-height) - var(--footer-height));
-        }
-        
-        .toolbar {
-            width: var(--sidebar-width);
-            background-color: var(--white);
-            padding: 16px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 12px;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
-            z-index: 10;
-            border-right: 1px solid rgba(0, 0, 0, 0.05);
-            overflow-y: auto;
-        }
-        
-        .tool {
-            width: 48px;
-            height: 48px;
-            border-radius: var(--border-radius);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: var(--dark-color);
-            transition: var(--transition);
-            position: relative;
-            background-color: transparent;
-            border: none;
-        }
-        
-        .tool:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-            transform: translateY(-2px);
-        }
-        
-        .tool.active {
-            background-color: var(--primary-color);
-            color: var(--white);
-            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.3);
-        }
-        
-        .tool i {
-            font-size: 1.2rem;
-        }
-        
-        .tool-tip {
-            position: absolute;
-            left: 100%;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: var(--dark-color);
-            color: var(--white);
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.8rem;
-            white-space: nowrap;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.2s;
-            margin-left: 12px;
-            z-index: 100;
-        }
-        
-        .tool:hover .tool-tip {
-            opacity: 1;
-        }
-        
-        .tool-divider {
-            width: 60%;
-            height: 1px;
-            background-color: rgba(0, 0, 0, 0.1);
-            margin: 8px 0;
-        }
-        
-        .color-picker-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            margin-top: 8px;
-        }
-        
-        .color-picker-label {
-            color: var(--dark-color);
-            font-size: 0.7rem;
-            margin-bottom: 4px;
-            font-weight: 500;
-        }
-        
-        .color-picker {
-            width: 36px;
-            height: 36px;
-            border: 2px solid rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             cursor: pointer;
-            padding: 0;
-            background: none;
-            transition: var(--transition);
-            overflow: hidden;
-        }
-        
-        .color-picker:hover {
-            transform: scale(1.1);
-            border-color: rgba(0, 0, 0, 0.2);
-        }
-        
-        .line-width-control {
-            margin-top: 16px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .line-width-label {
-            color: var(--dark-color);
-            font-size: 0.7rem;
+            transition: all 0.3s ease;
             font-weight: 500;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
         
-        .line-width-slider {
-            width: 80%;
-            cursor: pointer;
-            -webkit-appearance: none;
-            height: 6px;
-            border-radius: 3px;
-            background: #e9ecef;
-            outline: none;
-            transition: var(--transition);
+        .btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
         
-        .line-width-slider:hover {
-            background: #dee2e6;
-        }
-        
-        .line-width-slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 16px;
-            height: 16px;
-            border-radius: 50%;
-            background: var(--primary-color);
-            cursor: pointer;
-            transition: var(--transition);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
-        .line-width-slider::-webkit-slider-thumb:hover {
-            transform: scale(1.2);
-            background: var(--secondary-color);
-        }
-        
-        .whiteboard-container {
-            flex: 1;
-            position: relative;
-            overflow: hidden;
-            background-color: var(--white);
-            background-image: 
-                linear-gradient(#e9ecef 1px, transparent 1px),
-                linear-gradient(90deg, #e9ecef 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
-        
-        #whiteboard {
-            position: absolute;
-            top: 0;
-            left: 0;
-            cursor: crosshair;
-        }
-        
-        .cursor {
-            position: absolute;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 100;
-            border: 2px solid var(--white);
-            box-shadow: 0 0 3px rgba(0, 0, 0, 0.5);
-            transition: transform 0.1s ease;
-        }
-        
-        .right-panel {
-            width: var(--panel-width);
-            display: flex;
-            flex-direction: column;
-            background-color: var(--white);
-            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.05);
-            transition: width 0.3s ease;
-            z-index: 10;
-            border-left: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        .panel-tabs {
-            display: flex;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        .panel-tab {
-            flex: 1;
-            padding: 12px;
-            text-align: center;
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--dark-color);
-            position: relative;
-        }
-        
-        .panel-tab.active {
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary-color);
             color: var(--primary-color);
         }
         
-        .panel-tab.active::after {
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-icon {
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 48px;
+            color: var(--secondary-color);
+            position: relative;
+            font-size: 36px;
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            margin: 16px auto;
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            color: var(--text-light);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            font-size: 18px;
+        }
+        
+        /* Card Styles */
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--secondary-color);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .logo span {
+            color: var(--primary-color);
+        }
+        
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--secondary-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+        
+        nav ul li a::after {
             content: '';
             position: absolute;
             bottom: 0;
             left: 0;
-            right: 0;
+            width: 0;
             height: 2px;
-            background-color: var(--primary-color);
+            background: var(--primary-color);
+            transition: width 0.3s ease;
         }
         
-        .panel-tab .badge {
-            position: absolute;
-            top: 4px;
-            right: 8px;
-            background-color: var(--accent-color);
-            color: white;
-            font-size: 0.7rem;
-            padding: 2px 6px;
-            border-radius: 10px;
+        nav ul li a:hover::after {
+            width: 100%;
         }
         
-        .panel-content {
-            flex: 1;
-            overflow-y: auto;
-            display: none;
-            position: relative;
-        }
-        
-        .panel-content.active {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .user-list-container {
-            padding: 16px;
-            flex: 1;
-            overflow-y: auto;
-        }
-        
-        .user-list-title {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 16px;
-            color: var(--dark-color);
-            font-weight: 600;
-        }
-        
-        .user-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 12px;
-            padding: 10px;
-            border-radius: var(--border-radius);
-            transition: background-color 0.2s;
-            position: relative;
-        }
-        
-        .user-item.host::after {
-            content: 'Host';
-            position: absolute;
-            right: 10px;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: var(--primary-color);
-            color: white;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.7rem;
-            font-weight: 500;
-        }
-        
-        .user-item:hover {
-            background-color: rgba(0, 0, 0, 0.03);
-        }
-        
-        .user-avatar {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            margin-right: 12px;
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            font-size: 0.9rem;
-            position: relative;
-        }
-        
-        .user-avatar::before {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            right: -2px;
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: #38b000;
-            border: 2px solid white;
-        }
-        
-        .user-name {
-            flex: 1;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-        
-        .user-controls {
-            display: flex;
-            gap: 8px;
-        }
-        
-        .user-control {
-            background: none;
-            border: none;
-            color: var(--dark-color);
-            cursor: pointer;
-            font-size: 0.9rem;
-            transition: var(--transition);
-        }
-        
-        .user-control:hover {
+        nav ul li a:hover {
             color: var(--primary-color);
-            transform: scale(1.1);
         }
         
-        .media-container {
-            padding: 16px;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        .media-controls {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 16px;
-        }
-        
-        .media-btn {
-            padding: 10px;
-            background-color: var(--primary-color);
-            color: var(--white);
-            border: none;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: var(--transition);
-            flex: 1;
-            box-shadow: 0 2px 8px rgba(67, 97, 238, 0.3);
-        }
-        
-        .media-btn:hover {
-            opacity: 0.9;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.4);
-        }
-        
-        .media-btn.off {
-            background-color: var(--accent-color);
-            box-shadow: 0 2px 8px rgba(247, 37, 133, 0.3);
-        }
-        
-        .media-btn.off:hover {
-            box-shadow: 0 4px 12px rgba(247, 37, 133, 0.4);
-        }
-        
-        .video-container {
-            background-color: #000;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            margin-bottom: 16px;
-            position: relative;
-            min-height: 180px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        
-        #localVideo, #remoteVideo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .mobile-menu {
             display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--secondary-color);
         }
         
-        .video-placeholder {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(30, 41, 59, 0.9), rgba(30, 41, 59, 0.95)), url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: #fff;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            color: var(--white);
-            background-color: #333;
             text-align: center;
-            padding: 20px;
+            padding-top: 80px;
         }
         
-        .video-placeholder i {
-            font-size: 2rem;
-            margin-bottom: 10px;
-            color: #666;
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
         }
         
-        .video-placeholder-text {
-            font-size: 0.9rem;
-            color: #aaa;
+        .hero h1 {
+            font-size: 52px;
+            margin-bottom: 24px;
+            line-height: 1.2;
         }
         
-        .video-label {
-            position: absolute;
-            bottom: 8px;
-            left: 8px;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.8rem;
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 32px;
+            opacity: 0.9;
         }
         
-        .video-controls {
-            position: absolute;
-            bottom: 8px;
-            right: 8px;
-            display: flex;
-            gap: 8px;
-        }
-        
-        .video-control {
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        
-        .video-control:hover {
-            background-color: rgba(0, 0, 0, 0.7);
-            transform: scale(1.1);
-        }
-        
-        .chat-container {
-            padding: 16px;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .chat-messages {
-            flex: 1;
-            overflow-y: auto;
-            margin-bottom: 16px;
-        }
-        
-        .chat-message {
-            margin-bottom: 12px;
-            padding: 8px 12px;
-            border-radius: var(--border-radius);
-            background-color: rgba(0, 0, 0, 0.03);
-            max-width: 80%;
-        }
-        
-        .chat-message.self {
-            margin-left: auto;
-            background-color: var(--primary-color);
-            color: white;
-            border-bottom-right-radius: 4px;
-        }
-        
-        .chat-message.other {
-            margin-right: auto;
-            background-color: rgba(0, 0, 0, 0.05);
-            border-bottom-left-radius: 4px;
-        }
-        
-        .chat-message-header {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.8rem;
-            margin-bottom: 4px;
-        }
-        
-        .chat-message-sender {
-            font-weight: 600;
-        }
-        
-        .chat-message-time {
-            opacity: 0.7;
-        }
-        
-        .chat-message-content {
-            word-wrap: break-word;
-        }
-        
-        .chat-input-container {
-            display: flex;
-            gap: 8px;
-            margin-top: auto;
-            padding-top: 16px;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-        }
-        
-        .chat-input {
-            flex: 1;
-            padding: 10px 12px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: var(--border-radius);
-            font-size: 0.9rem;
-            resize: none;
-            height: 40px;
-            max-height: 120px;
-            transition: var(--transition);
-        }
-        
-        .chat-input:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.2);
-        }
-        
-        .chat-send {
-            width: 40px;
-            height: 40px;
-            border-radius: var(--border-radius);
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .chat-send:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-        
-        .footer {
-            background-color: var(--white);
-            color: var(--dark-color);
-            padding: 12px 24px;
-            font-size: 0.8rem;
+        .hero-btns {
             display: flex;
             justify-content: center;
-            align-items: center;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-            height: var(--footer-height);
             gap: 20px;
         }
         
-        .footer-info {
-            position: absolute;
-            left: 24px;
+        .hero-btns .btn {
+            padding: 14px 32px;
+            font-size: 16px;
         }
         
-        .board-actions {
-            display: flex;
-            gap: 10px;
-            align-items: center;
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #fff;
         }
         
-        .board-btn {
-            padding: 6px 12px;
-            background-color: rgba(0, 0, 0, 0.05);
-            color: var(--dark-color);
-            border: none;
-            border-radius: var(--border-radius);
-            cursor: pointer;
-            font-size: 0.8rem;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 6px;
+        .btn-outline:hover {
+            background: #fff;
+            color: var(--secondary-color);
         }
         
-        .board-btn:hover {
-            background-color: rgba(0, 0, 0, 0.1);
-            transform: translateY(-1px);
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: #fff;
         }
         
-        .board-btn.primary {
-            background-color: var(--primary-color);
-            color: white;
-            box-shadow: 0 2px 8px rgba(67, 97, 238, 0.3);
-        }
-        
-        .board-btn.primary:hover {
-            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.4);
-        }
-        
-        #boardId {
-            font-family: monospace;
-            background-color: rgba(0, 0, 0, 0.05);
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.9rem;
-        }
-        
-        .whiteboard-pages {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.7);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
+        .about-content {
             display: flex;
             align-items: center;
-            gap: 12px;
-            z-index: 10;
+            gap: 60px;
         }
         
-        .page-control {
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 0.8rem;
+        .about-text {
+            flex: 1;
         }
         
-        .page-count {
-            font-size: 0.9rem;
+        .about-text h3 {
+            font-size: 32px;
+            margin-bottom: 24px;
+            color: var(--secondary-color);
         }
         
-        .notification {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: rgba(0, 0, 0, 0.9);
-            color: var(--white);
-            padding: 12px 24px;
-            border-radius: var(--border-radius);
-            z-index: 1000;
-            display: none;
-            max-width: 80%;
-            text-align: center;
-            box-shadow: var(--shadow);
-            animation: fadeIn 0.3s ease;
-            backdrop-filter: blur(5px);
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+            line-height: 1.7;
         }
         
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateX(-50%) translateY(10px); }
-            to { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .skills {
+            margin-top: 40px;
         }
         
-        .toggle-panel {
-            position: absolute;
-            right: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: var(--primary-color);
-            color: var(--white);
-            width: 24px;
-            height: 48px;
+        .skills h4 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .skill-item {
+            margin-bottom: 20px;
+        }
+        
+        .skill-name {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px 0 0 8px;
-            cursor: pointer;
-            z-index: 20;
-            transition: var(--transition);
-            box-shadow: -2px 0 8px rgba(0, 0, 0, 0.1);
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-weight: 500;
         }
         
-        .toggle-panel:hover {
-            width: 28px;
-            background-color: var(--secondary-color);
-        }
-        
-        .panel-collapsed .right-panel {
-            width: 0;
+        .skill-bar {
+            height: 10px;
+            background: #e2e8f0;
+            border-radius: 5px;
             overflow: hidden;
         }
         
-        .panel-collapsed .toggle-panel {
-            right: -24px;
+        .skill-progress {
+            height: 100%;
+            background: var(--primary-color);
+            border-radius: 5px;
+            position: relative;
         }
         
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .toolbar {
-                width: 60px;
-            }
-            
-            .right-panel {
-                position: absolute;
-                right: 0;
-                top: 0;
-                bottom: 0;
-                background-color: var(--white);
-                z-index: 50;
-                width: 280px;
-            }
-            
-            .panel-collapsed .right-panel {
-                width: 0;
-            }
-            
-            .header {
-                padding: 10px 16px;
-            }
-            
-            .logo-text {
-                font-size: 1.2rem;
-            }
-            
-            .user-count {
-                padding: 4px 12px;
-                font-size: 0.8rem;
-            }
-        }
-        
-        /* Drawing tools specific styles */
-        .line-width-control {
-            margin-top: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .line-width-label {
-            color: var(--dark-color);
-            font-size: 0.7rem;
-        }
-        
-        /* Loading animation */
-        .loading {
-            position: fixed;
+        .skill-progress::after {
+            content: '';
+            position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.8);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shine 2s infinite;
+        }
+        
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        /* Resume Section */
+        .resume {
+            padding: 100px 0;
+            background: #f8fafc;
+        }
+        
+        .resume-container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            backdrop-filter: blur(5px);
+            gap: 50px;
         }
         
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 5px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--primary-color);
-            animation: spin 1s ease-in-out infinite;
+        .resume-column {
+            flex: 1;
         }
         
-        .loading-text {
-            color: white;
-            margin-top: 20px;
-            font-size: 1.2rem;
-            text-align: center;
-            max-width: 80%;
+        .resume-column h3 {
+            font-size: 24px;
+            margin-bottom: 30px;
+            color: var(--secondary-color);
+            position: relative;
+            padding-left: 20px;
         }
         
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        
-        /* Shape preview styles */
-        .shape-preview {
+        .resume-column h3::before {
+            content: '';
             position: absolute;
-            pointer-events: none;
-            z-index: 90;
-        }
-        
-        /* Tool selection animation */
-        @keyframes toolPulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-            100% { transform: scale(1); }
-        }
-        
-        .tool.selected {
-            animation: toolPulse 0.5s ease;
-        }
-        
-        /* Improved cursor styles */
-        .cursor-name {
-            position: absolute;
-            top: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            white-space: nowrap;
-            font-size: 12px;
-            text-shadow: 0 0 2px black;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-weight: 500;
-        }
-        
-        /* Modal styles */
-        .modal {
-            position: fixed;
-            top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5);
+            top: 8px;
+            height: 16px;
+            width: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+        
+        .resume-item {
+            background: var(--card-bg);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: relative;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .resume-item h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--secondary-color);
             display: flex;
             align-items: center;
-            justify-content: center;
-            z-index: 1000;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
-        
-        .modal.show {
-            opacity: 1;
-            pointer-events: all;
-        }
-        
-        .modal-content {
-            background-color: var(--white);
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            width: 90%;
-            max-width: 500px;
-            max-height: 90vh;
-            overflow-y: auto;
-            transform: translateY(20px);
-            transition: transform 0.3s ease;
-        }
-        
-        .modal.show .modal-content {
-            transform: translateY(0);
-        }
-        
-        .modal-header {
-            padding: 16px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .modal-title {
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--dark-color);
-        }
-        
-        .modal-close {
-            background: none;
-            border: none;
-            color: var(--dark-color);
-            cursor: pointer;
-            font-size: 1.2rem;
-            transition: var(--transition);
-        }
-        
-        .modal-close:hover {
-            color: var(--accent-color);
-            transform: rotate(90deg);
-        }
-        
-        .modal-body {
-            padding: 16px;
-        }
-        
-        .modal-footer {
-            padding: 16px;
-            border-top: 1px solid rgba(0, 0, 0, 0.05);
-            display: flex;
-            justify-content: flex-end;
             gap: 10px;
         }
         
-        .form-group {
-            margin-bottom: 16px;
+        .resume-item h3 i {
+            color: var(--primary-color);
+            font-size: 18px;
         }
         
-        .form-label {
+        .resume-item h4 {
+            font-size: 16px;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+            font-weight: 500;
+        }
+        
+        .resume-item .date {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #e2e8f0;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+        
+        .resume-item .date i {
+            font-size: 12px;
+        }
+        
+        .resume-item p {
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+        
+        .download-resume {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        /* Certificates Section */
+        .certificates {
+            padding: 100px 0;
+            background: #fff;
+        }
+        
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .certificate-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .certificate-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .certificate-img {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .certificate-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .certificate-item:hover .certificate-img img {
+            transform: scale(1.1);
+        }
+        
+        .certificate-info {
+            padding: 24px;
+        }
+        
+        .certificate-info h3 {
+            margin-bottom: 12px;
+            color: var(--secondary-color);
+            font-size: 18px;
+        }
+        
+        .certificate-info p {
+            color: var(--text-light);
+            margin-bottom: 20px;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        
+        .certificate-actions {
+            display: flex;
+            gap: 12px;
+        }
+        
+        .certificate-actions .btn {
+            padding: 8px 16px;
+            font-size: 14px;
+            flex: 1;
+            text-align: center;
+            justify-content: center;
+        }
+        
+        .view-btn {
+            background: white;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+        
+        .view-btn:hover {
+            background: var(--primary-light);
+            color: white;
+        }
+        
+        /* Projects Section */
+        .projects {
+            padding: 100px 0;
+            background: #f8fafc;
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .project-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .project-card:hover .project-img img {
+            transform: scale(1.1);
+        }
+        
+        .project-content {
+            padding: 24px;
+        }
+        
+        .project-content h3 {
+            margin-bottom: 12px;
+            color: var(--secondary-color);
+            font-size: 20px;
+        }
+        
+        .project-content p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .project-tag {
+            background: #e2e8f0;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--text-light);
+        }
+        
+        .project-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .project-links .btn {
+            flex: 1;
+            text-align: center;
+            justify-content: center;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: #fff;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 60px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            font-size: 28px;
+            margin-bottom: 24px;
+            color: var(--secondary-color);
+        }
+        
+        .contact-info p {
+            color: var(--text-light);
+            margin-bottom: 32px;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+        
+        .contact-details {
+            margin-bottom: 40px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-item:hover {
+            background: #f1f5f9;
+            transform: translateX(5px);
+        }
+        
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary-color);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        
+        .contact-text h4 {
+            font-size: 16px;
+            color: var(--text-light);
+            margin-bottom: 4px;
+        }
+        
+        .contact-text p, .contact-text a {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--secondary-color);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+        
+        .social-link {
+            width: 48px;
+            height: 48px;
+            background: #f1f5f9;
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            font-size: 20px;
+        }
+        
+        .social-link:hover {
+            background: var(--primary-color);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+        
+        .contact-form {
+            flex: 1;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+        }
+        
+        .form-group {
+            margin-bottom: 24px;
+        }
+        
+        .form-group label {
             display: block;
             margin-bottom: 8px;
-            font-size: 0.9rem;
             font-weight: 500;
-            color: var(--dark-color);
+            color: var(--secondary-color);
         }
         
         .form-control {
             width: 100%;
-            padding: 10px 12px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: var(--border-radius);
-            font-size: 0.9rem;
-            transition: var(--transition);
+            padding: 12px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
         }
         
         .form-control:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.2);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
         
-        .btn {
-            padding: 10px 16px;
-            border-radius: var(--border-radius);
-            font-size: 0.9rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition);
-            border: none;
+        textarea.form-control {
+            height: 150px;
+            resize: vertical;
         }
         
-        .btn-primary {
-            background-color: var(--primary-color);
-            color: white;
-            box-shadow: 0 2px 8px rgba(67, 97, 238, 0.3);
-        }
-        
-        .btn-primary:hover {
-            background-color: var(--secondary-color);
-            box-shadow: 0 4px 12px rgba(67, 97, 238, 0.4);
-            transform: translateY(-1px);
-        }
-        
-        .btn-secondary {
-            background-color: rgba(0, 0, 0, 0.05);
-            color: var(--dark-color);
-        }
-        
-        .btn-secondary:hover {
-            background-color: rgba(0, 0, 0, 0.1);
-            transform: translateY(-1px);
-        }
-        
-        .invite-link {
-            display: flex;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.05);
-            border-radius: var(--border-radius);
-            padding: 10px;
-            margin-bottom: 16px;
-        }
-        
-        .invite-link input {
-            flex: 1;
-            background: none;
-            border: none;
-            padding: 0 8px;
-            font-size: 0.9rem;
-        }
-        
-        .invite-link button {
-            background: none;
-            border: none;
-            color: var(--primary-color);
-            cursor: pointer;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-        
-        .invite-link button:hover {
-            color: var(--secondary-color);
-            transform: scale(1.1);
-        }
-        
-        /* Lobby styles */
-        .lobby-container {
-            padding: 16px;
+        /* Footer */
+        footer {
+            background: var(--secondary-color);
+            color: #fff;
+            padding: 40px 0;
             text-align: center;
         }
         
-        .lobby-icon {
-            font-size: 3rem;
-            color: var(--primary-color);
-            margin-bottom: 16px;
-        }
-        
-        .lobby-text {
-            font-size: 1rem;
-            margin-bottom: 16px;
-            color: var(--dark-color);
-        }
-        
-        /* Export options */
-        .export-options {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-top: 16px;
-        }
-        
-        .export-option {
+        .footer-content {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            padding: 16px;
-            border-radius: var(--border-radius);
-            background-color: rgba(0, 0, 0, 0.03);
-            cursor: pointer;
-            transition: var(--transition);
+            gap: 10px;
         }
         
-        .export-option:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-            transform: translateY(-2px);
+        .footer-content p {
+            margin: 0;
+            color: #e2e8f0;
+            font-size: 15px;
         }
         
-        .export-option i {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
-            color: var(--primary-color);
-        }
-        
-        .export-option span {
-            font-size: 0.9rem;
+        .footer-content a {
+            color: #fff;
             font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.3s ease;
         }
         
-        /* Background options */
-        .background-options {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-top: 16px;
+        .footer-content a:hover {
+            color: var(--primary-light);
         }
         
-        .background-option {
-            height: 80px;
-            border-radius: var(--border-radius);
-            overflow: hidden;
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
             cursor: pointer;
-            position: relative;
-            transition: var(--transition);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            z-index: 999;
         }
         
-        .background-option:hover {
-            transform: scale(1.05);
+        .back-to-top:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
         }
         
-        .background-option img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
         }
-        
-        .background-option.active::after {
-            content: '\f00c';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            width: 20px;
-            height: 20px;
-            background-color: var(--primary-color);
+
+        /* Chatbot Styles */
+        .chatbot-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .chatbot-toggle {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
             color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.7rem;
-        }
-        
-        /* Pinned content */
-        .pinned-content {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 500;
-            max-width: 80%;
-            max-height: 80vh;
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            display: none;
-        }
-        
-        .pinned-content.show {
-            display: block;
-        }
-        
-        .pinned-header {
-            padding: 12px 16px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: var(--border-radius) var(--border-radius) 0 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .pinned-title {
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-        
-        .pinned-close {
-            background: none;
-            border: none;
-            color: white;
             cursor: pointer;
-            font-size: 1rem;
-        }
-        
-        .pinned-body {
-            padding: 16px;
-        }
-        
-        /* Confirmation dialog */
-        .confirmation-dialog {
-            text-align: center;
-            padding: 16px;
-        }
-        
-        .confirmation-icon {
-            font-size: 2rem;
-            color: var(--accent-color);
-            margin-bottom: 16px;
-        }
-        
-        .confirmation-text {
-            font-size: 1rem;
-            margin-bottom: 16px;
-        }
-        
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.05);
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 4px;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: rgba(0, 0, 0, 0.2);
-        }
-        
-        /* Whiteboard background options */
-        .whiteboard-bg-options {
-            display: flex;
-            gap: 10px;
-            margin-top: 10px;
-        }
-        
-        .whiteboard-bg {
-            width: 40px;
-            height: 40px;
-            border-radius: 4px;
-            cursor: pointer;
-            border: 2px solid transparent;
-            transition: var(--transition);
-        }
-        
-        .whiteboard-bg:hover {
-            transform: scale(1.05);
-        }
-        
-        .whiteboard-bg.active {
-            border-color: var(--primary-color);
-        }
-        
-        .whiteboard-bg.white {
-            background-color: var(--white);
-        }
-        
-        .whiteboard-bg.black {
-            background-color: var(--black);
-        }
-        
-        .whiteboard-bg.green {
-            background-color: #e6f7e6;
-        }
-        
-        .whiteboard-bg.blue {
-            background-color: #e6f0f7;
-        }
-        
-        /* Floating image controls */
-        .floating-image {
-            position: absolute;
-            cursor: move;
-            z-index: 50;
-            border: 2px dashed rgba(0, 0, 0, 0.2);
-            transition: border 0.2s;
-            resize: both;
-            overflow: hidden;
-        }
-        
-        .floating-image:hover {
-            border-color: var(--primary-color);
-        }
-        
-        .image-controls {
-            position: absolute;
-            top: -30px;
-            right: 0;
-            background-color: var(--white);
-            border-radius: 4px;
-            box-shadow: var(--shadow);
-            display: flex;
-            z-index: 60;
-        }
-        
-        .image-control {
-            padding: 4px;
-            cursor: pointer;
-            color: var(--dark-color);
-        }
-        
-        .image-control:hover {
-            color: var(--primary-color);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            font-size: 24px;
+            transition: all 0.3s ease;
         }
 
-        /* Text element */
-        .text-element {
+        .chatbot-toggle:hover {
+            background: var(--primary-light);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .chatbot-window {
             position: absolute;
-            cursor: move;
-            z-index: 50;
-            padding: 8px;
-            resize: both;
+            bottom: 80px;
+            right: 0;
+            width: 380px;
+            height: 500px;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             overflow: hidden;
-            min-width: 50px;
-            min-height: 20px;
-            outline: none;
-            border: 1px dashed rgba(0, 0, 0, 0.2);
-        }
-        
-        .text-element:hover {
-            border-color: var(--primary-color);
-        }
-        
-        /* Sticky note */
-        .sticky-note {
-            position: absolute;
-            cursor: move;
-            z-index: 50;
-            padding: 10px;
-            resize: both;
-            overflow: hidden;
-            min-width: 100px;
-            min-height: 100px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .sticky-note-content {
-            width: 100%;
-            height: 100%;
-            outline: none;
-            resize: none;
-            border: none;
-            background: transparent;
-            font-family: inherit;
-        }
-        
-        /* Leave session image */
-        .leave-image {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: 10000;
             display: none;
+            flex-direction: column;
+            border: 1px solid #e2e8f0;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
         }
-        
-        /* Footer buttons */
-        .footer-btn {
-            background: none;
-            border: none;
-            color: var(--dark-color);
-            cursor: pointer;
-            font-size: 1.2rem;
-            padding: 8px;
-            border-radius: 50%;
-            transition: var(--transition);
-        }
-        
-        .footer-btn:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-        }
-        
-        .footer-btn.active {
-            background-color: var(--primary-color);
-            color: white;
-        }
-        
-        /* Reaction menu */
-        .reaction-menu {
-            position: absolute;
-            bottom: 60px;
-            right: 20px;
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            padding: 8px;
-            display: none;
-            z-index: 100;
-        }
-        
-        .reaction-menu.show {
+
+        .chatbot-window.chatbot-visible {
             display: flex;
-            gap: 8px;
+            transform: translateY(0);
+            opacity: 1;
         }
-        
-        .reaction-btn {
-            font-size: 1.5rem;
+
+        .chatbot-header {
+            background: var(--secondary-color);
+            color: white;
+            padding: 16px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .chatbot-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .message {
+            margin-bottom: 8px;
+            max-width: 85%;
+            padding: 12px 16px;
+            border-radius: 18px;
+            line-height: 1.5;
+            position: relative;
+            font-size: 14px;
+            animation: fadeIn 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .bot-message {
+            background: white;
+            color: var(--text-color);
+            align-self: flex-start;
+            border-bottom-left-radius: 4px;
+        }
+
+        .user-message {
+            background: var(--primary-color);
+            color: white;
+            margin-left: auto;
+            border-bottom-right-radius: 4px;
+        }
+
+        .chatbot-input {
+            display: flex;
+            padding: 16px;
+            background: white;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .chatbot-input input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 1px solid #e2e8f0;
+            border-radius: 30px;
+            outline: none;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .chatbot-input input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .chatbot-input button {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            margin-left: 12px;
             cursor: pointer;
-            transition: var(--transition);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chatbot-input button:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .typing-indicator {
+            display: flex;
+            padding: 12px 16px;
+            background: white;
+            border-radius: 18px;
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            width: fit-content;
+            margin-bottom: 8px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--text-light);
+            border-radius: 50%;
+            margin: 0 2px;
+            animation: typingAnimation 1.4s infinite ease-in-out;
+        }
+
+        .typing-dot:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typingAnimation {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-5px); }
+        }
+
+        /* Cloud Skills Section */
+        .cloud-skills {
+            padding: 100px 0;
+            background: #f8fafc;
+        }
+
+        .cloud-badges {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .cloud-badge {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid #e2e8f0;
+        }
+
+        .cloud-badge img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            background: white;
+            padding: 20px;
+        }
+
+        .badge-info {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .badge-info h3 {
+            margin-bottom: 12px;
+            color: var(--secondary-color);
+        }
+
+        .badge-info p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+            flex: 1;
         }
         
-        .reaction-btn:hover {
-            transform: scale(1.2);
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .hero h1 {
+                font-size: 48px;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .about-content, .resume-container, .contact-container {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .project-grid, .certificate-grid, .cloud-badges {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+            
+            .contact-form {
+                margin-top: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(255, 255, 255, 0.98);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 40px;
+                transition: all 0.5s ease;
+                backdrop-filter: blur(10px);
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .chatbot-window {
+                width: 320px;
+                height: 450px;
+                bottom: 70px;
+            }
+            
+            .section-title {
+                font-size: 28px;
+                margin-bottom: 32px;
+            }
+            
+            .section-title::after {
+                width: 60px;
+                height: 3px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 32px;
+            }
+            
+            .hero p {
+                font-size: 16px;
+            }
+            
+            .btn {
+                padding: 10px 20px;
+            }
+            
+            .certificate-grid, .project-grid, .cloud-badges {
+                grid-template-columns: 1fr;
+            }
+            
+            .chatbot-window {
+                width: 280px;
+                right: -20px;
+            }
         }
     </style>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <img src="https://cdn.corenexis.com/view/?img=d/ap16/vrIG9Z.jpg" class="leave-image" id="leaveImage">
-    
-    <div class="container">
-        <div class="header">
-            <div class="logo-container">
-                <img src="https://sigmawire.net/i/04/qh5l0U.png" alt="WhiteBoard Pro Logo" class="logo-img">
-                <div class="logo-text">WhiteBoard Pro</div>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon">R</div>
+                <span>Ritesh Rathod</span>
             </div>
-            <div class="header-controls">
-                <div class="user-count">
-                    <i class="fas fa-users"></i>
-                    <span id="userCount">0</span>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#resume">Resume</a></li>
+                    <li><a href="#certificates">Certificates</a></li>
+                    <li><a href="#cloud-skills">Cloud Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="mobile-menu" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
                 </div>
-                <div class="more-menu">
-                    <button class="more-btn" id="moreBtn">
-                        <i class="fas fa-ellipsis-v"></i>
-                        <span class="dot"></span>
-                    </button>
-                    <div class="dropdown-menu" id="dropdownMenu">
-                        <div class="dropdown-item" id="inviteOption">
-                            <i class="fas fa-user-plus"></i>
-                            <span>Invite People</span>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Hi, I'm <span style="color: var(--primary-light);">Ritesh Rathod</span> 👋</h1>
+            <p>🚀 Student | 💻 Developer | 🔥 Tech Enthusiast</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn"><i class="fas fa-paper-plane"></i> Contact Me</a>
+                <a href="#resume" class="btn btn-outline"><i class="fas fa-file-alt"></i> View Resume</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <p class="section-subtitle">Get to know me, my skills, and what I'm passionate about</p>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>First Year Student At St. Vincent Pallotti College Of Engineering And Technology</h3>
+                    <p>Hello! I'm Ritesh Rathod, a passionate student with a strong interest in Data Analysis and web development. I'm enthusiastic about learning new technologies and developing skills that will help me grow both academically and professionally.</p>
+                    
+                    <div class="skills">
+                        <h4>My Skills</h4>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span><i class="fab fa-python"></i> Python Programming</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%;"></div>
+                            </div>
                         </div>
-                        <div class="dropdown-item" id="participantsOption">
-                            <i class="fas fa-users"></i>
-                            <span>Participants</span>
-                            <span class="badge" id="participantsBadge">0</span>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span><i class="fas fa-code"></i> Web Development</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%;"></div>
+                            </div>
                         </div>
-                        <div class="dropdown-item" id="chatOption">
-                            <i class="fas fa-comment"></i>
-                            <span>Chat</span>
-                            <span class="badge" id="chatBadge">0</span>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span><i class="fas fa-c"></i> C Programming</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 80%;"></div>
+                            </div>
                         </div>
-                        <div class="dropdown-divider"></div>
-                        <div class="dropdown-item" id="settingsOption">
-                            <i class="fas fa-cog"></i>
-                            <span>Settings</span>
-                        </div>
-                        <div class="dropdown-item" id="exportOption">
-                            <i class="fas fa-download"></i>
-                            <span>Export</span>
-                        </div>
-                        <div class="dropdown-divider"></div>
-                        <div class="dropdown-item" id="leaveOption">
-                            <i class="fas fa-sign-out-alt"></i>
-                            <span>Leave Session</span>
+                        <div class="skill-item">
+                            <div class="skill-name">
+                                <span><i class="fas fa-brain"></i> Problem Solving</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%;"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <div class="main">
-            <div class="toolbar">
-                <div class="tool active" data-tool="pencil">
-                    <i class="fas fa-pencil-alt"></i>
-                    <span class="tool-tip">Pencil</span>
-                </div>
-                <div class="tool" data-tool="line">
-                    <i class="fas fa-slash"></i>
-                    <span class="tool-tip">Line</span>
-                </div>
-                <div class="tool" data-tool="rectangle">
-                    <i class="far fa-square"></i>
-                    <span class="tool-tip">Rectangle</span>
-                </div>
-                <div class="tool" data-tool="circle">
-                    <i class="far fa-circle"></i>
-                    <span class="tool-tip">Circle</span>
-                </div>
-                <div class="tool" data-tool="arrow">
-                    <i class="fas fa-arrow-right"></i>
-                    <span class="tool-tip">Arrow</span>
-                </div>
-                <div class="tool" data-tool="text">
-                    <i class="fas fa-font"></i>
-                    <span class="tool-tip">Text</span>
-                </div>
-                <div class="tool" data-tool="eraser">
-                    <i class="fas fa-eraser"></i>
-                    <span class="tool-tip">Eraser</span>
-                </div>
-                <div class="tool-divider"></div>
-                <div class="tool" data-tool="undo">
-                    <i class="fas fa-undo"></i>
-                    <span class="tool-tip">Undo (Ctrl+Z)</span>
-                </div>
-                <div class="tool" data-tool="redo">
-                    <i class="fas fa-redo"></i>
-                    <span class="tool-tip">Redo (Ctrl+Y)</span>
-                </div>
-                <div class="tool" data-tool="clear">
-                    <i class="fas fa-trash-alt"></i>
-                    <span class="tool-tip>Clear Board</span>
-                </div>
-                <div class="tool-divider"></div>
-                <div class="tool" data-tool="image">
-                    <i class="fas fa-image"></i>
-                    <span class="tool-tip">Insert Image</span>
-                </div>
-                <div class="tool" data-tool="sticky">
-                    <i class="fas fa-sticky-note"></i>
-                    <span class="tool-tip">Sticky Note</span>
-                </div>
-                <div class="tool-divider"></div>
-                <div class="color-picker-container">
-                    <div class="color-picker-label">Color</div>
-                    <input type="color" class="color-picker" id="colorPicker" value="#000000">
-                </div>
-                <div class="line-width-control">
-                    <div class="line-width-label">Size</div>
-                    <input type="range" class="line-width-slider" id="lineWidth" min="1" max="20" value="3">
-                </div>
-                <div class="color-picker-container">
-                    <div class="color-picker-label">Fill</div>
-                    <input type="color" class="color-picker" id="fillPicker" value="#00000000">
-                </div>
-                <div class="tool-divider"></div>
-                <div class="whiteboard-bg-options">
-                    <div class="whiteboard-bg white active" data-bg="white"></div>
-                    <div class="whiteboard-bg black" data-bg="black"></div>
-                    <div class="whiteboard-bg green" data-bg="green"></div>
-                    <div class="whiteboard-bg blue" data-bg="blue"></div>
-                </div>
-            </div>
-            
-            <div class="whiteboard-container">
-                <canvas id="whiteboard"></canvas>
-                <div id="shapePreview" class="shape-preview"></div>
-                <div class="whiteboard-pages">
-                    <button class="page-control" id="prevPage">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <span class="page-count" id="pageCount">1/1</span>
-                    <button class="page-control" id="nextPage">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                    <button class="page-control" id="addPage">
-                        <i class="fas fa-plus"></i>
-                    </button>
-                </div>
-            </div>
-            
-            <div class="toggle-panel" id="togglePanel">
-                <i class="fas fa-chevron-left"></i>
-            </div>
-            
-            <div class="right-panel">
-                <div class="panel-tabs">
-                    <div class="panel-tab active" data-tab="participants">
-                        <i class="fas fa-users"></i> Participants
-                        <span class="badge" id="participantsTabBadge">0</span>
+    </section>
+
+    <!-- Resume Section -->
+    <section class="resume" id="resume">
+        <div class="container">
+            <h2 class="section-title">My Resume</h2>
+            <p class="section-subtitle">My education and professional journey</p>
+            <div class="resume-container">
+                <div class="resume-column">
+                    <h3>Education</h3>
+                    <div class="resume-item">
+                        <h3><i class="fas fa-graduation-cap"></i> Bachelor's Degree in Computer Science And Business System</h3>
+                        <h4>St. Vincent Pallotti College Of Engineering And Technology</h4>
+                        <span class="date"><i class="far fa-calendar-alt"></i> 2024 - Present</span>
+                        <p>🎓 B.Tech in Computer Science & Business Systems <br>
+📊 Specializing in Data Analysis & Business Intelligence<br>
+💡 Passionate about transforming data into strategic decisions<br>
+🏆 Google Python Certified<br>
+                            
+                        🔗 Bridging the gap between technical systems and business value
+                        </p>
+
+
                     </div>
-                    <div class="panel-tab" data-tab="chat">
-                        <i class="fas fa-comment"></i> Chat
-                        <span class="badge" id="chatTabBadge">0</span>
+                    <div class="resume-item">
+                        <h3><i class="fas fa-school"></i> High School</h3>
+                        <h4>St. Xaviers High School</h4>
+                        <span class="date"><i class="far fa-calendar-alt"></i> 2023 - 2024</span>
+                        <p>Completed high school with honors in Science and Mathematics. Participated in coding competitions and science fairs.</p>
                     </div>
                 </div>
-                
-                <div class="panel-content active" data-content="participants">
-                    <div class="user-list-container">
-                        <div id="userList">
-                            <!-- Users will be added here dynamically -->
-                        </div>
+                <div class="resume-column">
+                    <h3>Experience</h3>
+                    <div class="resume-item">
+                        <h3><i class="fas fa-briefcase"></i> Chief Technology Officer</h3>
+                        <h4>PhoenixAlgo</h4>
+                        <span class="date"><i class="far fa-calendar-alt"></i> Feb 2025 - Present</span>
+                        <p>🚀 Proudly serving as CTO at PhoenixAlgo, where we revolutionize education through tech! My role includes:<br>
+                             🎨 Designing visuals<br>
+💻 Managing web development<br>
+👥 Leading innovative teams<br>
+
+Honored to drive our mission forward!</p>
                     </div>
-                    <div class="media-container">
-                        <div class="media-controls">
-                            <button id="micBtn" class="media-btn">
-                                <i class="fas fa-microphone"></i>
-                                <span>Mic</span>
-                            </button>
-                            <button id="videoBtn" class="media-btn">
-                                <i class="fas fa-video"></i>
-                                <span>Video</span>
-                            </button>
-                        </div>
-                        
-                        <div class="video-container">
-                            <video id="localVideo" autoplay muted playsinline></video>
-                            <div class="video-label" id="localVideoLabel">You</div>
-                            <div class="video-controls">
-                                <button class="video-control" id="pinLocal">
-                                    <i class="fas fa-thumbtack"></i>
-                                </button>
-                                <button class="video-control" id="backgroundLocal">
-                                    <i class="fas fa-image"></i>
-                                </button>
-                            </div>
-                            <div class="video-placeholder">
-                                <i class="fas fa-user"></i>
-                                <div class="video-placeholder-text" id="localVideoPlaceholderText">Your video will appear here</div>
-                            </div>
-                        </div>
-                        
-                        <div class="video-container">
-                            <video id="remoteVideo" autoplay playsinline></video>
-                            <div class="video-label" id="remoteVideoLabel">Participant</div>
-                            <div class="video-controls">
-                                <button class="video-control" id="pinRemote">
-                                    <i class="fas fa-thumbtack"></i>
-                                </button>
-                            </div>
-                            <div class="video-placeholder">
-                                <i class="fas fa-users"></i>
-                                <div class="video-placeholder-text" id="remoteVideoPlaceholderText">Other participant's video will appear here</div>
-                            </div>
+                    <div class="resume-item">
+                        <h3><i class="fas fa-users"></i> E-Cell Club</h3>
+                        <h4>Operation Management</h4>
+                        <span class="date"><i class="far fa-calendar-alt"></i> Feb 2025 - Present</span>
+                        <p>🚀 Leading entrepreneurship events, optimizing resources & mentoring innovators to strengthen the startup ecosystem. Passionate about empowering future leaders through impactful initiatives.🗽</p>
+                    </div>
+                </div>
+            </div>
+            <div class="download-resume">
+                <a href="Resume.pdf" class="btn" download><i class="fas fa-download"></i> Download Full Resume (PDF)</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section class="certificates" id="certificates">
+        <div class="container">
+            <h2 class="section-title">My Certificates</h2>
+            <p class="section-subtitle">Certifications I've earned through my learning journey</p>
+            <div class="certificate-grid">
+                <!-- C Programming Certificate -->
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="C_Programming_Course_Certificate.png" alt="C Programming Certificate">
+                    </div>
+                    <div class="certificate-info">
+                        <h3>C Programming Course</h3>
+                        <p>Successfully completed the C Programming Course from Infosys Springboard on December 14, 2024.</p>
+                        <div class="certificate-actions">
+                            <a href="C_Programming_Course_Certificate.png" class="btn" download><i class="fas fa-download"></i> Download</a>
+                            <a href="C_Programming_Course_Certificate.png" class="btn view-btn" target="_blank"><i class="fas fa-eye"></i> View</a>
                         </div>
                     </div>
                 </div>
                 
-                <div class="panel-content" data-content="chat">
-                    <div class="chat-container">
-                        <div class="chat-messages" id="chatMessages">
-                            <!-- Chat messages will appear here -->
-                        </div>
-                        <div class="chat-input-container">
-                            <textarea class="chat-input" id="chatInput" placeholder="Type a message..."></textarea>
-                            <button class="chat-send" id="chatSend">
-                                <i class="fas fa-paper-plane"></i>
-                            </button>
+                <!-- Python Crash Course -->
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="Crash_Course_On_Python.png" alt="Python Crash Course Certificate">
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Python Crash Course</h3>
+                        <p>Completed Google's Crash Course on Python through Coursera, certified on March 18, 2025.</p>
+                        <div class="certificate-actions">
+                            <a href="Crash_Course_On_Python.png" class="btn" download><i class="fas fa-download"></i> Download</a>
+                            <a href="Crash_Course_On_Python.png" class="btn view-btn" target="_blank"><i class="fas fa-eye"></i> View</a>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <div class="footer-info">
-                <span>Made by Ritesh Rathod</span>
-            </div>
-            <div class="board-actions">
-                <button class="footer-btn" id="micFooterBtn" title="Microphone">
-                    <i class="fas fa-microphone"></i>
-                </button>
-                <button class="footer-btn" id="videoFooterBtn" title="Video">
-                    <i class="fas fa-video"></i>
-                </button>
-                <button class="footer-btn" id="participantsFooterBtn" title="Participants">
-                    <i class="fas fa-users"></i>
-                </button>
-                <button class="footer-btn" id="screenShareFooterBtn" title="Share Screen">
-                    <i class="fas fa-desktop"></i>
-                </button>
-                <button class="footer-btn" id="recordFooterBtn" title="Record">
-                    <i class="fas fa-circle"></i>
-                </button>
-                <button class="footer-btn" id="raiseHandFooterBtn" title="Raise Hand">
-                    <i class="fas fa-hand-paper"></i>
-                </button>
-                <button class="footer-btn" id="reactionFooterBtn" title="Reactions">
-                    <i class="fas fa-smile"></i>
-                </button>
-                <button class="footer-btn" id="moreFooterBtn" title="More">
-                    <i class="fas fa-ellipsis-v"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Reaction menu -->
-    <div class="reaction-menu" id="reactionMenu">
-        <div class="reaction-btn">👍</div>
-        <div class="reaction-btn">👎</div>
-        <div class="reaction-btn">👏</div>
-        <div class="reaction-btn">😂</div>
-        <div class="reaction-btn">😍</div>
-        <div class="reaction-btn">😮</div>
-    </div>
-    
-    <!-- More menu for footer -->
-    <div class="dropdown-menu" id="footerDropdownMenu" style="bottom: 70px; right: 20px; top: auto; left: auto;">
-        <div class="dropdown-item" id="footerChatOption">
-            <i class="fas fa-comment"></i>
-            <span>Chat</span>
-        </div>
-        <div class="dropdown-divider"></div>
-        <div class="dropdown-item" id="footerSettingsOption">
-            <i class="fas fa-cog"></i>
-            <span>Settings</span>
-        </div>
-        <div class="dropdown-item" id="footerExportOption">
-            <i class="fas fa-download"></i>
-            <span>Export</span>
-        </div>
-        <div class="dropdown-divider"></div>
-        <div class="dropdown-item" id="footerLeaveOption">
-            <i class="fas fa-sign-out-alt"></i>
-            <span>Leave Session</span>
-        </div>
-    </div>
-    
-    <!-- Modals -->
-    <div class="modal" id="inviteModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title">Invite Participants</div>
-                <button class="modal-close" id="inviteModalClose">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label class="form-label">Invite Link</label>
-                    <div class="invite-link">
-                        <input type="text" id="inviteLinkInput" readonly>
-                        <button id="copyInviteLink">
-                            <i class="fas fa-copy"></i>
-                        </button>
+
+                <!-- Introduction to Python -->
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="Python_Programming_Course_Certificate.png" alt="Introduction to Python Certificate">
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Introduction to Python</h3>
+                        <p>Successfully completed the Introduction to Python course from Infosys Springboard on April 25, 2025.</p>
+                        <div class="certificate-actions">
+                            <a href="Python_Programming_Course_Certificate.png" class="btn" download><i class="fas fa-download"></i> Download</a>
+                            <a href="Python_Programming_Course_Certificate.png" class="btn view-btn" target="_blank"><i class="fas fa-eye"></i> View</a>
+                        </div>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Or share this code</label>
-                    <input type="text" class="form-control" id="inviteCodeInput" readonly>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Session Settings</label>
-                    <div style="display: flex; flex-direction: column; gap: 8px;">
-                        <div style="display: flex; align-items: center; gap: 8px;">
-                            <input type="checkbox" id="requireApproval" checked>
-                            <span>Require approval to join</span>
+
+                <!-- AWS Solution Architecture -->
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="Solution_Architecture_Job_Simulation.jpg" alt="AWS Solution Architecture Certificate">
+                    </div>
+                    <div class="certificate-info">
+                        <h3>AWS Solution Architecture</h3>
+                        <p>Completed practical tasks in designing scalable hosting architectures through Forage job simulation in March 2025.</p>
+                        <div class="certificate-actions">
+                            <a href="Solution_Architecture_Job_Simulation.jpg" class="btn" download><i class="fas fa-download"></i> Download</a>
+                            <a href="Solution_Architecture_Job_Simulation.jpg" class="btn view-btn" target="_blank"><i class="fas fa-eye"></i> View</a>
                         </div>
-                        <div style="display: flex; align-items: center; gap: 8px;">
-                            <input type="checkbox" id="allowDrawing" checked>
-                            <span>Allow participants to draw</span>
+                    </div>
+                </div>
+
+                <!-- iBase Technology Internship Certificate -->
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="iBase_Technology_Certificate.png" alt="iBase Technology Internship Certificate">
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Trainee Developer Internship</h3>
+                        <p>Successfully completed a 7-day internship at iBase Electrosoft LLP from 24/03/2025 to 30/03/2025, gaining practical knowledge in Python development.</p>
+                        <div class="certificate-actions">
+                            <a href="iBase_Technology_Certificate.png" class="btn" download><i class="fas fa-download"></i> Download</a>
+                            <a href="iBase_Technology_Certificate.png" class="btn view-btn" target="_blank"><i class="fas fa-eye"></i> View</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Python Loops & Functions -->
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="Python_Programming_Course_Certificate (2).png" alt="Python Loops & Functions Certificate">
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Python: Loops & Functions</h3>
+                        <p>Completed Concepts in Python: Loops, Functions and Returns through Coursera Project Network on April 15, 2025.</p>
+                        <div class="certificate-actions">
+                            <a href="Python_Programming_Course_Certificate (2).png" class="btn" download><i class="fas fa-download"></i> Download</a>
+                            <a href="Python_Programming_Course_Certificate (2).png" class="btn view-btn" target="_blank"><i class="fas fa-eye"></i> View</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Raisoni Hackathon Certificate -->
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="Raisoni_Hackathon_Certificate.png" alt="Raisoni Hackathon Certificate">
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Raisoni Summer of Code</h3>
+                        <p>Successfully participated in RSOC-2025: A 6-Hour Hackathon at GHRCEM, Nagpur on 3rd April 2025.</p>
+                        <div class="certificate-actions">
+                            <a href="Raisoni_Hackathon_Certificate.png" class="btn" download><i class="fas fa-download"></i> Download</a>
+                            <a href="Raisoni_Hackathon_Certificate.png" class="btn view-btn" target="_blank"><i class="fas fa-eye"></i> View</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hackathon Certificate -->
+                <div class="certificate-item">
+                    <div class="certificate-img">
+                        <img src="Hackathon.jpg" alt="Hackathon Participation Certificate">
+                    </div>
+                    <div class="certificate-info">
+                        <h3>Hackathon Participation</h3>
+                        <p>Participated in Technex Hackathon at St. Vincent Pallotti College of Engineering & Technology, Nagpur on 20th-21st January 2025.</p>
+                        <div class="certificate-actions">
+                            <a href="Hackathon.jpg" class="btn" download><i class="fas fa-download"></i> Download</a>
+                            <a href="Hackathon.jpg" class="btn view-btn" target="_blank"><i class="fas fa-eye"></i> View</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" id="inviteModalCancel">Cancel</button>
-                <button class="btn btn-primary" id="inviteModalSend">Send Invites</button>
+        </div>
+    </section>
+
+    <!-- Cloud Skills Section -->
+    <section class="cloud-skills" id="cloud-skills">
+        <div class="container">
+            <h2 class="section-title">Google Cloud Skills</h2>
+            <p class="section-subtitle">My achievements in Google Cloud learning path</p>
+            
+            <div class="cloud-badges">
+                <!-- Badge 1 -->
+                <div class="cloud-badge">
+                    <img src="https://cdn.qwiklabs.com/9%2BJTqB%2FJwwE9XQyQ2qQfX3b4jV%2B%2FZ7Z4L6Q9X5z9Y5Y%3D" alt="Google Cloud Essentials Badge">
+                    <div class="badge-info">
+                        <h3>Google Cloud Essentials</h3>
+                        <p>Completed the Google Cloud Essentials quest, demonstrating foundational knowledge of Google Cloud services.</p>
+                        <a href="https://www.cloudskillsboost.google/public_profiles/79310cb2-e658-4c3d-8055-4fb5273fa378/badges/15578536" class="btn btn-outline" target="_blank"><i class="fas fa-external-link-alt"></i> View Badge</a>
+                    </div>
+                </div>
+                
+                <!-- Badge 2 -->
+                <div class="cloud-badge">
+                    <img src="https://cdn.qwiklabs.com/9%2BJTqB%2FJwwE9XQyQ2qQfX3b4jV%2B%2FZ7Z4L6Q9X5z9Y5Y%3D" alt="Create and Manage Cloud Resources Badge">
+                    <div class="badge-info">
+                        <h3>Create and Manage Cloud Resources</h3>
+                        <p>Learned to create and manage Google Cloud resources including virtual machines, networks, and storage.</p>
+                        <a href="https://www.cloudskillsboost.google/public_profiles/79310cb2-e658-4c3d-8055-4fb5273fa378/badges/15578928" class="btn btn-outline" target="_blank"><i class="fas fa-external-link-alt"></i> View Badge</a>
+                    </div>
+                </div>
+                
+                <!-- Badge 3 -->
+                <div class="cloud-badge">
+                    <img src="https://cdn.qwiklabs.com/9%2BJTqB%2FJwwE9XQyQ2qQfX3b4jV%2B%2FZ7Z4L6Q9X5z9Y5Y%3D" alt="Perform Foundational Infrastructure Tasks Badge">
+                    <div class="badge-info">
+                        <h3>Perform Foundational Infrastructure Tasks</h3>
+                        <p>Demonstrated ability to perform foundational tasks in Google Cloud including deploying applications and monitoring.</p>
+                        <a href="https://www.cloudskillsboost.google/public_profiles/79310cb2-e658-4c3d-8055-4fb5273fa378/badges/15583296" class="btn btn-outline" target="_blank"><i class="fas fa-external-link-alt"></i> View Badge</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <div class="modal" id="exportModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title">Export Whiteboard</div>
-                <button class="modal-close" id="exportModalClose">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label class="form-label">Select Pages</label>
-                    <select class="form-control" id="exportPages">
-                        <option value="current">Current Page Only</option>
-                        <option value="all">All Pages</option>
-                    </select>
-                </div>
-                <div class="export-options">
-                    <div class="export-option" id="exportPNG">
-                        <i class="fas fa-file-image"></i>
-                        <span>PNG Image</span>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects" id="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <p class="section-subtitle">Some of my recent work and personal projects</p>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="WhiteBoard Education">
                     </div>
-                    <div class="export-option" id="exportJPG">
-                        <i class="fas fa-file-image"></i>
-                        <span>JPG Image</span>
-                    </div>
-                    <div class="export-option" id="exportPDF">
-                        <i class="fas fa-file-pdf"></i>
-                        <span>PDF Document</span>
-                    </div>
-                    <div class="export-option" id="exportSVG">
-                        <i class="fas fa-file-code"></i>
-                        <span>SVG Vector</span>
+                    <div class="project-content">
+                        <h3>WhiteBoard Education</h3>
+                        <p>A responsive educational platform built with HTML, CSS, and JavaScript that provides interactive learning experiences for students.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">CSS</span>
+                            <span class="project-tag">JavaScript</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://ritesh-rathod16.github.io/Whiteboard_Education/" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/ritesh-rathod16/Whiteboard_Education" class="btn btn-outline"><i class="fab fa-github"></i> Source Code</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" id="exportModalCancel">Cancel</button>
+                
+                <!-- New Gym Website Project -->
+                <div class="project-card">
+                    <div class="project-img">
+                        <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="FitFlex Gym Website">
+                    </div>
+                    <div class="project-content">
+                        <h3>Lakudkar Gym Website</h3>
+                        <p>A modern gym website with membership management, class scheduling, and trainer booking functionality built with Html, React and Node.js.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">HTML</span>
+                            <span class="project-tag">React</span>
+                            <span class="project-tag">Node.js</span>
+                            <span class="project-tag">CSS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://ritesh-rathod16.github.io/Lakudkar_gym11/" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                            <a href="https://github.com/ritesh-rathod16/Lakudkar_gym11/blob/main/index.html" class="btn btn-outline"><i class="fab fa-github"></i> Source Code</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    
-    <div class="modal" id="settingsModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title">Settings</div>
-                <button class="modal-close" id="settingsModalClose">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label class="form-label">Your Name</label>
-                    <input type="text" class="form-control" id="userNameInput">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Video Background</label>
-                    <div class="background-options">
-                        <div class="background-option active" data-bg="none">
-                            <div style="width:100%;height:100%;background:#333;display:flex;align-items:center;justify-content:center;color:white;">
-                                <i class="fas fa-times"></i>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <p class="section-subtitle">Feel free to reach out for collaborations or just a friendly hello 👋</p>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>I'm always open to discussing new opportunities, learning resources, or potential collaborations. Feel free to reach out!</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <a href="mailto:riteshrathod016@gmail.com">riteshrathod016@gmail.com</a>
                             </div>
                         </div>
-                        <div class="background-option" data-bg="blur">
-                            <img src="https://images.unsplash.com/photo-1513151233558-d860c5398176?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Blur">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <a href="tel:+917721874530">+91 7721874530</a>
+                            </div>
                         </div>
-                        <div class="background-option" data-bg="office">
-                            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Office">
-                        </div>
-                        <div class="background-option" data-bg="nature">
-                            <img src="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Nature">
-                        </div>
-                        <div class="background-option" data-bg="abstract">
-                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=200&q=80" alt="Abstract">
-                        </div>
-                        <div class="background-option" data-bg="custom">
-                            <div style="width:100%;height:100%;background:#eee;display:flex;align-items:center;justify-content:center;">
-                                <i class="fas fa-plus"></i>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Location</h4>
+                                <p>Nagpur, Maharashtra,<br>India</p>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Whiteboard Grid</label>
-                    <select class="form-control" id="gridStyle">
-                        <option value="dots">Dots</option>
-                        <option value="lines" selected>Lines</option>
-                        <option value="none">None</option>
-                    </select>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" id="settingsModalCancel">Cancel</button>
-                <button class="btn btn-primary" id="settingsModalSave">Save</button>
-            </div>
-        </div>
-    </div>
-    
-    <div class="modal" id="lobbyModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title">Waiting for Approval</div>
-            </div>
-            <div class="modal-body">
-                <div class="lobby-container">
-                    <div class="lobby-icon">
-                        <i class="fas fa-user-clock"></i>
-                    </div>
-                    <div class="lobby-text">
-                        You're in the waiting room. The host will let you in shortly.
-                    </div>
-                    <button class="btn btn-secondary" id="cancelJoin">Cancel</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="modal" id="confirmationModal">
-        <div class="modal-content">
-            <div class="modal-body">
-                <div class="confirmation-dialog">
-                    <div class="confirmation-icon">
-                        <i class="fas fa-exclamation-circle"></i>
-                    </div>
-                    <div class="confirmation-text" id="confirmationText">
-                        Are you sure you want to leave this session?
-                    </div>
-                    <div style="display: flex; gap: 10px; justify-content: center;">
-                        <button class="btn btn-secondary" id="confirmCancel">Cancel</button>
-                        <button class="btn btn-primary" id="confirmAction">Confirm</button>
+                    
+                    <h3>Follow Me</h3>
+                    <div class="social-links">
+                        <a href="https://github.com/ritesh-rathod16" class="social-link" target="_blank" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/ritesh-rathod-34a5a3329" class="social-link" target="_blank" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://www.instagram.com/ritesh_rathod_official/" class="social-link" target="_blank" title="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://twitter.com/" class="social-link" target="_blank" title="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    
-    <div class="modal" id="imageModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title">Insert Image</div>
-                <button class="modal-close" id="imageModalClose">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label class="form-label">Image URL</label>
-                    <input type="text" class="form-control" id="imageUrl" placeholder="https://example.com/image.jpg">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Or upload from device</label>
-                    <input type="file" class="form-control" id="imageUpload" accept="image/*">
-                </div>
-                <div class="form-group">
-                    <label class="form-label">Preview</label>
-                    <div style="border: 1px dashed #ccc; padding: 10px; text-align: center; min-height: 100px;">
-                        <img id="imagePreview" style="max-width: 100%; max-height: 200px; display: none;">
-                        <div id="imagePlaceholder" style="color: #666;">
-                            <i class="fas fa-image" style="font-size: 2rem; margin-bottom: 10px;"></i>
-                            <div>Image preview will appear here</div>
+                <div class="contact-form">
+                    <form action="https://api.web3forms.com/submit" method="POST" id="form">
+                        <input type="hidden" name="access_key" value="3ad2ac7d-5205-4c7f-b856-de35b9a592f3">
+                        <input type="hidden" name="subject" value="New message from your portfolio website">
+                        <input type="checkbox" name="botcheck" id="" style="display: none;">
+                        
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required>
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" name="email" id="email" class="form-control" placeholder="your.email@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="text" name="phone" id="phone" class="form-control" placeholder="+91 1234567890">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" class="form-control" placeholder="Your message here..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Send Message</button>
+                    </form>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" id="imageModalCancel">Cancel</button>
-                <button class="btn btn-primary" id="imageModalInsert">Insert Image</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Ritesh Rathod. All rights reserved.</p>
+                <p>Designed with <i class="fas fa-heart" style="color: #dc2626;"></i> by Ritesh Rathod</p>
+                <p><a href="#home"><i class="fas fa-arrow-up"></i> Back to Top</a></p>
             </div>
         </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
     </div>
-    
-    <div class="modal" id="stickyModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <div class="modal-title">Add Sticky Note</div>
-                <button class="modal-close" id="stickyModalClose">
-                    <i class="fas fa-times"></i>
-                </button>
+
+    <!-- AI Chatbot -->
+    <div class="chatbot-container">
+        <div class="chatbot-toggle" id="chatbot-toggle">
+            <i class="fas fa-robot"></i>
+        </div>
+        <div class="chatbot-window" id="chatbot-window">
+            <div class="chatbot-header">
+                <i class="fas fa-robot"></i> Ritesh's Assistant
             </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label class="form-label">Note Content</label>
-                    <textarea class="form-control" id="stickyContent" rows="4"></textarea>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="message bot-message">
+                    👋 Hi there! I'm Ritesh's AI assistant. How can I help you today? You can ask me about Ritesh's skills, projects, or experience.
                 </div>
-                <div class="form-group">
-                    <label class="form-label">Color</label>
-                    <div style="display: flex; gap: 10px;">
-                        <div class="color-option" data-color="#ffeb3b" style="background-color: #ffeb3b; width: 30px; height: 30px; border-radius: 4px; cursor: pointer;"></div>
-                        <div class="color-option" data-color="#ff9800" style="background-color: #ff9800; width: 30px; height: 30px; border-radius: 4px; cursor: pointer;"></div>
-                        <div class="color-option" data-color="#f44336" style="background-color: #f44336; width: 30px; height: 30px; border-radius: 4px; cursor: pointer;"></div>
-                        <div class="color-option" data-color="#4caf50" style="background-color: #4caf50; width: 30px; height: 30px; border-radius: 4px; cursor: pointer;"></div>
-                        <div class="color-option" data-color="#2196f3" style="background-color: #2196f3; width: 30px; height: 30px; border-radius: 4px; cursor: pointer;"></div>
-                        <div class="color-option" data-color="#9c27b0" style="background-color: #9c27b0; width: 30px; height: 30px; border-radius: 4px; cursor: pointer;"></div>
-                    </div>
-                </div>
             </div>
-            <div class="modal-footer">
-                <button class="btn btn-secondary" id="stickyModalCancel">Cancel</button>
-                <button class="btn btn-primary" id="stickyModalAdd">Add Note</button>
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input" placeholder="Type your message...">
+                <button id="chatbot-send"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
     </div>
-    
-    <div class="pinned-content" id="pinnedContent">
-        <div class="pinned-header">
-            <div class="pinned-title" id="pinnedTitle">Pinned Content</div>
-            <button class="pinned-close" id="pinnedClose">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="pinned-body" id="pinnedBody">
-            <!-- Pinned content will be inserted here -->
-        </div>
-    </div>
-    
-    <div class="notification" id="notification"></div>
-    
-    <div class="loading" id="loading">
-        <div class="spinner"></div>
-        <div class="loading-text">Connecting to board...</div>
-    </div>
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+
+    <!-- JavaScript -->
     <script>
-        // Initialize Socket.io connection
-        const socket = io('https://whiteboard-server.example.com', {
-            transports: ['websocket'],
-            reconnection: true,
-            reconnectionAttempts: 5,
-            reconnectionDelay: 1000,
-            reconnectionDelayMax: 5000
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
         });
         
-        // Generate user ID and color
-        const userId = generateUserId();
-        const userColor = generateRandomColor();
-        let userName = `User${Math.floor(Math.random() * 1000)}`;
-        let boardId = '';
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('#nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
         
-        // DOM Elements
-        const whiteboard = document.getElementById('whiteboard');
-        const ctx = whiteboard.getContext('2d');
-        const tools = document.querySelectorAll('.tool');
-        const colorPicker = document.getElementById('colorPicker');
-        const fillPicker = document.getElementById('fillPicker');
-        const lineWidthSlider = document.getElementById('lineWidth');
-        const userList = document.getElementById('userList');
-        const userCount = document.getElementById('userCount');
-        const boardIdElement = document.getElementById('boardId');
-        const notification = document.getElementById('notification');
-        const micBtn = document.getElementById('micBtn');
-        const videoBtn = document.getElementById('videoBtn');
-        const screenShareBtn = document.getElementById('screenShareBtn');
-        const localVideo = document.getElementById('localVideo');
-        const remoteVideo = document.getElementById('remoteVideo');
-        const remoteVideoLabel = document.getElementById('remoteVideoLabel');
-        const localVideoLabel = document.getElementById('localVideoLabel');
-        const localVideoPlaceholder = localVideo.nextElementSibling;
+        // Back to Top Button
+        const backToTopBtn = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('active');
+            } else {
+                backToTopBtn.classList.remove('active');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Smooth scrolling for all links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Chatbot functionality
+        const chatbotToggle = document.getElementById('chatbot-toggle');
+        const chatbotWindow = document.getElementById('chatbot-window');
+        const chatbotMessages = document.getElementById('chatbot-messages');
+        const chatbotInput = document.getElementById('chatbot-input');
+        const chatbotSend = document.getElementById('chatbot-send');
+        let isTyping = false;
+
+        // Toggle chatbot window
+        chatbotToggle.addEventListener('click', () => {
+            chatbotWindow.classList.toggle('chatbot-visible');
+        });
+
+        // Send message function
+        function sendMessage() {
+            const message = chatbotInput.value.trim();
+            if (message === '' || isTyping) return;
+
+            // Add user message
+            addMessage(message, 'user-message');
+            chatbotInput.value = '';
+
+            // Show typing indicator
+            showTypingIndicator();
+
+            // Get AI response
+            getAIResponse(message).then(response => {
+                removeTypingIndicator();
+                addMessage(response, 'bot-message');
+            }).catch(error => {
+                removeTypingIndicator();
+                addMessage("I'm having trouble connecting to the AI service. Please try again later.", 'bot-message');
+                console.error("AI Error:", error);
+            });
+        }
+
+        // Get AI response from DeepSeek API
+        async function getAIResponse(userMessage) {
+            try {
+                // In a real implementation, you would call the DeepSeek API here
+                // For now, we'll use a local response system
+                return await generateLocalResponse(userMessage);
+            } catch (error) {
+                console.error("AI Error:", error);
+                return "I'm sorry, I couldn't process your request. Please try again later.";
+            }
+        }
+
+        // Local response generator (replace with actual API call)
+        function generateLocalResponse(userMessage) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    const lowerMessage = userMessage.toLowerCase();
+                    let response = '';
+
+                    if (lowerMessage.includes('hi') || lowerMessage.includes('hello') || lowerMessage.includes('hey')) {
+                        response = "👋 Hello! How can I help you today? You can ask me about Ritesh's skills, projects, or experience.";
+                    } 
+                    else if (lowerMessage.includes('about') || lowerMessage.includes('who are you')) {
+                        response = "I'm Ritesh's AI assistant 🤖. I can tell you about Ritesh's skills, projects, certificates, and experiences. What would you like to know?";
+                    }
+                    else if (lowerMessage.includes('skill') || lowerMessage.includes('expert')) {
+                        response = "Ritesh has strong skills in:\n- Python Programming (85%)\n- C Programming (80%)\n- Web Development (75%)\n- Problem Solving (90%)\n\nCheck out the 'About' section for more details!";
+                    }
+                    else if (lowerMessage.includes('project') || lowerMessage.includes('work')) {
+                        response = "Ritesh has worked on several projects including:\n- WhiteBoard Education (HTML/CSS/JS)\n\nYou can view all his projects in the 'Projects' section of this website.";
+                    }
+                    else if (lowerMessage.includes('contact') || lowerMessage.includes('reach') || lowerMessage.includes('email')) {
+                        response = "You can contact Ritesh through:\n📧 Email: riteshrathod016@gmail.com\n📞 Phone: +91 7721874530\n📍 Location: Nagpur, Maharashtra, India\n\nOr use the contact form on this page!";
+                    }
+                    else if (lowerMessage.includes('certificate') || lowerMessage.includes('certification')) {
+                        response = "Ritesh has earned certificates in:\n- Python Programming\n- C Programming\n- AWS Solution Architecture\n- And more!\n\nCheck the 'Certificates' section to view them all!";
+                    }
+                    else if (lowerMessage.includes('github') || lowerMessage.includes('code')) {
+                        response = "You can find Ritesh's GitHub profile here:\nhttps://github.com/ritesh-rathod16\n\nHe shares his projects and code there!";
+                    }
+                    else if (lowerMessage.includes('linkedin') || lowerMessage.includes('profile')) {
+                        response = "Connect with Ritesh on LinkedIn:\nhttps://linkedin.com/in/ritesh-rathod-34a5a3329\n\nGreat for professional networking!";
+                    }
+                    else if (lowerMessage.includes('instagram') || lowerMessage.includes('social')) {
+                        response = "Follow Ritesh on Instagram:\nhttps://www.instagram.com/ritesh_rathod_official/\n\nCheck out his personal side!";
+                    }
+                    else if (lowerMessage.includes('resume') || lowerMessage.includes('cv')) {
+                        response = "You can download Ritesh's resume from the 'Resume' section of this website. There's a download button at the bottom of that section!";
+                    }
+                    else if (lowerMessage.includes('education') || lowerMessage.includes('study')) {
+                        response = "Ritesh is currently pursuing his Bachelor's degree in Computer Science And Business System at St. Vincent Pallotti College Of Engineering And Technology. He completed his high school at St. Xaviers High School.";
+                    }
+                    else if (lowerMessage.includes('experience') || lowerMessage.includes('job')) {
+                        response = "Ritesh has experience as:\n- CTO at PhoenixAlgo (EdTech)\n- Operations Manager at E-Cell\n\nCheck the 'Resume' section for full details!";
+                    }
+                    else if (lowerMessage.includes('thank') || lowerMessage.includes('thanks')) {
+                        response = "You're welcome! 😊 Let me know if there's anything else I can help with.";
+                    }
+                    else {
+                        response = "I'm not sure I understand. You can ask me about:\n- Ritesh's skills\n- Projects\n- Certificates\n- Experience\n- How to contact him\n\nOr check out the relevant sections of this website!";
+                    }
+
+                    resolve(response);
+                }, 1000 + Math.random() * 1000);
+            });
+        }
+
+        // Show typing indicator
+        function showTypingIndicator() {
+            isTyping = true;
+            const typingDiv = document.createElement('div');
+            typingDiv.classList.add('typing-indicator');
+            typingDiv.id = 'typing-indicator';
+            typingDiv.innerHTML = `
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            `;
+            chatbotMessages.appendChild(typingDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        // Remove typing indicator
+        function removeTypingIndicator() {
+            isTyping = false;
+            const typingIndicator = document.getElementById('typing-indicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+
+        // Add message to chat
+        function addMessage(text, className) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', className);
+            messageDiv.textContent = text;
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        // Send message on button click
+        chatbotSend.addEventListener('click', sendMessage);
+
+        // Send message on Enter key
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Contact form submission
+        const form = document.getElementById("form");
+
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+            
+            // Disable the submit button to prevent multiple submissions
+            const submitBtn = form.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            
+            const formData = new FormData(form);
+            var object = {};
+            formData.forEach((value, key) => {
+                object[key] = value;
+            });
+            var json = JSON.stringify(object);
+
+            fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json"
+                },
+                body: json
+            })
+            .then(async (response) => {
+                let json = await response.json();
+                if (response.status == 200) {
+                    // Show success message
+                    alert("Message sent successfully! Thank you.");
+                    form.reset();
+                } else {
+                    alert("Error: " + json.message);
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+                alert("Something went wrong! Please try again later.");
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+            });
+        });
+    </script>
+</body>
+</html>
