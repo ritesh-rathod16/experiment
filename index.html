@@ -35,6 +35,54 @@
             font-weight: 600;
         }
         
+        /* Loader Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+        
+        .loader-logo {
+            width: 200px;
+            height: 200px;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        .loader-text {
+            color: var(--secondary-color);
+            font-size: 24px;
+            font-weight: 500;
+            margin-top: 20px;
+            animation: fadeInOut 3s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.95); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(0.95); }
+        }
+        
+        @keyframes fadeInOut {
+            0% { opacity: 0.5; }
+            50% { opacity: 1; }
+            100% { opacity: 0.5; }
+        }
+        
+        .loader-hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -148,12 +196,19 @@
             font-size: 72px;
             margin-bottom: 20px;
             letter-spacing: 2px;
+            animation: fadeIn 1.5s ease-in-out;
         }
         
         .hero p {
             font-size: 20px;
             margin-bottom: 30px;
             line-height: 1.6;
+            animation: fadeIn 2s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
         .btn {
@@ -166,6 +221,7 @@
             font-weight: 500;
             transition: all 0.3s ease;
             border: 2px solid var(--secondary-color);
+            animation: fadeIn 2.5s ease-in-out;
         }
         
         .btn:hover {
@@ -639,11 +695,17 @@
     </style>
 </head>
 <body>
+    <!-- Loader Animation -->
+    <div class="loader" id="loader">
+        <img src="https://cdn.corenexis.com/view/?img=d/ma15/003xWU.jpg" alt="GPS Highway Restaurant Logo" class="loader-logo">
+        <div class="loader-text">Welcome to GPS Highway Restaurant</div>
+    </div>
+
     <!-- Header -->
     <header id="header">
         <div class="container header-container">
             <div class="logo-container">
-                <img src="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg" alt="GPS Highway Restaurant Logo" class="logo-img">
+                <img src="https://cdn.corenexis.com/view/?img=d/ma15/003xWU.jpg" alt="GPS Highway Restaurant Logo" class="logo-img">
                 <a href="#" class="logo">GPS Highway Restaurant</a>
             </div>
             <nav>
@@ -694,7 +756,37 @@
         </div>
     </section>
 
-    
+    <!-- Quick Links Section -->
+    <section class="quick-links">
+        <div class="container">
+            <div class="section-title">
+                <h2>Quick Links</h2>
+            </div>
+            <div class="quick-links-grid">
+                <div class="quick-link-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Call Us</h3>
+                    <a href="tel:9021078335">9021078335</a>
+                </div>
+                <div class="quick-link-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <a href="https://goo.gl/maps/example" target="_blank">View on Map</a>
+                </div>
+                <div class="quick-link-item">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Our Menu</h3>
+                    <a href="menu.html">View Menu</a>
+                </div>
+                <div class="quick-link-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Reservations</h3>
+                    <a href="#reservation">Book a Table</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Menu Section -->
     <section class="menu" id="menu">
         <div class="container">
@@ -747,20 +839,20 @@
             <div class="video-container">
                 <div class="video-item">
                     <video controls>
-                        <source src="![GPS highway .mp4](<https://media-hosting.imagekit.io/8b731b1f45c04a22/GPS%20highway%20.mp4?Expires=1841954573&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=I8yFkimpPX4ypv6LsiALuV2LwLD-zbRqHS3e~S44khNEmAzQxLITRuZGC4oFJ2BLb3BQrcRCPKrMhfW7auUW4PaGhuz13q8XuO-z2BBth-tV6Q-XFIZE4efdQxbeJQKOl0AJmf1kGzbnXKW52onefQpJiV6B-AgpZG~eWgVCa~Wnr9J-cVjM6y5r-pG-4s14inLRV3wTeBVKE0xQNPzC2WE99emhBd5o92OtWtHkp1AME989fJggPzz2RtkAsOOvBVFDom3zY161nIdlNobywgL9ZKPmfXXMMdQy9IOWIHhZJdkxNSEGKfukor~0Jlpti0ewFZaGhDlnFFKLNKRaOA__>)" type="video/mp4">
-                    
+                        <source src="https://media-hosting.imagekit.io/8b731b1f45c04a22/GPS%20highway%20.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="video-item">
                     <video controls>
-                        <source src="h![h3.mp4](<https://media-hosting.imagekit.io/a3ec1257e5964342/h3.mp4?Expires=1841954846&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Q32MlLqENXE0kyP56SJJFfEo4zaPz6bTCYpxcy91jTnsmEmLGZ1T-BGuh32Af5yV0EhmNiOm8CjUVNGCilz2kFpvQeh-gBny8~7WD32fRjZUdIVVuAR0djyjhFsmVOJsF~a~SQ5SadyqGsJLTlD0dVxIcRAjg0De6tjGWE~lFxmD4yAPWBZ8hHHn8JeiNOJ4BknH9pXZwuzzCziRDbjEebORJYhaC9Xyn55XLCR3fH1iwBrDlkWgK4lDcwJZ5nwIVQ7Wk6gG-C9bCdO9kbwGmBxy6mJLIzLCk3Jen~olhh33TWPydKjvC0jxJkr4773oiKwrV7dCB6X-V9hGb38a4g__>)" type="video/mp4">
-                       
+                        <source src="https://media-hosting.imagekit.io/a3ec1257e5964342/h3.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
                     </video>
                 </div>
                 <div class="video-item">
                     <video controls>
-                        <source src="![h2.mp4](<https://media-hosting.imagekit.io/7c2145ad8da34a28/h2.mp4?Expires=1841954846&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Or2A~xzoM3I-TSAIaW7lvIZsROx-CEpg8nJY3x59IsAdsDXPU3LcNRIAekU2dOVY7iwHWYv4J3d2GH45cUQ8kVkqpS2tC7Ypi1-6VvM1RpNeq4DmiCEcSvzGb-xm8mGksi4rvaHpfTzf1x93UdVgYID4sxg1gFxoW9i2KpIYuZT35BpzzJFtcSmSTbbXzYnMcEWiUz7V0mYe5x02NkcommfzCptDQ7LB5HjEu~og0EN-1gVzh4OWOa1xKOSkkPBQ8xfeXAl6MwaFP8mP0tKPPadK~ooU~hrzYhrXgM3C0OXTZWpzc4Bq2vqCBh9g8dPNSggpnEOYZSRS3GkNb8sdRA__>)" type="video/mp4">
-                        
+                        <source src="https://media-hosting.imagekit.io/7c2145ad8da34a28/h2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
                     </video>
                 </div>
             </div>
@@ -874,6 +966,17 @@
     </footer>
 
     <script>
+        // Loader Animation
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loader = document.getElementById('loader');
+                loader.classList.add('loader-hidden');
+                
+                // Enable scrolling after loader disappears
+                document.body.style.overflow = 'auto';
+            }, 3000); // 3 seconds delay
+        });
+
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const navMenu = document.getElementById('nav-menu');
