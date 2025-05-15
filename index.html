@@ -3,40 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ritesh Rathod | Computer Science Student & Developer</title>
+    <title>La Belle Vie | Fine Dining Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        /* Global Styles */
         :root {
-            --primary-color: #2563eb;
-            --primary-light: #3b82f6;
-            --secondary-color: #1e293b;
-            --accent-color: #dc2626;
-            --light-color: #f8fafc;
-            --dark-color: #0f172a;
-            --success-color: #10b981;
-            --card-bg: #ffffff;
-            --text-color: #334155;
-            --text-light: #64748b;
+            --primary-color: #1a1a1a;
+            --secondary-color: #c19a6b;
+            --accent-color: #e8e8e8;
+            --text-light: #f8f8f8;
+            --text-dark: #333333;
         }
         
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
         }
         
         body {
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: #f1f5f9;
-            scroll-behavior: smooth;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            background-color: #f9f9f9;
+            overflow-x: hidden;
         }
         
-        a {
-            text-decoration: none;
-            color: var(--primary-color);
-            transition: all 0.3s ease;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
         }
         
         .container {
@@ -45,98 +41,21 @@
             padding: 0 20px;
         }
         
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: var(--primary-color);
-            color: #fff;
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-weight: 500;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        
-        .btn:hover {
-            background: var(--primary-light);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-        }
-        
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-        }
-        
-        .btn-outline:hover {
-            background: var(--primary-color);
-            color: white;
-        }
-        
-        .btn-icon {
-            width: 40px;
-            height: 40px;
-            padding: 0;
-            justify-content: center;
-            border-radius: 50%;
-        }
-        
-        .section-title {
-            text-align: center;
-            margin-bottom: 48px;
-            color: var(--secondary-color);
-            position: relative;
-            font-size: 36px;
-            font-weight: 700;
-        }
-        
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: var(--primary-color);
-            margin: 16px auto;
-            border-radius: 2px;
-        }
-        
-        .section-subtitle {
-            color: var(--text-light);
-            text-align: center;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            font-size: 18px;
-        }
-        
-        /* Card Styles */
-        .card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-        }
-        
         /* Header Styles */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            color: var(--secondary-color);
+            background-color: var(--primary-color);
+            color: var(--text-light);
             padding: 20px 0;
             position: fixed;
             width: 100%;
-            top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 10px 0;
+            background-color: rgba(26, 26, 26, 0.95);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         
         .header-container {
@@ -146,27 +65,11 @@
         }
         
         .logo {
-            font-size: 24px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .logo span {
-            color: var(--primary-color);
-        }
-        
-        .logo-icon {
-            width: 32px;
-            height: 32px;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-family: 'Playfair Display', serif;
         }
         
         nav ul {
@@ -179,21 +82,26 @@
         }
         
         nav ul li a {
-            color: var(--secondary-color);
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 16px;
             font-weight: 500;
             transition: color 0.3s ease;
             position: relative;
-            padding: 8px 0;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
         }
         
         nav ul li a::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
             width: 0;
             height: 2px;
-            background: var(--primary-color);
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary-color);
             transition: width 0.3s ease;
         }
         
@@ -201,76 +109,105 @@
             width: 100%;
         }
         
-        nav ul li a:hover {
-            color: var(--primary-color);
-        }
-        
-        .mobile-menu {
+        .mobile-menu-btn {
             display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
             font-size: 24px;
             cursor: pointer;
-            color: var(--secondary-color);
         }
         
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(30, 41, 59, 0.9), rgba(30, 41, 59, 0.95)), url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
-            color: #fff;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
             display: flex;
             align-items: center;
+            justify-content: center;
             text-align: center;
-            padding-top: 80px;
+            color: var(--text-light);
+            padding: 0 20px;
         }
         
         .hero-content {
             max-width: 800px;
-            margin: 0 auto;
         }
         
         .hero h1 {
-            font-size: 52px;
-            margin-bottom: 24px;
-            line-height: 1.2;
+            font-size: 72px;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
         }
         
         .hero p {
             font-size: 20px;
-            margin-bottom: 32px;
-            opacity: 0.9;
+            margin-bottom: 30px;
+            line-height: 1.6;
         }
         
-        .hero-btns {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary-color);
         }
         
-        .hero-btns .btn {
-            padding: 14px 32px;
-            font-size: 16px;
+        .btn:hover {
+            background-color: transparent;
+            color: var(--secondary-color);
         }
         
         .btn-outline {
-            background: transparent;
-            border: 2px solid #fff;
+            background-color: transparent;
+            color: var(--secondary-color);
+            margin-left: 15px;
         }
         
         .btn-outline:hover {
-            background: #fff;
-            color: var(--secondary-color);
+            background-color: var(--secondary-color);
+            color: var(--text-light);
         }
         
         /* About Section */
         .about {
             padding: 100px 0;
-            background: #fff;
+            background-color: var(--text-light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 42px;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
         }
         
         .about-content {
             display: flex;
             align-items: center;
-            gap: 60px;
+            gap: 50px;
         }
         
         .about-text {
@@ -279,795 +216,302 @@
         
         .about-text h3 {
             font-size: 32px;
-            margin-bottom: 24px;
-            color: var(--secondary-color);
+            margin-bottom: 20px;
+            color: var(--primary-color);
         }
         
         .about-text p {
             margin-bottom: 20px;
-            color: var(--text-light);
-            line-height: 1.7;
-        }
-        
-        .skills {
-            margin-top: 40px;
-        }
-        
-        .skills h4 {
-            font-size: 20px;
-            margin-bottom: 20px;
-            color: var(--secondary-color);
-        }
-        
-        .skill-item {
-            margin-bottom: 20px;
-        }
-        
-        .skill-name {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-weight: 500;
-        }
-        
-        .skill-bar {
-            height: 10px;
-            background: #e2e8f0;
-            border-radius: 5px;
-            overflow: hidden;
-        }
-        
-        .skill-progress {
-            height: 100%;
-            background: var(--primary-color);
-            border-radius: 5px;
-            position: relative;
-        }
-        
-        .skill-progress::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: shine 2s infinite;
-        }
-        
-        @keyframes shine {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        
-        /* Resume Section */
-        .resume {
-            padding: 100px 0;
-            background: #f8fafc;
-        }
-        
-        .resume-container {
-            display: flex;
-            gap: 50px;
-        }
-        
-        .resume-column {
-            flex: 1;
-        }
-        
-        .resume-column h3 {
-            font-size: 24px;
-            margin-bottom: 30px;
-            color: var(--secondary-color);
-            position: relative;
-            padding-left: 20px;
-        }
-        
-        .resume-column h3::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 8px;
-            height: 16px;
-            width: 4px;
-            background: var(--primary-color);
-            border-radius: 2px;
-        }
-        
-        .resume-item {
-            background: var(--card-bg);
-            padding: 30px;
-            margin-bottom: 30px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            position: relative;
-            border-left: 4px solid var(--primary-color);
-        }
-        
-        .resume-item h3 {
-            font-size: 20px;
-            margin-bottom: 10px;
-            color: var(--secondary-color);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .resume-item h3 i {
-            color: var(--primary-color);
-            font-size: 18px;
-        }
-        
-        .resume-item h4 {
+            line-height: 1.8;
             font-size: 16px;
-            color: var(--primary-color);
-            margin-bottom: 12px;
-            font-weight: 500;
         }
         
-        .resume-item .date {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            background: #e2e8f0;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 14px;
-            margin-bottom: 15px;
-            color: var(--text-light);
+        .about-image {
+            flex: 1;
+            position: relative;
         }
         
-        .resume-item .date i {
-            font-size: 12px;
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         
-        .resume-item p {
-            color: var(--text-light);
-            line-height: 1.7;
+        .about-image::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 10px solid var(--secondary-color);
+            border-radius: 10px;
+            top: -20px;
+            left: -20px;
+            z-index: -1;
         }
         
-        .download-resume {
-            text-align: center;
+        /* Menu Section */
+        .menu {
+            padding: 100px 0;
+            background-color: #f5f5f5;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
             margin-top: 50px;
         }
         
-        /* Certificates Section */
-        .certificates {
-            padding: 100px 0;
-            background: #fff;
-        }
-        
-        .certificate-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 30px;
-        }
-        
-        .certificate-item {
-            background: var(--card-bg);
-            border-radius: 12px;
+        .menu-item {
+            background-color: var(--text-light);
+            border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-            border: 1px solid #e2e8f0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-        .certificate-item:hover {
+        .menu-item:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         
-        .certificate-img {
+        .menu-item img {
+            width: 100%;
             height: 250px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .certificate-img img {
-            width: 100%;
-            height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
         }
         
-        .certificate-item:hover .certificate-img img {
-            transform: scale(1.1);
+        .menu-item-content {
+            padding: 25px;
         }
         
-        .certificate-info {
-            padding: 24px;
+        .menu-item-content h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
         }
         
-        .certificate-info h3 {
-            margin-bottom: 12px;
-            color: var(--secondary-color);
-            font-size: 18px;
-        }
-        
-        .certificate-info p {
-            color: var(--text-light);
-            margin-bottom: 20px;
-            font-size: 14px;
+        .menu-item-content p {
+            color: #666;
+            margin-bottom: 15px;
             line-height: 1.6;
         }
         
-        .certificate-actions {
-            display: flex;
-            gap: 12px;
-        }
-        
-        .certificate-actions .btn {
-            padding: 8px 16px;
-            font-size: 14px;
-            flex: 1;
-            text-align: center;
-            justify-content: center;
-        }
-        
-        .view-btn {
-            background: white;
-            color: var(--primary-color);
-            border: 1px solid var(--primary-color);
-        }
-        
-        .view-btn:hover {
-            background: var(--primary-light);
-            color: white;
-        }
-        
-        /* Projects Section */
-        .projects {
-            padding: 100px 0;
-            background: #f8fafc;
-        }
-        
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-        
-        .project-card {
-            background: var(--card-bg);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e2e8f0;
-        }
-        
-        .project-img {
-            height: 200px;
-            overflow: hidden;
-            position: relative;
-        }
-        
-        .project-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .project-card:hover .project-img img {
-            transform: scale(1.1);
-        }
-        
-        .project-content {
-            padding: 24px;
-        }
-        
-        .project-content h3 {
-            margin-bottom: 12px;
-            color: var(--secondary-color);
+        .price {
             font-size: 20px;
-        }
-        
-        .project-content p {
-            margin-bottom: 20px;
-            color: var(--text-light);
-            line-height: 1.6;
-        }
-        
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
-        
-        .project-tag {
-            background: #e2e8f0;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 12px;
-            color: var(--text-light);
-        }
-        
-        .project-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .project-links .btn {
-            flex: 1;
-            text-align: center;
-            justify-content: center;
-        }
-        
-        /* Contact Section */
-        .contact {
-            padding: 100px 0;
-            background: #fff;
-        }
-        
-        .contact-container {
-            display: flex;
-            gap: 60px;
-        }
-        
-        .contact-info {
-            flex: 1;
-        }
-        
-        .contact-info h3 {
-            font-size: 28px;
-            margin-bottom: 24px;
+            font-weight: 700;
             color: var(--secondary-color);
         }
         
-        .contact-info p {
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background-color: var(--primary-color);
             color: var(--text-light);
-            margin-bottom: 32px;
-            line-height: 1.7;
-            font-size: 15px;
         }
         
-        .contact-details {
-            margin-bottom: 40px;
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
         }
         
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-            padding: 16px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
+        .testimonial-item {
+            padding: 0 20px;
         }
         
-        .contact-item:hover {
-            background: #f1f5f9;
-            transform: translateX(5px);
-        }
-        
-        .contact-icon {
-            width: 48px;
-            height: 48px;
-            background: var(--primary-color);
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 16px;
+        .testimonial-item p {
             font-size: 20px;
-            flex-shrink: 0;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            font-style: italic;
         }
         
-        .contact-text h4 {
-            font-size: 16px;
-            color: var(--text-light);
-            margin-bottom: 4px;
-        }
-        
-        .contact-text p, .contact-text a {
+        .testimonial-item .author {
+            font-weight: 700;
             font-size: 18px;
-            font-weight: 500;
             color: var(--secondary-color);
         }
         
-        .social-links {
-            display: flex;
-            gap: 16px;
+        /* Reservation */
+        .reservation {
+            padding: 100px 0;
+            background-color: var(--text-light);
         }
         
-        .social-link {
-            width: 48px;
-            height: 48px;
-            background: #f1f5f9;
-            color: var(--primary-color);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            font-size: 20px;
-        }
-        
-        .social-link:hover {
-            background: var(--primary-color);
-            color: #fff;
-            transform: translateY(-3px);
-        }
-        
-        .contact-form {
-            flex: 1;
-            background: var(--card-bg);
+        .reservation-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: #fff;
             padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
         }
         
         .form-group {
-            margin-bottom: 24px;
+            margin-bottom: 25px;
         }
         
         .form-group label {
             display: block;
             margin-bottom: 8px;
             font-weight: 500;
-            color: var(--secondary-color);
         }
         
-        .form-control {
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
             width: 100%;
-            padding: 12px 16px;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: 'Montserrat', sans-serif;
             font-size: 16px;
-            transition: all 0.3s ease;
+            transition: border-color 0.3s ease;
         }
         
-        .form-control:focus {
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--secondary-color);
             outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
         
-        textarea.form-control {
-            height: 150px;
-            resize: vertical;
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
         }
         
         /* Footer */
         footer {
-            background: var(--secondary-color);
-            color: #fff;
-            padding: 40px 0;
-            text-align: center;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 60px 0 20px;
         }
         
         .footer-content {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        
-        .footer-content p {
-            margin: 0;
-            color: #e2e8f0;
-            font-size: 15px;
-        }
-        
-        .footer-content a {
-            color: #fff;
-            font-weight: 500;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: all 0.3s ease;
-        }
-        
-        .footer-content a:hover {
-            color: var(--primary-light);
-        }
-        
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 50px;
-            height: 50px;
-            background: var(--primary-color);
-            color: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            z-index: 999;
-        }
-        
-        .back-to-top:hover {
-            background: var(--primary-light);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
-        }
-        
-        .back-to-top.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Chatbot Styles */
-        .chatbot-container {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            z-index: 1000;
-        }
-
-        .chatbot-toggle {
-            width: 60px;
-            height: 60px;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            font-size: 24px;
-            transition: all 0.3s ease;
-        }
-
-        .chatbot-toggle:hover {
-            background: var(--primary-light);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .chatbot-window {
-            position: absolute;
-            bottom: 80px;
-            right: 0;
-            width: 380px;
-            height: 500px;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            overflow: hidden;
-            display: none;
-            flex-direction: column;
-            border: 1px solid #e2e8f0;
-            transform: translateY(20px);
-            opacity: 0;
-            transition: all 0.3s ease;
-        }
-
-        .chatbot-window.chatbot-visible {
-            display: flex;
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .chatbot-header {
-            background: var(--secondary-color);
-            color: white;
-            padding: 16px;
-            text-align: center;
-            font-weight: 600;
-            font-size: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-        }
-
-        .chatbot-messages {
-            flex: 1;
-            padding: 20px;
-            overflow-y: auto;
-            background: #f8fafc;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-        }
-
-        .message {
-            margin-bottom: 8px;
-            max-width: 85%;
-            padding: 12px 16px;
-            border-radius: 18px;
-            line-height: 1.5;
-            position: relative;
-            font-size: 14px;
-            animation: fadeIn 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .bot-message {
-            background: white;
-            color: var(--text-color);
-            align-self: flex-start;
-            border-bottom-left-radius: 4px;
-        }
-
-        .user-message {
-            background: var(--primary-color);
-            color: white;
-            margin-left: auto;
-            border-bottom-right-radius: 4px;
-        }
-
-        .chatbot-input {
-            display: flex;
-            padding: 16px;
-            background: white;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        .chatbot-input input {
-            flex: 1;
-            padding: 12px 16px;
-            border: 1px solid #e2e8f0;
-            border-radius: 30px;
-            outline: none;
-            font-size: 14px;
-            transition: all 0.3s ease;
-        }
-
-        .chatbot-input input:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        .chatbot-input button {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 48px;
-            height: 48px;
-            margin-left: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .chatbot-input button:hover {
-            background: var(--primary-light);
-            transform: translateY(-2px);
-        }
-
-        .typing-indicator {
-            display: flex;
-            padding: 12px 16px;
-            background: white;
-            border-radius: 18px;
-            border-bottom-left-radius: 4px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            width: fit-content;
-            margin-bottom: 8px;
-        }
-
-        .typing-dot {
-            width: 8px;
-            height: 8px;
-            background: var(--text-light);
-            border-radius: 50%;
-            margin: 0 2px;
-            animation: typingAnimation 1.4s infinite ease-in-out;
-        }
-
-        .typing-dot:nth-child(1) {
-            animation-delay: 0s;
-        }
-
-        .typing-dot:nth-child(2) {
-            animation-delay: 0.2s;
-        }
-
-        .typing-dot:nth-child(3) {
-            animation-delay: 0.4s;
-        }
-
-        @keyframes typingAnimation {
-            0%, 60%, 100% { transform: translateY(0); }
-            30% { transform: translateY(-5px); }
-        }
-
-        /* Cloud Skills Section */
-        .cloud-skills {
-            padding: 100px 0;
-            background: #f8fafc;
-        }
-
-        .cloud-badges {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
         }
-
-        .cloud-badge {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            display: flex;
-            flex-direction: column;
-            border: 1px solid #e2e8f0;
+        
+        .footer-column h3 {
+            font-size: 22px;
+            margin-bottom: 25px;
+            color: var(--secondary-color);
+            position: relative;
+            padding-bottom: 10px;
         }
-
-        .cloud-badge img {
-            width: 100%;
-            height: 200px;
-            object-fit: contain;
-            background: white;
-            padding: 20px;
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 0;
         }
-
-        .badge-info {
-            padding: 24px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
+        
+        .footer-column p {
+            margin-bottom: 15px;
+            line-height: 1.8;
         }
-
-        .badge-info h3 {
-            margin-bottom: 12px;
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
             color: var(--secondary-color);
         }
-
-        .badge-info p {
-            margin-bottom: 20px;
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
             color: var(--text-light);
-            flex: 1;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         /* Responsive Styles */
-        @media (max-width: 1200px) {
-            .section-title {
-                font-size: 32px;
-            }
-            
-            .hero h1 {
-                font-size: 48px;
-            }
-        }
-        
         @media (max-width: 992px) {
-            .about-content, .resume-container, .contact-container {
+            .hero h1 {
+                font-size: 60px;
+            }
+            
+            .about-content {
                 flex-direction: column;
-                gap: 40px;
             }
             
-            .project-grid, .certificate-grid, .cloud-badges {
-                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            }
-            
-            .contact-form {
+            .about-image {
                 margin-top: 40px;
+            }
+            
+            .about-image::before {
+                display: none;
             }
         }
         
         @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 48px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .btn {
+                padding: 10px 25px;
+            }
+            
             nav ul {
                 position: fixed;
                 top: 80px;
                 left: -100%;
                 width: 100%;
                 height: calc(100vh - 80px);
-                background: rgba(255, 255, 255, 0.98);
+                background-color: var(--primary-color);
                 flex-direction: column;
                 align-items: center;
-                padding-top: 40px;
+                justify-content: center;
                 transition: all 0.5s ease;
-                backdrop-filter: blur(10px);
             }
             
             nav ul.active {
@@ -1078,101 +522,64 @@
                 margin: 15px 0;
             }
             
-            .mobile-menu {
+            .mobile-menu-btn {
                 display: block;
             }
             
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-            
-            .hero-btns {
+            .form-row {
                 flex-direction: column;
-                gap: 15px;
-            }
-
-            .chatbot-window {
-                width: 320px;
-                height: 450px;
-                bottom: 70px;
-            }
-            
-            .section-title {
-                font-size: 28px;
-                margin-bottom: 32px;
-            }
-            
-            .section-title::after {
-                width: 60px;
-                height: 3px;
+                gap: 0;
             }
         }
         
         @media (max-width: 576px) {
             .hero h1 {
+                font-size: 36px;
+            }
+            
+            .section-title h2 {
                 font-size: 32px;
             }
             
-            .hero p {
-                font-size: 16px;
-            }
-            
-            .btn {
-                padding: 10px 20px;
-            }
-            
-            .certificate-grid, .project-grid, .cloud-badges {
+            .menu-grid {
                 grid-template-columns: 1fr;
             }
             
-            .chatbot-window {
-                width: 280px;
-                right: -20px;
+            .reservation-form {
+                padding: 30px 20px;
             }
         }
     </style>
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header id="header">
         <div class="container header-container">
-            <div class="logo">
-                <div class="logo-icon">R</div>
-                <span>Ritesh Rathod</span>
-            </div>
+            <a href="#" class="logo">La Belle Vie</a>
             <nav>
                 <ul id="nav-menu">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#resume">Resume</a></li>
-                    <li><a href="#certificates">Certificates</a></li>
-                    <li><a href="#cloud-skills">Cloud Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#reservation">Reservations</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
-                <div class="mobile-menu" id="mobile-menu">
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
                     <i class="fas fa-bars"></i>
-                </div>
+                </button>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="container hero-content">
-            <h1>Hi, I'm <span style="color: var(--primary-light);">Ritesh Rathod</span> 👋</h1>
-            <p>🚀 Student | 💻 Developer | 🔥 Tech Enthusiast</p>
-            <div class="hero-btns">
-                <a href="#contact" class="btn"><i class="fas fa-paper-plane"></i> Contact Me</a>
-                <a href="#resume" class="btn btn-outline"><i class="fas fa-file-alt"></i> View Resume</a>
+        <div class="hero-content">
+            <h1>Exquisite Dining Experience</h1>
+            <p>Discover the art of fine dining with our carefully crafted menu featuring the freshest ingredients and innovative culinary techniques.</p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn">View Menu</a>
+                <a href="#reservation" class="btn btn-outline">Reserve a Table</a>
             </div>
         </div>
     </section>
@@ -1180,491 +587,200 @@
     <!-- About Section -->
     <section class="about" id="about">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <p class="section-subtitle">Get to know me, my skills, and what I'm passionate about</p>
+            <div class="section-title">
+                <h2>Our Story</h2>
+            </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>First Year Student At St. Vincent Pallotti College Of Engineering And Technology</h3>
-                    <p>Hello! I'm Ritesh Rathod, a passionate student with a strong interest in Data Analysis and web development. I'm enthusiastic about learning new technologies and developing skills that will help me grow both academically and professionally.</p>
-                    
-                    <div class="skills">
-                        <h4>My Skills</h4>
-                        <div class="skill-item">
-                            <div class="skill-name">
-                                <span><i class="fab fa-python"></i> Python Programming</span>
-                                <span>85%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 85%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-name">
-                                <span><i class="fas fa-code"></i> Web Development</span>
-                                <span>75%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 75%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-name">
-                                <span><i class="fas fa-c"></i> C Programming</span>
-                                <span>80%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 80%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <div class="skill-name">
-                                <span><i class="fas fa-brain"></i> Problem Solving</span>
-                                <span>90%</span>
-                            </div>
-                            <div class="skill-bar">
-                                <div class="skill-progress" style="width: 90%;"></div>
-                            </div>
-                        </div>
-                    </div>
+                    <h3>Culinary Excellence Since 1995</h3>
+                    <p>Founded by Chef Antoine Moreau, La Belle Vie has been serving exceptional French cuisine with a modern twist for over two decades. Our restaurant is a celebration of culinary artistry, where tradition meets innovation.</p>
+                    <p>We source only the finest ingredients from local farmers and producers who share our commitment to quality and sustainability. Each dish is a masterpiece, carefully crafted to delight your senses.</p>
+                    <p>Our elegant dining room provides the perfect setting for an unforgettable dining experience, whether you're celebrating a special occasion or simply enjoying an evening of exceptional food and wine.</p>
+                    <a href="#about-more" class="btn">Learn More</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Restaurant Interior">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Resume Section -->
-    <section class="resume" id="resume">
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
         <div class="container">
-            <h2 class="section-title">My Resume</h2>
-            <p class="section-subtitle">My education and professional journey</p>
-            <div class="resume-container">
-                <div class="resume-column">
-                    <h3>Education</h3>
-                    <div class="resume-item">
-                        <h3><i class="fas fa-graduation-cap"></i> Bachelor's Degree in Computer Science And Business System</h3>
-                        <h4>St. Vincent Pallotti College Of Engineering And Technology</h4>
-                        <span class="date"><i class="far fa-calendar-alt"></i> 2024 - Present</span>
-                        <p>🎓 B.Tech in Computer Science & Business Systems <br>
-📊 Specializing in Data Analysis & Business Intelligence<br>
-💡 Passionate about transforming data into strategic decisions<br>
-🏆 Google Python Certified<br>
-                            
-                        🔗 Bridging the gap between technical systems and business value
-                        </p>
-
-
-                    </div>
-                    <div class="resume-item">
-                        <h3><i class="fas fa-school"></i> High School</h3>
-                        <h4>St. Xaviers High School</h4>
-                        <span class="date"><i class="far fa-calendar-alt"></i> 2023 - 2024</span>
-                        <p>Completed high school with honors in Science and Mathematics. Participated in coding competitions and science fairs.</p>
-                    </div>
-                </div>
-                <div class="resume-column">
-                    <h3>Experience</h3>
-                    <div class="resume-item">
-                        <h3><i class="fas fa-briefcase"></i> Chief Technology Officer</h3>
-                        <h4>PhoenixAlgo</h4>
-                        <span class="date"><i class="far fa-calendar-alt"></i> Feb 2025 - Present</span>
-                        <p>🚀 Proudly serving as CTO at PhoenixAlgo, where we revolutionize education through tech! My role includes:<br>
-                             🎨 Designing visuals<br>
-💻 Managing web development<br>
-👥 Leading innovative teams<br>
-
-Honored to drive our mission forward!</p>
-                    </div>
-                    <div class="resume-item">
-                        <h3><i class="fas fa-users"></i> E-Cell Club</h3>
-                        <h4>Operation Management</h4>
-                        <span class="date"><i class="far fa-calendar-alt"></i> Feb 2025 - Present</span>
-                        <p>🚀 Leading entrepreneurship events, optimizing resources & mentoring innovators to strengthen the startup ecosystem. Passionate about empowering future leaders through impactful initiatives.🗽</p>
-                    </div>
-                </div>
+            <div class="section-title">
+                <h2>Our Menu</h2>
             </div>
-            <div class="download-resume">
-                <a href="Resume.pdf" class="btn" download><i class="fas fa-download"></i> Download Full Resume (PDF)</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Certificates Section -->
-    <section class="certificates" id="certificates">
-        <div class="container">
-            <h2 class="section-title">My Certificates</h2>
-            <p class="section-subtitle">Certifications I've earned through my learning journey</p>
-            <div class="certificate-grid">
-                <!-- C Programming Certificate -->
-                <div class="certificate-item">
-                    <div class="certificate-img">
-                        <img src="C_Programming_Course_Certificate.png" alt="C Programming Certificate">
-                    </div>
-                    <div class="certificate-info">
-                        <h3>C Programming Course</h3>
-                        <p>Successfully completed the C Programming Course from Infosys Springboard on December 14, 2024.</p>
-                        <div class="certificate-actions">
-                            <a href="C_Programming_Course_Certificate.png" class="btn" download><i class="fas fa-download"></i> Download</a>
-                            <a href="C_Programming_Course_Certificate.png" class="btn view-btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-                        </div>
+            <div class="menu-grid">
+                <!-- Appetizers -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Foie Gras">
+                    <div class="menu-item-content">
+                        <h3>Foie Gras Terrine</h3>
+                        <p>House-made foie gras terrine with brioche toast, fig compote, and micro greens</p>
+                        <div class="price">$28</div>
                     </div>
                 </div>
                 
-                <!-- Python Crash Course -->
-                <div class="certificate-item">
-                    <div class="certificate-img">
-                        <img src="Crash_Course_On_Python.png" alt="Python Crash Course Certificate">
-                    </div>
-                    <div class="certificate-info">
-                        <h3>Python Crash Course</h3>
-                        <p>Completed Google's Crash Course on Python through Coursera, certified on March 18, 2025.</p>
-                        <div class="certificate-actions">
-                            <a href="Crash_Course_On_Python.png" class="btn" download><i class="fas fa-download"></i> Download</a>
-                            <a href="Crash_Course_On_Python.png" class="btn view-btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-                        </div>
+                <!-- Main Courses -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Duck Confit">
+                    <div class="menu-item-content">
+                        <h3>Duck Confit</h3>
+                        <p>Traditional French duck confit with roasted potatoes, haricots verts, and cherry sauce</p>
+                        <div class="price">$42</div>
                     </div>
                 </div>
-
-                <!-- Introduction to Python -->
-                <div class="certificate-item">
-                    <div class="certificate-img">
-                        <img src="Python_Programming_Course_Certificate.png" alt="Introduction to Python Certificate">
-                    </div>
-                    <div class="certificate-info">
-                        <h3>Introduction to Python</h3>
-                        <p>Successfully completed the Introduction to Python course from Infosys Springboard on April 25, 2025.</p>
-                        <div class="certificate-actions">
-                            <a href="Python_Programming_Course_Certificate.png" class="btn" download><i class="fas fa-download"></i> Download</a>
-                            <a href="Python_Programming_Course_Certificate.png" class="btn view-btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-                        </div>
+                
+                <!-- Desserts -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Crème Brûlée">
+                    <div class="menu-item-content">
+                        <h3>Vanilla Crème Brûlée</h3>
+                        <p>Classic vanilla bean custard with caramelized sugar crust and fresh berries</p>
+                        <div class="price">$14</div>
                     </div>
                 </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#full-menu" class="btn">View Full Menu</a>
+            </div>
+        </div>
+    </section>
 
-                <!-- AWS Solution Architecture -->
-                <div class="certificate-item">
-                    <div class="certificate-img">
-                        <img src="Solution_Architecture_Job_Simulation.jpg" alt="AWS Solution Architecture Certificate">
-                    </div>
-                    <div class="certificate-info">
-                        <h3>AWS Solution Architecture</h3>
-                        <p>Completed practical tasks in designing scalable hosting architectures through Forage job simulation in March 2025.</p>
-                        <div class="certificate-actions">
-                            <a href="Solution_Architecture_Job_Simulation.jpg" class="btn" download><i class="fas fa-download"></i> Download</a>
-                            <a href="Solution_Architecture_Job_Simulation.jpg" class="btn view-btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- iBase Technology Internship Certificate -->
-                <div class="certificate-item">
-                    <div class="certificate-img">
-                        <img src="iBase_Technology_Certificate.png" alt="iBase Technology Internship Certificate">
-                    </div>
-                    <div class="certificate-info">
-                        <h3>Trainee Developer Internship</h3>
-                        <p>Successfully completed a 7-day internship at iBase Electrosoft LLP from 24/03/2025 to 30/03/2025, gaining practical knowledge in Python development.</p>
-                        <div class="certificate-actions">
-                            <a href="iBase_Technology_Certificate.png" class="btn" download><i class="fas fa-download"></i> Download</a>
-                            <a href="iBase_Technology_Certificate.png" class="btn view-btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Python Loops & Functions -->
-                <div class="certificate-item">
-                    <div class="certificate-img">
-                        <img src="Python_Programming_Course_Certificate (2).png" alt="Python Loops & Functions Certificate">
-                    </div>
-                    <div class="certificate-info">
-                        <h3>Python: Loops & Functions</h3>
-                        <p>Completed Concepts in Python: Loops, Functions and Returns through Coursera Project Network on April 15, 2025.</p>
-                        <div class="certificate-actions">
-                            <a href="Python_Programming_Course_Certificate (2).png" class="btn" download><i class="fas fa-download"></i> Download</a>
-                            <a href="Python_Programming_Course_Certificate (2).png" class="btn view-btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Raisoni Hackathon Certificate -->
-                <div class="certificate-item">
-                    <div class="certificate-img">
-                        <img src="Raisoni_Hackathon_Certificate.png" alt="Raisoni Hackathon Certificate">
-                    </div>
-                    <div class="certificate-info">
-                        <h3>Raisoni Summer of Code</h3>
-                        <p>Successfully participated in RSOC-2025: A 6-Hour Hackathon at GHRCEM, Nagpur on 3rd April 2025.</p>
-                        <div class="certificate-actions">
-                            <a href="Raisoni_Hackathon_Certificate.png" class="btn" download><i class="fas fa-download"></i> Download</a>
-                            <a href="Raisoni_Hackathon_Certificate.png" class="btn view-btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hackathon Certificate -->
-                <div class="certificate-item">
-                    <div class="certificate-img">
-                        <img src="Hackathon.jpg" alt="Hackathon Participation Certificate">
-                    </div>
-                    <div class="certificate-info">
-                        <h3>Hackathon Participation</h3>
-                        <p>Participated in Technex Hackathon at St. Vincent Pallotti College of Engineering & Technology, Nagpur on 20th-21st January 2025.</p>
-                        <div class="certificate-actions">
-                            <a href="Hackathon.jpg" class="btn" download><i class="fas fa-download"></i> Download</a>
-                            <a href="Hackathon.jpg" class="btn view-btn" target="_blank"><i class="fas fa-eye"></i> View</a>
-                        </div>
-                    </div>
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>What Our Guests Say</h2>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-item">
+                    <p>"The dining experience at La Belle Vie was absolutely phenomenal. Every dish was a work of art, and the service was impeccable. The duck confit was the best I've ever had!"</p>
+                    <div class="author">- Sarah Johnson</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Cloud Skills Section -->
-    <section class="cloud-skills" id="cloud-skills">
+    <!-- Reservation Section -->
+    <section class="reservation" id="reservation">
         <div class="container">
-            <h2 class="section-title">Google Cloud Skills</h2>
-            <p class="section-subtitle">My achievements in Google Cloud learning path</p>
-            
-            <div class="cloud-badges">
-                <!-- Badge 1 -->
-                <div class="cloud-badge">
-                    <img src="https://cdn.qwiklabs.com/9%2BJTqB%2FJwwE9XQyQ2qQfX3b4jV%2B%2FZ7Z4L6Q9X5z9Y5Y%3D" alt="Google Cloud Essentials Badge">
-                    <div class="badge-info">
-                        <h3>Google Cloud Essentials</h3>
-                        <p>Completed the Google Cloud Essentials quest, demonstrating foundational knowledge of Google Cloud services.</p>
-                        <a href="https://www.cloudskillsboost.google/public_profiles/79310cb2-e658-4c3d-8055-4fb5273fa378/badges/15578536" class="btn btn-outline" target="_blank"><i class="fas fa-external-link-alt"></i> View Badge</a>
-                    </div>
-                </div>
-                
-                <!-- Badge 2 -->
-                <div class="cloud-badge">
-                    <img src="https://cdn.qwiklabs.com/9%2BJTqB%2FJwwE9XQyQ2qQfX3b4jV%2B%2FZ7Z4L6Q9X5z9Y5Y%3D" alt="Create and Manage Cloud Resources Badge">
-                    <div class="badge-info">
-                        <h3>Create and Manage Cloud Resources</h3>
-                        <p>Learned to create and manage Google Cloud resources including virtual machines, networks, and storage.</p>
-                        <a href="https://www.cloudskillsboost.google/public_profiles/79310cb2-e658-4c3d-8055-4fb5273fa378/badges/15578928" class="btn btn-outline" target="_blank"><i class="fas fa-external-link-alt"></i> View Badge</a>
-                    </div>
-                </div>
-                
-                <!-- Badge 3 -->
-                <div class="cloud-badge">
-                    <img src="https://cdn.qwiklabs.com/9%2BJTqB%2FJwwE9XQyQ2qQfX3b4jV%2B%2FZ7Z4L6Q9X5z9Y5Y%3D" alt="Perform Foundational Infrastructure Tasks Badge">
-                    <div class="badge-info">
-                        <h3>Perform Foundational Infrastructure Tasks</h3>
-                        <p>Demonstrated ability to perform foundational tasks in Google Cloud including deploying applications and monitoring.</p>
-                        <a href="https://www.cloudskillsboost.google/public_profiles/79310cb2-e658-4c3d-8055-4fb5273fa378/badges/15583296" class="btn btn-outline" target="_blank"><i class="fas fa-external-link-alt"></i> View Badge</a>
-                    </div>
-                </div>
+            <div class="section-title">
+                <h2>Make a Reservation</h2>
             </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section class="projects" id="projects">
-        <div class="container">
-            <h2 class="section-title">My Projects</h2>
-            <p class="section-subtitle">Some of my recent work and personal projects</p>
-            <div class="project-grid">
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="WhiteBoard Education">
-                    </div>
-                    <div class="project-content">
-                        <h3>WhiteBoard Education</h3>
-                        <p>A responsive educational platform built with HTML, CSS, and JavaScript that provides interactive learning experiences for students.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">HTML</span>
-                            <span class="project-tag">React</span>
-                            <span class="project-tag">CSS</span>
-                            <span class="project-tag">JavaScript</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://ritesh-rathod16.github.io/Whiteboard_Education/" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            <a href="https://github.com/ritesh-rathod16/Whiteboard_Education" class="btn btn-outline"><i class="fab fa-github"></i> Source Code</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- New Gym Website Project -->
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="FitFlex Gym Website">
-                    </div>
-                    <div class="project-content">
-                        <h3>Lakudkar Gym Website</h3>
-                        <p>A modern gym website with membership management, class scheduling, and trainer booking functionality built with Html, React and Node.js.</p>
-                        <div class="project-tags">
-                            <span class="project-tag">HTML</span>
-                            <span class="project-tag">React</span>
-                            <span class="project-tag">Node.js</span>
-                            <span class="project-tag">CSS</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://ritesh-rathod16.github.io/Lakudkar_gym11/" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                            <a href="https://github.com/ritesh-rathod16/Lakudkar_gym11/blob/main/index.html" class="btn btn-outline"><i class="fab fa-github"></i> Source Code</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <p class="section-subtitle">Feel free to reach out for collaborations or just a friendly hello 👋</p>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Let's Connect</h3>
-                    <p>I'm always open to discussing new opportunities, learning resources, or potential collaborations. Feel free to reach out!</p>
-                    
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Email</h4>
-                                <a href="mailto:riteshrathod016@gmail.com">riteshrathod016@gmail.com</a>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Phone</h4>
-                                <a href="tel:+917721874530">+91 7721874530</a>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-text">
-                                <h4>Location</h4>
-                                <p>Nagpur, Maharashtra,<br>India</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <h3>Follow Me</h3>
-                    <div class="social-links">
-                        <a href="https://github.com/ritesh-rathod16" class="social-link" target="_blank" title="GitHub">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://linkedin.com/in/ritesh-rathod-34a5a3329" class="social-link" target="_blank" title="LinkedIn">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://www.instagram.com/ritesh_rathod_official/" class="social-link" target="_blank" title="Instagram">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://twitter.com/" class="social-link" target="_blank" title="Twitter">
-                            <i class="fab fa-twitter"></i>
-                        </a>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <form action="https://api.web3forms.com/submit" method="POST" id="form">
-                        <input type="hidden" name="access_key" value="3ad2ac7d-5205-4c7f-b856-de35b9a592f3">
-                        <input type="hidden" name="subject" value="New message from your portfolio website">
-                        <input type="checkbox" name="botcheck" id="" style="display: none;">
-                        
+            <div class="reservation-form">
+                <form id="booking-form">
+                    <div class="form-row">
                         <div class="form-group">
-                            <label for="name">Your Name</label>
-                            <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required>
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">Your Email</label>
-                            <input type="email" name="email" id="email" class="form-control" placeholder="your.email@example.com" required>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
                         </div>
+                    </div>
+                    <div class="form-row">
                         <div class="form-group">
                             <label for="phone">Phone Number</label>
-                            <input type="text" name="phone" id="phone" class="form-control" placeholder="+91 1234567890">
+                            <input type="tel" id="phone" name="phone" required>
                         </div>
                         <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea name="message" id="message" class="form-control" placeholder="Your message here..." required></textarea>
+                            <label for="guests">Number of Guests</label>
+                            <select id="guests" name="guests" required>
+                                <option value="1">1 Person</option>
+                                <option value="2">2 People</option>
+                                <option value="3">3 People</option>
+                                <option value="4">4 People</option>
+                                <option value="5">5 People</option>
+                                <option value="6+">6+ People</option>
+                            </select>
                         </div>
-                        <button type="submit" class="btn"><i class="fas fa-paper-plane"></i> Send Message</button>
-                    </form>
-                </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Time</label>
+                            <input type="time" id="time" name="time" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="special-requests">Special Requests</label>
+                        <textarea id="special-requests" name="special-requests" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">Book Table</button>
+                </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
+    <footer id="contact">
         <div class="container">
             <div class="footer-content">
-                <p>&copy; 2025 Ritesh Rathod. All rights reserved.</p>
-                <p>Designed with <i class="fas fa-heart" style="color: #dc2626;"></i> by Ritesh Rathod</p>
-                <p><a href="#home"><i class="fas fa-arrow-up"></i> Back to Top</a></p>
+                <div class="footer-column">
+                    <h3>La Belle Vie</h3>
+                    <p>Experience the art of fine dining at our elegant restaurant in the heart of the city. We offer an unforgettable culinary journey through French cuisine with modern influences.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 Gourmet Avenue, Culinary District</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@labellevie.com</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Opening Hours</h3>
+                    <p>Monday - Thursday: 5:30 PM - 10:00 PM</p>
+                    <p>Friday - Saturday: 5:00 PM - 11:00 PM</p>
+                    <p>Sunday: 5:00 PM - 9:00 PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 La Belle Vie. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top Button -->
-    <div class="back-to-top" id="back-to-top">
-        <i class="fas fa-arrow-up"></i>
-    </div>
-
-    <!-- AI Chatbot -->
-    <div class="chatbot-container">
-        <div class="chatbot-toggle" id="chatbot-toggle">
-            <i class="fas fa-robot"></i>
-        </div>
-        <div class="chatbot-window" id="chatbot-window">
-            <div class="chatbot-header">
-                <i class="fas fa-robot"></i> Ritesh's Assistant
-            </div>
-            <div class="chatbot-messages" id="chatbot-messages">
-                <div class="message bot-message">
-                    👋 Hi there! I'm Ritesh's AI assistant. How can I help you today? You can ask me about Ritesh's skills, projects, or experience.
-                </div>
-            </div>
-            <div class="chatbot-input">
-                <input type="text" id="chatbot-input" placeholder="Type your message...">
-                <button id="chatbot-send"><i class="fas fa-paper-plane"></i></button>
-            </div>
-        </div>
-    </div>
-
-    <!-- JavaScript -->
     <script>
         // Mobile Menu Toggle
-        const mobileMenuBtn = document.getElementById('mobile-menu');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
         const navMenu = document.getElementById('nav-menu');
         
         mobileMenuBtn.addEventListener('click', () => {
             navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
         
         // Close mobile menu when clicking on a link
-        const navLinks = document.querySelectorAll('#nav-menu a');
-        navLinks.forEach(link => {
+        document.querySelectorAll('#nav-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
             });
         });
         
-        // Back to Top Button
-        const backToTopBtn = document.getElementById('back-to-top');
+        // Header scroll effect
+        const header = document.getElementById('header');
         
         window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopBtn.classList.add('active');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
             } else {
-                backToTopBtn.classList.remove('active');
+                header.classList.remove('scrolled');
             }
         });
         
-        backToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        
-        // Smooth scrolling for all links
+        // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1680,198 +796,48 @@ Honored to drive our mission forward!</p>
                 }
             });
         });
-
-        // Chatbot functionality
-        const chatbotToggle = document.getElementById('chatbot-toggle');
-        const chatbotWindow = document.getElementById('chatbot-window');
-        const chatbotMessages = document.getElementById('chatbot-messages');
-        const chatbotInput = document.getElementById('chatbot-input');
-        const chatbotSend = document.getElementById('chatbot-send');
-        let isTyping = false;
-
-        // Toggle chatbot window
-        chatbotToggle.addEventListener('click', () => {
-            chatbotWindow.classList.toggle('chatbot-visible');
-        });
-
-        // Send message function
-        function sendMessage() {
-            const message = chatbotInput.value.trim();
-            if (message === '' || isTyping) return;
-
-            // Add user message
-            addMessage(message, 'user-message');
-            chatbotInput.value = '';
-
-            // Show typing indicator
-            showTypingIndicator();
-
-            // Get AI response
-            getAIResponse(message).then(response => {
-                removeTypingIndicator();
-                addMessage(response, 'bot-message');
-            }).catch(error => {
-                removeTypingIndicator();
-                addMessage("I'm having trouble connecting to the AI service. Please try again later.", 'bot-message');
-                console.error("AI Error:", error);
-            });
-        }
-
-        // Get AI response from DeepSeek API
-        async function getAIResponse(userMessage) {
-            try {
-                // In a real implementation, you would call the DeepSeek API here
-                // For now, we'll use a local response system
-                return await generateLocalResponse(userMessage);
-            } catch (error) {
-                console.error("AI Error:", error);
-                return "I'm sorry, I couldn't process your request. Please try again later.";
-            }
-        }
-
-        // Local response generator (replace with actual API call)
-        function generateLocalResponse(userMessage) {
-            return new Promise((resolve) => {
-                setTimeout(() => {
-                    const lowerMessage = userMessage.toLowerCase();
-                    let response = '';
-
-                    if (lowerMessage.includes('hi') || lowerMessage.includes('hello') || lowerMessage.includes('hey')) {
-                        response = "👋 Hello! How can I help you today? You can ask me about Ritesh's skills, projects, or experience.";
-                    } 
-                    else if (lowerMessage.includes('about') || lowerMessage.includes('who are you')) {
-                        response = "I'm Ritesh's AI assistant 🤖. I can tell you about Ritesh's skills, projects, certificates, and experiences. What would you like to know?";
-                    }
-                    else if (lowerMessage.includes('skill') || lowerMessage.includes('expert')) {
-                        response = "Ritesh has strong skills in:\n- Python Programming (85%)\n- C Programming (80%)\n- Web Development (75%)\n- Problem Solving (90%)\n\nCheck out the 'About' section for more details!";
-                    }
-                    else if (lowerMessage.includes('project') || lowerMessage.includes('work')) {
-                        response = "Ritesh has worked on several projects including:\n- WhiteBoard Education (HTML/CSS/JS)\n\nYou can view all his projects in the 'Projects' section of this website.";
-                    }
-                    else if (lowerMessage.includes('contact') || lowerMessage.includes('reach') || lowerMessage.includes('email')) {
-                        response = "You can contact Ritesh through:\n📧 Email: riteshrathod016@gmail.com\n📞 Phone: +91 7721874530\n📍 Location: Nagpur, Maharashtra, India\n\nOr use the contact form on this page!";
-                    }
-                    else if (lowerMessage.includes('certificate') || lowerMessage.includes('certification')) {
-                        response = "Ritesh has earned certificates in:\n- Python Programming\n- C Programming\n- AWS Solution Architecture\n- And more!\n\nCheck the 'Certificates' section to view them all!";
-                    }
-                    else if (lowerMessage.includes('github') || lowerMessage.includes('code')) {
-                        response = "You can find Ritesh's GitHub profile here:\nhttps://github.com/ritesh-rathod16\n\nHe shares his projects and code there!";
-                    }
-                    else if (lowerMessage.includes('linkedin') || lowerMessage.includes('profile')) {
-                        response = "Connect with Ritesh on LinkedIn:\nhttps://linkedin.com/in/ritesh-rathod-34a5a3329\n\nGreat for professional networking!";
-                    }
-                    else if (lowerMessage.includes('instagram') || lowerMessage.includes('social')) {
-                        response = "Follow Ritesh on Instagram:\nhttps://www.instagram.com/ritesh_rathod_official/\n\nCheck out his personal side!";
-                    }
-                    else if (lowerMessage.includes('resume') || lowerMessage.includes('cv')) {
-                        response = "You can download Ritesh's resume from the 'Resume' section of this website. There's a download button at the bottom of that section!";
-                    }
-                    else if (lowerMessage.includes('education') || lowerMessage.includes('study')) {
-                        response = "Ritesh is currently pursuing his Bachelor's degree in Computer Science And Business System at St. Vincent Pallotti College Of Engineering And Technology. He completed his high school at St. Xaviers High School.";
-                    }
-                    else if (lowerMessage.includes('experience') || lowerMessage.includes('job')) {
-                        response = "Ritesh has experience as:\n- CTO at PhoenixAlgo (EdTech)\n- Operations Manager at E-Cell\n\nCheck the 'Resume' section for full details!";
-                    }
-                    else if (lowerMessage.includes('thank') || lowerMessage.includes('thanks')) {
-                        response = "You're welcome! 😊 Let me know if there's anything else I can help with.";
-                    }
-                    else {
-                        response = "I'm not sure I understand. You can ask me about:\n- Ritesh's skills\n- Projects\n- Certificates\n- Experience\n- How to contact him\n\nOr check out the relevant sections of this website!";
-                    }
-
-                    resolve(response);
-                }, 1000 + Math.random() * 1000);
-            });
-        }
-
-        // Show typing indicator
-        function showTypingIndicator() {
-            isTyping = true;
-            const typingDiv = document.createElement('div');
-            typingDiv.classList.add('typing-indicator');
-            typingDiv.id = 'typing-indicator';
-            typingDiv.innerHTML = `
-                <div class="typing-dot"></div>
-                <div class="typing-dot"></div>
-                <div class="typing-dot"></div>
-            `;
-            chatbotMessages.appendChild(typingDiv);
-            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-        }
-
-        // Remove typing indicator
-        function removeTypingIndicator() {
-            isTyping = false;
-            const typingIndicator = document.getElementById('typing-indicator');
-            if (typingIndicator) {
-                typingIndicator.remove();
-            }
-        }
-
-        // Add message to chat
-        function addMessage(text, className) {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('message', className);
-            messageDiv.textContent = text;
-            chatbotMessages.appendChild(messageDiv);
-            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-        }
-
-        // Send message on button click
-        chatbotSend.addEventListener('click', sendMessage);
-
-        // Send message on Enter key
-        chatbotInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendMessage();
-            }
-        });
-
-        // Contact form submission
-        const form = document.getElementById("form");
-
-        form.addEventListener("submit", function (e) {
+        
+        // Form submission
+        const bookingForm = document.getElementById('booking-form');
+        
+        bookingForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Disable the submit button to prevent multiple submissions
-            const submitBtn = form.querySelector('button[type="submit"]');
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            
-            const formData = new FormData(form);
-            var object = {};
-            formData.forEach((value, key) => {
-                object[key] = value;
-            });
-            var json = JSON.stringify(object);
-
-            fetch("https://api.web3forms.com/submit", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    Accept: "application/json"
-                },
-                body: json
-            })
-            .then(async (response) => {
-                let json = await response.json();
-                if (response.status == 200) {
-                    // Show success message
-                    alert("Message sent successfully! Thank you.");
-                    form.reset();
-                } else {
-                    alert("Error: " + json.message);
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-                alert("Something went wrong! Please try again later.");
-            })
-            .finally(() => {
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-            });
+            // Here you would typically send the form data to a server
+            // For this example, we'll just show an alert
+            alert('Thank you for your reservation! We will contact you shortly to confirm your booking.');
+            bookingForm.reset();
         });
+        
+        // Testimonial slider (simple version)
+        const testimonials = [
+            {
+                text: "The dining experience at La Belle Vie was absolutely phenomenal. Every dish was a work of art, and the service was impeccable. The duck confit was the best I've ever had!",
+                author: "Sarah Johnson"
+            },
+            {
+                text: "An unforgettable evening! The wine pairing was perfect, and the foie gras terrine melted in my mouth. Can't wait to come back for our anniversary.",
+                author: "Michael Chen"
+            },
+            {
+                text: "From the moment we walked in, we felt special. The ambiance, the food, the attention to detail - everything was perfect. The crème brûlée was divine!",
+                author: "Emily Rodriguez"
+            }
+        ];
+        
+        let currentTestimonial = 0;
+        const testimonialElement = document.querySelector('.testimonial-item');
+        
+        function rotateTestimonials() {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            testimonialElement.innerHTML = `
+                <p>"${testimonials[currentTestimonial].text}"</p>
+                <div class="author">- ${testimonials[currentTestimonial].author}</div>
+            `;
+        }
+        
+        // Rotate testimonials every 5 seconds
+        setInterval(rotateTestimonials, 5000);
     </script>
 </body>
 </html>
