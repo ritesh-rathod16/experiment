@@ -156,21 +156,6 @@
             line-height: 1.6;
         }
         
-        .contact-banner {
-            background-color: var(--secondary-color);
-            color: var(--text-light);
-            padding: 15px;
-            margin-bottom: 30px;
-            border-radius: 5px;
-            font-weight: 500;
-        }
-        
-        .contact-banner a {
-            color: var(--text-light);
-            text-decoration: none;
-            margin: 0 10px;
-        }
-        
         .btn {
             display: inline-block;
             padding: 12px 30px;
@@ -274,6 +259,48 @@
             z-index: -1;
         }
         
+        /* Quick Links */
+        .quick-links {
+            padding: 80px 0;
+            background-color: #f5f5f5;
+        }
+        
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .quick-link-item {
+            background-color: white;
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .quick-link-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .quick-link-item i {
+            font-size: 40px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .quick-link-item h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .quick-link-item a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
         /* Menu Section */
         .menu {
             padding: 100px 0;
@@ -328,64 +355,10 @@
             color: var(--secondary-color);
         }
         
-        /* Full Menu Section */
-        .full-menu {
-            display: none;
-            padding: 50px 0;
-            background-color: #f5f5f5;
-        }
-        
-        .full-menu.active {
-            display: block;
-        }
-        
-        .menu-category {
-            margin-bottom: 50px;
-        }
-        
-        .menu-category h3 {
-            font-size: 28px;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--secondary-color);
-        }
-        
-        .menu-items-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .menu-card {
-            background-color: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .menu-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .menu-card h4 {
-            font-size: 18px;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-        
-        .menu-card .price {
-            font-size: 18px;
-            color: var(--secondary-color);
-            font-weight: 600;
-        }
-        
-        /* Video Gallery Section */
+        /* Video Gallery */
         .video-gallery {
             padding: 100px 0;
             background-color: var(--primary-color);
-            color: var(--text-light);
         }
         
         .video-container {
@@ -397,19 +370,14 @@
         
         .video-item {
             position: relative;
-            padding-bottom: 56.25%; /* 16:9 aspect ratio */
-            height: 0;
-            overflow: hidden;
             border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
         }
         
-        .video-item iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .video-item video {
             width: 100%;
-            height: 100%;
-            border: none;
+            display: block;
         }
         
         /* Reservation */
@@ -463,6 +431,25 @@
         
         .form-row .form-group {
             flex: 1;
+        }
+        
+        /* Map Section */
+        .map-section {
+            padding: 80px 0;
+            background-color: var(--text-light);
+        }
+        
+        .map-container {
+            margin-top: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 500px;
+            border: 0;
         }
         
         /* Footer */
@@ -542,38 +529,10 @@
             transform: translateY(-3px);
         }
         
-        .map-container {
-            margin-top: 20px;
-            border-radius: 10px;
-            overflow: hidden;
-        }
-        
-        .map-container iframe {
-            width: 100%;
-            height: 300px;
-            border: 0;
-        }
-        
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .quick-links {
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .quick-links a {
-            color: var(--text-light);
-            text-decoration: none;
-            margin-bottom: 10px;
-            transition: color 0.3s ease;
-        }
-        
-        .quick-links a:hover {
-            color: var(--secondary-color);
         }
         
         /* Responsive Styles */
@@ -592,6 +551,10 @@
             
             .about-image::before {
                 display: none;
+            }
+            
+            .map-container iframe {
+                height: 400px;
             }
         }
         
@@ -637,6 +600,10 @@
                 flex-direction: column;
                 gap: 0;
             }
+            
+            .map-container iframe {
+                height: 350px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -665,9 +632,8 @@
                 font-size: 22px;
             }
             
-            .contact-banner {
-                font-size: 14px;
-                padding: 10px;
+            .map-container iframe {
+                height: 300px;
             }
         }
     </style>
@@ -677,14 +643,14 @@
     <header id="header">
         <div class="container header-container">
             <div class="logo-container">
-                <img src="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg?Expires=1841954441&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dxts~jCXOor4vu3SLzcluPfBN9SJBbSiwL4qVWGIQLTP2fBQ3dl0dsAmPGsdx71h-RN0FybaTNwvBRkd4n3JFRR3XMRJkAXW0tERkLkQfuLfLm2B-TD7wVTJnSdiH4T6OvTfokGhcAzaKFPdiWMHug9L10jE4iHwgr930RzFIYzsFiQ9z9jNxCYxdMBx8Xix9xjG7uKwyACCBvQgxfIAhiGXXvttc3CRHrbFt9Jk-J9or4CEtxnKVVYQ1yd19aOs4WbN0T7e76N-~V7jjQ7NtXTKwQnl92peercTUr7tUhvIpixysgKrgT-kVzbRBTNrZsid-bNPcG2vLBqGeE8mhw__" alt="GPS Highway Restaurant Logo" class="logo-img">
+                <img src="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg" alt="GPS Highway Restaurant Logo" class="logo-img">
                 <a href="#" class="logo">GPS Highway Restaurant</a>
             </div>
             <nav>
                 <ul id="nav-menu">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="menu.html">Menu</a></li>
                     <li><a href="#gallery">Gallery</a></li>
                     <li><a href="#reservation">Reservations</a></li>
                     <li><a href="#contact">Contact</a></li>
@@ -702,7 +668,7 @@
             <h1>Authentic Indian Cuisine</h1>
             <p>Experience the rich flavors of India with our carefully crafted menu featuring traditional recipes and the freshest ingredients.</p>
             <div class="hero-buttons">
-                <a href="#menu" class="btn">View Menu</a>
+                <a href="menu.html" class="btn">View Menu</a>
                 <a href="#reservation" class="btn btn-outline">Reserve a Table</a>
             </div>
         </div>
@@ -728,536 +694,76 @@
         </div>
     </section>
 
-    <!-- Menu Section -->
-<section class="menu" id="menu">
-    <div class="container">
-        <div class="section-title">
-            <h2>Our Menu</h2>
-        </div>
-        <div class="menu-grid">
-            <!-- Appetizers -->
-            <div class="menu-item">
-                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Paneer Tikka">
-                <div class="menu-item-content">
-                    <h3>Paneer Tikka</h3>
-                    <p>Marinated cottage cheese grilled to perfection in tandoor with spices</p>
-                    <div class="price">₹290</div>
-                </div>
-            </div>
-            
-            <!-- Main Courses -->
-            <div class="menu-item">
-                <img src="https://images.unsplash.com/photo-1633321702518-7feccafb94d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Butter Chicken">
-                <div class="menu-item-content">
-                    <h3>Butter Chicken</h3>
-                    <p>Tender chicken in a rich, creamy tomato gravy with aromatic spices</p>
-                    <div class="price">₹470</div>
-                </div>
-            </div>
-            
-            <!-- Desserts -->
-            <div class="menu-item">
-                <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Gulab Jamun">
-                <div class="menu-item-content">
-                    <h3>Gulab Jamun</h3>
-                    <p>Soft, melt-in-your-mouth milk balls soaked in sugar syrup</p>
-                    <div class="price">₹60</div>
-                </div>
-            </div>
-        </div>
-        <div style="text-align: center; margin-top: 40px;">
-            <a href="menu.html" class="btn">View Full Menu</a>
-        </div>
-    </div>
-</section>
-
-    <!-- Full Menu Section (hidden initially) -->
-    <section class="full-menu" id="full-menu">
+    <!-- Quick Links Section -->
+    <section class="quick-links">
         <div class="container">
-            <div class="menu-category">
-                <h3>Veg Tandoor Starters</h3>
-                <div class="menu-items-grid">
-                    <div class="menu-card">
-                        <h4>Paneer Lahori Tikka</h4>
-                        <div class="price">₹390</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Paneer Tikka</h4>
+            <div class="section-title">
+                <h2>Quick Links</h2>
+            </div>
+            <div class="quick-links-grid">
+                <div class="quick-link-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Call Us</h3>
+                    <a href="tel:9021078335">9021078335</a>
+                </div>
+                <div class="quick-link-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <a href="https://goo.gl/maps/example" target="_blank">View on Map</a>
+                </div>
+                <div class="quick-link-item">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Our Menu</h3>
+                    <a href="menu.html">View Menu</a>
+                </div>
+                <div class="quick-link-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Reservations</h3>
+                    <a href="#reservation">Book a Table</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Menu</h2>
+            </div>
+            <div class="menu-grid">
+                <!-- Appetizers -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Paneer Tikka">
+                    <div class="menu-item-content">
+                        <h3>Paneer Tikka</h3>
+                        <p>Marinated cottage cheese grilled to perfection in tandoor with spices</p>
                         <div class="price">₹290</div>
                     </div>
-                    <div class="menu-card">
-                        <h4>Paneer Malai Tikka</h4>
-                        <div class="price">₹390</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Paneer Afgani Tikka</h4>
-                        <div class="price">₹320</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Paneer Achari Tikka</h4>
-                        <div class="price">₹290</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Paneer Mastana Tikka</h4>
-                        <div class="price">₹290</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Paneer Garlic Tikka</h4>
-                        <div class="price">₹300</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Paneer Sheekh Kabab</h4>
-                        <div class="price">₹320</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Tandoori Mushroom</h4>
-                        <div class="price">₹320</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Veg Sheekh Kabab</h4>
-                        <div class="price">₹290</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Veg Rimzim Kabab</h4>
-                        <div class="price">₹310</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Veg Kangada Kabab</h4>
-                        <div class="price">₹310</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Paneer Lajawab</h4>
-                        <div class="price">₹420</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Paneer Pahadi Kabab</h4>
-                        <div class="price">₹400</div>
+                </div>
+                
+                <!-- Main Courses -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1633321702518-7feccafb94d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Butter Chicken">
+                    <div class="menu-item-content">
+                        <h3>Butter Chicken</h3>
+                        <p>Tender chicken in a rich, creamy tomato gravy with aromatic spices</p>
+                        <div class="price">₹470</div>
                     </div>
                 </div>
-            </div>
-
-            <div class="menu-category">
-                <h3>Main Course - Veg</h3>
-                <div class="menu-items-grid">
-                    <div class="menu-card">
-                        <h4>Malai Kofta</h4>
-                        <div class="price">₹300</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Veg Kofta Curry</h4>
-                        <div class="price">₹280</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Veg Egg Curry</h4>
-                        <div class="price">₹280</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Methi Mutter Masala</h4>
-                        <div class="price">₹280</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Paneer Ki Bahar</h4>
-                        <div class="price">₹330</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Paneer Takatak</h4>
-                        <div class="price">₹330</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Palak Paneer</h4>
-                        <div class="price">₹320</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Paneer Butter Masala</h4>
-                        <div class="price">₹320</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Paneer Tikka Masala</h4>
-                        <div class="price">₹330</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Paneer Mysoori</h4>
-                        <div class="price">₹310</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Paneer Masala</h4>
-                        <div class="price">₹310</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Paneer Saoji</h4>
-                        <div class="price">₹310</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Paneer Lacchedar</h4>
-                        <div class="price">₹320</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Paneer Kadai</h4>
-                        <div class="price">₹320</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Paneer Patiyala</h4>
-                        <div class="price">₹330</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Paneer Kolhapuri</h4>
-                        <div class="price">₹310</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-category">
-                <h3>Dal</h3>
-                <div class="menu-items-grid">
-                    <div class="menu-card">
-                        <h4>Dal Fry</h4>
-                        <div class="price">₹190</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Butter Dal Fry</h4>
-                        <div class="price">₹200</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Dal Tadka</h4>
-                        <div class="price">₹190</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Dal Kolhapuri</h4>
-                        <div class="price">₹200</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Jeera Dal</h4>
-                        <div class="price">₹170</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Dal Snaks</h4>
-                        <div class="price">₹220</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-category">
-                <h3>Non-Veg Main Course</h3>
-                <div class="menu-items-grid">
-                    <div class="menu-card">
-                        <h4>Chicken Tikka Masala (Full)</h4>
-                        <div class="price">₹900</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Chicken Rara Masala (Full)</h4>
-                        <div class="price">₹900</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Chicken Masala (Full)</h4>
-                        <div class="price">₹850</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Chicken Curry (Full)</h4>
-                        <div class="price">₹850</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Butter Chicken (Full)</h4>
-                        <div class="price">₹890</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Dhaba Chicken (Full)</h4>
-                        <div class="price">₹850</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Mysoori Chicken (Full)</h4>
-                        <div class="price">₹850</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Kadai Chicken (Full)</h4>
-                        <div class="price">₹850</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Chicken Patiyala (Full)</h4>
-                        <div class="price">₹850</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>GPS Style Chicken Saoji (Full)</h4>
-                        <div class="price">₹850</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Mutton Shahi Korma (Full)</h4>
-                        <div class="price">₹990</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Mutton Curry (Full)</h4>
-                        <div class="price">₹990</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Mutton Rogan Josh (Full)</h4>
-                        <div class="price">₹990</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>GPS Style Mutton Saoji (Full)</h4>
-                        <div class="price">₹990</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Bhuna Chicken (Full)</h4>
-                        <div class="price">₹850</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Bhuna Mutton (Full)</h4>
-                        <div class="price">₹990</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Mutton Rara Masala (Full)</h4>
-                        <div class="price">₹990</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-category">
-                <h3>Chinese Veg Starter</h3>
-                <div class="menu-items-grid">
-                    <div class="menu-card">
-                        <h4>Paneer 65</h4>
-                        <div class="price">₹340</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Chilli Paneer</h4>
-                        <div class="price">₹340</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Crunchy Paneer</h4>
-                        <div class="price">₹350</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Corn Cheese Ball</h4>
-                        <div class="price">₹370</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Veg Crispy</h4>
-                        <div class="price">₹310</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Veg Manchurian Ball</h4>
-                        <div class="price">₹310</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-category">
-                <h3>Beverages</h3>
-                <div class="menu-items-grid">
-                    <div class="menu-card">
-                        <h4>Mineral Water</h4>
-                        <div class="price">₹30</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Soft Drink (250ml)</h4>
-                        <div class="price">₹40</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Soda</h4>
-                        <div class="price">₹40</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Fresh Lime Soda</h4>
-                        <div class="price">₹80</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Virgin Mojito</h4>
-                        <div class="price">₹90</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-category">
-                <h3>Soup</h3>
-                <div class="menu-items-grid">
-                    <div class="menu-card">
-                        <h4>Veg Sweet Corn Soup</h4>
-                        <div class="price">₹140</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Non-Veg Sweet Corn Soup</h4>
-                        <div class="price">₹170</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Veg Manchow Soup</h4>
-                        <div class="price">₹140</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Non-Veg Manchow Soup</h4>
-                        <div class="price">₹170</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Veg Hot and Sour Soup</h4>
-                        <div class="price">₹140</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Non-Veg Hot and Sour Soup</h4>
-                        <div class="price">₹170</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Veg Clear Soup</h4>
-                        <div class="price">₹140</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Non-Veg Clear Soup</h4>
-                        <div class="price">₹170</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-category">
-                <h3>Salad and Papad</h3>
-                <div class="menu-items-grid">
-                    <div class="menu-card">
-                        <h4>Roasted Papad</h4>
-                        <div class="price">₹25</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Fry Papad</h4>
-                        <div class="price">₹30</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Masala Papad</h4>
-                        <div class="price">₹50</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Green Salad</h4>
-                        <div class="price">₹90</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Curd Salad</h4>
-                        <div class="price">₹150</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>French Fries</h4>
-                        <div class="price">₹230</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Paneer Pakoda</h4>
-                        <div class="price">₹290</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Veg Raita</h4>
-                        <div class="price">₹130</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-category">
-                <h3>Breads Basket</h3>
-                <div class="menu-items-grid">
-                    <div class="menu-card">
-                        <h4>Tandoori Roti</h4>
-                        <div class="price">₹20</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Butter Tandoori Roti</h4>
-                        <div class="price">₹25</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Plain Naan</h4>
-                        <div class="price">₹50</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Butter Naan</h4>
-                        <div class="price">₹60</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Garlic Naan</h4>
-                        <div class="price">₹70</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Laccha Paratha</h4>
-                        <div class="price">₹50</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Plain Kulcha</h4>
-                        <div class="price">₹60</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Stuff Kulcha</h4>
-                        <div class="price">₹90</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Masala Garlic Roti</h4>
-                        <div class="price">₹60</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Cheese Roti</h4>
-                        <div class="price">₹70</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Cheese Garlic Naan</h4>
-                        <div class="price">₹80</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-category">
-                <h3>Rice</h3>
-                <div class="menu-items-grid">
-                    <div class="menu-card">
-                        <h4>Steam Rice</h4>
-                        <div class="price">₹140</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Jeera Rice</h4>
-                        <div class="price">₹150</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Garlic Jeera Rice</h4>
-                        <div class="price">₹180</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Veg Pulao</h4>
-                        <div class="price">₹250</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Veg Biryani</h4>
-                        <div class="price">₹260</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Chicken Biryani</h4>
-                        <div class="price">₹300</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Mutton Biryani</h4>
-                        <div class="price">₹350</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Egg Biryani</h4>
-                        <div class="price">₹240</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>PNR Biryani</h4>
-                        <div class="price">₹290</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Butter Dal Khichdi</h4>
-                        <div class="price">₹260</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-category">
-                <h3>Dessert/Ice Cream</h3>
-                <div class="menu-items-grid">
-                    <div class="menu-card">
-                        <h4>Vanilla Ice Cream</h4>
-                        <div class="price">₹90</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Butter Scotch Ice Cream</h4>
-                        <div class="price">₹110</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Chocolate Sauce</h4>
-                        <div class="price">₹90</div>
-                    </div>
-                    <div class="menu-card">
-                        <h4>Gulab Jamun</h4>
+                
+                <!-- Desserts -->
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Gulab Jamun">
+                    <div class="menu-item-content">
+                        <h3>Gulab Jamun</h3>
+                        <p>Soft, melt-in-your-mouth milk balls soaked in sugar syrup</p>
                         <div class="price">₹60</div>
                     </div>
                 </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="menu.html" class="btn">View Full Menu</a>
             </div>
         </div>
     </section>
@@ -1266,17 +772,32 @@
     <section class="video-gallery" id="gallery">
         <div class="container">
             <div class="section-title">
-                <h2>Our Restaurant</h2>
+                <h2 style="color: var(--text-light);">Our Restaurant</h2>
             </div>
             <div class="video-container">
                 <div class="video-item">
-                    <iframe src="https://media-hosting.imagekit.io/8b731b1f45c04a22/GPS%20highway%20.mp4?Expires=1841954573&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=I8yFkimpPX4ypv6LsiALuV2LwLD-zbRqHS3e~S44khNEmAzQxLITRuZGC4oFJ2BLb3BQrcRCPKrMhfW7auUW4PaGhuz13q8XuO-z2BBth-tV6Q-XFIZE4efdQxbeJQKOl0AJmf1kGzbnXKW52onefQpJiV6B-AgpZG~eWgVCa~Wnr9J-cVjM6y5r-pG-4s14inLRV3wTeBVKE0xQNPzC2WE99emhBd5o92OtWtHkp1AME989fJggPzz2RtkAsOOvBVFDom3zY161nIdlNobywgL9ZKPmfXXMMdQy9IOWIHhZJdkxNSEGKfukor~0Jlpti0ewFZaGhDlnFFKLNKRaOA__" frameborder="0" allowfullscreen></iframe>
+                    <video controls>
+                        <source src="https://media-hosting.imagekit.io/8b731b1f45c04a22/GPS%20highway%20.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
                 <div class="video-item">
-                    <iframe src="https://media-hosting.imagekit.io/a3ec1257e5964342/h3.mp4?Expires=1841954846&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Q32MlLqENXE0kyP56SJJFfEo4zaPz6bTCYpxcy91jTnsmEmLGZ1T-BGuh32Af5yV0EhmNiOm8CjUVNGCilz2kFpvQeh-gBny8~7WD32fRjZUdIVVuAR0djyjhFsmVOJsF~a~SQ5SadyqGsJLTlD0dVxIcRAjg0De6tjGWE~lFxmD4yAPWBZ8hHHn8JeiNOJ4BknH9pXZwuzzCziRDbjEebORJYhaC9Xyn55XLCR3fH1iwBrDlkWgK4lDcwJZ5nwIVQ7Wk6gG-C9bCdO9kbwGmBxy6mJLIzLCk3Jen~olhh33TWPydKjvC0jxJkr4773oiKwrV7dCB6X-V9hGb38a4g__" frameborder="0" allowfullscreen></iframe>
+                    <video controls>
+                        <source src="https://media-hosting.imagekit.io/7c2145ad8da34a28/h2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
                 <div class="video-item">
-                    <iframe src="https://media-hosting.imagekit.io/7c2145ad8da34a28/h2.mp4?Expires=1841954846&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Or2A~xzoM3I-TSAIaW7lvIZsROx-CEpg8nJY3x59IsAdsDXPU3LcNRIAekU2dOVY7iwHWYv4J3d2GH45cUQ8kVkqpS2tC7Ypi1-6VvM1RpNeq4DmiCEcSvzGb-xm8mGksi4rvaHpfTzf1x93UdVgYID4sxg1gFxoW9i2KpIYuZT35BpzzJFtcSmSTbbXzYnMcEWiUz7V0mYe5x02NkcommfzCptDQ7LB5HjEu~og0EN-1gVzh4OWOa1xKOSkkPBQ8xfeXAl6MwaFP8mP0tKPPadK~ooU~hrzYhrXgM3C0OXTZWpzc4Bq2vqCBh9g8dPNSggpnEOYZSRS3GkNb8sdRA__" frameborder="0" allowfullscreen></iframe>
+                    <video controls>
+                        <source src="https://media-hosting.imagekit.io/a3ec1257e5964342/h3.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-item">
+                    <video controls>
+                        <source src="https://media-hosting.imagekit.io/3888fa269b104e21/h4.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
             </div>
         </div>
@@ -1337,6 +858,18 @@
         </div>
     </section>
 
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Location</h2>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52356.72936253133!2d78.9818823486328!3d21.066862200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4bfece213e8df%3A0xbafc5c14f7962ecd!2sGPS%20Highway%20Restaurant!5e1!3m2!1sen!2sin!4v1747341109593!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
@@ -1350,24 +883,20 @@
                     </div>
                 </div>
                 <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <div class="quick-links">
-                        <a href="#home">Home</a>
-                        <a href="#about">About Us</a>
-                        <a href="#menu">Our Menu</a>
-                        <a href="#gallery">Gallery</a>
-                        <a href="#reservation">Reservations</a>
-                        <a href="#contact">Contact Us</a>
-                    </div>
-                </div>
-                <div class="footer-column">
                     <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> <a href="https://www.google.com/maps/place/GPS+Highway+Restaurant/@21.0668622,78.9818823,15z/data=!4m6!3m5!1s0x3bd4bfece213e8df:0xbafc5c14f7962ecd!8m2!3d21.0668622!4d78.9818823!16s%2Fg%2F11q5q9q9q9?entry=ttu" target="_blank">123 Gourmet Avenue, Culinary District</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> <a href="https://goo.gl/maps/example" target="_blank">123 Gourmet Avenue, Culinary District</a></p>
                     <p><i class="fas fa-phone"></i> <a href="tel:9021078335">9021078335</a>, <a href="tel:9665615666">9665615666</a>, <a href="tel:8600360818">8600360818</a></p>
                     <p><i class="fas fa-envelope"></i> info@gpshighwayrestaurant.com</p>
-                    <div class="map-container">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52356.72936253133!2d78.9818823486328!3d21.066862200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4bfece213e8df%3A0xbafc5c14f7962ecd!2sGPS%20Highway%20Restaurant!5e1!3m2!1sen!2sin!4v1747341109593!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#reservation">Reservations</a></li>
+                    </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Opening Hours</h3>
@@ -1437,19 +966,6 @@
             // For this example, we'll just show an alert
             alert('Thank you for your reservation! We will contact you shortly to confirm your booking.');
             bookingForm.reset();
-        });
-        
-        // Full menu toggle
-        const viewFullMenuBtn = document.getElementById('view-full-menu');
-        const fullMenuSection = document.getElementById('full-menu');
-        
-        viewFullMenuBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            fullMenuSection.classList.add('active');
-            window.scrollTo({
-                top: fullMenuSection.offsetTop - 80,
-                behavior: 'smooth'
-            });
         });
     </script>
 </body>
