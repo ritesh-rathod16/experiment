@@ -381,6 +381,31 @@
             font-weight: 600;
         }
         
+        /* Video Gallery */
+        .video-gallery {
+            padding: 100px 0;
+            background-color: var(--primary-color);
+        }
+        
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .video-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .video-item video {
+            width: 100%;
+            display: block;
+        }
+        
         /* Reservation */
         .reservation {
             padding: 100px 0;
@@ -432,25 +457,6 @@
         
         .form-row .form-group {
             flex: 1;
-        }
-        
-        /* Location Map */
-        .location-map {
-            padding: 60px 0;
-            background-color: #f5f5f5;
-        }
-        
-        .map-container {
-            height: 500px;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .map-container iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
         }
         
         /* Footer */
@@ -530,10 +536,64 @@
             transform: translateY(-3px);
         }
         
+        .map-container {
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 300px;
+            border: 0;
+        }
+        
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Quick Links */
+        .quick-links {
+            padding: 80px 0;
+            background-color: #f5f5f5;
+        }
+        
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+        
+        .quick-link-item {
+            background-color: white;
+            padding: 30px 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .quick-link-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .quick-link-item i {
+            font-size: 40px;
+            color: var(--secondary-color);
+            margin-bottom: 20px;
+        }
+        
+        .quick-link-item h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        .quick-link-item a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 500;
         }
         
         /* Responsive Styles */
@@ -597,10 +657,6 @@
                 flex-direction: column;
                 gap: 0;
             }
-            
-            .map-container {
-                height: 350px;
-            }
         }
         
         @media (max-width: 576px) {
@@ -633,10 +689,6 @@
                 font-size: 14px;
                 padding: 10px;
             }
-            
-            .map-container {
-                height: 250px;
-            }
         }
     </style>
 </head>
@@ -645,7 +697,7 @@
     <header id="header">
         <div class="container header-container">
             <div class="logo-container">
-                <img src="https://scontent.fnag11-2.fna.fbcdn.net/v/t39.30808-6/305674073_543105144365602_1415964831719208534_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=5f2048&_nc_ohc=1j3Xl5J5JfYQ7kNvgG3Jx4X&_nc_ht=scontent.fnag11-2.fna&oh=00_AYD8QbZx0Gj3Vw5Uu2QfB3Q5kz6Q8X1Y9J8Z9Z1X2Z3Z4Z5Q&oe=664F9A8F" alt="GPS Highway Restaurant Logo" class="logo-img">
+                <img src="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg" alt="GPS Highway Restaurant Logo" class="logo-img">
                 <a href="#" class="logo">GPS Highway Restaurant</a>
             </div>
             <nav>
@@ -653,6 +705,7 @@
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
                     <li><a href="#reservation">Reservations</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -667,12 +720,6 @@
     <section class="hero" id="home">
         <div class="hero-content">
             <h1>Authentic Indian Cuisine</h1>
-            <div class="contact-banner">
-                Now we're open... Please contact us for booking: 
-                <a href="tel:9021078335">9021078335</a>, 
-                <a href="tel:9665615666">9665615666</a>, 
-                <a href="tel:8600360818">8600360818</a>
-            </div>
             <p>Experience the rich flavors of India with our carefully crafted menu featuring traditional recipes and the freshest ingredients.</p>
             <div class="hero-buttons">
                 <a href="#menu" class="btn">View Menu</a>
@@ -696,6 +743,37 @@
                 </div>
                 <div class="about-image">
                     <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Restaurant Interior">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Links Section -->
+    <section class="quick-links">
+        <div class="container">
+            <div class="section-title">
+                <h2>Quick Links</h2>
+            </div>
+            <div class="quick-links-grid">
+                <div class="quick-link-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Call Us</h3>
+                    <a href="tel:9021078335">9021078335</a>
+                </div>
+                <div class="quick-link-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <a href="https://goo.gl/maps/example" target="_blank">View on Map</a>
+                </div>
+                <div class="quick-link-item">
+                    <i class="fas fa-utensils"></i>
+                    <h3>Our Menu</h3>
+                    <a href="#menu">View Menu</a>
+                </div>
+                <div class="quick-link-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>Reservations</h3>
+                    <a href="#reservation">Book a Table</a>
                 </div>
             </div>
         </div>
@@ -1235,6 +1313,41 @@
         </div>
     </section>
 
+    <!-- Video Gallery Section -->
+    <section class="video-gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: var(--text-light);">Our Restaurant</h2>
+            </div>
+            <div class="video-container">
+                <div class="video-item">
+                    <video controls>
+                        <source src="https://media-hosting.imagekit.io/8b731b1f45c04a22/GPS%20highway%20.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-item">
+                    <video controls>
+                        <source src="https://media-hosting.imagekit.io/7c2145ad8da34a28/h2.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-item">
+                    <video controls>
+                        <source src="https://media-hosting.imagekit.io/a3ec1257e5964342/h3.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="video-item">
+                    <video controls>
+                        <source src="https://media-hosting.imagekit.io/3888fa269b104e21/h4.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Reservation Section -->
     <section class="reservation" id="reservation">
         <div class="container">
@@ -1290,18 +1403,6 @@
         </div>
     </section>
 
-    <!-- Location Map Section -->
-    <section class="location-map">
-        <div class="container">
-            <div class="section-title">
-                <h2>Our Location</h2>
-            </div>
-            <div class="map-container">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52356.72936253133!2d78.9818823486328!3d21.066862200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4bfece213e8df%3A0xbafc5c14f7962ecd!2sGPS%20Highway%20Restaurant!5e1!3m2!1sen!2sin!4v1747341109593!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
@@ -1316,9 +1417,22 @@
                 </div>
                 <div class="footer-column">
                     <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> 123 Gourmet Avenue, Culinary District</p>
+                    <p><i class="fas fa-map-marker-alt"></i> <a href="https://goo.gl/maps/example" target="_blank">123 Gourmet Avenue, Culinary District</a></p>
                     <p><i class="fas fa-phone"></i> <a href="tel:9021078335">9021078335</a>, <a href="tel:9665615666">9665615666</a>, <a href="tel:8600360818">8600360818</a></p>
                     <p><i class="fas fa-envelope"></i> info@gpshighwayrestaurant.com</p>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52356.72936253133!2d78.9818823486328!3d21.066862200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4bfece213e8df%3A0xbafc5c14f7962ecd!2sGPS%20Highway%20Restaurant!5e1!3m2!1sen!2sin!4v1747341109593!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#reservation">Reservations</a></li>
+                    </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Opening Hours</h3>
