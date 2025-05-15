@@ -381,10 +381,11 @@
             font-weight: 600;
         }
         
-        /* Video Gallery */
+        /* Video Gallery Section */
         .video-gallery {
             padding: 100px 0;
             background-color: var(--primary-color);
+            color: var(--text-light);
         }
         
         .video-container {
@@ -396,14 +397,19 @@
         
         .video-item {
             position: relative;
-            border-radius: 10px;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
         }
         
-        .video-item video {
+        .video-item iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
-            display: block;
+            height: 100%;
+            border: none;
         }
         
         /* Reservation */
@@ -554,46 +560,20 @@
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        /* Quick Links */
         .quick-links {
-            padding: 80px 0;
-            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
         }
         
-        .quick-links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            text-align: center;
-        }
-        
-        .quick-link-item {
-            background-color: white;
-            padding: 30px 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
-        }
-        
-        .quick-link-item:hover {
-            transform: translateY(-10px);
-        }
-        
-        .quick-link-item i {
-            font-size: 40px;
-            color: var(--secondary-color);
-            margin-bottom: 20px;
-        }
-        
-        .quick-link-item h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
-        }
-        
-        .quick-link-item a {
-            color: var(--secondary-color);
+        .quick-links a {
+            color: var(--text-light);
             text-decoration: none;
-            font-weight: 500;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+        
+        .quick-links a:hover {
+            color: var(--secondary-color);
         }
         
         /* Responsive Styles */
@@ -697,7 +677,7 @@
     <header id="header">
         <div class="container header-container">
             <div class="logo-container">
-                <img src="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg" alt="GPS Highway Restaurant Logo" class="logo-img">
+                <img src="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg?Expires=1841954441&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dxts~jCXOor4vu3SLzcluPfBN9SJBbSiwL4qVWGIQLTP2fBQ3dl0dsAmPGsdx71h-RN0FybaTNwvBRkd4n3JFRR3XMRJkAXW0tERkLkQfuLfLm2B-TD7wVTJnSdiH4T6OvTfokGhcAzaKFPdiWMHug9L10jE4iHwgr930RzFIYzsFiQ9z9jNxCYxdMBx8Xix9xjG7uKwyACCBvQgxfIAhiGXXvttc3CRHrbFt9Jk-J9or4CEtxnKVVYQ1yd19aOs4WbN0T7e76N-~V7jjQ7NtXTKwQnl92peercTUr7tUhvIpixysgKrgT-kVzbRBTNrZsid-bNPcG2vLBqGeE8mhw__" alt="GPS Highway Restaurant Logo" class="logo-img">
                 <a href="#" class="logo">GPS Highway Restaurant</a>
             </div>
             <nav>
@@ -748,37 +728,6 @@
         </div>
     </section>
 
-    <!-- Quick Links Section -->
-    <section class="quick-links">
-        <div class="container">
-            <div class="section-title">
-                <h2>Quick Links</h2>
-            </div>
-            <div class="quick-links-grid">
-                <div class="quick-link-item">
-                    <i class="fas fa-phone-alt"></i>
-                    <h3>Call Us</h3>
-                    <a href="tel:9021078335">9021078335</a>
-                </div>
-                <div class="quick-link-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <h3>Location</h3>
-                    <a href="https://goo.gl/maps/example" target="_blank">View on Map</a>
-                </div>
-                <div class="quick-link-item">
-                    <i class="fas fa-utensils"></i>
-                    <h3>Our Menu</h3>
-                    <a href="#menu">View Menu</a>
-                </div>
-                <div class="quick-link-item">
-                    <i class="fas fa-calendar-alt"></i>
-                    <h3>Reservations</h3>
-                    <a href="#reservation">Book a Table</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Menu Section -->
     <section class="menu" id="menu">
         <div class="container">
@@ -788,7 +737,7 @@
             <div class="menu-grid">
                 <!-- Appetizers -->
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Paneer Tikka">
+                    <img src="https://media-hosting.imagekit.io/8b731b1f45c04a22/GPS%20highway%20.mp4?Expires=1841954573&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=I8yFkimpPX4ypv6LsiALuV2LwLD-zbRqHS3e~S44khNEmAzQxLITRuZGC4oFJ2BLb3BQrcRCPKrMhfW7auUW4PaGhuz13q8XuO-z2BBth-tV6Q-XFIZE4efdQxbeJQKOl0AJmf1kGzbnXKW52onefQpJiV6B-AgpZG~eWgVCa~Wnr9J-cVjM6y5r-pG-4s14inLRV3wTeBVKE0xQNPzC2WE99emhBd5o92OtWtHkp1AME989fJggPzz2RtkAsOOvBVFDom3zY161nIdlNobywgL9ZKPmfXXMMdQy9IOWIHhZJdkxNSEGKfukor~0Jlpti0ewFZaGhDlnFFKLNKRaOA__" alt="Paneer Tikka">
                     <div class="menu-item-content">
                         <h3>Paneer Tikka</h3>
                         <p>Marinated cottage cheese grilled to perfection in tandoor with spices</p>
@@ -798,7 +747,7 @@
                 
                 <!-- Main Courses -->
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1633321702518-7feccafb94d5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Butter Chicken">
+                    <img src="https://media-hosting.imagekit.io/7c2145ad8da34a28/h2.mp4?Expires=1841954846&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Or2A~xzoM3I-TSAIaW7lvIZsROx-CEpg8nJY3x59IsAdsDXPU3LcNRIAekU2dOVY7iwHWYv4J3d2GH45cUQ8kVkqpS2tC7Ypi1-6VvM1RpNeq4DmiCEcSvzGb-xm8mGksi4rvaHpfTzf1x93UdVgYID4sxg1gFxoW9i2KpIYuZT35BpzzJFtcSmSTbbXzYnMcEWiUz7V0mYe5x02NkcommfzCptDQ7LB5HjEu~og0EN-1gVzh4OWOa1xKOSkkPBQ8xfeXAl6MwaFP8mP0tKPPadK~ooU~hrzYhrXgM3C0OXTZWpzc4Bq2vqCBh9g8dPNSggpnEOYZSRS3GkNb8sdRA__" alt="Butter Chicken">
                     <div class="menu-item-content">
                         <h3>Butter Chicken</h3>
                         <p>Tender chicken in a rich, creamy tomato gravy with aromatic spices</p>
@@ -808,7 +757,7 @@
                 
                 <!-- Desserts -->
                 <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1565557623262-b51c2513a641?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Gulab Jamun">
+                    <img src="https://media-hosting.imagekit.io/a3ec1257e5964342/h3.mp4?Expires=1841954846&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Q32MlLqENXE0kyP56SJJFfEo4zaPz6bTCYpxcy91jTnsmEmLGZ1T-BGuh32Af5yV0EhmNiOm8CjUVNGCilz2kFpvQeh-gBny8~7WD32fRjZUdIVVuAR0djyjhFsmVOJsF~a~SQ5SadyqGsJLTlD0dVxIcRAjg0De6tjGWE~lFxmD4yAPWBZ8hHHn8JeiNOJ4BknH9pXZwuzzCziRDbjEebORJYhaC9Xyn55XLCR3fH1iwBrDlkWgK4lDcwJZ5nwIVQ7Wk6gG-C9bCdO9kbwGmBxy6mJLIzLCk3Jen~olhh33TWPydKjvC0jxJkr4773oiKwrV7dCB6X-V9hGb38a4g__" alt="Gulab Jamun">
                     <div class="menu-item-content">
                         <h3>Gulab Jamun</h3>
                         <p>Soft, melt-in-your-mouth milk balls soaked in sugar syrup</p>
@@ -1317,32 +1266,20 @@
     <section class="video-gallery" id="gallery">
         <div class="container">
             <div class="section-title">
-                <h2 style="color: var(--text-light);">Our Restaurant</h2>
+                <h2>Our Restaurant</h2>
             </div>
             <div class="video-container">
                 <div class="video-item">
-                    <video controls>
-                        <source src="https://media-hosting.imagekit.io/8b731b1f45c04a22/GPS%20highway%20.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <iframe src="https://media-hosting.imagekit.io/8b731b1f45c04a22/GPS%20highway%20.mp4?Expires=1841954573&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=I8yFkimpPX4ypv6LsiALuV2LwLD-zbRqHS3e~S44khNEmAzQxLITRuZGC4oFJ2BLb3BQrcRCPKrMhfW7auUW4PaGhuz13q8XuO-z2BBth-tV6Q-XFIZE4efdQxbeJQKOl0AJmf1kGzbnXKW52onefQpJiV6B-AgpZG~eWgVCa~Wnr9J-cVjM6y5r-pG-4s14inLRV3wTeBVKE0xQNPzC2WE99emhBd5o92OtWtHkp1AME989fJggPzz2RtkAsOOvBVFDom3zY161nIdlNobywgL9ZKPmfXXMMdQy9IOWIHhZJdkxNSEGKfukor~0Jlpti0ewFZaGhDlnFFKLNKRaOA__" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="video-item">
-                    <video controls>
-                        <source src="https://media-hosting.imagekit.io/7c2145ad8da34a28/h2.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <iframe src="https://media-hosting.imagekit.io/7c2145ad8da34a28/h2.mp4?Expires=1841954846&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Or2A~xzoM3I-TSAIaW7lvIZsROx-CEpg8nJY3x59IsAdsDXPU3LcNRIAekU2dOVY7iwHWYv4J3d2GH45cUQ8kVkqpS2tC7Ypi1-6VvM1RpNeq4DmiCEcSvzGb-xm8mGksi4rvaHpfTzf1x93UdVgYID4sxg1gFxoW9i2KpIYuZT35BpzzJFtcSmSTbbXzYnMcEWiUz7V0mYe5x02NkcommfzCptDQ7LB5HjEu~og0EN-1gVzh4OWOa1xKOSkkPBQ8xfeXAl6MwaFP8mP0tKPPadK~ooU~hrzYhrXgM3C0OXTZWpzc4Bq2vqCBh9g8dPNSggpnEOYZSRS3GkNb8sdRA__" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="video-item">
-                    <video controls>
-                        <source src="https://media-hosting.imagekit.io/a3ec1257e5964342/h3.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <iframe src="https://media-hosting.imagekit.io/a3ec1257e5964342/h3.mp4?Expires=1841954846&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Q32MlLqENXE0kyP56SJJFfEo4zaPz6bTCYpxcy91jTnsmEmLGZ1T-BGuh32Af5yV0EhmNiOm8CjUVNGCilz2kFpvQeh-gBny8~7WD32fRjZUdIVVuAR0djyjhFsmVOJsF~a~SQ5SadyqGsJLTlD0dVxIcRAjg0De6tjGWE~lFxmD4yAPWBZ8hHHn8JeiNOJ4BknH9pXZwuzzCziRDbjEebORJYhaC9Xyn55XLCR3fH1iwBrDlkWgK4lDcwJZ5nwIVQ7Wk6gG-C9bCdO9kbwGmBxy6mJLIzLCk3Jen~olhh33TWPydKjvC0jxJkr4773oiKwrV7dCB6X-V9hGb38a4g__" frameborder="0" allowfullscreen></iframe>
                 </div>
                 <div class="video-item">
-                    <video controls>
-                        <source src="https://media-hosting.imagekit.io/3888fa269b104e21/h4.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <iframe src="https://media-hosting.imagekit.io/3888fa269b104e21/h4.mp4?Expires=1841954846&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=QLBaPorxq~2r5kksUvIxlFKOj1vBV-Z6lfQSnywdd7J-OtnmzZFKx7wy0qL~ZYyzOnqF~R8~0AmZIbvrm7NApTYck7DKdWEZD96iqt47vnpENiwByMoo57kKRbz3KJ0bW8mPjLRhveBWuCie9HHMkIUilCvR79DfUdNDfcB9FJafs6KMu9XZGBsXwxlScDHp1efbyi0-66cKWoYyXDsmE0tRfahNqq0r1ReY50-2CSTkNIw-4zy~uS37fBp2FOpShMAHO1Txyr7wS9vZ-TP4HSWehiLKcWR1BurHUVKHhct1RU2zxt90huBs6SSMuxVTzXrSkbO4C2q~hx4E0lKUig__" frameborder="0" allowfullscreen></iframe>
                 </div>
             </div>
         </div>
@@ -1416,23 +1353,24 @@
                     </div>
                 </div>
                 <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <div class="quick-links">
+                        <a href="#home">Home</a>
+                        <a href="#about">About Us</a>
+                        <a href="#menu">Our Menu</a>
+                        <a href="#gallery">Gallery</a>
+                        <a href="#reservation">Reservations</a>
+                        <a href="#contact">Contact Us</a>
+                    </div>
+                </div>
+                <div class="footer-column">
                     <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> <a href="https://goo.gl/maps/example" target="_blank">123 Gourmet Avenue, Culinary District</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> <a href="https://www.google.com/maps/place/GPS+Highway+Restaurant/@21.0668622,78.9818823,15z/data=!4m6!3m5!1s0x3bd4bfece213e8df:0xbafc5c14f7962ecd!8m2!3d21.0668622!4d78.9818823!16s%2Fg%2F11q5q9q9q9?entry=ttu" target="_blank">123 Gourmet Avenue, Culinary District</a></p>
                     <p><i class="fas fa-phone"></i> <a href="tel:9021078335">9021078335</a>, <a href="tel:9665615666">9665615666</a>, <a href="tel:8600360818">8600360818</a></p>
                     <p><i class="fas fa-envelope"></i> info@gpshighwayrestaurant.com</p>
                     <div class="map-container">
                         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52356.72936253133!2d78.9818823486328!3d21.066862200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4bfece213e8df%3A0xbafc5c14f7962ecd!2sGPS%20Highway%20Restaurant!5e1!3m2!1sen!2sin!4v1747341109593!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
-                </div>
-                <div class="footer-column">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#menu">Menu</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#reservation">Reservations</a></li>
-                    </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Opening Hours</h3>
