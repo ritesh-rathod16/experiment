@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GPS | Fine Dining Experience</title>
+    <title>GPS Highway Restaurant | Authentic Indian Cuisine</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #1a1a1a;
-            --secondary-color: #c19a6b;
-            --accent-color: #e8e8e8;
+            --primary-color: #d9230f;
+            --secondary-color: #f5a623;
+            --accent-color: #4a4a4a;
             --text-light: #f8f8f8;
             --text-dark: #333333;
+            --bg-light: #f9f9f9;
         }
         
         * {
@@ -24,15 +25,16 @@
         }
         
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Poppins', sans-serif;
             color: var(--text-dark);
-            background-color: #f9f9f9;
+            background-color: var(--bg-light);
             overflow-x: hidden;
         }
         
         h1, h2, h3, h4, h5, h6 {
             font-family: 'Playfair Display', serif;
             font-weight: 600;
+            color: var(--primary-color);
         }
         
         .container {
@@ -54,7 +56,7 @@
         
         header.scrolled {
             padding: 10px 0;
-            background-color: rgba(26, 26, 26, 0.95);
+            background-color: rgba(217, 35, 15, 0.95);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         
@@ -67,9 +69,13 @@
         .logo {
             font-size: 28px;
             font-weight: 700;
-            color: var(--secondary-color);
+            color: var(--text-light);
             text-decoration: none;
             font-family: 'Playfair Display', serif;
+        }
+        
+        .logo span {
+            color: var(--secondary-color);
         }
         
         nav ul {
@@ -121,7 +127,7 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://b.zmtcdn.com/data/pictures/7/19741947/7f3b5e667e1a5a5b5a5b5a5b5a5b5a5b.jpg') no-repeat center center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -138,6 +144,7 @@
             font-size: 72px;
             margin-bottom: 20px;
             letter-spacing: 2px;
+            color: var(--text-light);
         }
         
         .hero p {
@@ -150,10 +157,10 @@
             display: inline-block;
             padding: 12px 30px;
             background-color: var(--secondary-color);
-            color: var(--text-light);
+            color: var(--text-dark);
             text-decoration: none;
             border-radius: 30px;
-            font-weight: 500;
+            font-weight: 600;
             transition: all 0.3s ease;
             border: 2px solid var(--secondary-color);
         }
@@ -171,7 +178,7 @@
         
         .btn-outline:hover {
             background-color: var(--secondary-color);
-            color: var(--text-light);
+            color: var(--text-dark);
         }
         
         /* About Section */
@@ -255,11 +262,48 @@
             background-color: #f5f5f5;
         }
         
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .menu-tab {
+            padding: 10px 25px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--accent-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-tab.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+        }
+        
+        .menu-tab:hover {
+            color: var(--primary-color);
+        }
+        
+        .menu-content {
+            display: none;
+        }
+        
+        .menu-content.active {
+            display: block;
+        }
+        
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
-            margin-top: 50px;
+            margin-top: 30px;
         }
         
         .menu-item {
@@ -333,7 +377,66 @@
             color: var(--secondary-color);
         }
         
-        /* Reservation */
+        /* Location Section */
+        .location {
+            padding: 100px 0;
+            background-color: var(--text-light);
+        }
+        
+        .map-container {
+            margin-top: 50px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 450px;
+            border: none;
+        }
+        
+        /* Hours Section */
+        .hours {
+            padding: 80px 0;
+            background-color: #f5f5f5;
+        }
+        
+        .hours-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+            text-align: center;
+        }
+        
+        .day-card {
+            background-color: var(--text-light);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .day-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+        
+        .day-card p {
+            color: var(--accent-color);
+            font-weight: 500;
+        }
+        
+        .day-card.today {
+            background-color: var(--primary-color);
+        }
+        
+        .day-card.today h3,
+        .day-card.today p {
+            color: var(--text-light);
+        }
+        
+        /* Reservation Section */
         .reservation {
             padding: 100px 0;
             background-color: var(--text-light);
@@ -365,7 +468,7 @@
             padding: 12px 15px;
             border: 1px solid #ddd;
             border-radius: 5px;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Poppins', sans-serif;
             font-size: 16px;
             transition: border-color 0.3s ease;
         }
@@ -373,7 +476,7 @@
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
-            border-color: var(--secondary-color);
+            border-color: var(--primary-color);
             outline: none;
         }
         
@@ -461,6 +564,7 @@
         .social-links a:hover {
             background-color: var(--secondary-color);
             transform: translateY(-3px);
+            color: var(--text-dark);
         }
         
         .footer-bottom {
@@ -530,6 +634,18 @@
                 flex-direction: column;
                 gap: 0;
             }
+            
+            .menu-tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .menu-tab {
+                width: 100%;
+                text-align: center;
+                padding: 15px;
+                border-bottom: 1px solid #eee;
+            }
         }
         
         @media (max-width: 576px) {
@@ -555,13 +671,14 @@
     <!-- Header -->
     <header id="header">
         <div class="container header-container">
-            <a href="#" class="logo">GPS Highway Restaurant</a>
+            <a href="#" class="logo">GPS <span>Highway</span> Restaurant</a>
             <nav>
                 <ul id="nav-menu">
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
                     <li><a href="#menu">Menu</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#location">Location</a></li>
+                    <li><a href="#hours">Hours</a></li>
                     <li><a href="#reservation">Reservations</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
@@ -575,8 +692,8 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-content">
-            <h1>Exquisite Dining Experience</h1>
-            <p>Discover the art of fine dining with our carefully crafted menu featuring the freshest ingredients and innovative culinary techniques.</p>
+            <h1>Authentic Indian Cuisine</h1>
+            <p>Experience the rich flavors of India at GPS Highway Restaurant, where every dish tells a story of tradition and passion.</p>
             <div class="hero-buttons">
                 <a href="#menu" class="btn">View Menu</a>
                 <a href="#reservation" class="btn btn-outline">Reserve a Table</a>
@@ -592,14 +709,13 @@
             </div>
             <div class="about-content">
                 <div class="about-text">
-                    <h3>Culinary Excellence Since 1995</h3>
-                    <p>Founded by Chef Antoine Moreau, La Belle Vie has been serving exceptional French cuisine with a modern twist for over two decades. Our restaurant is a celebration of culinary artistry, where tradition meets innovation.</p>
-                    <p>We source only the finest ingredients from local farmers and producers who share our commitment to quality and sustainability. Each dish is a masterpiece, carefully crafted to delight your senses.</p>
-                    <p>Our elegant dining room provides the perfect setting for an unforgettable dining experience, whether you're celebrating a special occasion or simply enjoying an evening of exceptional food and wine.</p>
-                    <a href="#about-more" class="btn">Learn More</a>
+                    <h3>Serving Authentic Flavors Since 2010</h3>
+                    <p>GPS Highway Restaurant was founded with a simple mission: to bring the authentic taste of India to the highways of Maharashtra. Our chefs use traditional recipes passed down through generations, combined with the freshest local ingredients.</p>
+                    <p>What started as a small roadside eatery has grown into a beloved destination for travelers and locals alike, known for our flavorful curries, tandoori specialties, and warm hospitality.</p>
+                    <p>We take pride in offering a dining experience that feels like home, with every dish prepared with care and served with a smile. Our commitment to quality and authenticity has made us a landmark on the Nagpur-Jabalpur highway.</p>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Restaurant Interior">
+                    <img src="https://b.zmtcdn.com/data/pictures/7/19741947/7f3b5e667e1a5a5b5a5b5a5b5a5b5a5b.jpg" alt="GPS Highway Restaurant">
                 </div>
             </div>
         </div>
@@ -611,39 +727,206 @@
             <div class="section-title">
                 <h2>Our Menu</h2>
             </div>
-            <div class="menu-grid">
-                <!-- Appetizers -->
-                <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Foie Gras">
-                    <div class="menu-item-content">
-                        <h3>Foie Gras Terrine</h3>
-                        <p>House-made foie gras terrine with brioche toast, fig compote, and micro greens</p>
-                        <div class="price">$28</div>
+            
+            <div class="menu-tabs">
+                <button class="menu-tab active" data-tab="starters">Starters</button>
+                <button class="menu-tab" data-tab="main-course">Main Course</button>
+                <button class="menu-tab" data-tab="breads">Breads</button>
+                <button class="menu-tab" data-tab="rice">Rice Dishes</button>
+                <button class="menu-tab" data-tab="desserts">Desserts</button>
+                <button class="menu-tab" data-tab="beverages">Beverages</button>
+            </div>
+            
+            <!-- Starters -->
+            <div class="menu-content active" id="starters">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <img src="https://b.zmtcdn.com/data/menus/947/19741947/af297719e15d8c29ca34bc20478b60e2.jpg" alt="Paneer Tikka">
+                        <div class="menu-item-content">
+                            <h3>Paneer Tikka</h3>
+                            <p>Cottage cheese marinated in spices and grilled in tandoor</p>
+                            <div class="price">₹220</div>
+                        </div>
                     </div>
-                </div>
-                
-                <!-- Main Courses -->
-                <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Duck Confit">
-                    <div class="menu-item-content">
-                        <h3>Duck Confit</h3>
-                        <p>Traditional French duck confit with roasted potatoes, haricots verts, and cherry sauce</p>
-                        <div class="price">$42</div>
+                    
+                    <div class="menu-item">
+                        <img src="https://b.zmtcdn.com/data/menus/947/19741947/5d8b5312081eccbcf78d6a46c93bd318.jpg" alt="Chicken Tikka">
+                        <div class="menu-item-content">
+                            <h3>Chicken Tikka</h3>
+                            <p>Succulent chicken pieces marinated in yogurt and spices, grilled to perfection</p>
+                            <div class="price">₹280</div>
+                        </div>
                     </div>
-                </div>
-                
-                <!-- Desserts -->
-                <div class="menu-item">
-                    <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Crème Brûlée">
-                    <div class="menu-item-content">
-                        <h3>Vanilla Crème Brûlée</h3>
-                        <p>Classic vanilla bean custard with caramelized sugar crust and fresh berries</p>
-                        <div class="price">$14</div>
+                    
+                    <div class="menu-item">
+                        <img src="https://b.zmtcdn.com/data/menus/947/19741947/461d4f295707edffed0e6b303feebec5.jpg" alt="Vegetable Pakora">
+                        <div class="menu-item-content">
+                            <h3>Vegetable Pakora</h3>
+                            <p>Seasonal vegetables dipped in spiced chickpea batter and deep fried</p>
+                            <div class="price">₹180</div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 40px;">
-                <a href="#full-menu" class="btn">View Full Menu</a>
+            
+            <!-- Main Course -->
+            <div class="menu-content" id="main-course">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <img src="https://b.zmtcdn.com/data/menus/947/19741947/3405157f9e07a945044cd696302b70d6.jpg" alt="Butter Chicken">
+                        <div class="menu-item-content">
+                            <h3>Butter Chicken</h3>
+                            <p>Tender chicken in a creamy tomato and butter sauce</p>
+                            <div class="price">₹320</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="https://b.zmtcdn.com/data/menus/947/19741947/54fd4c7750f8cdc23957616ca790dc85.jpg" alt="Dal Makhani">
+                        <div class="menu-item-content">
+                            <h3>Dal Makhani</h3>
+                            <p>Black lentils slow cooked with butter and cream</p>
+                            <div class="price">₹240</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="https://b.zmtcdn.com/data/menus/947/19741947/6d003213c777e0668c19fd713bcaf068.jpg" alt="Palak Paneer">
+                        <div class="menu-item-content">
+                            <h3>Palak Paneer</h3>
+                            <p>Cottage cheese in a creamy spinach gravy</p>
+                            <div class="price">₹260</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Breads -->
+            <div class="menu-content" id="breads">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <img src="https://b.zmtcdn.com/data/menus/947/19741947/7baa7529d39ae6bf51d40a5947f535ee.jpg" alt="Garlic Naan">
+                        <div class="menu-item-content">
+                            <h3>Garlic Naan</h3>
+                            <p>Leavened bread stuffed with garlic and baked in tandoor</p>
+                            <div class="price">₹60</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="https://b.zmtcdn.com/data/menus/947/19741947/3ab4789b03ee5c849b20752a9c06b476.jpg" alt="Butter Roti">
+                        <div class="menu-item-content">
+                            <h3>Butter Roti</h3>
+                            <p>Whole wheat bread cooked on griddle with butter</p>
+                            <div class="price">₹40</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="https://b.zmtcdn.com/data/menus/947/19741947/4ad005f55d4d91d15b63b55253937e0d.jpg" alt="Laccha Paratha">
+                        <div class="menu-item-content">
+                            <h3>Laccha Paratha</h3>
+                            <p>Flaky layered bread cooked on griddle</p>
+                            <div class="price">₹70</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Rice Dishes -->
+            <div class="menu-content" id="rice">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <img src="https://b.zmtcdn.com/data/menus/947/19741947/8b398f7312eb48371e26bbd8a5df10ea.jpg" alt="Vegetable Biryani">
+                        <div class="menu-item-content">
+                            <h3>Vegetable Biryani</h3>
+                            <p>Fragrant basmati rice cooked with mixed vegetables and spices</p>
+                            <div class="price">₹220</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="https://b.zmtcdn.com/data/menus/947/19741947/2ed94dbae3e6e43cf88be94a95a618b7.jpg" alt="Chicken Biryani">
+                        <div class="menu-item-content">
+                            <h3>Chicken Biryani</h3>
+                            <p>Flavorful rice dish with tender chicken pieces and aromatic spices</p>
+                            <div class="price">₹280</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="https://b.zmtcdn.com/data/menus/947/19741947/af297719e15d8c29ca34bc20478b60e2.jpg" alt="Jeera Rice">
+                        <div class="menu-item-content">
+                            <h3>Jeera Rice</h3>
+                            <p>Basmati rice tempered with cumin seeds</p>
+                            <div class="price">₹150</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Desserts -->
+            <div class="menu-content" id="desserts">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <img src="https://b.zmtcdn.com/data/menus/947/19741947/5d8b5312081eccbcf78d6a46c93bd318.jpg" alt="Gulab Jamun">
+                        <div class="menu-item-content">
+                            <h3>Gulab Jamun</h3>
+                            <p>Soft milk dumplings soaked in sugar syrup</p>
+                            <div class="price">₹120</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="https://b.zmtcdn.com/data/menus/947/19741947/461d4f295707edffed0e6b303feebec5.jpg" alt="Rasmalai">
+                        <div class="menu-item-content">
+                            <h3>Rasmalai</h3>
+                            <p>Cottage cheese patties in sweetened, thickened milk</p>
+                            <div class="price">₹140</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="https://b.zmtcdn.com/data/menus/947/19741947/3405157f9e07a945044cd696302b70d6.jpg" alt="Kheer">
+                        <div class="menu-item-content">
+                            <h3>Kheer</h3>
+                            <p>Traditional rice pudding with nuts and cardamom</p>
+                            <div class="price">₹100</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Beverages -->
+            <div class="menu-content" id="beverages">
+                <div class="menu-grid">
+                    <div class="menu-item">
+                        <img src="https://b.zmtcdn.com/data/menus/947/19741947/54fd4c7750f8cdc23957616ca790dc85.jpg" alt="Mango Lassi">
+                        <div class="menu-item-content">
+                            <h3>Mango Lassi</h3>
+                            <p>Refreshing yogurt drink with mango pulp</p>
+                            <div class="price">₹90</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="https://b.zmtcdn.com/data/menus/947/19741947/6d003213c777e0668c19fd713bcaf068.jpg" alt="Masala Chai">
+                        <div class="menu-item-content">
+                            <h3>Masala Chai</h3>
+                            <p>Spiced Indian tea with milk</p>
+                            <div class="price">₹50</div>
+                        </div>
+                    </div>
+                    
+                    <div class="menu-item">
+                        <img src="https://b.zmtcdn.com/data/menus/947/19741947/7baa7529d39ae6bf51d40a5947f535ee.jpg" alt="Fresh Lime Soda">
+                        <div class="menu-item-content">
+                            <h3>Fresh Lime Soda</h3>
+                            <p>Sparkling soda with fresh lime juice</p>
+                            <div class="price">₹60</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -656,8 +939,59 @@
             </div>
             <div class="testimonial-slider">
                 <div class="testimonial-item">
-                    <p>"The dining experience at La Belle Vie was absolutely phenomenal. Every dish was a work of art, and the service was impeccable. The duck confit was the best I've ever had!"</p>
-                    <div class="author">- Sarah Johnson</div>
+                    <p>"The best highway restaurant I've ever visited! The butter chicken was out of this world, and the service was exceptional. A must-stop on any road trip."</p>
+                    <div class="author">- Rajesh Kumar</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location" id="location">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Location</h2>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52356.72936253133!2d78.9818823486328!3d21.066862200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4bfece213e8df%3A0xbafc5c14f7962ecd!2sGPS%20Highway%20Restaurant!5e1!3m2!1sen!2sin!4v1747341109593!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hours Section -->
+    <section class="hours" id="hours">
+        <div class="container">
+            <div class="section-title">
+                <h2>Opening Hours</h2>
+            </div>
+            <div class="hours-grid">
+                <div class="day-card today">
+                    <h3>Friday</h3>
+                    <p>10:00 am - 10:00 pm</p>
+                </div>
+                <div class="day-card">
+                    <h3>Saturday</h3>
+                    <p>10:00 am - 10:00 pm</p>
+                </div>
+                <div class="day-card">
+                    <h3>Sunday</h3>
+                    <p>10:00 am - 10:00 pm</p>
+                </div>
+                <div class="day-card">
+                    <h3>Monday</h3>
+                    <p>10:00 am - 10:00 pm</p>
+                </div>
+                <div class="day-card">
+                    <h3>Tuesday</h3>
+                    <p>10:00 am - 10:00 pm</p>
+                </div>
+                <div class="day-card">
+                    <h3>Wednesday</h3>
+                    <p>10:00 am - 10:00 pm</p>
+                </div>
+                <div class="day-card">
+                    <h3>Thursday</h3>
+                    <p>10:00 am - 10:00 pm</p>
                 </div>
             </div>
         </div>
@@ -671,6 +1005,7 @@
             </div>
             <div class="reservation-form">
                 <form id="booking-form">
+                    <input type="hidden" id="access-key" name="access-key" value="3ad2ac7d-5205-4c7f-b856-de35b9a592f3">
                     <div class="form-row">
                         <div class="form-group">
                             <label for="name">Full Name</label>
@@ -724,28 +1059,31 @@
             <div class="footer-content">
                 <div class="footer-column">
                     <h3>GPS Highway Restaurant</h3>
-                    <p>Experience the art of fine dining at our elegant restaurant in the heart of the city. We offer an unforgettable culinary journey through French cuisine with modern influences.</p>
+                    <p>Experience authentic Indian flavors at our highway restaurant. Perfect stop for travelers and food enthusiasts alike.</p>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/gpshighwayrestaurant/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/gps.highway.restaurant/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
                     <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> 123 Gourmet Avenue, Culinary District</p>
-                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
-                    <p><i class="fas fa-envelope"></i> info@labellevie.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Nagpur-Jabalpur Highway, Maharashtra</p>
+                    <p><i class="fas fa-phone"></i> +91 XXXXX XXXXX</p>
+                    <p><i class="fas fa-envelope"></i> info@gpshighwayrestaurant.com</p>
                 </div>
                 <div class="footer-column">
-                    <h3>Opening Hours</h3>
-                    <p>Monday - Thursday: 5:30 PM - 10:00 PM</p>
-                    <p>Friday - Saturday: 5:00 PM - 11:00 PM</p>
-                    <p>Sunday: 5:00 PM - 9:00 PM</p>
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#location">Location</a></li>
+                        <li><a href="#reservation">Reservations</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 GPS Highway Restaurant. All Rights Reserved.</p>
+                <p>&copy; 2023 GPS Highway Restaurant. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
@@ -797,6 +1135,23 @@
             });
         });
         
+        // Menu tabs functionality
+        const menuTabs = document.querySelectorAll('.menu-tab');
+        const menuContents = document.querySelectorAll('.menu-content');
+        
+        menuTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                menuTabs.forEach(t => t.classList.remove('active'));
+                menuContents.forEach(c => c.classList.remove('active'));
+                
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                const tabId = tab.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+        
         // Form submission
         const bookingForm = document.getElementById('booking-form');
         
@@ -812,16 +1167,16 @@
         // Testimonial slider (simple version)
         const testimonials = [
             {
-                text: "The dining experience at La Belle Vie was absolutely phenomenal. Every dish was a work of art, and the service was impeccable. The duck confit was the best I've ever had!",
-                author: "Sarah Johnson"
+                text: "The best highway restaurant I've ever visited! The butter chicken was out of this world, and the service was exceptional. A must-stop on any road trip.",
+                author: "Rajesh Kumar"
             },
             {
-                text: "An unforgettable evening! The wine pairing was perfect, and the foie gras terrine melted in my mouth. Can't wait to come back for our anniversary.",
-                author: "Michael Chen"
+                text: "Authentic flavors and generous portions. The dal makhani reminded me of my grandmother's cooking. We make it a point to stop here every time we're on this route.",
+                author: "Priya Sharma"
             },
             {
-                text: "From the moment we walked in, we felt special. The ambiance, the food, the attention to detail - everything was perfect. The crème brûlée was divine!",
-                author: "Emily Rodriguez"
+                text: "Clean, comfortable, and delicious! The staff went out of their way to accommodate our large group. The biryani is some of the best I've had outside of Hyderabad.",
+                author: "Amit Patel"
             }
         ];
         
@@ -838,6 +1193,22 @@
         
         // Rotate testimonials every 5 seconds
         setInterval(rotateTestimonials, 5000);
+        
+        // Highlight today's hours
+        function updateTodayHighlight() {
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const today = new Date().getDay();
+            const todayName = days[today];
+            
+            document.querySelectorAll('.day-card').forEach(card => {
+                card.classList.remove('today');
+                if (card.querySelector('h3').textContent === todayName) {
+                    card.classList.add('today');
+                }
+            });
+        }
+        
+        updateTodayHighlight();
     </script>
 </body>
 </html>
