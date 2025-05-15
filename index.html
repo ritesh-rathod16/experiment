@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GPS Highway Restaurant | Authentic Indian Cuisine</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
@@ -35,7 +36,7 @@
             font-weight: 600;
         }
         
-        /* Loader Animation */
+        /* Loader Animation - Reduced to 1 second */
         .loader {
             position: fixed;
             top: 0;
@@ -52,30 +53,31 @@
         }
         
         .loader-logo {
-            width: 200px;
-            height: 200px;
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
+            width: 150px;
+            height: 150px;
+            margin-bottom: 15px;
+            animation: pulse 1s ease-in-out;
         }
         
         .loader-text {
             color: var(--secondary-color);
             font-size: 24px;
             font-weight: 500;
-            margin-top: 20px;
-            animation: fadeInOut 3s infinite;
+            margin-top: 15px;
+            animation: fadeIn 0.5s ease-in-out;
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
         }
         
         @keyframes pulse {
-            0% { transform: scale(0.95); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(0.95); }
+            0% { transform: scale(0.95); opacity: 0; }
+            50% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0; }
         }
         
-        @keyframes fadeInOut {
-            0% { opacity: 0.5; }
-            50% { opacity: 1; }
-            100% { opacity: 0.5; }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
         .loader-hidden {
@@ -93,7 +95,7 @@
         header {
             background-color: var(--primary-color);
             color: var(--text-light);
-            padding: 20px 0;
+            padding: 15px 0;
             position: fixed;
             width: 100%;
             z-index: 1000;
@@ -101,8 +103,8 @@
         }
         
         header.scrolled {
-            padding: 10px 0;
-            background-color: rgba(26, 26, 26, 0.95);
+            padding: 8px 0;
+            background-color: rgba(26, 26, 26, 0.98);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         
@@ -118,12 +120,15 @@
         }
         
         .logo-img {
-            height: 50px;
-            margin-right: 15px;
+            height: 45px;
+            width: 45px;
+            margin-right: 12px;
+            border-radius: 50%;
+            object-fit: cover;
         }
         
         .logo {
-            font-size: 28px;
+            font-size: 24px;
             font-weight: 700;
             color: var(--secondary-color);
             text-decoration: none;
@@ -136,13 +141,13 @@
         }
         
         nav ul li {
-            margin-left: 30px;
+            margin-left: 25px;
         }
         
         nav ul li a {
             color: var(--text-light);
             text-decoration: none;
-            font-size: 16px;
+            font-size: 15px;
             font-weight: 500;
             transition: color 0.3s ease;
             position: relative;
@@ -172,14 +177,14 @@
             background: none;
             border: none;
             color: var(--text-light);
-            font-size: 24px;
+            font-size: 22px;
             cursor: pointer;
         }
         
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -193,17 +198,22 @@
         }
         
         .hero h1 {
-            font-size: 72px;
+            font-size: 64px;
             margin-bottom: 20px;
-            letter-spacing: 2px;
-            animation: fadeIn 1.5s ease-in-out;
+            letter-spacing: 1.5px;
+            animation: fadeIn 1s ease-in-out;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
         
         .hero p {
-            font-size: 20px;
+            font-size: 18px;
             margin-bottom: 30px;
             line-height: 1.6;
-            animation: fadeIn 2s ease-in-out;
+            animation: fadeIn 1.2s ease-in-out;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
         }
         
         @keyframes fadeIn {
@@ -211,9 +221,16 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
         .btn {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 12px 28px;
             background-color: var(--secondary-color);
             color: var(--text-light);
             text-decoration: none;
@@ -221,18 +238,21 @@
             font-weight: 500;
             transition: all 0.3s ease;
             border: 2px solid var(--secondary-color);
-            animation: fadeIn 2.5s ease-in-out;
+            animation: fadeIn 1.5s ease-in-out;
+            font-size: 15px;
+            min-width: 150px;
+            text-align: center;
         }
         
         .btn:hover {
             background-color: transparent;
             color: var(--secondary-color);
+            transform: translateY(-2px);
         }
         
         .btn-outline {
             background-color: transparent;
             color: var(--secondary-color);
-            margin-left: 15px;
         }
         
         .btn-outline:hover {
@@ -242,27 +262,27 @@
         
         /* About Section */
         .about {
-            padding: 100px 0;
+            padding: 80px 0;
             background-color: var(--text-light);
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 50px;
         }
         
         .section-title h2 {
-            font-size: 42px;
+            font-size: 38px;
             color: var(--primary-color);
             position: relative;
             display: inline-block;
-            padding-bottom: 15px;
+            padding-bottom: 12px;
         }
         
         .section-title h2::after {
             content: '';
             position: absolute;
-            width: 70px;
+            width: 60px;
             height: 3px;
             background-color: var(--secondary-color);
             bottom: 0;
@@ -273,7 +293,7 @@
         .about-content {
             display: flex;
             align-items: center;
-            gap: 50px;
+            gap: 40px;
         }
         
         .about-text {
@@ -281,15 +301,15 @@
         }
         
         .about-text h3 {
-            font-size: 32px;
-            margin-bottom: 20px;
+            font-size: 28px;
+            margin-bottom: 15px;
             color: var(--primary-color);
         }
         
         .about-text p {
-            margin-bottom: 20px;
-            line-height: 1.8;
-            font-size: 16px;
+            margin-bottom: 15px;
+            line-height: 1.7;
+            font-size: 15px;
         }
         
         .about-image {
@@ -299,8 +319,13 @@
         
         .about-image img {
             width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.02);
         }
         
         .about-image::before {
@@ -308,168 +333,196 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            border: 10px solid var(--secondary-color);
-            border-radius: 10px;
-            top: -20px;
-            left: -20px;
+            border: 8px solid var(--secondary-color);
+            border-radius: 8px;
+            top: -15px;
+            left: -15px;
             z-index: -1;
         }
         
         /* Quick Links */
         .quick-links {
-            padding: 80px 0;
+            padding: 70px 0;
             background-color: #f5f5f5;
         }
         
         .quick-links-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
             text-align: center;
         }
         
         .quick-link-item {
             background-color: white;
-            padding: 30px 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
+            padding: 25px 15px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s ease;
         }
         
         .quick-link-item:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
         
         .quick-link-item i {
-            font-size: 40px;
+            font-size: 36px;
             color: var(--secondary-color);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .quick-link-item h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
+            font-size: 18px;
+            margin-bottom: 12px;
         }
         
         .quick-link-item a {
             color: var(--secondary-color);
             text-decoration: none;
             font-weight: 500;
+            font-size: 14px;
         }
         
         /* Menu Section */
         .menu {
-            padding: 100px 0;
+            padding: 80px 0;
             background-color: #f5f5f5;
         }
         
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
         }
         
         .menu-item {
             background-color: var(--text-light);
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
         }
         
         .menu-item:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
         }
         
         .menu-item img {
             width: 100%;
-            height: 250px;
+            height: 220px;
             object-fit: cover;
         }
         
         .menu-item-content {
-            padding: 25px;
+            padding: 20px;
         }
         
         .menu-item-content h3 {
-            font-size: 22px;
-            margin-bottom: 10px;
+            font-size: 20px;
+            margin-bottom: 8px;
             color: var(--primary-color);
         }
         
         .menu-item-content p {
             color: #666;
-            margin-bottom: 15px;
-            line-height: 1.6;
+            margin-bottom: 12px;
+            line-height: 1.5;
+            font-size: 14px;
         }
         
         .price {
-            font-size: 20px;
+            font-size: 18px;
             font-weight: 700;
             color: var(--secondary-color);
         }
         
-        /* Video Gallery */
+        .menu-btn-container {
+            text-align: center;
+            margin-top: 35px;
+        }
+        
+        /* Video Gallery - Card Style */
         .video-gallery {
-            padding: 100px 0;
+            padding: 80px 0;
             background-color: var(--primary-color);
         }
         
         .video-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
         }
         
         .video-item {
             position: relative;
-            border-radius: 10px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            background: white;
+            transition: all 0.3s ease;
+        }
+        
+        .video-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
         }
         
         .video-item video {
             width: 100%;
             display: block;
+            border-bottom: 3px solid var(--secondary-color);
+        }
+        
+        .video-caption {
+            padding: 15px;
+            text-align: center;
+            background: white;
+        }
+        
+        .video-caption h3 {
+            color: var(--primary-color);
+            font-size: 16px;
         }
         
         /* Reservation */
         .reservation {
-            padding: 100px 0;
+            padding: 80px 0;
             background-color: var(--text-light);
         }
         
         .reservation-form {
-            max-width: 700px;
+            max-width: 650px;
             margin: 0 auto;
             background-color: #fff;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 35px;
+            border-radius: 8px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
         }
         
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
         
         .form-group label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             font-weight: 500;
+            font-size: 14px;
         }
         
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 12px 15px;
+            padding: 10px 12px;
             border: 1px solid #ddd;
             border-radius: 5px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 16px;
+            font-size: 15px;
             transition: border-color 0.3s ease;
         }
         
@@ -482,7 +535,7 @@
         
         .form-row {
             display: flex;
-            gap: 20px;
+            gap: 15px;
         }
         
         .form-row .form-group {
@@ -491,20 +544,20 @@
         
         /* Map Section */
         .map-section {
-            padding: 80px 0;
+            padding: 70px 0;
             background-color: var(--text-light);
         }
         
         .map-container {
-            margin-top: 30px;
-            border-radius: 10px;
+            margin-top: 25px;
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
         }
         
         .map-container iframe {
             width: 100%;
-            height: 500px;
+            height: 450px;
             border: 0;
         }
         
@@ -512,28 +565,28 @@
         footer {
             background-color: var(--primary-color);
             color: var(--text-light);
-            padding: 60px 0 20px;
+            padding: 50px 0 15px;
         }
         
         .footer-content {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
         }
         
         .footer-column h3 {
-            font-size: 22px;
-            margin-bottom: 25px;
+            font-size: 20px;
+            margin-bottom: 20px;
             color: var(--secondary-color);
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
         }
         
         .footer-column h3::after {
             content: '';
             position: absolute;
-            width: 50px;
+            width: 40px;
             height: 2px;
             background-color: var(--secondary-color);
             bottom: 0;
@@ -541,8 +594,9 @@
         }
         
         .footer-column p {
-            margin-bottom: 15px;
-            line-height: 1.8;
+            margin-bottom: 12px;
+            line-height: 1.7;
+            font-size: 14px;
         }
         
         .footer-column ul {
@@ -550,34 +604,67 @@
         }
         
         .footer-column ul li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .footer-column ul li a {
             color: var(--text-light);
             text-decoration: none;
             transition: color 0.3s ease;
+            font-size: 14px;
         }
         
         .footer-column ul li a:hover {
             color: var(--secondary-color);
         }
         
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+            width: 18px;
+            text-align: center;
+        }
+        
+        .phone-numbers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+        
+        .phone-number {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .phone-number:hover {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+        }
+        
         .social-links {
             display: flex;
-            gap: 15px;
+            gap: 12px;
         }
         
         .social-links a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
+            width: 36px;
+            height: 36px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
             color: var(--text-light);
             transition: all 0.3s ease;
+            font-size: 14px;
         }
         
         .social-links a:hover {
@@ -587,14 +674,15 @@
         
         .footer-bottom {
             text-align: center;
-            padding-top: 20px;
+            padding-top: 15px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 13px;
         }
         
         /* Responsive Styles */
         @media (max-width: 992px) {
             .hero h1 {
-                font-size: 60px;
+                font-size: 52px;
             }
             
             .about-content {
@@ -602,7 +690,10 @@
             }
             
             .about-image {
-                margin-top: 40px;
+                margin-top: 30px;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
             }
             
             .about-image::before {
@@ -610,33 +701,43 @@
             }
             
             .map-container iframe {
-                height: 400px;
+                height: 380px;
             }
         }
         
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 48px;
+                font-size: 42px;
             }
             
             .hero p {
-                font-size: 18px;
+                font-size: 16px;
+            }
+            
+            .section-title h2 {
+                font-size: 32px;
             }
             
             .btn {
-                padding: 10px 25px;
+                padding: 10px 22px;
+                font-size: 14px;
+            }
+            
+            .hero-buttons {
+                gap: 15px;
             }
             
             nav ul {
                 position: fixed;
-                top: 80px;
+                top: 70px;
                 left: -100%;
                 width: 100%;
-                height: calc(100vh - 80px);
+                height: calc(100vh - 70px);
                 background-color: var(--primary-color);
                 flex-direction: column;
                 align-items: center;
-                justify-content: center;
+                justify-content: flex-start;
+                padding-top: 30px;
                 transition: all 0.5s ease;
             }
             
@@ -658,17 +759,17 @@
             }
             
             .map-container iframe {
-                height: 350px;
+                height: 320px;
             }
         }
         
         @media (max-width: 576px) {
             .hero h1 {
-                font-size: 36px;
+                font-size: 34px;
             }
             
             .section-title h2 {
-                font-size: 32px;
+                font-size: 28px;
             }
             
             .menu-grid {
@@ -676,26 +777,31 @@
             }
             
             .reservation-form {
-                padding: 30px 20px;
+                padding: 25px 15px;
             }
             
             .logo-img {
-                height: 40px;
+                height: 38px;
+                width: 38px;
                 margin-right: 10px;
             }
             
             .logo {
-                font-size: 22px;
+                font-size: 20px;
             }
             
             .map-container iframe {
-                height: 300px;
+                height: 280px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Loader Animation -->
+    <!-- Loader Animation - Reduced to 1 second -->
     <div class="loader" id="loader">
         <img src="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg?Expires=1841954441&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dxts~jCXOor4vu3SLzcluPfBN9SJBbSiwL4qVWGIQLTP2fBQ3dl0dsAmPGsdx71h-RN0FybaTNwvBRkd4n3JFRR3XMRJkAXW0tERkLkQfuLfLm2B-TD7wVTJnSdiH4T6OvTfokGhcAzaKFPdiWMHug9L10jE4iHwgr930RzFIYzsFiQ9z9jNxCYxdMBx8Xix9xjG7uKwyACCBvQgxfIAhiGXXvttc3CRHrbFt9Jk-J9or4CEtxnKVVYQ1yd19aOs4WbN0T7e76N-~V7jjQ7NtXTKwQnl92peercTUr7tUhvIpixysgKrgT-kVzbRBTNrZsid-bNPcG2vLBqGeE8mhw__" alt="GPS Highway Restaurant Logo" class="loader-logo">
         <div class="loader-text">Welcome to GPS Highway Restaurant</div>
@@ -706,16 +812,16 @@
         <div class="container header-container">
             <div class="logo-container">
                 <img src="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg?Expires=1841954441&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dxts~jCXOor4vu3SLzcluPfBN9SJBbSiwL4qVWGIQLTP2fBQ3dl0dsAmPGsdx71h-RN0FybaTNwvBRkd4n3JFRR3XMRJkAXW0tERkLkQfuLfLm2B-TD7wVTJnSdiH4T6OvTfokGhcAzaKFPdiWMHug9L10jE4iHwgr930RzFIYzsFiQ9z9jNxCYxdMBx8Xix9xjG7uKwyACCBvQgxfIAhiGXXvttc3CRHrbFt9Jk-J9or4CEtxnKVVYQ1yd19aOs4WbN0T7e76N-~V7jjQ7NtXTKwQnl92peercTUr7tUhvIpixysgKrgT-kVzbRBTNrZsid-bNPcG2vLBqGeE8mhw__" alt="GPS Highway Restaurant Logo" class="logo-img">
-                <a href="#" class="logo">GPS Highway Restaurant</a>
+                <a href="index.html" class="logo">GPS Highway Restaurant</a>
             </div>
             <nav>
                 <ul id="nav-menu">
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
                     <li><a href="menu.html">Menu</a></li>
-                    <li><a href="#gallery">Gallery</a></li>
-                    <li><a href="#reservation">Reservations</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="index.html#gallery">Gallery</a></li>
+                    <li><a href="index.html#reservation">Reservations</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
                 </ul>
                 <button class="mobile-menu-btn" id="mobile-menu-btn">
                     <i class="fas fa-bars"></i>
@@ -750,7 +856,7 @@
                     <p>Our welcoming dining space provides the perfect setting for an unforgettable dining experience, whether you're stopping by during your travels or enjoying a meal with family and friends.</p>
                 </div>
                 <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Restaurant Interior">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Restaurant Interior" loading="lazy">
                 </div>
             </div>
         </div>
@@ -765,7 +871,7 @@
             <div class="menu-grid">
                 <!-- Appetizers -->
                 <div class="menu-item">
-                    <img src="https://i.pinimg.com/736x/77/1e/b4/771eb4b06b966c164be868685bfd5c85.jpg" alt="Paneer Tikka">
+                    <img src="https://i.pinimg.com/736x/77/1e/b4/771eb4b06b966c164be868685bfd5c85.jpg" alt="Paneer Tikka" loading="lazy">
                     <div class="menu-item-content">
                         <h3>Paneer Tikka</h3>
                         <p>Marinated cottage cheese grilled to perfection in tandoor with spices</p>
@@ -775,7 +881,7 @@
                 
                 <!-- Main Courses -->
                 <div class="menu-item">
-                    <img src="https://i.pinimg.com/736x/a8/9a/9f/a89a9f222ff5f325895f8053e8bbc5b0.jpg" alt="Butter Chicken">
+                    <img src="https://i.pinimg.com/736x/a8/9a/9f/a89a9f222ff5f325895f8053e8bbc5b0.jpg" alt="Butter Chicken" loading="lazy">
                     <div class="menu-item-content">
                         <h3>Butter Chicken</h3>
                         <p>Tender chicken in a rich, creamy tomato gravy with aromatic spices</p>
@@ -785,7 +891,7 @@
                 
                 <!-- Desserts -->
                 <div class="menu-item">
-                    <img src="https://i.pinimg.com/736x/9c/64/1f/9c641f34a51c3d39c254f34acfb25011.jpg" alt="Gulab Jamun">
+                    <img src="https://i.pinimg.com/736x/9c/64/1f/9c641f34a51c3d39c254f34acfb25011.jpg" alt="Gulab Jamun" loading="lazy">
                     <div class="menu-item-content">
                         <h3>Gulab Jamun</h3>
                         <p>Soft, melt-in-your-mouth milk balls soaked in sugar syrup</p>
@@ -793,13 +899,13 @@
                     </div>
                 </div>
             </div>
-            <div style="text-align: center; margin-top: 40px;">
+            <div class="menu-btn-container">
                 <a href="menu.html" class="btn">View Full Menu</a>
             </div>
         </div>
     </section>
 
-    <!-- Video Gallery Section -->
+    <!-- Video Gallery Section - Card Style -->
     <section class="video-gallery" id="gallery">
         <div class="container">
             <div class="section-title">
@@ -807,22 +913,22 @@
             </div>
             <div class="video-container">
                 <div class="video-item">
-                    <video controls>
+                    <video controls preload="none" poster="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg?Expires=1841954441&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dxts~jCXOor4vu3SLzcluPfBN9SJBbSiwL4qVWGIQLTP2fBQ3dl0dsAmPGsdx71h-RN0FybaTNwvBRkd4n3JFRR3XMRJkAXW0tERkLkQfuLfLm2B-TD7wVTJnSdiH4T6OvTfokGhcAzaKFPdiWMHug9L10jE4iHwgr930RzFIYzsFiQ9z9jNxCYxdMBx8Xix9xjG7uKwyACCBvQgxfIAhiGXXvttc3CRHrbFt9Jk-J9or4CEtxnKVVYQ1yd19aOs4WbN0T7e76N-~V7jjQ7NtXTKwQnl92peercTUr7tUhvIpixysgKrgT-kVzbRBTNrZsid-bNPcG2vLBqGeE8mhw__">
                         <source src="https://media-hosting.imagekit.io/8b731b1f45c04a22/GPS%20highway%20.mp4?Expires=1841954573&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=I8yFkimpPX4ypv6LsiALuV2LwLD-zbRqHS3e~S44khNEmAzQxLITRuZGC4oFJ2BLb3BQrcRCPKrMhfW7auUW4PaGhuz13q8XuO-z2BBth-tV6Q-XFIZE4efdQxbeJQKOl0AJmf1kGzbnXKW52onefQpJiV6B-AgpZG~eWgVCa~Wnr9J-cVjM6y5r-pG-4s14inLRV3wTeBVKE0xQNPzC2WE99emhBd5o92OtWtHkp1AME989fJggPzz2RtkAsOOvBVFDom3zY161nIdlNobywgL9ZKPmfXXMMdQy9IOWIHhZJdkxNSEGKfukor~0Jlpti0ewFZaGhDlnFFKLNKRaOA__" type="video/mp4">
-                        
                     </video>
+                   
                 </div>
                 <div class="video-item">
-                    <video controls>
+                    <video controls preload="none" poster="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg?Expires=1841954441&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dxts~jCXOor4vu3SLzcluPfBN9SJBbSiwL4qVWGIQLTP2fBQ3dl0dsAmPGsdx71h-RN0FybaTNwvBRkd4n3JFRR3XMRJkAXW0tERkLkQfuLfLm2B-TD7wVTJnSdiH4T6OvTfokGhcAzaKFPdiWMHug9L10jE4iHwgr930RzFIYzsFiQ9z9jNxCYxdMBx8Xix9xjG7uKwyACCBvQgxfIAhiGXXvttc3CRHrbFt9Jk-J9or4CEtxnKVVYQ1yd19aOs4WbN0T7e76N-~V7jjQ7NtXTKwQnl92peercTUr7tUhvIpixysgKrgT-kVzbRBTNrZsid-bNPcG2vLBqGeE8mhw__">
                         <source src="https://media-hosting.imagekit.io/a3ec1257e5964342/h3.mp4?Expires=1841954846&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Q32MlLqENXE0kyP56SJJFfEo4zaPz6bTCYpxcy91jTnsmEmLGZ1T-BGuh32Af5yV0EhmNiOm8CjUVNGCilz2kFpvQeh-gBny8~7WD32fRjZUdIVVuAR0djyjhFsmVOJsF~a~SQ5SadyqGsJLTlD0dVxIcRAjg0De6tjGWE~lFxmD4yAPWBZ8hHHn8JeiNOJ4BknH9pXZwuzzCziRDbjEebORJYhaC9Xyn55XLCR3fH1iwBrDlkWgK4lDcwJZ5nwIVQ7Wk6gG-C9bCdO9kbwGmBxy6mJLIzLCk3Jen~olhh33TWPydKjvC0jxJkr4773oiKwrV7dCB6X-V9hGb38a4g__" type="video/mp4">
-                        
                     </video>
+                   
                 </div>
                 <div class="video-item">
-                    <video controls>
+                    <video controls preload="none" poster="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg?Expires=1841954441&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dxts~jCXOor4vu3SLzcluPfBN9SJBbSiwL4qVWGIQLTP2fBQ3dl0dsAmPGsdx71h-RN0FybaTNwvBRkd4n3JFRR3XMRJkAXW0tERkLkQfuLfLm2B-TD7wVTJnSdiH4T6OvTfokGhcAzaKFPdiWMHug9L10jE4iHwgr930RzFIYzsFiQ9z9jNxCYxdMBx8Xix9xjG7uKwyACCBvQgxfIAhiGXXvttc3CRHrbFt9Jk-J9or4CEtxnKVVYQ1yd19aOs4WbN0T7e76N-~V7jjQ7NtXTKwQnl92peercTUr7tUhvIpixysgKrgT-kVzbRBTNrZsid-bNPcG2vLBqGeE8mhw__">
                         <source src="https://media-hosting.imagekit.io/7c2145ad8da34a28/h2.mp4?Expires=1841954846&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Or2A~xzoM3I-TSAIaW7lvIZsROx-CEpg8nJY3x59IsAdsDXPU3LcNRIAekU2dOVY7iwHWYv4J3d2GH45cUQ8kVkqpS2tC7Ypi1-6VvM1RpNeq4DmiCEcSvzGb-xm8mGksi4rvaHpfTzf1x93UdVgYID4sxg1gFxoW9i2KpIYuZT35BpzzJFtcSmSTbbXzYnMcEWiUz7V0mYe5x02NkcommfzCptDQ7LB5HjEu~og0EN-1gVzh4OWOa1xKOSkkPBQ8xfeXAl6MwaFP8mP0tKPPadK~ooU~hrzYhrXgM3C0OXTZWpzc4Bq2vqCBh9g8dPNSggpnEOYZSRS3GkNb8sdRA__" type="video/mp4">
-                        
                     </video>
+                
                 </div>
             </div>
         </div>
@@ -909,18 +1015,30 @@
                 </div>
                 <div class="footer-column">
                     <h3>Contact Us</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> <a href="https://goo.gl/maps/example" target="_blank">123 Gourmet Avenue, Culinary District</a></p>
-                    <p><i class="fas fa-phone"></i> <a href="tel:9021078335">9021078335</a>, <a href="tel:9665615666">9665615666</a>, <a href="tel:8600360818">8600360818</a></p>
-                    <p><i class="fas fa-envelope"></i> info@gpshighwayrestaurant.com</p>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>GPS Highway Restaurant, Chichbhawan, Nagpur, Maharashtra 440005</p>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <div class="phone-numbers">
+                            <a href="tel:9021078335" class="phone-number">9021078335</a>
+                            <a href="tel:9665615666" class="phone-number">9665615666</a>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <p>info@gpshighwayrestaurant.com</p>
+                    </div>
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul>
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
                         <li><a href="menu.html">Menu</a></li>
-                        <li><a href="#gallery">Gallery</a></li>
-                        <li><a href="#reservation">Reservations</a></li>
+                        <li><a href="index.html#gallery">Gallery</a></li>
+                        <li><a href="index.html#reservation">Reservations</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -935,7 +1053,7 @@
     </footer>
 
     <script>
-        // Loader Animation
+        // Loader Animation - Reduced to 1 second
         window.addEventListener('load', function() {
             setTimeout(function() {
                 const loader = document.getElementById('loader');
@@ -943,8 +1061,15 @@
                 
                 // Enable scrolling after loader disappears
                 document.body.style.overflow = 'auto';
-            }, 3000); // 3 seconds delay
+            }, 1000); // 1 second delay
         });
+
+        // Check if coming back from menu.html to skip animation
+        if (sessionStorage.getItem('visitedMenu')) {
+            document.getElementById('loader').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            sessionStorage.removeItem('visitedMenu');
+        }
 
         // Mobile Menu Toggle
         const mobileMenuBtn = document.getElementById('mobile-menu-btn');
@@ -961,6 +1086,11 @@
             link.addEventListener('click', () => {
                 navMenu.classList.remove('active');
                 mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                
+                // Set flag when navigating to menu.html
+                if (link.getAttribute('href') === 'menu.html') {
+                    sessionStorage.setItem('visitedMenu', 'true');
+                }
             });
         });
         
@@ -1002,6 +1132,23 @@
             // For this example, we'll just show an alert
             alert('Thank you for your reservation! We will contact you shortly to confirm your booking.');
             bookingForm.reset();
+        });
+
+        // Lazy load videos when they come into view
+        const lazyVideos = document.querySelectorAll('video[preload="none"]');
+        
+        const lazyVideoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const video = entry.target;
+                    video.preload = 'auto';
+                    lazyVideoObserver.unobserve(video);
+                }
+            });
+        }, { rootMargin: '200px' });
+        
+        lazyVideos.forEach(video => {
+            lazyVideoObserver.observe(video);
         });
     </script>
 </body>
