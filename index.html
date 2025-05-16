@@ -28,15 +28,15 @@
         }
         
         body {
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Montserrat', sans-serif;
             color: var(--text-dark);
             background-color: #f9f9f9;
             overflow-x: hidden;
-            line-height: 1.7;
+            line-height: 1.6;
         }
         
         h1, h2, h3, h4, h5, h6 {
-            font-family: 'EB Garamond', serif;
+            font-family: 'Cormorant Garamond', serif;
             font-weight: 600;
             letter-spacing: 0.5px;
         }
@@ -67,11 +67,11 @@
         .loader-text {
             color: var(--secondary-color);
             font-size: 2.5rem;
-            font-weight: 500;
+            font-weight: 600;
             margin-top: 15px;
             animation: fadeIn 0.5s ease-in-out;
             font-family: 'Libre Baskerville', serif;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
         
         @keyframes pulse {
@@ -105,6 +105,7 @@
             width: 100%;
             z-index: 1000;
             transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(193, 154, 107, 0.2);
         }
         
         header.scrolled {
@@ -153,11 +154,12 @@
         nav ul li a {
             color: var(--text-light);
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 500;
             transition: color 0.3s ease;
             position: relative;
             font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
         }
         
         nav ul li a:hover {
@@ -184,7 +186,7 @@
             background: none;
             border: none;
             color: var(--text-light);
-            font-size: 22px;
+            font-size: 1.5rem;
             cursor: pointer;
         }
         
@@ -215,14 +217,15 @@
             color: var(--text-light);
             animation: fadeIn 1s ease-in-out;
             font-family: 'EB Garamond', serif;
-            font-weight: 700;
+            font-weight: 600;
             letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .hero-subtitle {
             font-size: 1.8rem;
             margin-bottom: 2rem;
-            max-width: 800px;
+            max-width: 700px;
             color: var(--gold-light);
             margin-left: auto;
             margin-right: auto;
@@ -231,6 +234,7 @@
             font-family: 'Cormorant Garamond', serif;
             font-weight: 500;
             font-style: italic;
+            letter-spacing: 1px;
         }
 
         .hero-btns {
@@ -251,11 +255,12 @@
             font-weight: 500;
             transition: all 0.3s ease;
             border: 2px solid var(--secondary-color);
-            font-size: 1.1rem;
-            min-width: 200px;
+            font-size: 1rem;
+            min-width: 180px;
             text-align: center;
             letter-spacing: 1px;
             font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
         }
         
         .btn:hover {
@@ -287,7 +292,7 @@
         }
         
         .section-title h2 {
-            font-size: 3rem;
+            font-size: 3.2rem;
             color: var(--primary-color);
             position: relative;
             display: inline-block;
@@ -325,6 +330,7 @@
             margin-bottom: 20px;
             line-height: 1.8;
             font-size: 1.1rem;
+            color: var(--text-dark);
         }
         
         .about-image {
@@ -377,6 +383,7 @@
             aspect-ratio: 4/5;
             display: flex;
             flex-direction: column;
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
         
         .menu-item:hover {
@@ -402,6 +409,7 @@
             font-size: 1.5rem;
             margin-bottom: 10px;
             color: var(--primary-color);
+            font-family: 'Cormorant Garamond', serif;
         }
         
         .menu-item-content p {
@@ -417,7 +425,7 @@
             font-weight: 700;
             color: var(--secondary-color);
             margin-top: auto;
-            font-family: 'EB Garamond', serif;
+            font-family: 'Cormorant Garamond', serif;
         }
         
         .menu-btn-container {
@@ -470,7 +478,7 @@
         .video-caption h3 {
             color: var(--primary-color);
             font-size: 1.2rem;
-            font-family: 'EB Garamond', serif;
+            font-family: 'Cormorant Garamond', serif;
         }
         
         /* Reservation Section - Enhanced */
@@ -486,6 +494,7 @@
             padding: 50px;
             border-radius: 15px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
         
         .reservation-form h3 {
@@ -495,6 +504,7 @@
             color: var(--primary-color);
             position: relative;
             padding-bottom: 15px;
+            font-family: 'Cormorant Garamond', serif;
         }
         
         .reservation-form h3::after {
@@ -528,7 +538,7 @@
             padding: 15px 20px;
             border: 1px solid #ddd;
             border-radius: 8px;
-            font-family: 'Cormorant Garamond', serif;
+            font-family: 'Montserrat', sans-serif;
             font-size: 1rem;
             transition: all 0.3s ease;
             background-color: #f9f9f9;
@@ -578,6 +588,7 @@
             margin-top: 10px;
             letter-spacing: 1px;
             font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
         }
         
         .submit-btn:hover {
@@ -597,6 +608,7 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
         
         .map-container iframe {
@@ -625,6 +637,7 @@
             color: var(--secondary-color);
             position: relative;
             padding-bottom: 10px;
+            font-family: 'Cormorant Garamond', serif;
         }
         
         .footer-column h3::after {
@@ -640,6 +653,7 @@
         .footer-column p {
             margin-bottom: 15px;
             line-height: 1.8;
+            color: var(--text-secondary);
             font-size: 1rem;
         }
         
@@ -652,11 +666,10 @@
         }
         
         .footer-column ul li a {
-            color: var(--text-light);
+            color: var(--text-secondary);
             text-decoration: none;
             transition: color 0.3s ease;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
         
         .footer-column ul li a:hover {
@@ -675,14 +688,14 @@
             width: 18px;
             text-align: center;
             margin-top: 3px;
+            font-size: 1.1rem;
         }
         
         .contact-info a {
-            color: var(--text-light);
+            color: var(--text-secondary);
             text-decoration: none;
             transition: color 0.3s ease;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
         
         .contact-info a:hover {
@@ -700,11 +713,10 @@
             background: rgba(255, 255, 255, 0.1);
             padding: 8px 15px;
             border-radius: 20px;
-            transition: all 0.3s ease;
             font-size: 0.9rem;
             color: var(--text-light);
             text-decoration: none;
-            font-family: 'Montserrat', sans-serif;
+            display: inline-block;
         }
         
         .social-links {
@@ -723,6 +735,7 @@
             border-radius: 50%;
             color: var(--text-light);
             transition: all 0.3s ease;
+            font-size: 1.1rem;
         }
         
         .social-links a:hover {
@@ -734,10 +747,13 @@
             text-align: center;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
         }
         
+        .footer-bottom p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
         /* Chatbot Styles */
         .chatbot-container {
             position: fixed;
@@ -746,31 +762,28 @@
             z-index: 999;
             font-family: 'Montserrat', sans-serif;
         }
-        
+
         .chatbot-toggle {
             width: 60px;
             height: 60px;
             background-color: var(--secondary-color);
-            color: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
+            color: white;
+            font-size: 1.5rem;
             cursor: pointer;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
             border: none;
         }
-        
+
         .chatbot-toggle:hover {
             transform: scale(1.1);
             background-color: var(--gold-dark);
         }
-        
-        .chatbot-toggle i {
-            font-size: 24px;
-        }
-        
+
         .chatbot-window {
             width: 350px;
             height: 500px;
@@ -784,43 +797,44 @@
             opacity: 0;
             transition: all 0.3s ease;
         }
-        
+
         .chatbot-window.active {
             display: flex;
             transform: translateY(0);
             opacity: 1;
         }
-        
+
         .chatbot-header {
             background-color: var(--primary-color);
             color: white;
-            padding: 15px;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .chatbot-header h3 {
             font-size: 1.2rem;
-            font-weight: 500;
+            font-weight: 600;
             margin: 0;
+            font-family: 'Cormorant Garamond', serif;
         }
-        
+
         .chatbot-close {
             background: none;
             border: none;
             color: white;
-            font-size: 20px;
+            font-size: 1.2rem;
             cursor: pointer;
         }
-        
+
         .chatbot-messages {
             flex: 1;
-            padding: 15px;
+            padding: 20px;
             overflow-y: auto;
             background-color: #f9f9f9;
         }
-        
+
         .message {
             margin-bottom: 15px;
             max-width: 80%;
@@ -828,31 +842,29 @@
             border-radius: 18px;
             font-size: 0.9rem;
             line-height: 1.4;
-            position: relative;
         }
-        
+
         .bot-message {
             background-color: #e8e8e8;
             color: #333;
             border-top-left-radius: 5px;
             align-self: flex-start;
         }
-        
+
         .user-message {
             background-color: var(--secondary-color);
             color: white;
             border-top-right-radius: 5px;
             margin-left: auto;
-            align-self: flex-end;
         }
-        
+
         .chatbot-input {
             display: flex;
             padding: 15px;
-            border-top: 1px solid #eee;
             background-color: white;
+            border-top: 1px solid #eee;
         }
-        
+
         .chatbot-input input {
             flex: 1;
             padding: 12px 15px;
@@ -861,7 +873,7 @@
             outline: none;
             font-size: 0.9rem;
         }
-        
+
         .chatbot-input button {
             background-color: var(--secondary-color);
             color: white;
@@ -873,80 +885,53 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
-        
+
         .chatbot-input button:hover {
             background-color: var(--gold-dark);
         }
-        
+
+        .quick-replies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
         .quick-reply {
-            display: inline-block;
-            background-color: #f0f0f0;
-            color: #333;
-            padding: 8px 12px;
+            background-color: rgba(193, 154, 107, 0.2);
+            color: var(--primary-color);
+            border: none;
             border-radius: 15px;
-            margin: 5px;
+            padding: 5px 12px;
             font-size: 0.8rem;
             cursor: pointer;
             transition: all 0.3s ease;
         }
-        
+
         .quick-reply:hover {
-            background-color: #e0e0e0;
-        }
-        
-        .reservation-form-mini {
-            display: none;
-            padding: 15px;
-            background-color: #f9f9f9;
-        }
-        
-        .reservation-form-mini.active {
-            display: block;
-        }
-        
-        .form-group-mini {
-            margin-bottom: 10px;
-        }
-        
-        .form-group-mini input,
-        .form-group-mini select {
-            width: 100%;
-            padding: 8px 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 0.9rem;
-        }
-        
-        .submit-btn-mini {
             background-color: var(--secondary-color);
             color: white;
-            border: none;
-            padding: 8px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            width: 100%;
-            margin-top: 5px;
         }
-        
+
         .menu-suggestion {
             margin-top: 10px;
             padding: 10px;
-            background-color: #f0f0f0;
-            border-radius: 5px;
+            background-color: rgba(193, 154, 107, 0.1);
+            border-radius: 8px;
+            border-left: 3px solid var(--secondary-color);
         }
-        
+
         .menu-suggestion h4 {
             margin-bottom: 5px;
             color: var(--primary-color);
             font-size: 0.9rem;
         }
-        
+
         .menu-suggestion p {
             font-size: 0.8rem;
-            margin-bottom: 5px;
+            color: #666;
         }
-        
+
         /* Responsive Styles */
         @media (max-width: 1200px) {
             .hero-title {
@@ -989,16 +974,16 @@
             }
             
             .hero-subtitle {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
             }
             
             .section-title h2 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             
             .btn {
                 padding: 12px 25px;
-                font-size: 1rem;
+                font-size: 0.9rem;
             }
             
             .hero-btns {
@@ -1043,7 +1028,7 @@
             .map-container iframe {
                 height: 350px;
             }
-            
+
             .chatbot-window {
                 width: 300px;
                 height: 450px;
@@ -1052,11 +1037,11 @@
         
         @media (max-width: 576px) {
             .hero-title {
-                font-size: 2.4rem;
+                font-size: 2.2rem;
             }
             
             .hero-subtitle {
-                font-size: 1.1rem;
+                font-size: 1rem;
             }
             
             .section-title h2 {
@@ -1078,7 +1063,7 @@
             }
             
             .logo {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
             }
             
             .map-container iframe {
@@ -1088,20 +1073,21 @@
             .footer-content {
                 grid-template-columns: 1fr;
             }
-            
+
             .chatbot-container {
                 bottom: 20px;
                 right: 20px;
             }
-            
+
             .chatbot-toggle {
                 width: 50px;
                 height: 50px;
+                font-size: 1.2rem;
             }
-            
+
             .chatbot-window {
                 width: 280px;
-                height: 400px;
+                right: 0;
             }
         }
     </style>
@@ -1383,34 +1369,13 @@
             </div>
             <div class="chatbot-messages" id="chatbot-messages">
                 <div class="message bot-message">
-                    Hello! I'm your GPS Highway Restaurant assistant. How can I help you today? 😊
-                    <div style="margin-top: 10px;">
-                        <div class="quick-reply" onclick="handleQuickReply('reservation')">Make a reservation</div>
-                        <div class="quick-reply" onclick="handleQuickReply('menu')">View menu suggestions</div>
-                        <div class="quick-reply" onclick="handleQuickReply('contact')">Contact the owner</div>
+                    Welcome to GPS Highway Restaurant! How can I assist you today? 😊
+                    <div class="quick-replies">
+                        <button class="quick-reply" data-message="Reserve a table">Reserve a table</button>
+                        <button class="quick-reply" data-message="View menu">View menu</button>
+                        <button class="quick-reply" data-message="Contact info">Contact info</button>
                     </div>
                 </div>
-            </div>
-            <div class="reservation-form-mini" id="reservation-form-mini">
-                <div class="form-group-mini">
-                    <input type="text" id="res-name" placeholder="Your Name">
-                </div>
-                <div class="form-group-mini">
-                    <input type="date" id="res-date">
-                </div>
-                <div class="form-group-mini">
-                    <input type="time" id="res-time">
-                </div>
-                <div class="form-group-mini">
-                    <select id="res-guests">
-                        <option value="1">1 Person</option>
-                        <option value="2">2 People</option>
-                        <option value="3">3 People</option>
-                        <option value="4">4 People</option>
-                        <option value="5+">5+ People</option>
-                    </select>
-                </div>
-                <button class="submit-btn-mini" onclick="submitReservation()">Submit Reservation</button>
             </div>
             <div class="chatbot-input">
                 <input type="text" id="chatbot-input" placeholder="Type your message...">
@@ -1568,212 +1533,217 @@
             sessionStorage.removeItem('scrollPosition');
         }
 
-        // Chatbot functionality
+        // Chatbot Functionality
         const chatbotToggle = document.getElementById('chatbot-toggle');
         const chatbotWindow = document.getElementById('chatbot-window');
         const chatbotClose = document.getElementById('chatbot-close');
         const chatbotMessages = document.getElementById('chatbot-messages');
         const chatbotInput = document.getElementById('chatbot-input');
         const chatbotSend = document.getElementById('chatbot-send');
-        const reservationFormMini = document.getElementById('reservation-form-mini');
 
         // Toggle chatbot window
         chatbotToggle.addEventListener('click', () => {
             chatbotWindow.classList.toggle('active');
         });
 
-        // Close chatbot window
+        // Close chatbot
         chatbotClose.addEventListener('click', () => {
             chatbotWindow.classList.remove('active');
         });
 
-        // Send message when button is clicked
+        // Send message function
+        function sendMessage() {
+            const message = chatbotInput.value.trim();
+            if (message) {
+                addMessage(message, 'user');
+                chatbotInput.value = '';
+                respondToMessage(message);
+            }
+        }
+
+        // Add message to chat
+        function addMessage(text, sender) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
+            messageDiv.textContent = text;
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        // Add quick replies
+        function addQuickReplies(replies) {
+            const quickRepliesDiv = document.createElement('div');
+            quickRepliesDiv.classList.add('quick-replies');
+            
+            replies.forEach(reply => {
+                const button = document.createElement('button');
+                button.classList.add('quick-reply');
+                button.textContent = reply.text;
+                button.dataset.message = reply.text;
+                button.addEventListener('click', () => {
+                    addMessage(reply.text, 'user');
+                    respondToMessage(reply.text);
+                });
+                quickRepliesDiv.appendChild(button);
+            });
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add('bot-message');
+            messageDiv.appendChild(quickRepliesDiv);
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        // Add menu suggestion
+        function addMenuSuggestion(title, description) {
+            const suggestionDiv = document.createElement('div');
+            suggestionDiv.classList.add('menu-suggestion');
+            
+            const titleElement = document.createElement('h4');
+            titleElement.textContent = title;
+            
+            const descElement = document.createElement('p');
+            descElement.textContent = description;
+            
+            suggestionDiv.appendChild(titleElement);
+            suggestionDiv.appendChild(descElement);
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add('bot-message');
+            messageDiv.appendChild(suggestionDiv);
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        // Bot responses
+        function respondToMessage(message) {
+            // Simulate typing delay
+            setTimeout(() => {
+                const lowerMessage = message.toLowerCase();
+                
+                if (lowerMessage.includes('reserve') || lowerMessage.includes('table') || lowerMessage.includes('booking')) {
+                    addMessage('To reserve a table, please provide the following details:', 'bot');
+                    addMessage('1. Date and time of reservation\n2. Number of guests\n3. Your name\n4. Contact number', 'bot');
+                    addQuickReplies([
+                        { text: 'Today dinner' },
+                        { text: 'Tomorrow lunch' },
+                        { text: 'Weekend booking' }
+                    ]);
+                } 
+                else if (lowerMessage.includes('menu') || lowerMessage.includes('food') || lowerMessage.includes('dish')) {
+                    addMessage('We offer a wide variety of authentic Indian dishes. What type of cuisine are you interested in?', 'bot');
+                    addQuickReplies([
+                        { text: 'North Indian' },
+                        { text: 'South Indian' },
+                        { text: 'Vegetarian' },
+                        { text: 'Non-vegetarian' }
+                    ]);
+                }
+                else if (lowerMessage.includes('north indian')) {
+                    addMessage('Our North Indian specialties include:', 'bot');
+                    addMenuSuggestion('Butter Chicken', 'Tender chicken in rich tomato and butter sauce');
+                    addMenuSuggestion('Dal Makhani', 'Creamy black lentils slow-cooked to perfection');
+                    addMenuSuggestion('Paneer Tikka', 'Grilled cottage cheese with spices');
+                    addQuickReplies([
+                        { text: 'View full menu' },
+                        { text: 'Make reservation' }
+                    ]);
+                }
+                else if (lowerMessage.includes('south indian')) {
+                    addMessage('Our South Indian specialties include:', 'bot');
+                    addMenuSuggestion('Dosa', 'Crispy rice and lentil crepe');
+                    addMenuSuggestion('Idli Sambar', 'Steamed rice cakes with lentil stew');
+                    addMenuSuggestion('Hyderabadi Biryani', 'Fragrant rice with meat and spices');
+                    addQuickReplies([
+                        { text: 'View full menu' },
+                        { text: 'Make reservation' }
+                    ]);
+                }
+                else if (lowerMessage.includes('contact') || lowerMessage.includes('phone') || lowerMessage.includes('email')) {
+                    addMessage('You can reach us through:', 'bot');
+                    addMessage('Phone: 9021078335 or 9665615666\nEmail: info@gpshighwayrestaurant.com\nAddress: GPS Highway Restaurant, Chichbhawan, Nagpur, Maharashtra 440005', 'bot');
+                    addQuickReplies([
+                        { text: 'Reserve a table' },
+                        { text: 'View menu' }
+                    ]);
+                }
+                else if (lowerMessage.includes('hours') || lowerMessage.includes('open') || lowerMessage.includes('time')) {
+                    addMessage('We are open every day from 10:00 AM to 10:00 PM.', 'bot');
+                    addQuickReplies([
+                        { text: 'Reserve a table' },
+                        { text: 'View menu' }
+                    ]);
+                }
+                else if (lowerMessage.includes('today') || lowerMessage.includes('dinner') || lowerMessage.includes('lunch')) {
+                    addMessage('I can help you reserve a table for today. How many people will be dining?', 'bot');
+                    addQuickReplies([
+                        { text: '2 people' },
+                        { text: '4 people' },
+                        { text: '6+ people' }
+                    ]);
+                }
+                else if (lowerMessage.includes('tomorrow')) {
+                    addMessage('I can help you reserve a table for tomorrow. What time would you like to dine?', 'bot');
+                    addQuickReplies([
+                        { text: '12 PM lunch' },
+                        { text: '7 PM dinner' },
+                        { text: 'Other time' }
+                    ]);
+                }
+                else if (lowerMessage.includes('weekend')) {
+                    addMessage('Weekend reservations are popular. Would you like to book for Saturday or Sunday?', 'bot');
+                    addQuickReplies([
+                        { text: 'Saturday' },
+                        { text: 'Sunday' }
+                    ]);
+                }
+                else if (lowerMessage.includes('2') || lowerMessage.includes('two') || lowerMessage.includes('couple')) {
+                    addMessage('Table for 2 reserved! Please provide your name and contact number to confirm.', 'bot');
+                }
+                else if (lowerMessage.includes('4') || lowerMessage.includes('four') || lowerMessage.includes('family')) {
+                    addMessage('Table for 4 reserved! Please provide your name and contact number to confirm.', 'bot');
+                }
+                else if (lowerMessage.includes('6') || lowerMessage.includes('six') || lowerMessage.includes('group')) {
+                    addMessage('For groups of 6 or more, please call us directly at 9021078335 to make arrangements.', 'bot');
+                }
+                else if (lowerMessage.includes('12') || lowerMessage.includes('noon') || lowerMessage.includes('lunch')) {
+                    addMessage('Lunch reservation at 12 PM confirmed! Please provide your name to complete the booking.', 'bot');
+                }
+                else if (lowerMessage.includes('7') || lowerMessage.includes('evening') || lowerMessage.includes('dinner')) {
+                    addMessage('Dinner reservation at 7 PM confirmed! Please provide your name to complete the booking.', 'bot');
+                }
+                else {
+                    addMessage('I can help you with reservations, menu suggestions, or general inquiries. What would you like to know?', 'bot');
+                    addQuickReplies([
+                        { text: 'Reserve a table' },
+                        { text: 'View menu' },
+                        { text: 'Contact info' }
+                    ]);
+                }
+            }, 1000);
+        }
+
+        // Send message on button click
         chatbotSend.addEventListener('click', sendMessage);
 
-        // Send message when Enter key is pressed
+        // Send message on Enter key
         chatbotInput.addEventListener('keypress', (e) => {
             if (e.key === 'Enter') {
                 sendMessage();
             }
         });
 
-        // Handle quick reply buttons
-        function handleQuickReply(type) {
-            if (type === 'reservation') {
-                addMessage('user', 'I want to make a reservation');
-                setTimeout(() => {
-                    addMessage('bot', 'Sure! Please fill out this quick reservation form:');
-                    reservationFormMini.classList.add('active');
-                    scrollToBottom();
-                }, 500);
-            } else if (type === 'menu') {
-                addMessage('user', 'Can you suggest some menu items?');
-                setTimeout(() => {
-                    addMessage('bot', 'Of course! Could you tell me what type of meal you\'re interested in?');
-                    setTimeout(() => {
-                        addQuickReplies([
-                            'Vegetarian options',
-                            'Non-vegetarian options',
-                            'Desserts',
-                            'Full meal suggestions'
-                        ]);
-                    }, 300);
-                }, 500);
-            } else if (type === 'contact') {
-                addMessage('user', 'I want to contact the owner');
-                setTimeout(() => {
-                    addMessage('bot', 'You can reach the owner directly at:<br><br>Phone: <a href="tel:9021078335">9021078335</a><br>Email: <a href="mailto:info@gpshighwayrestaurant.com">info@gpshighwayrestaurant.com</a>');
-                    scrollToBottom();
-                }, 500);
+        // Quick reply buttons
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('quick-reply')) {
+                const message = e.target.dataset.message;
+                addMessage(message, 'user');
+                respondToMessage(message);
             }
-        }
-
-        // Add quick reply buttons
-        function addQuickReplies(replies) {
-            const quickRepliesContainer = document.createElement('div');
-            quickRepliesContainer.style.marginTop = '10px';
-            
-            replies.forEach(reply => {
-                const quickReply = document.createElement('div');
-                quickReply.className = 'quick-reply';
-                quickReply.textContent = reply;
-                quickReply.onclick = () => {
-                    addMessage('user', reply);
-                    handleMenuSuggestion(reply);
-                };
-                quickRepliesContainer.appendChild(quickReply);
-            });
-            
-            const lastBotMessage = document.querySelector('.bot-message:last-child');
-            lastBotMessage.appendChild(quickRepliesContainer);
-            scrollToBottom();
-        }
-
-        // Handle menu suggestions based on user selection
-        function handleMenuSuggestion(selection) {
-            setTimeout(() => {
-                if (selection.includes('Vegetarian')) {
-                    addMessage('bot', 'For vegetarian options, I recommend:<div class="menu-suggestion"><h4>Paneer Tikka</h4><p>Marinated cottage cheese grilled to perfection</p><h4>Dal Makhani</h4><p>Creamy black lentils cooked with butter and spices</p></div>');
-                } else if (selection.includes('Non-vegetarian')) {
-                    addMessage('bot', 'For non-vegetarian options, I recommend:<div class="menu-suggestion"><h4>Butter Chicken</h4><p>Tender chicken in rich tomato gravy</p><h4>Mutton Rogan Josh</h4><p>Aromatic lamb curry from Kashmir</p></div>');
-                } else if (selection.includes('Desserts')) {
-                    addMessage('bot', 'For desserts, I recommend:<div class="menu-suggestion"><h4>Gulab Jamun</h4><p>Soft milk balls in sugar syrup</p><h4>Kheer</h4><p>Traditional rice pudding with nuts</p></div>');
-                } else if (selection.includes('Full meal')) {
-                    addMessage('bot', 'For a complete meal, I recommend:<div class="menu-suggestion"><h4>Starter:</h4><p>Vegetable Samosa or Chicken Tikka</p><h4>Main Course:</h4><p>Dal Makhani with Jeera Rice or Butter Chicken with Naan</p><h4>Dessert:</h4><p>Gulab Jamun or Kheer</p></div>');
-                }
-                scrollToBottom();
-            }, 500);
-        }
-
-        // Submit mini reservation form
-        function submitReservation() {
-            const name = document.getElementById('res-name').value;
-            const date = document.getElementById('res-date').value;
-            const time = document.getElementById('res-time').value;
-            const guests = document.getElementById('res-guests').value;
-            
-            if (!name || !date || !time) {
-                addMessage('bot', 'Please fill in all the required fields.');
-                scrollToBottom();
-                return;
-            }
-            
-            addMessage('bot', `Thank you, ${name}! Your reservation for ${guests} on ${date} at ${time} has been received. We will confirm shortly.`);
-            reservationFormMini.classList.remove('active');
-            document.getElementById('res-name').value = '';
-            document.getElementById('res-date').value = '';
-            document.getElementById('res-time').value = '';
-            document.getElementById('res-guests').value = '1';
-            scrollToBottom();
-        }
-
-        // Send user message
-        function sendMessage() {
-            const message = chatbotInput.value.trim();
-            if (message) {
-                addMessage('user', message);
-                chatbotInput.value = '';
-                
-                // Simulate bot response
-                setTimeout(() => {
-                    handleBotResponse(message);
-                }, 500);
-            }
-        }
-
-        // Handle bot responses
-        function handleBotResponse(message) {
-            message = message.toLowerCase();
-            
-            if (message.includes('reservation') || message.includes('book') || message.includes('table')) {
-                addMessage('bot', 'Would you like to make a reservation?');
-                setTimeout(() => {
-                    addQuickReplies(['Yes, make a reservation', 'No, thanks']);
-                }, 300);
-            } 
-            else if (message.includes('menu') || message.includes('food') || message.includes('dish')) {
-                addMessage('bot', 'What type of cuisine are you interested in?');
-                setTimeout(() => {
-                    addQuickReplies([
-                        'Vegetarian options',
-                        'Non-vegetarian options',
-                        'Desserts',
-                        'Full meal suggestions'
-                    ]);
-                }, 300);
-            }
-            else if (message.includes('contact') || message.includes('owner') || message.includes('manager')) {
-                addMessage('bot', 'You can contact the owner directly at:<br><br>Phone: <a href="tel:9021078335">9021078335</a><br>Email: <a href="mailto:info@gpshighwayrestaurant.com">info@gpshighwayrestaurant.com</a>');
-            }
-            else if (message.includes('hours') || message.includes('open') || message.includes('close')) {
-                addMessage('bot', 'We are open every day from 10:00 AM to 10:00 PM.');
-            }
-            else if (message.includes('location') || message.includes('address') || message.includes('where')) {
-                addMessage('bot', 'We are located at:<br><br>GPS Highway Restaurant, Chichbhawan, Nagpur, Maharashtra 440005<br><br><a href="https://maps.google.com/?q=GPS+Highway+Restaurant,+Chichbhawan,+Nagpur,+Maharashtra+440005" target="_blank">View on Google Maps</a>');
-            }
-            else if (message.includes('hi') || message.includes('hello') || message.includes('hey')) {
-                addMessage('bot', 'Hello! How can I help you today? 😊');
-                setTimeout(() => {
-                    addQuickReplies([
-                        'Make a reservation',
-                        'View menu suggestions',
-                        'Contact the owner'
-                    ]);
-                }, 300);
-            }
-            else {
-                addMessage('bot', 'I\'m sorry, I didn\'t understand that. How else can I assist you?');
-                setTimeout(() => {
-                    addQuickReplies([
-                        'Make a reservation',
-                        'View menu suggestions',
-                        'Contact the owner'
-                    ]);
-                }, 300);
-            }
-            
-            scrollToBottom();
-        }
-
-        // Add message to chat
-        function addMessage(sender, text) {
-            const messageDiv = document.createElement('div');
-            messageDiv.className = `message ${sender}-message`;
-            
-            if (sender === 'bot' && text.includes('<')) {
-                messageDiv.innerHTML = text;
-            } else {
-                messageDiv.textContent = text;
-            }
-            
-            chatbotMessages.appendChild(messageDiv);
-            scrollToBottom();
-        }
-
-        // Scroll to bottom of chat
-        function scrollToBottom() {
-            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-        }
+        });
     </script>
 </body>
 </html>
