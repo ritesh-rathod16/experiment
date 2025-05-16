@@ -25,7 +25,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23c19a6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L22 12L12 22L2 12L12 2Z"></path></svg>'), auto;
         }
         
         body {
@@ -34,6 +33,7 @@
             background-color: #f9f9f9;
             overflow-x: hidden;
             line-height: 1.7;
+            cursor: url('https://i.pinimg.com/736x/bc/8c/19/bc8c19eb0da68587d909cf5b6e3aa04a.jpg'), auto;
         }
         
         h1, h2, h3, h4, h5, h6 {
@@ -41,7 +41,12 @@
             font-weight: 400;
             letter-spacing: 1px;
         }
-        
+
+        /* Section spacing adjustments */
+        section {
+            padding: 60px 0;
+        }
+
         /* Loader Animation */
         .loader {
             position: fixed;
@@ -71,6 +76,7 @@
             font-weight: 400;
             margin-top: 15px;
             animation: fadeIn 0.5s ease-in-out;
+            font-family: 'Bebas Neue', sans-serif;
             letter-spacing: 3px;
         }
         
@@ -105,7 +111,6 @@
             width: 100%;
             z-index: 1000;
             transition: all 0.3s ease;
-            border-bottom: 1px solid rgba(193, 154, 107, 0.2);
         }
         
         header.scrolled {
@@ -138,6 +143,7 @@
             font-weight: 400;
             color: var(--secondary-color);
             text-decoration: none;
+            font-family: 'Bebas Neue', sans-serif;
             letter-spacing: 2px;
         }
         
@@ -157,6 +163,7 @@
             font-weight: 500;
             transition: color 0.3s ease;
             position: relative;
+            font-family: 'Montserrat', sans-serif;
         }
         
         nav ul li a:hover {
@@ -183,7 +190,7 @@
             background: none;
             border: none;
             color: var(--text-light);
-            font-size: 1.5rem;
+            font-size: 22px;
             cursor: pointer;
         }
         
@@ -207,26 +214,30 @@
         }
 
         .hero-title {
-            font-size: 5.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 5rem;
+            margin-bottom: 1rem;
             line-height: 1;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             color: var(--text-light);
             animation: fadeIn 1s ease-in-out;
-            letter-spacing: 4px;
+            font-family: 'Bebas Neue', sans-serif;
+            font-weight: 400;
+            letter-spacing: 3px;
+            text-transform: uppercase;
         }
 
         .hero-subtitle {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             margin-bottom: 2rem;
-            max-width: 700px;
+            max-width: 800px;
             color: var(--gold-light);
             margin-left: auto;
             margin-right: auto;
             line-height: 1.6;
             animation: fadeIn 1.2s ease-in-out;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.5px;
         }
 
         .hero-btns {
@@ -247,11 +258,12 @@
             font-weight: 500;
             transition: all 0.3s ease;
             border: 2px solid var(--secondary-color);
-            font-size: 1rem;
-            min-width: 180px;
+            font-size: 1.1rem;
+            min-width: 200px;
             text-align: center;
             letter-spacing: 1px;
-            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
+            cursor: pointer;
         }
         
         .btn:hover {
@@ -273,22 +285,20 @@
         
         /* About Section */
         .about {
-            padding: 100px 0;
             background-color: var(--text-light);
         }
         
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
         }
         
         .section-title h2 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             color: var(--primary-color);
             position: relative;
             display: inline-block;
             padding-bottom: 15px;
-            letter-spacing: 3px;
         }
         
         .section-title h2::after {
@@ -316,14 +326,12 @@
             font-size: 2.2rem;
             margin-bottom: 20px;
             color: var(--primary-color);
-            letter-spacing: 2px;
         }
         
         .about-text p {
             margin-bottom: 20px;
             line-height: 1.8;
             font-size: 1.1rem;
-            color: var(--text-dark);
         }
         
         .about-image {
@@ -354,9 +362,8 @@
             z-index: -1;
         }
         
-        /* Menu Section with 4:5 ratio cards */
+        /* Menu Section with 16:9 ratio cards */
         .menu {
-            padding: 100px 0;
             background-color: #f5f5f5;
         }
         
@@ -364,7 +371,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-top: 50px;
+            margin-top: 40px;
         }
         
         .menu-item {
@@ -373,10 +380,10 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-            aspect-ratio: 4/5;
+            aspect-ratio: 16/9;
             display: flex;
             flex-direction: column;
-            border: 1px solid rgba(0, 0, 0, 0.1);
+            position: relative;
         }
         
         .menu-item:hover {
@@ -386,44 +393,45 @@
         
         .menu-item img {
             width: 100%;
-            height: 60%;
+            height: 100%;
             object-fit: cover;
             flex-shrink: 0;
+            transition: transform 0.5s ease;
+        }
+        
+        .menu-item:hover img {
+            transform: scale(1.05);
         }
         
         .menu-item-content {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 20px;
+            color: white;
         }
         
         .menu-item-content h3 {
             font-size: 1.5rem;
             margin-bottom: 10px;
-            color: var(--primary-color);
-            letter-spacing: 1px;
+            color: var(--text-light);
+            font-family: 'Bebas Neue', sans-serif;
         }
         
         .menu-item-content p {
-            color: #666;
+            color: var(--accent-color);
             margin-bottom: 15px;
             line-height: 1.6;
-            flex-grow: 1;
             font-size: 1rem;
-        }
-        
-        .nutrition-info {
-            font-size: 0.8rem;
-            color: #888;
-            margin-bottom: 10px;
         }
         
         .price {
             font-size: 1.3rem;
             font-weight: 700;
             color: var(--secondary-color);
-            margin-top: auto;
+            font-family: 'Bebas Neue', sans-serif;
         }
         
         .menu-btn-container {
@@ -433,7 +441,6 @@
         
         /* Video Gallery - Card Style with 1:1 ratio */
         .video-gallery {
-            padding: 100px 0;
             background-color: var(--primary-color);
         }
         
@@ -441,7 +448,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-top: 50px;
+            margin-top: 40px;
         }
         
         .video-item {
@@ -452,6 +459,7 @@
             background: white;
             transition: all 0.3s ease;
             aspect-ratio: 1/1;
+            cursor: pointer;
         }
         
         .video-item:hover {
@@ -476,12 +484,35 @@
         .video-caption h3 {
             color: var(--primary-color);
             font-size: 1.2rem;
-            letter-spacing: 1px;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+        
+        /* Play button overlay for videos */
+        .video-play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            background-color: rgba(193, 154, 107, 0.8);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            opacity: 1;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .video-item.playing .video-play-btn {
+            opacity: 0;
         }
         
         /* Reservation Section - Enhanced */
         .reservation {
-            padding: 100px 0;
             background-color: var(--text-light);
         }
         
@@ -492,7 +523,6 @@
             padding: 50px;
             border-radius: 15px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(0, 0, 0, 0.1);
         }
         
         .reservation-form h3 {
@@ -502,7 +532,7 @@
             color: var(--primary-color);
             position: relative;
             padding-bottom: 15px;
-            letter-spacing: 2px;
+            font-family: 'Bebas Neue', sans-serif;
         }
         
         .reservation-form h3::after {
@@ -526,6 +556,7 @@
             font-weight: 500;
             font-size: 1rem;
             color: var(--primary-color);
+            font-family: 'Montserrat', sans-serif;
         }
         
         .form-group input,
@@ -535,6 +566,7 @@
             padding: 15px 20px;
             border: 1px solid #ddd;
             border-radius: 8px;
+            font-family: 'Montserrat', sans-serif;
             font-size: 1rem;
             transition: all 0.3s ease;
             background-color: #f9f9f9;
@@ -583,7 +615,7 @@
             transition: all 0.3s ease;
             margin-top: 10px;
             letter-spacing: 1px;
-            text-transform: uppercase;
+            font-family: 'Montserrat', sans-serif;
         }
         
         .submit-btn:hover {
@@ -594,7 +626,6 @@
         
         /* Map Section */
         .map-section {
-            padding: 80px 0;
             background-color: var(--text-light);
         }
         
@@ -603,7 +634,6 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(0, 0, 0, 0.1);
         }
         
         .map-container iframe {
@@ -614,26 +644,31 @@
         
         /* Newsletter Section */
         .newsletter {
-            padding: 80px 0;
             background-color: var(--primary-color);
             color: var(--text-light);
             text-align: center;
         }
         
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
         .newsletter h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
-            letter-spacing: 2px;
+            color: var(--secondary-color);
         }
         
         .newsletter p {
-            max-width: 600px;
-            margin: 0 auto 30px;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
             color: var(--text-secondary);
         }
         
         .newsletter-form {
             display: flex;
+            gap: 10px;
             max-width: 500px;
             margin: 0 auto;
         }
@@ -642,7 +677,7 @@
             flex: 1;
             padding: 15px 20px;
             border: none;
-            border-radius: 30px 0 0 30px;
+            border-radius: 30px;
             font-size: 1rem;
         }
         
@@ -651,12 +686,10 @@
             background-color: var(--secondary-color);
             color: var(--text-light);
             border: none;
-            border-radius: 0 30px 30px 0;
+            border-radius: 30px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
         }
         
         .newsletter-form button:hover {
@@ -683,7 +716,7 @@
             color: var(--secondary-color);
             position: relative;
             padding-bottom: 10px;
-            letter-spacing: 2px;
+            font-family: 'Bebas Neue', sans-serif;
         }
         
         .footer-column h3::after {
@@ -805,12 +838,13 @@
             font-size: 0.9rem;
         }
 
-        /* Chatbot Styles */
+        /* Chatbot Styles - Enhanced */
         .chatbot-container {
             position: fixed;
             bottom: 30px;
             right: 30px;
             z-index: 999;
+            font-family: 'Montserrat', sans-serif;
         }
 
         .chatbot-toggle {
@@ -867,7 +901,7 @@
             font-size: 1.2rem;
             font-weight: 600;
             margin: 0;
-            letter-spacing: 1px;
+            font-family: 'Bebas Neue', sans-serif;
         }
 
         .chatbot-close {
@@ -892,6 +926,19 @@
             border-radius: 18px;
             font-size: 0.9rem;
             line-height: 1.4;
+            position: relative;
+            animation: fadeInUp 0.3s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .bot-message {
@@ -922,6 +969,12 @@
             border-radius: 30px;
             outline: none;
             font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .chatbot-input input:focus {
+            border-color: var(--secondary-color);
+            box-shadow: 0 0 0 2px rgba(193, 154, 107, 0.2);
         }
 
         .chatbot-input button {
@@ -934,6 +987,9 @@
             margin-left: 10px;
             cursor: pointer;
             transition: background-color 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .chatbot-input button:hover {
@@ -975,6 +1031,7 @@
             margin-bottom: 5px;
             color: var(--primary-color);
             font-size: 0.9rem;
+            font-family: 'Bebas Neue', sans-serif;
         }
 
         .menu-suggestion p {
@@ -983,10 +1040,10 @@
             margin-bottom: 5px;
         }
 
-        .nutrition-facts {
+        .nutrition-info {
             font-size: 0.7rem;
             color: #888;
-            margin-top: 5px;
+            font-style: italic;
         }
 
         .reservation-form-mini {
@@ -998,6 +1055,7 @@
 
         .reservation-form-mini.active {
             display: block;
+            animation: fadeIn 0.3s ease;
         }
 
         .form-group-mini {
@@ -1011,17 +1069,25 @@
             border: 1px solid #ddd;
             border-radius: 5px;
             font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group-mini input:focus,
+        .form-group-mini select:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(193, 154, 107, 0.2);
         }
 
         .submit-btn-mini {
-            width: 100%;
-            padding: 10px;
             background-color: var(--secondary-color);
             color: white;
             border: none;
+            padding: 10px 15px;
             border-radius: 5px;
             cursor: pointer;
             font-size: 0.9rem;
+            width: 100%;
             margin-top: 5px;
             transition: all 0.3s ease;
         }
@@ -1030,9 +1096,48 @@
             background-color: var(--gold-dark);
         }
 
+        /* Typing indicator */
+        .typing-indicator {
+            display: flex;
+            padding: 10px 15px;
+            background-color: #e8e8e8;
+            border-radius: 18px;
+            width: fit-content;
+            margin-bottom: 15px;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #666;
+            border-radius: 50%;
+            margin: 0 2px;
+            animation: typingAnimation 1.4s infinite ease-in-out;
+        }
+
+        .typing-dot:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes typingAnimation {
+            0%, 60%, 100% {
+                transform: translateY(0);
+            }
+            30% {
+                transform: translateY(-5px);
+            }
+        }
+
         /* Online Ordering Section */
         .online-ordering {
-            padding: 100px 0;
             background-color: #f5f5f5;
         }
 
@@ -1040,8 +1145,8 @@
             display: flex;
             justify-content: center;
             gap: 30px;
-            margin-top: 50px;
             flex-wrap: wrap;
+            margin-top: 40px;
         }
 
         .platform-card {
@@ -1052,7 +1157,6 @@
             text-align: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-            border: 1px solid rgba(0, 0, 0, 0.1);
         }
 
         .platform-card:hover {
@@ -1070,6 +1174,7 @@
             font-size: 1.3rem;
             margin-bottom: 15px;
             color: var(--primary-color);
+            font-family: 'Bebas Neue', sans-serif;
         }
 
         .platform-card p {
@@ -1079,34 +1184,25 @@
         }
 
         .platform-card .btn {
-            display: inline-block;
             padding: 10px 20px;
-            background-color: var(--secondary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
             font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .platform-card .btn:hover {
-            background-color: var(--gold-dark);
+            min-width: auto;
         }
 
         /* Responsive Styles */
         @media (max-width: 1200px) {
             .hero-title {
-                font-size: 4.5rem;
+                font-size: 4rem;
             }
         }
         
         @media (max-width: 992px) {
             .hero-title {
-                font-size: 4rem;
+                font-size: 3.5rem;
             }
             
             .hero-subtitle {
-                font-size: 1rem;
+                font-size: 1.1rem;
             }
             
             .about-content {
@@ -1128,19 +1224,23 @@
                 height: 400px;
             }
 
-            .chatbot-window {
-                width: 320px;
-                height: 450px;
+            .ordering-platforms {
+                gap: 20px;
+            }
+
+            .platform-card {
+                width: 200px;
+                padding: 20px;
             }
         }
         
         @media (max-width: 768px) {
             .hero-title {
-                font-size: 3rem;
+                font-size: 2.8rem;
             }
             
             .hero-subtitle {
-                font-size: 0.9rem;
+                font-size: 1rem;
             }
             
             .section-title h2 {
@@ -1195,27 +1295,33 @@
                 height: 350px;
             }
 
+            .chatbot-window {
+                width: 300px;
+                height: 450px;
+            }
+
             .newsletter-form {
                 flex-direction: column;
             }
-            
-            .newsletter-form input {
-                border-radius: 30px;
-                margin-bottom: 10px;
-            }
-            
+
+            .newsletter-form input,
             .newsletter-form button {
-                border-radius: 30px;
+                width: 100%;
+            }
+
+            .platform-card {
+                width: 100%;
+                max-width: 300px;
             }
         }
         
         @media (max-width: 576px) {
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 2.4rem;
             }
             
             .hero-subtitle {
-                font-size: 0.8rem;
+                font-size: 0.9rem;
             }
             
             .section-title h2 {
@@ -1237,7 +1343,7 @@
             }
             
             .logo {
-                font-size: 1.3rem;
+                font-size: 1.5rem;
             }
             
             .map-container iframe {
@@ -1263,16 +1369,6 @@
                 width: 280px;
                 right: 0;
             }
-
-            .ordering-platforms {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .platform-card {
-                width: 100%;
-                max-width: 300px;
-            }
         }
     </style>
 </head>
@@ -1294,11 +1390,11 @@
                 <ul id="nav-menu">
                     <li><a href="index.html#home">Home</a></li>
                     <li><a href="index.html#about">About</a></li>
-                    <li><a href="index.html#menu">Menu</a></li>
+                    <li><a href="menu.html">Menu</a></li>
                     <li><a href="index.html#gallery">Gallery</a></li>
-                    <li><a href="index.html#ordering">Order Online</a></li>
                     <li><a href="index.html#reservation">Reservations</a></li>
                     <li><a href="index.html#contact">Contact</a></li>
+                    <li><a href="index.html#ordering">Order Online</a></li>
                 </ul>
                 <button class="mobile-menu-btn" id="mobile-menu-btn">
                     <i class="fas fa-bars"></i>
@@ -1311,10 +1407,10 @@
     <section id="hero">
         <div class="hero-content">
             <h1 class="hero-title">AUTHENTIC INDIAN CUISINE</h1>
-            <p class="hero-subtitle">Experience the rich flavors of India with our carefully crafted menu featuring traditional recipes and the freshest ingredients</p>
+            <p class="hero-subtitle">Experience the rich flavors of India with our carefully crafted menu featuring traditional recipes and the freshest ingredients.</p>
             <div class="hero-btns">
-                <a href="index.html#menu" class="btn">View Menu</a>
-                <a href="index.html#reservation" class="btn btn-outline">Reserve a Table</a>
+                <a href="menu.html" class="btn">View Menu</a>
+                <a href="#reservation" class="btn btn-outline">Reserve a Table</a>
             </div>
         </div>
     </section>
@@ -1339,7 +1435,7 @@
         </div>
     </section>
 
-    <!-- Menu Section with 4:5 ratio cards -->
+    <!-- Menu Section with 16:9 ratio cards -->
     <section class="menu" id="menu">
         <div class="container">
             <div class="section-title">
@@ -1352,7 +1448,6 @@
                     <div class="menu-item-content">
                         <h3>Paneer Tikka</h3>
                         <p>Marinated cottage cheese grilled to perfection in tandoor with spices</p>
-                        <div class="nutrition-info">Calories: 320 | Protein: 18g | Carbs: 12g | Fat: 22g</div>
                         <div class="price">₹290</div>
                     </div>
                 </div>
@@ -1363,7 +1458,6 @@
                     <div class="menu-item-content">
                         <h3>Butter Chicken</h3>
                         <p>Tender chicken in a rich, creamy tomato gravy with aromatic spices</p>
-                        <div class="nutrition-info">Calories: 450 | Protein: 35g | Carbs: 18g | Fat: 28g</div>
                         <div class="price">₹470</div>
                     </div>
                 </div>
@@ -1374,7 +1468,6 @@
                     <div class="menu-item-content">
                         <h3>Gulab Jamun</h3>
                         <p>Soft, melt-in-your-mouth milk balls soaked in sugar syrup</p>
-                        <div class="nutrition-info">Calories: 150 | Protein: 3g | Carbs: 25g | Fat: 5g</div>
                         <div class="price">₹60</div>
                     </div>
                 </div>
@@ -1385,7 +1478,7 @@
         </div>
     </section>
 
-    <!-- Online Ordering Section -->
+     <!-- Online Ordering Section -->
     <section class="online-ordering" id="ordering">
         <div class="container">
             <div class="section-title">
@@ -1393,26 +1486,27 @@
             </div>
             <div class="ordering-platforms">
                 <div class="platform-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/Zomato_logo.png/800px-Zomato_logo.png" alt="Zomato">
+                    <img src="https://brandmusiq.com/assets/work_banner_vyEql_Zomato.jpg" alt="Zomato">
                     <h3>Zomato</h3>
                     <p>Order your favorite dishes through Zomato for quick delivery</p>
-                    <a href="https://www.zomato.com" target="_blank" class="btn">Order Now</a>
+                    <a href="https://www.zomato.com/nagpur/gps-wardha-road" target="_blank" class="btn">Order Now</a>
                 </div>
                 <div class="platform-card">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Swiggy_logo.png/800px-Swiggy_logo.png" alt="Swiggy">
+                    <img src="https://cdn.pnggallery.com/wp-content/uploads/swiggy-logo-02.png" alt="Swiggy">
                     <h3>Swiggy</h3>
                     <p>Get your food delivered fast with Swiggy's reliable service</p>
                     <a href="https://www.swiggy.com" target="_blank" class="btn">Order Now</a>
                 </div>
                 <div class="platform-card">
-                    <img src="https://cdn.corenexis.com/view/?img=d/ma16/EzTrwx.png" alt="Uber Eats">
-                    <h3>Uber Eats</h3>
-                    <p>Enjoy our dishes delivered by Uber Eats</p>
-                    <a href="https://www.ubereats.com" target="_blank" class="btn">Order Now</a>
+                    <img src="https://cdn.corenexis.com/view/?img=d/ma16/EzTrwx.png" alt="Restaurant Guru">
+                    <h3>Restaurant Guru</h3>
+                    <p>Enjoy our cuisine delivered by Restaurant Guru</p>
+                    <a href="https://restaurant-guru.in/GPS-Highway-Restaurant-Nagpur" target="_blank" class="btn">Order Now</a>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Video Gallery Section - Card Style with 1:1 ratio -->
     <section class="video-gallery" id="gallery">
@@ -1425,6 +1519,9 @@
                     <video controls preload="none" poster="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg?Expires=1841954441&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dxts~jCXOor4vu3SLzcluPfBN9SJBbSiwL4qVWGIQLTP2fBQ3dl0dsAmPGsdx71h-RN0FybaTNwvBRkd4n3JFRR3XMRJkAXW0tERkLkQfuLfLm2B-TD7wVTJnSdiH4T6OvTfokGhcAzaKFPdiWMHug9L10jE4iHwgr930RzFIYzsFiQ9z9jNxCYxdMBx8Xix9xjG7uKwyACCBvQgxfIAhiGXXvttc3CRHrbFt9Jk-J9or4CEtxnKVVYQ1yd19aOs4WbN0T7e76N-~V7jjQ7NtXTKwQnl92peercTUr7tUhvIpixysgKrgT-kVzbRBTNrZsid-bNPcG2vLBqGeE8mhw__">
                         <source src="https://media-hosting.imagekit.io/8b731b1f45c04a22/GPS%20highway%20.mp4?Expires=1841954573&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=I8yFkimpPX4ypv6LsiALuV2LwLD-zbRqHS3e~S44khNEmAzQxLITRuZGC4oFJ2BLb3BQrcRCPKrMhfW7auUW4PaGhuz13q8XuO-z2BBth-tV6Q-XFIZE4efdQxbeJQKOl0AJmf1kGzbnXKW52onefQpJiV6B-AgpZG~eWgVCa~Wnr9J-cVjM6y5r-pG-4s14inLRV3wTeBVKE0xQNPzC2WE99emhBd5o92OtWtHkp1AME989fJggPzz2RtkAsOOvBVFDom3zY161nIdlNobywgL9ZKPmfXXMMdQy9IOWIHhZJdkxNSEGKfukor~0Jlpti0ewFZaGhDlnFFKLNKRaOA__" type="video/mp4">
                     </video>
+                    <div class="video-play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
                     <div class="video-caption">
                         <h3>Restaurant Ambience</h3>
                     </div>
@@ -1433,6 +1530,9 @@
                     <video controls preload="none" poster="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg?Expires=1841954441&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dxts~jCXOor4vu3SLzcluPfBN9SJBbSiwL4qVWGIQLTP2fBQ3dl0dsAmPGsdx71h-RN0FybaTNwvBRkd4n3JFRR3XMRJkAXW0tERkLkQfuLfLm2B-TD7wVTJnSdiH4T6OvTfokGhcAzaKFPdiWMHug9L10jE4iHwgr930RzFIYzsFiQ9z9jNxCYxdMBx8Xix9xjG7uKwyACCBvQgxfIAhiGXXvttc3CRHrbFt9Jk-J9or4CEtxnKVVYQ1yd19aOs4WbN0T7e76N-~V7jjQ7NtXTKwQnl92peercTUr7tUhvIpixysgKrgT-kVzbRBTNrZsid-bNPcG2vLBqGeE8mhw__">
                         <source src="https://media-hosting.imagekit.io/8da831ad515649fa/h1.mp4?Expires=1841961563&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=bXNZJU8fpYmF1e5W1xOGHH7fuXJB1lTyE5sPrvHQQQ6H1SjNhB0QWo5x6UGeGOfkt2A5zc99BnfD6Yda3WL1InmxXyDfr76SZu-ZrXNKLYOzGIi3G5nAthJ4N3fEjxlX4dhFMgmzEsWa1eNv8Rtxg89JnILstinAmVBM7F8b9~SnIkrJoXdxLnL5utHSgv18lwzcvyz~xxab2XvtLlZrVLlCSeo7lfgWOQgpeHL3ORXpNOGe8ju11OFxj294yKBzbCeYSHRW~Sza0WHGHlcq4wBY1DS5AuP93cGfdMXXOOE-J3pEwAJwxmubg4-uveZ06E6a1IwSEecyAAJXjzTMHg__" type="video/mp4">
                     </video>
+                    <div class="video-play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
                     <div class="video-caption">
                         <h3>Food Preparation</h3>
                     </div>
@@ -1441,6 +1541,9 @@
                     <video controls preload="none" poster="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg?Expires=1841954441&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dxts~jCXOor4vu3SLzcluPfBN9SJBbSiwL4qVWGIQLTP2fBQ3dl0dsAmPGsdx71h-RN0FybaTNwvBRkd4n3JFRR3XMRJkAXW0tERkLkQfuLfLm2B-TD7wVTJnSdiH4T6OvTfokGhcAzaKFPdiWMHug9L10jE4iHwgr930RzFIYzsFiQ9z9jNxCYxdMBx8Xix9xjG7uKwyACCBvQgxfIAhiGXXvttc3CRHrbFt9Jk-J9or4CEtxnKVVYQ1yd19aOs4WbN0T7e76N-~V7jjQ7NtXTKwQnl92peercTUr7tUhvIpixysgKrgT-kVzbRBTNrZsid-bNPcG2vLBqGeE8mhw__">
                         <source src="https://media-hosting.imagekit.io/7c2145ad8da34a28/h2.mp4?Expires=1841954846&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Or2A~xzoM3I-TSAIaW7lvIZsROx-CEpg8nJY3x59IsAdsDXPU3LcNRIAekU2dOVY7iwHWYv4J3d2GH45cUQ8kVkqpS2tC7Ypi1-6VvM1RpNeq4DmiCEcSvzGb-xm8mGksi4rvaHpfTzf1x93UdVgYID4sxg1gFxoW9i2KpIYuZT35BpzzJFtcSmSTbbXzYnMcEWiUz7V0mYe5x02NkcommfzCptDQ7LB5HjEu~og0EN-1gVzh4OWOa1xKOSkkPBQ8xfeXAl6MwaFP8mP0tKPPadK~ooU~hrzYhrXgM3C0OXTZWpzc4Bq2vqCBh9g8dPNSggpnEOYZSRS3GkNb8sdRA__" type="video/mp4">
                     </video>
+                    <div class="video-play-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
                     <div class="video-caption">
                         <h3>Customer Experience</h3>
                     </div>
@@ -1509,18 +1612,6 @@
         </div>
     </section>
 
-    <!-- Newsletter Section -->
-    <section class="newsletter">
-        <div class="container">
-            <h2>JOIN OUR NEWSLETTER</h2>
-            <p>Subscribe to receive updates, special offers, and a <strong>10% discount</strong> on your first order!</p>
-            <form class="newsletter-form" id="newsletter-form">
-                <input type="email" placeholder="Enter your email address" required>
-                <button type="submit">Subscribe</button>
-            </form>
-        </div>
-    </section>
-
     <!-- Map Section -->
     <section class="map-section">
         <div class="container">
@@ -1529,6 +1620,20 @@
             </div>
             <div class="map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52356.72936253133!2d78.9818823486328!3d21.066862200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4bfece213e8df%3A0xbafc5c14f7962ecd!2sGPS%20Highway%20Restaurant!5e1!3m2!1sen!2sin!4v1747341109593!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>JOIN OUR NEWSLETTER</h2>
+                <p>Subscribe to our newsletter and get 10% off your first order plus exclusive offers and updates.</p>
+                <form class="newsletter-form" id="newsletter-form">
+                    <input type="email" placeholder="Enter your email address" required>
+                    <button type="submit">Subscribe</button>
+                </form>
             </div>
         </div>
     </section>
@@ -1543,7 +1648,6 @@
                     <div class="social-links">
                         <a href="https://www.facebook.com/gpshighwayrestaurant/" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         <a href="https://www.instagram.com/gps.highway.restaurant/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
@@ -1569,8 +1673,9 @@
                     <ul>
                         <li><a href="index.html#home">Home</a></li>
                         <li><a href="index.html#about">About Us</a></li>
-                        <li><a href="index.html#menu">Menu</a></li>
+                        <li><a href="menu.html">Menu</a></li>
                         <li><a href="index.html#ordering">Order Online</a></li>
+                        <li><a href="index.html#gallery">Gallery</a></li>
                         <li><a href="index.html#reservation">Reservations</a></li>
                     </ul>
                 </div>
@@ -1588,7 +1693,7 @@
     <!-- Chatbot Container -->
     <div class="chatbot-container">
         <button class="chatbot-toggle" id="chatbot-toggle">
-            <i class="fas fa-comments"></i>
+            <i class="fas fa-utensils"></i>
         </button>
         <div class="chatbot-window" id="chatbot-window">
             <div class="chatbot-header">
@@ -1609,16 +1714,17 @@
             </div>
             <div class="reservation-form-mini" id="reservation-form-mini">
                 <div class="form-group-mini">
-                    <input type="text" id="res-name" placeholder="Your Name">
+                    <input type="text" id="res-name" placeholder="Your Name" required>
                 </div>
                 <div class="form-group-mini">
-                    <input type="date" id="res-date">
+                    <input type="date" id="res-date" required>
                 </div>
                 <div class="form-group-mini">
-                    <input type="time" id="res-time">
+                    <input type="time" id="res-time" required>
                 </div>
                 <div class="form-group-mini">
-                    <select id="res-guests">
+                    <select id="res-guests" required>
+                        <option value="" disabled selected>Number of Guests</option>
                         <option value="1">1 Person</option>
                         <option value="2">2 People</option>
                         <option value="3">3 People</option>
@@ -1629,7 +1735,7 @@
                 <button class="submit-btn-mini" id="submit-reservation">Submit Reservation</button>
             </div>
             <div class="chatbot-input">
-                <input type="text" id="chatbot-input" placeholder="Type your message...">
+                <input type="text" id="chatbot-input" placeholder="Type your message..." autocomplete="off">
                 <button id="chatbot-send"><i class="fas fa-paper-plane"></i></button>
             </div>
         </div>
@@ -1761,12 +1867,11 @@
             }
         });
 
-        // Newsletter Form Submission
+        // Newsletter form submission
         const newsletterForm = document.getElementById('newsletter-form');
         
         newsletterForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            
             const email = newsletterForm.querySelector('input[type="email"]').value;
             
             try {
@@ -1779,20 +1884,20 @@
                         access_key: '3ad2ac7d-5205-4c7f-b856-de35b9a592f3',
                         subject: 'New Newsletter Subscription',
                         email: email,
-                        message: 'Please subscribe me to your newsletter and send the 10% discount code.'
+                        message: 'Please subscribe me to the newsletter with 10% discount'
                     })
                 });
                 
                 const result = await response.json();
                 
                 if (result.success) {
-                    alert('Thank you for subscribing! A 10% discount code has been sent to your email.');
+                    alert('Thank you for subscribing! Check your email for your 10% discount code.');
                     newsletterForm.reset();
                 } else {
-                    alert('There was an error subscribing. Please try again later.');
+                    alert('There was an error with your subscription. Please try again later.');
                 }
             } catch (error) {
-                alert('There was an error subscribing. Please try again later.');
+                alert('There was an error with your subscription. Please try again later.');
                 console.error(error);
             }
         });
@@ -1820,7 +1925,31 @@
             sessionStorage.removeItem('scrollPosition');
         }
 
-        // Chatbot Functionality
+        // Video play/pause functionality
+        document.querySelectorAll('.video-item').forEach(videoItem => {
+            const video = videoItem.querySelector('video');
+            const playBtn = videoItem.querySelector('.video-play-btn');
+            
+            videoItem.addEventListener('click', () => {
+                if (video.paused) {
+                    video.play();
+                    videoItem.classList.add('playing');
+                } else {
+                    video.pause();
+                    videoItem.classList.remove('playing');
+                }
+            });
+            
+            video.addEventListener('play', () => {
+                videoItem.classList.add('playing');
+            });
+            
+            video.addEventListener('pause', () => {
+                videoItem.classList.remove('playing');
+            });
+        });
+
+        // Chatbot Functionality - Enhanced
         const chatbotToggle = document.getElementById('chatbot-toggle');
         const chatbotWindow = document.getElementById('chatbot-window');
         const chatbotClose = document.getElementById('chatbot-close');
@@ -1833,6 +1962,9 @@
         // Toggle chatbot window
         chatbotToggle.addEventListener('click', () => {
             chatbotWindow.classList.toggle('active');
+            if (chatbotWindow.classList.contains('active')) {
+                chatbotInput.focus();
+            }
         });
 
         // Close chatbot
@@ -1840,13 +1972,42 @@
             chatbotWindow.classList.remove('active');
         });
 
+        // Show typing indicator
+        function showTypingIndicator() {
+            const typingDiv = document.createElement('div');
+            typingDiv.classList.add('typing-indicator');
+            typingDiv.innerHTML = `
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            `;
+            chatbotMessages.appendChild(typingDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+            return typingDiv;
+        }
+
+        // Hide typing indicator
+        function hideTypingIndicator(typingDiv) {
+            if (typingDiv && typingDiv.parentNode) {
+                typingDiv.remove();
+            }
+        }
+
         // Send message function
         function sendMessage() {
             const message = chatbotInput.value.trim();
             if (message) {
                 addMessage(message, 'user');
                 chatbotInput.value = '';
-                respondToMessage(message);
+                
+                // Show typing indicator
+                const typingDiv = showTypingIndicator();
+                
+                // Simulate bot thinking time
+                setTimeout(() => {
+                    hideTypingIndicator(typingDiv);
+                    respondToMessage(message);
+                }, 1000 + Math.random() * 1000); // Random delay between 1-2 seconds
             }
         }
 
@@ -1855,7 +2016,12 @@
             const messageDiv = document.createElement('div');
             messageDiv.classList.add('message');
             messageDiv.classList.add(sender === 'user' ? 'user-message' : 'bot-message');
-            messageDiv.textContent = text;
+            
+            // Convert URLs to clickable links
+            const urlRegex = /(https?:\/\/[^\s]+)/g;
+            const linkedText = text.replace(urlRegex, url => `<a href="${url}" target="_blank">${url}</a>`);
+            
+            messageDiv.innerHTML = linkedText;
             chatbotMessages.appendChild(messageDiv);
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
         }
@@ -1872,7 +2038,14 @@
                 button.dataset.message = reply.text;
                 button.addEventListener('click', () => {
                     addMessage(reply.text, 'user');
-                    respondToMessage(reply.text);
+                    
+                    // Show typing indicator
+                    const typingDiv = showTypingIndicator();
+                    
+                    setTimeout(() => {
+                        hideTypingIndicator(typingDiv);
+                        respondToMessage(reply.text);
+                    }, 1000 + Math.random() * 1000);
                 });
                 quickRepliesDiv.appendChild(button);
             });
@@ -1885,8 +2058,8 @@
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
         }
 
-        // Add menu suggestion
-        function addMenuSuggestion(title, description, nutrition) {
+        // Add menu suggestion with nutrition info
+        function addMenuSuggestion(title, description, calories, protein, carbs, fat) {
             const suggestionDiv = document.createElement('div');
             suggestionDiv.classList.add('menu-suggestion');
             
@@ -1896,9 +2069,9 @@
             const descElement = document.createElement('p');
             descElement.textContent = description;
             
-            const nutritionElement = document.createElement('div');
-            nutritionElement.classList.add('nutrition-facts');
-            nutritionElement.textContent = nutrition;
+            const nutritionElement = document.createElement('p');
+            nutritionElement.classList.add('nutrition-info');
+            nutritionElement.textContent = `Nutrition: ${calories} calories | ${protein}g protein | ${carbs}g carbs | ${fat}g fat`;
             
             suggestionDiv.appendChild(titleElement);
             suggestionDiv.appendChild(descElement);
@@ -1912,160 +2085,55 @@
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
         }
 
-        // Bot responses
-        function respondToMessage(message) {
-            // Simulate typing delay
-            setTimeout(() => {
-                const lowerMessage = message.toLowerCase();
-                
-                if (lowerMessage.includes('reserve') || lowerMessage.includes('table') || lowerMessage.includes('booking')) {
-                    addMessage('To reserve a table, please provide the following details:', 'bot');
-                    addMessage('1. Date and time of reservation\n2. Number of guests\n3. Your name\n4. Contact number', 'bot');
-                    reservationFormMini.style.display = 'block';
-                    addQuickReplies([
-                        { text: 'Today dinner' },
-                        { text: 'Tomorrow lunch' },
-                        { text: 'Weekend booking' }
-                    ]);
-                } 
-                else if (lowerMessage.includes('menu') || lowerMessage.includes('food') || lowerMessage.includes('dish')) {
-                    addMessage('We offer a wide variety of authentic Indian dishes. What type of cuisine are you interested in?', 'bot');
-                    addQuickReplies([
-                        { text: 'North Indian' },
-                        { text: 'South Indian' },
-                        { text: 'Vegetarian' },
-                        { text: 'Non-vegetarian' }
-                    ]);
-                }
-                else if (lowerMessage.includes('north indian')) {
-                    addMessage('Our North Indian specialties include:', 'bot');
-                    addMenuSuggestion(
-                        'Butter Chicken', 
-                        'Tender chicken in rich tomato and butter sauce', 
-                        'Calories: 450 | Protein: 35g | Carbs: 18g | Fat: 28g'
-                    );
-                    addMenuSuggestion(
-                        'Dal Makhani', 
-                        'Creamy black lentils slow-cooked to perfection', 
-                        'Calories: 320 | Protein: 12g | Carbs: 40g | Fat: 12g'
-                    );
-                    addMenuSuggestion(
-                        'Paneer Tikka', 
-                        'Grilled cottage cheese with spices', 
-                        'Calories: 320 | Protein: 18g | Carbs: 12g | Fat: 22g'
-                    );
-                    addQuickReplies([
-                        { text: 'View full menu' },
-                        { text: 'Make reservation' }
-                    ]);
-                }
-                else if (lowerMessage.includes('south indian')) {
-                    addMessage('Our South Indian specialties include:', 'bot');
-                    addMenuSuggestion(
-                        'Dosa', 
-                        'Crispy rice and lentil crepe', 
-                        'Calories: 280 | Protein: 8g | Carbs: 45g | Fat: 8g'
-                    );
-                    addMenuSuggestion(
-                        'Idli Sambar', 
-                        'Steamed rice cakes with lentil stew', 
-                        'Calories: 220 | Protein: 10g | Carbs: 40g | Fat: 5g'
-                    );
-                    addMenuSuggestion(
-                        'Hyderabadi Biryani', 
-                        'Fragrant rice with meat and spices', 
-                        'Calories: 500 | Protein: 25g | Carbs: 60g | Fat: 18g'
-                    );
-                    addQuickReplies([
-                        { text: 'View full menu' },
-                        { text: 'Make reservation' }
-                    ]);
-                }
-                else if (lowerMessage.includes('contact') || lowerMessage.includes('phone') || lowerMessage.includes('email')) {
-                    addMessage('You can reach us through:', 'bot');
-                    addMessage('Phone: <a href="tel:9021078335">9021078335</a> or <a href="tel:9665615666">9665615666</a>\nEmail: <a href="mailto:info@gpshighwayrestaurant.com">info@gpshighwayrestaurant.com</a>\nAddress: GPS Highway Restaurant, Chichbhawan, Nagpur, Maharashtra 440005', 'bot');
-                    addQuickReplies([
-                        { text: 'Reserve a table' },
-                        { text: 'View menu' }
-                    ]);
-                }
-                else if (lowerMessage.includes('hours') || lowerMessage.includes('open') || lowerMessage.includes('time')) {
-                    addMessage('We are open every day from 10:00 AM to 10:00 PM.', 'bot');
-                    addQuickReplies([
-                        { text: 'Reserve a table' },
-                        { text: 'View menu' }
-                    ]);
-                }
-                else if (lowerMessage.includes('today') || lowerMessage.includes('dinner') || lowerMessage.includes('lunch')) {
-                    addMessage('I can help you reserve a table for today. How many people will be dining?', 'bot');
-                    addQuickReplies([
-                        { text: '2 people' },
-                        { text: '4 people' },
-                        { text: '6+ people' }
-                    ]);
-                }
-                else if (lowerMessage.includes('tomorrow')) {
-                    addMessage('I can help you reserve a table for tomorrow. What time would you like to dine?', 'bot');
-                    addQuickReplies([
-                        { text: '12 PM lunch' },
-                        { text: '7 PM dinner' },
-                        { text: 'Other time' }
-                    ]);
-                }
-                else if (lowerMessage.includes('weekend')) {
-                    addMessage('Weekend reservations are popular. Would you like to book for Saturday or Sunday?', 'bot');
-                    addQuickReplies([
-                        { text: 'Saturday' },
-                        { text: 'Sunday' }
-                    ]);
-                }
-                else if (lowerMessage.includes('2') || lowerMessage.includes('two') || lowerMessage.includes('couple')) {
-                    addMessage('Table for 2 reserved! Please provide your name and contact number to confirm.', 'bot');
-                }
-                else if (lowerMessage.includes('4') || lowerMessage.includes('four') || lowerMessage.includes('family')) {
-                    addMessage('Table for 4 reserved! Please provide your name and contact number to confirm.', 'bot');
-                }
-                else if (lowerMessage.includes('6') || lowerMessage.includes('six') || lowerMessage.includes('group')) {
-                    addMessage('For groups of 6 or more, please call us directly at 9021078335 to make arrangements.', 'bot');
-                }
-                else if (lowerMessage.includes('12') || lowerMessage.includes('noon') || lowerMessage.includes('lunch')) {
-                    addMessage('Lunch reservation at 12 PM confirmed! Please provide your name to complete the booking.', 'bot');
-                }
-                else if (lowerMessage.includes('7') || lowerMessage.includes('evening') || lowerMessage.includes('dinner')) {
-                    addMessage('Dinner reservation at 7 PM confirmed! Please provide your name to complete the booking.', 'bot');
-                }
-                else {
-                    addMessage('I can help you with reservations, menu suggestions, or general inquiries. What would you like to know?', 'bot');
-                    addQuickReplies([
-                        { text: 'Reserve a table' },
-                        { text: 'View menu' },
-                        { text: 'Contact info' }
-                    ]);
-                }
-            }, 1000);
-        }
-
-        // Submit mini reservation form
+        // Submit reservation from chatbot
         submitReservationBtn.addEventListener('click', () => {
             const name = document.getElementById('res-name').value;
             const date = document.getElementById('res-date').value;
             const time = document.getElementById('res-time').value;
             const guests = document.getElementById('res-guests').value;
             
-            if (!name || !date || !time) {
+            if (!name || !date || !time || !guests) {
                 addMessage('Please fill in all the required fields to make a reservation.', 'bot');
                 return;
             }
             
-            // Format the date for display
+            // Format date for display
             const formattedDate = new Date(date).toLocaleDateString('en-US', {
-                weekday: 'long',
                 year: 'numeric',
                 month: 'long',
                 day: 'numeric'
             });
             
-            // Send the reservation data via Web3Forms
+            // Show typing indicator
+            const typingDiv = showTypingIndicator();
+            
+            // Send reservation to email
+            sendReservationEmail(name, formattedDate, time, guests);
+            
+            setTimeout(() => {
+                hideTypingIndicator(typingDiv);
+                addMessage(`Thank you, ${name}! Your reservation request for ${guests} people on ${formattedDate} at ${time} has been received. We will contact you shortly to confirm.`, 'bot');
+                
+                // Reset form
+                document.getElementById('res-name').value = '';
+                document.getElementById('res-date').value = '';
+                document.getElementById('res-time').value = '';
+                document.getElementById('res-guests').value = '';
+                
+                // Hide form
+                reservationFormMini.classList.remove('active');
+                
+                // Add quick replies
+                addQuickReplies([
+                    { text: 'View menu' },
+                    { text: 'Contact info' },
+                    { text: 'Opening hours' }
+                ]);
+            }, 1500);
+        });
+
+        // Send reservation email
+        function sendReservationEmail(name, date, time, guests) {
             fetch('https://api.web3forms.com/submit', {
                 method: 'POST',
                 headers: {
@@ -2078,42 +2146,143 @@
                     date: date,
                     time: time,
                     guests: guests,
-                    message: `New reservation request from chatbot:\nName: ${name}\nDate: ${date}\nTime: ${time}\nGuests: ${guests}`
+                    message: `New reservation request:\nName: ${name}\nDate: ${date}\nTime: ${time}\nGuests: ${guests}`
                 })
             })
             .then(response => response.json())
             .then(data => {
-                if (data.success) {
-                    addMessage(`Thank you, ${name}! Your reservation request for ${guests} people on ${formattedDate} at ${time} has been received. We will contact you shortly to confirm. You can also scroll down to fill out our detailed reservation form for special requests.`, 'bot');
-                    
-                    // Reset the form
-                    document.getElementById('res-name').value = '';
-                    document.getElementById('res-date').value = '';
-                    document.getElementById('res-time').value = '';
-                    document.getElementById('res-guests').value = '1';
-                    
-                    // Hide the form
-                    reservationFormMini.style.display = 'none';
-                    
-                    // Scroll to the reservation section
-                    setTimeout(() => {
-                        const reservationSection = document.getElementById('reservation');
-                        if (reservationSection) {
-                            window.scrollTo({
-                                top: reservationSection.offsetTop - 80,
-                                behavior: 'smooth'
-                            });
-                        }
-                    }, 1000);
-                } else {
-                    addMessage('There was an error processing your reservation. Please try again later or call us directly at 9021078335.', 'bot');
-                }
+                console.log('Reservation email sent:', data);
             })
             .catch(error => {
-                console.error('Error:', error);
-                addMessage('There was an error processing your reservation. Please try again later or call us directly at 9021078335.', 'bot');
+                console.error('Error sending reservation email:', error);
             });
-        });
+        }
+
+        // Bot responses
+        function respondToMessage(message) {
+            const lowerMessage = message.toLowerCase();
+            
+            if (lowerMessage.includes('reserve') || lowerMessage.includes('table') || lowerMessage.includes('booking')) {
+                addMessage('To reserve a table, please provide the following details:', 'bot');
+                reservationFormMini.classList.add('active');
+            } 
+            else if (lowerMessage.includes('menu') || lowerMessage.includes('food') || lowerMessage.includes('dish')) {
+                addMessage('We offer a wide variety of authentic Indian dishes. Here are some recommendations:', 'bot');
+                addMenuSuggestion(
+                    'Paneer Tikka (₹290)',
+                    'Marinated cottage cheese grilled to perfection in tandoor with spices',
+                    '320', '18', '12', '22'
+                );
+                addMenuSuggestion(
+                    'Butter Chicken (₹470)',
+                    'Tender chicken in rich tomato gravy with butter and cream',
+                    '450', '30', '15', '30'
+                );
+                addMenuSuggestion(
+                    'Gulab Jamun (₹60)',
+                    'Soft milk balls soaked in sugar syrup',
+                    '150', '3', '25', '5'
+                );
+                addMessage('Would you like to see more options or make a reservation?', 'bot');
+                addQuickReplies([
+                    { text: 'More vegetarian options' },
+                    { text: 'More non-vegetarian options' },
+                    { text: 'Make a reservation' }
+                ]);
+            }
+            else if (lowerMessage.includes('vegetarian') || lowerMessage.includes('veg')) {
+                addMessage('Our vegetarian specialties include:', 'bot');
+                addMenuSuggestion(
+                    'Dal Makhani (₹250)',
+                    'Creamy black lentils slow-cooked with butter and spices',
+                    '350', '14', '40', '12'
+                );
+                addMenuSuggestion(
+                    'Palak Paneer (₹280)',
+                    'Fresh spinach and cottage cheese in a creamy gravy',
+                    '300', '15', '20', '18'
+                );
+                addMenuSuggestion(
+                    'Vegetable Biryani (₹320)',
+                    'Fragrant basmati rice with mixed vegetables and spices',
+                    '400', '8', '70', '12'
+                );
+                addQuickReplies([
+                    { text: 'Make a reservation' },
+                    { text: 'Contact info' }
+                ]);
+            }
+            else if (lowerMessage.includes('non-vegetarian') || lowerMessage.includes('non veg') || lowerMessage.includes('nonveg')) {
+                addMessage('Our non-vegetarian specialties include:', 'bot');
+                addMenuSuggestion(
+                    'Chicken Tikka Masala (₹450)',
+                    'Grilled chicken chunks in spiced curry sauce',
+                    '480', '35', '20', '28'
+                );
+                addMenuSuggestion(
+                    'Lamb Rogan Josh (₹550)',
+                    'Tender lamb in a rich, aromatic gravy',
+                    '520', '40', '15', '35'
+                );
+                addMenuSuggestion(
+                    'Fish Curry (₹420)',
+                    'Fresh fish cooked in tangy coconut gravy',
+                    '380', '30', '10', '25'
+                );
+                addQuickReplies([
+                    { text: 'Make a reservation' },
+                    { text: 'Contact info' }
+                ]);
+            }
+            else if (lowerMessage.includes('contact') || lowerMessage.includes('phone') || lowerMessage.includes('email') || lowerMessage.includes('address')) {
+                addMessage('You can reach us through:', 'bot');
+                addMessage('📞 Phone: <a href="tel:9021078335">9021078335</a> or <a href="tel:9665615666">9665615666</a>\n✉️ Email: <a href="mailto:info@gpshighwayrestaurant.com">info@gpshighwayrestaurant.com</a>\n📍 Address: GPS Highway Restaurant, Chichbhawan, Nagpur, Maharashtra 440005', 'bot');
+                addQuickReplies([
+                    { text: 'Make a reservation' },
+                    { text: 'View menu' },
+                    { text: 'Opening hours' }
+                ]);
+            }
+            else if (lowerMessage.includes('hours') || lowerMessage.includes('open') || lowerMessage.includes('time')) {
+                addMessage('We are open every day from 10:00 AM to 10:00 PM.', 'bot');
+                addQuickReplies([
+                    { text: 'Make a reservation' },
+                    { text: 'View menu' }
+                ]);
+            }
+            else if (lowerMessage.includes('discount') || lowerMessage.includes('offer') || lowerMessage.includes('promo')) {
+                addMessage('Subscribe to our newsletter for 10% off your first order! Just scroll down to the newsletter section at the bottom of the page.', 'bot');
+                addQuickReplies([
+                    { text: 'Make a reservation' },
+                    { text: 'View menu' }
+                ]);
+            }
+            else if (lowerMessage.includes('order') || lowerMessage.includes('delivery') || lowerMessage.includes('online')) {
+                addMessage('You can order online through our partners:', 'bot');
+                addMessage('• <a href="https://www.zomato.com/nagpur/gps-wardha-road" target="_blank">Zomato</a>\n• <a href="https://www.swiggy.com" target="_blank">Swiggy</a>\n• <a href="https://restaurant-guru.in/GPS-Highway-Restaurant-Nagpur" target="_blank">Restaurant Guru</a>', 'bot');
+                addMessage('Or click the "Order Online" link in our menu to see all options.', 'bot');
+                addQuickReplies([
+                    { text: 'Make a reservation' },
+                    { text: 'View menu' }
+                ]);
+            }
+            else if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
+                addMessage('Hello! Welcome to GPS Highway Restaurant. How can I assist you today?', 'bot');
+                addQuickReplies([
+                    { text: 'Reserve a table' },
+                    { text: 'View menu' },
+                    { text: 'Contact info' }
+                ]);
+            }
+            else {
+                addMessage("I'm sorry, I didn't understand that. I can help you with reservations, menu suggestions, or general inquiries. What would you like to know?", 'bot');
+                addQuickReplies([
+                    { text: 'Reserve a table' },
+                    { text: 'View menu' },
+                    { text: 'Contact info' }
+                ]);
+            }
+        }
 
         // Send message on button click
         chatbotSend.addEventListener('click', sendMessage);
@@ -2130,9 +2299,24 @@
             if (e.target.classList.contains('quick-reply')) {
                 const message = e.target.dataset.message;
                 addMessage(message, 'user');
-                respondToMessage(message);
+                
+                // Show typing indicator
+                const typingDiv = showTypingIndicator();
+                
+                setTimeout(() => {
+                    hideTypingIndicator(typingDiv);
+                    respondToMessage(message);
+                }, 1000 + Math.random() * 1000);
             }
         });
+
+        // Initialize chatbot with welcome message if first visit
+        if (!sessionStorage.getItem('chatbotInitialized')) {
+            setTimeout(() => {
+                chatbotWindow.classList.add('active');
+                sessionStorage.setItem('chatbotInitialized', 'true');
+            }, 10000); // Show after 10 seconds
+        }
     </script>
 </body>
 </html>
