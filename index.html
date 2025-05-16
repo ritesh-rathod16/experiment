@@ -62,12 +62,11 @@
         
         .loader-text {
             color: var(--secondary-color);
-            font-size: 24px;
+            font-size: 32px;
             font-weight: 500;
             margin-top: 15px;
             animation: fadeIn 0.5s ease-in-out;
-            font-family: 'Playfair Display', serif;
-            letter-spacing: 1px;
+            font-family: 'Dancing Script', cursive;
         }
         
         @keyframes pulse {
@@ -182,7 +181,7 @@
             cursor: pointer;
         }
         
-        /* Hero Section - New Design */
+        /* Hero Section - Enhanced with new design */
         #hero {
             height: 100vh;
             display: flex;
@@ -201,35 +200,24 @@
             text-align: center;
         }
 
-        .welcome-text {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2.5rem;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-            animation: fadeIn 1s ease-in-out;
-        }
-
         .hero-title {
             font-size: 4.5rem;
             margin-bottom: 1.5rem;
             line-height: 1.2;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
             color: var(--text-light);
-            font-weight: 700;
-            letter-spacing: 1.5px;
-            animation: fadeIn 1.2s ease-in-out;
+            animation: fadeIn 1s ease-in-out;
         }
 
         .hero-subtitle {
             font-size: 1.5rem;
             margin-bottom: 2rem;
-            max-width: 700px;
+            max-width: 600px;
+            color: var(--text-secondary);
             margin-left: auto;
             margin-right: auto;
-            color: var(--text-secondary);
             line-height: 1.6;
-            animation: fadeIn 1.4s ease-in-out;
+            animation: fadeIn 1.2s ease-in-out;
         }
 
         .hero-btns {
@@ -237,43 +225,7 @@
             justify-content: center;
             gap: 20px;
             flex-wrap: wrap;
-            animation: fadeIn 1.6s ease-in-out;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 12px 28px;
-            background-color: var(--secondary-color);
-            color: var(--text-light);
-            text-decoration: none;
-            border-radius: 30px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: 2px solid var(--secondary-color);
-            font-size: 15px;
-            min-width: 150px;
-            text-align: center;
-        }
-        
-        .btn:hover {
-            background-color: transparent;
-            color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            color: var(--secondary-color);
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--secondary-color);
-            color: var(--text-light);
+            animation: fadeIn 1.5s ease-in-out;
         }
         
         /* About Section */
@@ -356,50 +308,6 @@
             z-index: -1;
         }
         
-        /* Quick Links */
-        .quick-links {
-            padding: 70px 0;
-            background-color: #f5f5f5;
-        }
-        
-        .quick-links-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 25px;
-            text-align: center;
-        }
-        
-        .quick-link-item {
-            background-color: white;
-            padding: 25px 15px;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.03);
-            transition: all 0.3s ease;
-        }
-        
-        .quick-link-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .quick-link-item i {
-            font-size: 36px;
-            color: var(--secondary-color);
-            margin-bottom: 15px;
-        }
-        
-        .quick-link-item h3 {
-            font-size: 18px;
-            margin-bottom: 12px;
-        }
-        
-        .quick-link-item a {
-            color: var(--secondary-color);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 14px;
-        }
-        
         /* Menu Section with 4:5 ratio cards */
         .menu {
             padding: 80px 0;
@@ -419,7 +327,7 @@
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
-            aspect-ratio: 4/5;
+            aspect-ratio: 4/5; /* 4:5 aspect ratio */
             display: flex;
             flex-direction: column;
         }
@@ -431,16 +339,16 @@
         
         .menu-item img {
             width: 100%;
-            height: 70%; /* Adjusted for 4:5 ratio */
+            height: 60%; /* Adjusted for 4:5 ratio */
             object-fit: cover;
+            flex-shrink: 0;
         }
         
         .menu-item-content {
             padding: 20px;
-            flex: 1;
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
         
         .menu-item-content h3 {
@@ -454,12 +362,14 @@
             margin-bottom: 12px;
             line-height: 1.5;
             font-size: 14px;
+            flex-grow: 1;
         }
         
         .price {
             font-size: 18px;
             font-weight: 700;
             color: var(--secondary-color);
+            margin-top: auto;
         }
         
         .menu-btn-container {
@@ -467,7 +377,7 @@
             margin-top: 35px;
         }
         
-        /* Video Gallery - Card Style */
+        /* Video Gallery - Card Style with 1:1 ratio */
         .video-gallery {
             padding: 80px 0;
             background-color: var(--primary-color);
@@ -487,6 +397,7 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
             background: white;
             transition: all 0.3s ease;
+            aspect-ratio: 1/1; /* 1:1 aspect ratio */
         }
         
         .video-item:hover {
@@ -496,6 +407,8 @@
         
         .video-item video {
             width: 100%;
+            height: 100%;
+            object-fit: cover;
             display: block;
             border-bottom: 3px solid var(--secondary-color);
         }
@@ -511,7 +424,7 @@
             font-size: 16px;
         }
         
-        /* Reservation */
+        /* Reservation Section with Web3Forms */
         .reservation {
             padding: 80px 0;
             background-color: var(--text-light);
@@ -532,21 +445,23 @@
         
         .form-group label {
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
             font-weight: 500;
-            font-size: 14px;
+            font-size: 15px;
+            color: var(--primary-color);
         }
         
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 10px 12px;
+            padding: 12px 15px;
             border: 1px solid #ddd;
             border-radius: 5px;
             font-family: 'Montserrat', sans-serif;
             font-size: 15px;
-            transition: border-color 0.3s ease;
+            transition: all 0.3s ease;
+            background-color: #f9f9f9;
         }
         
         .form-group input:focus,
@@ -554,6 +469,7 @@
         .form-group textarea:focus {
             border-color: var(--secondary-color);
             outline: none;
+            box-shadow: 0 0 0 3px rgba(193, 154, 107, 0.2);
         }
         
         .form-row {
@@ -584,7 +500,7 @@
             border: 0;
         }
         
-        /* Footer */
+        /* Footer with enhanced contact info */
         footer {
             background-color: var(--primary-color);
             color: var(--text-light);
@@ -643,8 +559,8 @@
         
         .contact-info {
             display: flex;
-            align-items: center;
-            margin-bottom: 10px;
+            align-items: flex-start;
+            margin-bottom: 15px;
         }
         
         .contact-info i {
@@ -652,22 +568,34 @@
             color: var(--secondary-color);
             width: 18px;
             text-align: center;
+            margin-top: 3px;
+        }
+        
+        .contact-info a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .contact-info a:hover {
+            color: var(--secondary-color);
         }
         
         .phone-numbers {
             display: flex;
             flex-wrap: wrap;
-            gap: 5px;
+            gap: 8px;
+            margin-top: 5px;
         }
         
         .phone-number {
             background: rgba(255, 255, 255, 0.1);
-            padding: 5px 10px;
+            padding: 6px 12px;
             border-radius: 20px;
             transition: all 0.3s ease;
+            font-size: 14px;
             color: var(--text-light);
             text-decoration: none;
-            font-size: 14px;
         }
         
         .phone-number:hover {
@@ -675,20 +603,10 @@
             color: var(--primary-color);
         }
         
-        .address-link {
-            color: var(--text-light);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        
-        .address-link:hover {
-            color: var(--secondary-color);
-            text-decoration: underline;
-        }
-        
         .social-links {
             display: flex;
             gap: 12px;
+            margin-top: 15px;
         }
         
         .social-links a {
@@ -714,16 +632,13 @@
             padding-top: 15px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
         }
         
         /* Responsive Styles */
         @media (max-width: 992px) {
             .hero-title {
                 font-size: 3.5rem;
-            }
-            
-            .welcome-text {
-                font-size: 2rem;
             }
             
             .hero-subtitle {
@@ -753,10 +668,6 @@
         @media (max-width: 768px) {
             .hero-title {
                 font-size: 2.8rem;
-            }
-            
-            .welcome-text {
-                font-size: 1.8rem;
             }
             
             .hero-subtitle {
@@ -817,8 +728,8 @@
                 font-size: 2.2rem;
             }
             
-            .welcome-text {
-                font-size: 1.5rem;
+            .hero-subtitle {
+                font-size: 1rem;
             }
             
             .section-title h2 {
@@ -857,7 +768,7 @@
     <!-- Loader Animation - Reduced to 1 second -->
     <div class="loader" id="loader">
         <img src="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg?Expires=1841954441&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dxts~jCXOor4vu3SLzcluPfBN9SJBbSiwL4qVWGIQLTP2fBQ3dl0dsAmPGsdx71h-RN0FybaTNwvBRkd4n3JFRR3XMRJkAXW0tERkLkQfuLfLm2B-TD7wVTJnSdiH4T6OvTfokGhcAzaKFPdiWMHug9L10jE4iHwgr930RzFIYzsFiQ9z9jNxCYxdMBx8Xix9xjG7uKwyACCBvQgxfIAhiGXXvttc3CRHrbFt9Jk-J9or4CEtxnKVVYQ1yd19aOs4WbN0T7e76N-~V7jjQ7NtXTKwQnl92peercTUr7tUhvIpixysgKrgT-kVzbRBTNrZsid-bNPcG2vLBqGeE8mhw__" alt="GPS Highway Restaurant Logo" class="loader-logo">
-        <div class="loader-text">Welcome to GPS Highway Restaurant</div>
+        <div class="loader-text">Welcomes You</div>
     </div>
 
     <!-- Header -->
@@ -883,11 +794,10 @@
         </div>
     </header>
 
-    <!-- Hero Section - New Design -->
+    <!-- Hero Section - Enhanced -->
     <section id="hero">
         <div class="hero-content">
-            <div class="welcome-text">Welcome to</div>
-            <h1 class="hero-title">GPS Highway Restaurant</h1>
+            <h1 class="hero-title">Authentic Indian Cuisine</h1>
             <p class="hero-subtitle">Experience the rich flavors of India with our carefully crafted menu featuring traditional recipes and the freshest ingredients.</p>
             <div class="hero-btns">
                 <a href="menu.html" class="btn">View Menu</a>
@@ -916,7 +826,7 @@
         </div>
     </section>
 
-    <!-- Menu Section -->
+    <!-- Menu Section with 4:5 ratio cards -->
     <section class="menu" id="menu">
         <div class="container">
             <div class="section-title">
@@ -959,7 +869,7 @@
         </div>
     </section>
 
-    <!-- Video Gallery Section - Card Style -->
+    <!-- Video Gallery Section - Card Style with 1:1 ratio -->
     <section class="video-gallery" id="gallery">
         <div class="container">
             <div class="section-title">
@@ -970,16 +880,25 @@
                     <video controls preload="none" poster="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg?Expires=1841954441&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dxts~jCXOor4vu3SLzcluPfBN9SJBbSiwL4qVWGIQLTP2fBQ3dl0dsAmPGsdx71h-RN0FybaTNwvBRkd4n3JFRR3XMRJkAXW0tERkLkQfuLfLm2B-TD7wVTJnSdiH4T6OvTfokGhcAzaKFPdiWMHug9L10jE4iHwgr930RzFIYzsFiQ9z9jNxCYxdMBx8Xix9xjG7uKwyACCBvQgxfIAhiGXXvttc3CRHrbFt9Jk-J9or4CEtxnKVVYQ1yd19aOs4WbN0T7e76N-~V7jjQ7NtXTKwQnl92peercTUr7tUhvIpixysgKrgT-kVzbRBTNrZsid-bNPcG2vLBqGeE8mhw__">
                         <source src="https://media-hosting.imagekit.io/8b731b1f45c04a22/GPS%20highway%20.mp4?Expires=1841954573&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=I8yFkimpPX4ypv6LsiALuV2LwLD-zbRqHS3e~S44khNEmAzQxLITRuZGC4oFJ2BLb3BQrcRCPKrMhfW7auUW4PaGhuz13q8XuO-z2BBth-tV6Q-XFIZE4efdQxbeJQKOl0AJmf1kGzbnXKW52onefQpJiV6B-AgpZG~eWgVCa~Wnr9J-cVjM6y5r-pG-4s14inLRV3wTeBVKE0xQNPzC2WE99emhBd5o92OtWtHkp1AME989fJggPzz2RtkAsOOvBVFDom3zY161nIdlNobywgL9ZKPmfXXMMdQy9IOWIHhZJdkxNSEGKfukor~0Jlpti0ewFZaGhDlnFFKLNKRaOA__" type="video/mp4">
                     </video>
+                    <div class="video-caption">
+                        <h3>Restaurant Ambience</h3>
+                    </div>
                 </div>
                 <div class="video-item">
                     <video controls preload="none" poster="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg?Expires=1841954441&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dxts~jCXOor4vu3SLzcluPfBN9SJBbSiwL4qVWGIQLTP2fBQ3dl0dsAmPGsdx71h-RN0FybaTNwvBRkd4n3JFRR3XMRJkAXW0tERkLkQfuLfLm2B-TD7wVTJnSdiH4T6OvTfokGhcAzaKFPdiWMHug9L10jE4iHwgr930RzFIYzsFiQ9z9jNxCYxdMBx8Xix9xjG7uKwyACCBvQgxfIAhiGXXvttc3CRHrbFt9Jk-J9or4CEtxnKVVYQ1yd19aOs4WbN0T7e76N-~V7jjQ7NtXTKwQnl92peercTUr7tUhvIpixysgKrgT-kVzbRBTNrZsid-bNPcG2vLBqGeE8mhw__">
                         <source src="https://media-hosting.imagekit.io/a3ec1257e5964342/h3.mp4?Expires=1841954846&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Q32MlLqENXE0kyP56SJJFfEo4zaPz6bTCYpxcy91jTnsmEmLGZ1T-BGuh32Af5yV0EhmNiOm8CjUVNGCilz2kFpvQeh-gBny8~7WD32fRjZUdIVVuAR0djyjhFsmVOJsF~a~SQ5SadyqGsJLTlD0dVxIcRAjg0De6tjGWE~lFxmD4yAPWBZ8hHHn8JeiNOJ4BknH9pXZwuzzCziRDbjEebORJYhaC9Xyn55XLCR3fH1iwBrDlkWgK4lDcwJZ5nwIVQ7Wk6gG-C9bCdO9kbwGmBxy6mJLIzLCk3Jen~olhh33TWPydKjvC0jxJkr4773oiKwrV7dCB6X-V9hGb38a4g__" type="video/mp4">
                     </video>
+                    <div class="video-caption">
+                        <h3>Food Preparation</h3>
+                    </div>
                 </div>
                 <div class="video-item">
                     <video controls preload="none" poster="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg?Expires=1841954441&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dxts~jCXOor4vu3SLzcluPfBN9SJBbSiwL4qVWGIQLTP2fBQ3dl0dsAmPGsdx71h-RN0FybaTNwvBRkd4n3JFRR3XMRJkAXW0tERkLkQfuLfLm2B-TD7wVTJnSdiH4T6OvTfokGhcAzaKFPdiWMHug9L10jE4iHwgr930RzFIYzsFiQ9z9jNxCYxdMBx8Xix9xjG7uKwyACCBvQgxfIAhiGXXvttc3CRHrbFt9Jk-J9or4CEtxnKVVYQ1yd19aOs4WbN0T7e76N-~V7jjQ7NtXTKwQnl92peercTUr7tUhvIpixysgKrgT-kVzbRBTNrZsid-bNPcG2vLBqGeE8mhw__">
                         <source src="https://media-hosting.imagekit.io/7c2145ad8da34a28/h2.mp4?Expires=1841954846&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Or2A~xzoM3I-TSAIaW7lvIZsROx-CEpg8nJY3x59IsAdsDXPU3LcNRIAekU2dOVY7iwHWYv4J3d2GH45cUQ8kVkqpS2tC7Ypi1-6VvM1RpNeq4DmiCEcSvzGb-xm8mGksi4rvaHpfTzf1x93UdVgYID4sxg1gFxoW9i2KpIYuZT35BpzzJFtcSmSTbbXzYnMcEWiUz7V0mYe5x02NkcommfzCptDQ7LB5HjEu~og0EN-1gVzh4OWOa1xKOSkkPBQ8xfeXAl6MwaFP8mP0tKPPadK~ooU~hrzYhrXgM3C0OXTZWpzc4Bq2vqCBh9g8dPNSggpnEOYZSRS3GkNb8sdRA__" type="video/mp4">
                     </video>
+                    <div class="video-caption">
+                        <h3>Customer Experience</h3>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1072,7 +991,7 @@
                     <h3>Contact Us</h3>
                     <div class="contact-info">
                         <i class="fas fa-map-marker-alt"></i>
-                        <a href="https://maps.app.goo.gl/example" target="_blank" class="address-link">GPS Highway Restaurant, Chichbhawan, Nagpur, Maharashtra 440005</a>
+                        <a href="https://maps.google.com/?q=GPS+Highway+Restaurant,+Chichbhawan,+Nagpur,+Maharashtra+440005" target="_blank">GPS Highway Restaurant, Chichbhawan, Nagpur, Maharashtra 440005</a>
                     </div>
                     <div class="contact-info">
                         <i class="fas fa-phone"></i>
@@ -1083,7 +1002,7 @@
                     </div>
                     <div class="contact-info">
                         <i class="fas fa-envelope"></i>
-                        <p>info@gpshighwayrestaurant.com</p>
+                        <a href="mailto:info@gpshighwayrestaurant.com">info@gpshighwayrestaurant.com</a>
                     </div>
                 </div>
                 <div class="footer-column">
@@ -1124,6 +1043,19 @@
             document.getElementById('loader').style.display = 'none';
             document.body.style.overflow = 'auto';
             sessionStorage.removeItem('visitedMenu');
+            
+            // Scroll to the section if hash exists
+            if (window.location.hash) {
+                const targetElement = document.querySelector(window.location.hash);
+                if (targetElement) {
+                    setTimeout(() => {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }, 100);
+                }
+            }
         }
 
         // Mobile Menu Toggle
@@ -1145,6 +1077,7 @@
                 // Set flag when navigating to menu.html
                 if (link.getAttribute('href') === 'menu.html') {
                     sessionStorage.setItem('visitedMenu', 'true');
+                    sessionStorage.setItem('scrollPosition', window.scrollY);
                 }
             });
         });
@@ -1163,54 +1096,60 @@
         // Smooth scrolling for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update URL without reload
+                        history.pushState(null, null, targetId);
+                    }
                 }
             });
         });
         
-        // Form submission
+        // Form submission with Web3Forms
         const bookingForm = document.getElementById('booking-form');
         
-        bookingForm.addEventListener('submit', function(e) {
+        bookingForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             
-            const formData = new FormData(this);
-            const submitBtn = this.querySelector('button[type="submit"]');
+            const formData = new FormData(bookingForm);
+            const submitBtn = bookingForm.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.textContent;
             
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Processing...';
-            
-            fetch(this.action, {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
+            try {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Processing...';
+                
+                const response = await fetch(bookingForm.action, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
                     alert('Thank you for your reservation! We will contact you shortly to confirm your booking.');
-                    this.reset();
+                    bookingForm.reset();
                 } else {
-                    alert('There was an error submitting your reservation. Please try again or call us directly.');
+                    alert('There was an error submitting your reservation. Please try again later.');
+                    console.error(result);
                 }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('There was an error submitting your reservation. Please try again or call us directly.');
-            })
-            .finally(() => {
+            } catch (error) {
+                alert('There was an error submitting your reservation. Please try again later.');
+                console.error(error);
+            } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalBtnText;
-            });
+            }
         });
 
         // Lazy load videos when they come into view
@@ -1229,6 +1168,12 @@
         lazyVideos.forEach(video => {
             lazyVideoObserver.observe(video);
         });
+
+        // Restore scroll position if coming back from menu
+        if (sessionStorage.getItem('scrollPosition')) {
+            window.scrollTo(0, parseInt(sessionStorage.getItem('scrollPosition')));
+            sessionStorage.removeItem('scrollPosition');
+        }
     </script>
 </body>
 </html>
