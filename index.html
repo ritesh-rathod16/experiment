@@ -1747,3 +1747,1806 @@
     </script>
 </body>
 </html>
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPS Highway Restaurant | Authentic Indian Cuisine</title>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"></noscript>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Futura:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #c19a6b;
+            --accent-color: #e8e8e8;
+            --text-light: #f8f8f8;
+            --text-dark: #333333;
+            --text-secondary: rgba(255, 255, 255, 0.8);
+            --gold-light: #e6c88e;
+            --gold-dark: #b3895e;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Futura', sans-serif;
+            color: var(--text-dark);
+            background-color: #f9f9f9;
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Futura', sans-serif;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Loader Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--primary-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+        
+        .loader-logo {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 15px;
+            animation: pulse 1s ease-in-out;
+        }
+        
+        .loader-text {
+            color: var(--secondary-color);
+            font-size: 2.5rem;
+            font-weight: 500;
+            margin-top: 15px;
+            animation: fadeIn 0.5s ease-in-out;
+            font-family: 'Futura', sans-serif;
+            letter-spacing: 2px;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.95); opacity: 0; }
+            50% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(0.95); opacity: 0; }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .loader-hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        header.scrolled {
+            padding: 8px 0;
+            background-color: rgba(26, 26, 26, 0.98);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            height: 45px;
+            width: 45px;
+            margin-right: 12px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-family: 'Futura', sans-serif;
+            letter-spacing: 1px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            font-family: 'Futura', sans-serif;
+        }
+        
+        nav ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 22px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section - Enhanced with new design */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            color: var(--text-light);
+            animation: fadeIn 1s ease-in-out;
+            font-family: 'Futura', sans-serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            color: var(--gold-light);
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+            animation: fadeIn 1.2s ease-in-out;
+            font-family: 'Futura', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary-color);
+            font-size: 1.1rem;
+            min-width: 200px;
+            text-align: center;
+            letter-spacing: 1px;
+            font-family: 'Futura', sans-serif;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--secondary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+        }
+        
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background-color: var(--text-light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 3rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+        
+        .about-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.02);
+        }
+        
+        .about-image::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 10px solid var(--secondary-color);
+            border-radius: 10px;
+            top: -20px;
+            left: -20px;
+            z-index: -1;
+        }
+        
+        /* Menu Section with 4:5 ratio cards */
+        .menu {
+            padding: 100px 0;
+            background-color: #f5f5f5;
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .menu-item {
+            background-color: var(--text-light);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            aspect-ratio: 4/5;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .menu-item img {
+            width: 100%;
+            height: 60%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+        
+        .menu-item-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .menu-item-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .menu-item-content p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+            flex-grow: 1;
+            font-size: 1rem;
+        }
+        
+        .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-top: auto;
+            font-family: 'Futura', sans-serif;
+        }
+        
+        .menu-btn-container {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        /* Video Gallery - Card Style with 1:1 ratio */
+        .video-gallery {
+            padding: 100px 0;
+            background-color: var(--primary-color);
+        }
+        
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .video-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            background: white;
+            transition: all 0.3s ease;
+            aspect-ratio: 1/1;
+        }
+        
+        .video-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+        
+        .video-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-bottom: 3px solid var(--secondary-color);
+        }
+        
+        .video-caption {
+            padding: 20px;
+            text-align: center;
+            background: white;
+        }
+        
+        .video-caption h3 {
+            color: var(--primary-color);
+            font-size: 1.2rem;
+            font-family: 'Futura', sans-serif;
+        }
+        
+        /* Reservation Section - Enhanced */
+        .reservation {
+            padding: 100px 0;
+            background-color: var(--text-light);
+        }
+        
+        .reservation-form {
+            max-width: 700px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        }
+        
+        .reservation-form h3 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--primary-color);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .reservation-form h3::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-size: 1rem;
+            color: var(--primary-color);
+            font-family: 'Futura', sans-serif;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-family: 'Futura', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: #f9f9f9;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--secondary-color);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(193, 154, 107, 0.2);
+        }
+        
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            background-size: 15px;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            letter-spacing: 1px;
+            font-family: 'Futura', sans-serif;
+        }
+        
+        .submit-btn:hover {
+            background-color: var(--gold-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Map Section */
+        .map-section {
+            padding: 80px 0;
+            background-color: var(--text-light);
+        }
+        
+        .map-container {
+            margin-top: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .map-container iframe {
+            width: 100%;
+            height: 500px;
+            border: 0;
+        }
+        
+        /* Footer with enhanced contact info */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 60px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--secondary-color);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--secondary-color);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-column p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-family: 'Futura', sans-serif;
+            font-size: 0.95rem;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .contact-info i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+            width: 18px;
+            text-align: center;
+            margin-top: 3px;
+        }
+        
+        .contact-info a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-family: 'Futura', sans-serif;
+            font-size: 0.95rem;
+        }
+        
+        .contact-info a:hover {
+            color: var(--secondary-color);
+        }
+        
+        .phone-numbers {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 5px;
+        }
+        
+        .phone-number {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-decoration: none;
+            font-family: 'Futura', sans-serif;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--text-light);
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-family: 'Futura', sans-serif;
+            font-size: 0.9rem;
+        }
+        
+        /* Chatbot Styles - Enhanced */
+        .chatbot-container {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+            font-family: 'Futura', sans-serif;
+        }
+        
+        .chatbot-toggle {
+            width: 60px;
+            height: 60px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .chatbot-toggle:hover {
+            transform: scale(1.1);
+            background-color: var(--gold-dark);
+        }
+        
+        .chatbot-toggle i {
+            font-size: 24px;
+        }
+        
+        .chatbot-window {
+            width: 350px;
+            height: 500px;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            display: none;
+            flex-direction: column;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .chatbot-window.active {
+            display: flex;
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .chatbot-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .chatbot-header h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin: 0;
+        }
+        
+        .chatbot-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .chatbot-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            background-color: #f9f9f9;
+        }
+        
+        .message {
+            margin-bottom: 15px;
+            max-width: 80%;
+            padding: 10px 15px;
+            border-radius: 18px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            position: relative;
+        }
+        
+        .bot-message {
+            background-color: #e8e8e8;
+            color: #333;
+            border-top-left-radius: 5px;
+            align-self: flex-start;
+        }
+        
+        .user-message {
+            background-color: var(--secondary-color);
+            color: white;
+            border-top-right-radius: 5px;
+            margin-left: auto;
+            align-self: flex-end;
+        }
+        
+        .chatbot-input {
+            display: flex;
+            padding: 15px;
+            border-top: 1px solid #eee;
+            background-color: white;
+        }
+        
+        .chatbot-input input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            outline: none;
+            font-size: 0.9rem;
+        }
+        
+        .chatbot-input button {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .chatbot-input button:hover {
+            background-color: var(--gold-dark);
+        }
+        
+        .quick-reply {
+            display: inline-block;
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 8px 12px;
+            border-radius: 15px;
+            margin: 5px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .quick-reply:hover {
+            background-color: #e0e0e0;
+        }
+        
+        .reservation-form-mini {
+            display: none;
+            padding: 15px;
+            background-color: #f9f9f9;
+        }
+        
+        .reservation-form-mini.active {
+            display: block;
+        }
+        
+        .form-group-mini {
+            margin-bottom: 10px;
+        }
+        
+        .form-group-mini input,
+        .form-group-mini select {
+            width: 100%;
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 0.9rem;
+        }
+        
+        .submit-btn-mini {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            width: 100%;
+            margin-top: 5px;
+        }
+        
+        .menu-suggestion {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+        
+        .menu-suggestion h4 {
+            margin-bottom: 5px;
+            color: var(--primary-color);
+            font-size: 0.9rem;
+        }
+        
+        .menu-suggestion p {
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1200px) {
+            .hero-title {
+                font-size: 4rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 3.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                margin-top: 40px;
+                max-width: 600px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .about-image::before {
+                display: none;
+            }
+            
+            .map-container iframe {
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .hero-btns {
+                gap: 15px;
+            }
+            
+            nav ul {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: var(--primary-color);
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                padding-top: 40px;
+                transition: all 0.5s ease;
+            }
+            
+            nav ul.active {
+                left: 0;
+            }
+            
+            nav ul li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .reservation-form {
+                padding: 30px;
+            }
+            
+            .map-container iframe {
+                height: 350px;
+            }
+            
+            .chatbot-window {
+                width: 300px;
+                height: 450px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2.4rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 0.9rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .reservation-form {
+                padding: 25px 20px;
+            }
+            
+            .logo-img {
+                height: 40px;
+                width: 40px;
+                margin-right: 10px;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .map-container iframe {
+                height: 300px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .chatbot-container {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .chatbot-toggle {
+                width: 50px;
+                height: 50px;
+            }
+            
+            .chatbot-window {
+                width: 280px;
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader Animation -->
+    <div class="loader" id="loader">
+        <img src="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg?Expires=1841954441&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dxts~jCXOor4vu3SLzcluPfBN9SJBbSiwL4qVWGIQLTP2fBQ3dl0dsAmPGsdx71h-RN0FybaTNwvBRkd4n3JFRR3XMRJkAXW0tERkLkQfuLfLm2B-TD7wVTJnSdiH4T6OvTfokGhcAzaKFPdiWMHug9L10jE4iHwgr930RzFIYzsFiQ9z9jNxCYxdMBx8Xix9xjG7uKwyACCBvQgxfIAhiGXXvttc3CRHrbFt9Jk-J9or4CEtxnKVVYQ1yd19aOs4WbN0T7e76N-~V7jjQ7NtXTKwQnl92peercTUr7tUhvIpixysgKrgT-kVzbRBTNrZsid-bNPcG2vLBqGeE8mhw__" alt="GPS Highway Restaurant Logo" class="loader-logo">
+        <div class="loader-text">Welcomes You</div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <div class="logo-container">
+                <img src="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg?Expires=1841954441&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dxts~jCXOor4vu3SLzcluPfBN9SJBbSiwL4qVWGIQLTP2fBQ3dl0dsAmPGsdx71h-RN0FybaTNwvBRkd4n3JFRR3XMRJkAXW0tERkLkQfuLfLm2B-TD7wVTJnSdiH4T6OvTfokGhcAzaKFPdiWMHug9L10jE4iHwgr930RzFIYzsFiQ9z9jNxCYxdMBx8Xix9xjG7uKwyACCBvQgxfIAhiGXXvttc3CRHrbFt9Jk-J9or4CEtxnKVVYQ1yd19aOs4WbN0T7e76N-~V7jjQ7NtXTKwQnl92peercTUr7tUhvIpixysgKrgT-kVzbRBTNrZsid-bNPcG2vLBqGeE8mhw__" alt="GPS Highway Restaurant Logo" class="logo-img">
+                <a href="index.html" class="logo">GPS Highway Restaurant</a>
+            </div>
+            <nav>
+                <ul id="nav-menu">
+                    <li><a href="index.html#home">Home</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="menu.html">Menu</a></li>
+                    <li><a href="index.html#gallery">Gallery</a></li>
+                    <li><a href="index.html#reservation">Reservations</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <button class="mobile-menu-btn" id="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section - Enhanced -->
+    <section id="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Authentic Indian Cuisine</h1>
+            <p class="hero-subtitle">Experience the rich flavors of India with our carefully crafted menu featuring traditional recipes and the freshest ingredients.</p>
+            <div class="hero-btns">
+                <a href="menu.html" class="btn">View Menu</a>
+                <a href="#reservation" class="btn btn-outline">Reserve a Table</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Story</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Serving Authentic Flavors Since 2010</h3>
+                    <p>GPS Highway Restaurant has been a culinary landmark, serving authentic Indian cuisine to travelers and locals alike. Our restaurant is a celebration of India's diverse culinary traditions, where every dish tells a story of regional flavors and time-honored recipes.</p>
+                    <p>We source only the finest ingredients from local farmers and producers who share our commitment to quality and authenticity. Each dish is prepared with care to bring you the true taste of India.</p>
+                    <p>Our welcoming dining space provides the perfect setting for an unforgettable dining experience, whether you're stopping by during your travels or enjoying a meal with family and friends.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Restaurant Interior" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section with 4:5 ratio cards -->
+    <section class="menu" id="menu">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Menu</h2>
+            </div>
+            <div class="menu-grid">
+                <!-- Appetizers -->
+                <div class="menu-item">
+                    <img src="https://i.pinimg.com/736x/77/1e/b4/771eb4b06b966c164be868685bfd5c85.jpg" alt="Paneer Tikka" loading="lazy">
+                    <div class="menu-item-content">
+                        <h3>Paneer Tikka</h3>
+                        <p>Marinated cottage cheese grilled to perfection in tandoor with spices</p>
+                        <div class="price">₹290</div>
+                    </div>
+                </div>
+                
+                <!-- Main Courses -->
+                <div class="menu-item">
+                    <img src="https://i.pinimg.com/736x/a8/9a/9f/a89a9f222ff5f325895f8053e8bbc5b0.jpg" alt="Butter Chicken" loading="lazy">
+                    <div class="menu-item-content">
+                        <h3>Butter Chicken</h3>
+                        <p>Tender chicken in a rich, creamy tomato gravy with aromatic spices</p>
+                        <div class="price">₹470</div>
+                    </div>
+                </div>
+                
+                <!-- Desserts -->
+                <div class="menu-item">
+                    <img src="https://i.pinimg.com/736x/9c/64/1f/9c641f34a51c3d39c254f34acfb25011.jpg" alt="Gulab Jamun" loading="lazy">
+                    <div class="menu-item-content">
+                        <h3>Gulab Jamun</h3>
+                        <p>Soft, melt-in-your-mouth milk balls soaked in sugar syrup</p>
+                        <div class="price">₹60</div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-btn-container">
+                <a href="menu.html" class="btn">View Full Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Gallery Section - Card Style with 1:1 ratio -->
+    <section class="video-gallery" id="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2 style="color: var(--text-light);">Our Restaurant</h2>
+            </div>
+            <div class="video-container">
+                <div class="video-item">
+                    <video controls preload="none" poster="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg?Expires=1841954441&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dxts~jCXOor4vu3SLzcluPfBN9SJBbSiwL4qVWGIQLTP2fBQ3dl0dsAmPGsdx71h-RN0FybaTNwvBRkd4n3JFRR3XMRJkAXW0tERkLkQfuLfLm2B-TD7wVTJnSdiH4T6OvTfokGhcAzaKFPdiWMHug9L10jE4iHwgr930RzFIYzsFiQ9z9jNxCYxdMBx8Xix9xjG7uKwyACCBvQgxfIAhiGXXvttc3CRHrbFt9Jk-J9or4CEtxnKVVYQ1yd19aOs4WbN0T7e76N-~V7jjQ7NtXTKwQnl92peercTUr7tUhvIpixysgKrgT-kVzbRBTNrZsid-bNPcG2vLBqGeE8mhw__">
+                        <source src="https://media-hosting.imagekit.io/8b731b1f45c04a22/GPS%20highway%20.mp4?Expires=1841954573&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=I8yFkimpPX4ypv6LsiALuV2LwLD-zbRqHS3e~S44khNEmAzQxLITRuZGC4oFJ2BLb3BQrcRCPKrMhfW7auUW4PaGhuz13q8XuO-z2BBth-tV6Q-XFIZE4efdQxbeJQKOl0AJmf1kGzbnXKW52onefQpJiV6B-AgpZG~eWgVCa~Wnr9J-cVjM6y5r-pG-4s14inLRV3wTeBVKE0xQNPzC2WE99emhBd5o92OtWtHkp1AME989fJggPzz2RtkAsOOvBVFDom3zY161nIdlNobywgL9ZKPmfXXMMdQy9IOWIHhZJdkxNSEGKfukor~0Jlpti0ewFZaGhDlnFFKLNKRaOA__" type="video/mp4">
+                    </video>
+                    <div class="video-caption">
+                        <h3>Restaurant Ambience</h3>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <video controls preload="none" poster="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg?Expires=1841954441&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dxts~jCXOor4vu3SLzcluPfBN9SJBbSiwL4qVWGIQLTP2fBQ3dl0dsAmPGsdx71h-RN0FybaTNwvBRkd4n3JFRR3XMRJkAXW0tERkLkQfuLfLm2B-TD7wVTJnSdiH4T6OvTfokGhcAzaKFPdiWMHug9L10jE4iHwgr930RzFIYzsFiQ9z9jNxCYxdMBx8Xix9xjG7uKwyACCBvQgxfIAhiGXXvttc3CRHrbFt9Jk-J9or4CEtxnKVVYQ1yd19aOs4WbN0T7e76N-~V7jjQ7NtXTKwQnl92peercTUr7tUhvIpixysgKrgT-kVzbRBTNrZsid-bNPcG2vLBqGeE8mhw__">
+                        <source src="https://media-hosting.imagekit.io/8da831ad515649fa/h1.mp4?Expires=1841961563&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=bXNZJU8fpYmF1e5W1xOGHH7fuXJB1lTyE5sPrvHQQQ6H1SjNhB0QWo5x6UGeGOfkt2A5zc99BnfD6Yda3WL1InmxXyDfr76SZu-ZrXNKLYOzGIi3G5nAthJ4N3fEjxlX4dhFMgmzEsWa1eNv8Rtxg89JnILstinAmVBM7F8b9~SnIkrJoXdxLnL5utHSgv18lwzcvyz~xxab2XvtLlZrVLlCSeo7lfgWOQgpeHL3ORXpNOGe8ju11OFxj294yKBzbCeYSHRW~Sza0WHGHlcq4wBY1DS5AuP93cGfdMXXOOE-J3pEwAJwxmubg4-uveZ06E6a1IwSEecyAAJXjzTMHg__" type="video/mp4">
+                    </video>
+                    <div class="video-caption">
+                        <h3>Food Preparation</h3>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <video controls preload="none" poster="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg?Expires=1841954441&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dxts~jCXOor4vu3SLzcluPfBN9SJBbSiwL4qVWGIQLTP2fBQ3dl0dsAmPGsdx71h-RN0FybaTNwvBRkd4n3JFRR3XMRJkAXW0tERkLkQfuLfLm2B-TD7wVTJnSdiH4T6OvTfokGhcAzaKFPdiWMHug9L10jE4iHwgr930RzFIYzsFiQ9z9jNxCYxdMBx8Xix9xjG7uKwyACCBvQgxfIAhiGXXvttc3CRHrbFt9Jk-J9or4CEtxnKVVYQ1yd19aOs4WbN0T7e76N-~V7jjQ7NtXTKwQnl92peercTUr7tUhvIpixysgKrgT-kVzbRBTNrZsid-bNPcG2vLBqGeE8mhw__">
+                        <source src="https://media-hosting.imagekit.io/7c2145ad8da34a28/h2.mp4?Expires=1841954846&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Or2A~xzoM3I-TSAIaW7lvIZsROx-CEpg8nJY3x59IsAdsDXPU3LcNRIAekU2dOVY7iwHWYv4J3d2GH45cUQ8kVkqpS2tC7Ypi1-6VvM1RpNeq4DmiCEcSvzGb-xm8mGksi4rvaHpfTzf1x93UdVgYID4sxg1gFxoW9i2KpIYuZT35BpzzJFtcSmSTbbXzYnMcEWiUz7V0mYe5x02NkcommfzCptDQ7LB5HjEu~og0EN-1gVzh4OWOa1xKOSkkPBQ8xfeXAl6MwaFP8mP0tKPPadK~ooU~hrzYhrXgM3C0OXTZWpzc4Bq2vqCBh9g8dPNSggpnEOYZSRS3GkNb8sdRA__" type="video/mp4">
+                    </video>
+                    <div class="video-caption">
+                        <h3>Customer Experience</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section - Enhanced -->
+    <section class="reservation" id="reservation">
+        <div class="container">
+            <div class="section-title">
+                <h2>Make a Reservation</h2>
+            </div>
+            <div class="reservation-form">
+                <form action="https://api.web3forms.com/submit" method="POST" id="booking-form">
+                    <input type="hidden" name="access_key" value="3ad2ac7d-5205-4c7f-b856-de35b9a592f3">
+                    <input type="hidden" name="subject" value="New Reservation Request">
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="guests">Number of Guests</label>
+                            <select id="guests" name="guests" required>
+                                <option value="" disabled selected>Select guests</option>
+                                <option value="1">1 Person</option>
+                                <option value="2">2 People</option>
+                                <option value="3">3 People</option>
+                                <option value="4">4 People</option>
+                                <option value="5">5 People</option>
+                                <option value="6+">6+ People</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="date">Date</label>
+                            <input type="date" id="date" name="date" placeholder="dd-mm-yyyy" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="time">Time</label>
+                            <input type="time" id="time" name="time" placeholder="--:--" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="special-requests">Special Requests</label>
+                        <textarea id="special-requests" name="special-requests" rows="4" placeholder="Any special requests or dietary restrictions..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Book Table</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Location</h2>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52356.72936253133!2d78.9818823486328!3d21.066862200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4bfece213e8df%3A0xbafc5c14f7962ecd!2sGPS%20Highway%20Restaurant!5e1!3m2!1sen!2sin!4v1747341109593!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>GPS Highway Restaurant</h3>
+                    <p>Experience authentic Indian cuisine at our restaurant located conveniently on the highway. We offer an unforgettable culinary journey through India's diverse regional flavors.</p>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/gpshighwayrestaurant/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/gps.highway.restaurant/?hl=en" target="_blank"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Us</h3>
+                    <div class="contact-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <a href="https://maps.google.com/?q=GPS+Highway+Restaurant,+Chichbhawan,+Nagpur,+Maharashtra+440005" target="_blank">GPS Highway Restaurant, Chichbhawan, Nagpur, Maharashtra 440005</a>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-phone"></i>
+                        <div class="phone-numbers">
+                            <span class="phone-number">9021078335</span>
+                            <span class="phone-number">9665615666</span>
+                        </div>
+                    </div>
+                    <div class="contact-info">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:info@gpshighwayrestaurant.com">info@gpshighwayrestaurant.com</a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html#home">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="menu.html">Menu</a></li>
+                        <li><a href="index.html#gallery">Gallery</a></li>
+                        <li><a href="index.html#reservation">Reservations</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Opening Hours</h3>
+                    <p>Monday - Sunday: 10:00 AM - 10:00 PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 GPS Highway Restaurant. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Chatbot Container - Enhanced -->
+    <div class="chatbot-container">
+        <button class="chatbot-toggle" id="chatbot-toggle">
+            <i class="fas fa-utensils"></i>
+        </button>
+        <div class="chatbot-window" id="chatbot-window">
+            <div class="chatbot-header">
+                <h3>GPS Highway Assistant</h3>
+                <button class="chatbot-close" id="chatbot-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chatbot-messages" id="chatbot-messages">
+                <div class="message bot-message">
+                    Hello! Welcome to GPS Highway Restaurant. How can I assist you today? 😊
+                    <div style="margin-top: 10px;">
+                        <div class="quick-reply" onclick="handleQuickReply('reservation')">Make a reservation</div>
+                        <div class="quick-reply" onclick="handleQuickReply('menu')">View menu suggestions</div>
+                        <div class="quick-reply" onclick="handleQuickReply('contact')">Contact information</div>
+                        <div class="quick-reply" onclick="handleQuickReply('hours')">Opening hours</div>
+                    </div>
+                </div>
+            </div>
+            <div class="reservation-form-mini" id="reservation-form-mini">
+                <div class="form-group-mini">
+                    <input type="text" id="res-name" placeholder="Your Name">
+                </div>
+                <div class="form-group-mini">
+                    <input type="date" id="res-date">
+                </div>
+                <div class="form-group-mini">
+                    <input type="time" id="res-time">
+                </div>
+                <div class="form-group-mini">
+                    <select id="res-guests">
+                        <option value="1">1 Person</option>
+                        <option value="2">2 People</option>
+                        <option value="3">3 People</option>
+                        <option value="4">4 People</option>
+                        <option value="5+">5+ People</option>
+                    </select>
+                </div>
+                <button class="submit-btn-mini" onclick="submitReservation()">Submit Reservation</button>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbot-input" placeholder="Type your message...">
+                <button id="chatbot-send"><i class="fas fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Loader Animation
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loader = document.getElementById('loader');
+                loader.classList.add('loader-hidden');
+                
+                // Enable scrolling after loader disappears
+                document.body.style.overflow = 'auto';
+            }, 1000); // 1 second delay
+        });
+
+        // Check if coming back from menu.html to skip animation
+        if (sessionStorage.getItem('visitedMenu')) {
+            document.getElementById('loader').style.display = 'none';
+            document.body.style.overflow = 'auto';
+            sessionStorage.removeItem('visitedMenu');
+            
+            // Scroll to the section if hash exists
+            if (window.location.hash) {
+                const targetElement = document.querySelector(window.location.hash);
+                if (targetElement) {
+                    setTimeout(() => {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }, 100);
+                }
+            }
+        }
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                
+                // Set flag when navigating to menu.html
+                if (link.getAttribute('href') === 'menu.html') {
+                    sessionStorage.setItem('visitedMenu', 'true');
+                    sessionStorage.setItem('scrollPosition', window.scrollY);
+                }
+            });
+        });
+        
+        // Header scroll effect
+        const header = document.getElementById('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update URL without reload
+                        history.pushState(null, null, targetId);
+                    }
+                }
+            });
+        });
+        
+        // Form submission with Web3Forms
+        const bookingForm = document.getElementById('booking-form');
+        
+        bookingForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const formData = new FormData(bookingForm);
+            const submitBtn = bookingForm.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.textContent;
+            
+            try {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Processing...';
+                
+                const response = await fetch(bookingForm.action, {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert('Thank you for your reservation! We will contact you shortly to confirm your booking.');
+                    bookingForm.reset();
+                } else {
+                    alert('There was an error submitting your reservation. Please try again later.');
+                    console.error(result);
+                }
+            } catch (error) {
+                alert('There was an error submitting your reservation. Please try again later.');
+                console.error(error);
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+            }
+        });
+
+        // Lazy load videos when they come into view
+        const lazyVideos = document.querySelectorAll('video[preload="none"]');
+        
+        const lazyVideoObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const video = entry.target;
+                    video.preload = 'auto';
+                    lazyVideoObserver.unobserve(video);
+                }
+            });
+        }, { rootMargin: '200px' });
+        
+        lazyVideos.forEach(video => {
+            lazyVideoObserver.observe(video);
+        });
+
+        // Restore scroll position if coming back from menu
+        if (sessionStorage.getItem('scrollPosition')) {
+            window.scrollTo(0, parseInt(sessionStorage.getItem('scrollPosition')));
+            sessionStorage.removeItem('scrollPosition');
+        }
+
+        // Chatbot functionality - Enhanced
+        const chatbotToggle = document.getElementById('chatbot-toggle');
+        const chatbotWindow = document.getElementById('chatbot-window');
+        const chatbotClose = document.getElementById('chatbot-close');
+        const chatbotMessages = document.getElementById('chatbot-messages');
+        const chatbotInput = document.getElementById('chatbot-input');
+        const chatbotSend = document.getElementById('chatbot-send');
+        const reservationFormMini = document.getElementById('reservation-form-mini');
+
+        // Toggle chatbot window
+        chatbotToggle.addEventListener('click', () => {
+            chatbotWindow.classList.toggle('active');
+        });
+
+        // Close chatbot window
+        chatbotClose.addEventListener('click', () => {
+            chatbotWindow.classList.remove('active');
+        });
+
+        // Send message when button is clicked
+        chatbotSend.addEventListener('click', sendMessage);
+
+        // Send message when Enter key is pressed
+        chatbotInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Handle quick reply buttons
+        function handleQuickReply(type) {
+            if (type === 'reservation') {
+                addMessage('user', 'I want to make a reservation');
+                setTimeout(() => {
+                    addMessage('bot', 'Great! Please fill out this quick reservation form. Alternatively, you can scroll down to our full reservation form for more options.');
+                    reservationFormMini.classList.add('active');
+                    scrollToBottom();
+                }, 500);
+            } else if (type === 'menu') {
+                addMessage('user', 'Can you suggest some menu items?');
+                setTimeout(() => {
+                    addMessage('bot', 'Of course! We offer a wide variety of authentic Indian dishes. What type of meal are you interested in?');
+                    setTimeout(() => {
+                        addQuickReplies([
+                            'Vegetarian options',
+                            'Non-vegetarian options',
+                            'Desserts',
+                            'Full meal suggestions'
+                        ]);
+                    }, 300);
+                }, 500);
+            } else if (type === 'contact') {
+                addMessage('user', 'I want contact information');
+                setTimeout(() => {
+                    addMessage('bot', 'Here are our contact details:<br><br><strong>Address:</strong> GPS Highway Restaurant, Chichbhawan, Nagpur, Maharashtra 440005<br><strong>Phone:</strong> <a href="tel:9021078335">9021078335</a> or <a href="tel:9665615666">9665615666</a><br><strong>Email:</strong> <a href="mailto:info@gpshighwayrestaurant.com">info@gpshighwayrestaurant.com</a>');
+                    scrollToBottom();
+                }, 500);
+            } else if (type === 'hours') {
+                addMessage('user', 'What are your opening hours?');
+                setTimeout(() => {
+                    addMessage('bot', 'We are open every day from 10:00 AM to 10:00 PM. Looking forward to serving you!');
+                    scrollToBottom();
+                }, 500);
+            }
+        }
+
+        // Add quick reply buttons
+        function addQuickReplies(replies) {
+            const quickRepliesContainer = document.createElement('div');
+            quickRepliesContainer.style.marginTop = '10px';
+            
+            replies.forEach(reply => {
+                const quickReply = document.createElement('div');
+                quickReply.className = 'quick-reply';
+                quickReply.textContent = reply;
+                quickReply.onclick = () => {
+                    addMessage('user', reply);
+                    handleMenuSuggestion(reply);
+                };
+                quickRepliesContainer.appendChild(quickReply);
+            });
+            
+            const lastBotMessage = document.querySelector('.bot-message:last-child');
+            lastBotMessage.appendChild(quickRepliesContainer);
+            scrollToBottom();
+        }
+
+        // Handle menu suggestions based on user selection
+        function handleMenuSuggestion(selection) {
+            setTimeout(() => {
+                if (selection.includes('Vegetarian')) {
+                    addMessage('bot', 'For vegetarian options, I recommend:<div class="menu-suggestion"><h4>Paneer Tikka (₹290)</h4><p>Marinated cottage cheese grilled to perfection in tandoor with spices</p><h4>Dal Makhani (₹250)</h4><p>Creamy black lentils slow-cooked with butter and aromatic spices</p><h4>Vegetable Biryani (₹320)</h4><p>Fragrant basmati rice cooked with mixed vegetables and spices</p></div>');
+                } else if (selection.includes('Non-vegetarian')) {
+                    addMessage('bot', 'For non-vegetarian options, I recommend:<div class="menu-suggestion"><h4>Butter Chicken (₹470)</h4><p>Tender chicken in rich tomato gravy with butter and cream</p><h4>Mutton Rogan Josh (₹550)</h4><p>Aromatic lamb curry from Kashmir with rich gravy</p><h4>Chicken Biryani (₹420)</h4><p>Fragrant basmati rice cooked with chicken and spices</p></div>');
+                } else if (selection.includes('Desserts')) {
+                    addMessage('bot', 'For desserts, I recommend:<div class="menu-suggestion"><h4>Gulab Jamun (₹60)</h4><p>Soft milk balls soaked in sugar syrup</p><h4>Kheer (₹80)</h4><p>Traditional rice pudding with nuts and cardamom</p><h4>Rasmalai (₹90)</h4><p>Soft cheese patties in sweetened, thickened milk</p></div>');
+                } else if (selection.includes('Full meal')) {
+                    addMessage('bot', 'For a complete meal experience, I recommend:<div class="menu-suggestion"><h4>Starter:</h4><p>Vegetable Samosa (₹120) or Chicken Tikka (₹350)</p><h4>Main Course:</h4><p>Dal Makhani (₹250) with Jeera Rice (₹180) or Butter Chicken (₹470) with Garlic Naan (₹50)</p><h4>Dessert:</h4><p>Gulab Jamun (₹60) or Kheer (₹80)</p></div>');
+                }
+                scrollToBottom();
+            }, 500);
+        }
+
+        // Submit mini reservation form
+        function submitReservation() {
+            const name = document.getElementById('res-name').value;
+            const date = document.getElementById('res-date').value;
+            const time = document.getElementById('res-time').value;
+            const guests = document.getElementById('res-guests').value;
+            
+            if (!name || !date || !time) {
+                addMessage('bot', 'Please fill in all the required fields to make a reservation.');
+                scrollToBottom();
+                return;
+            }
+            
+            addMessage('bot', `Thank you, ${name}! Your reservation request for ${guests} people on ${date} at ${time} has been received. We will contact you shortly to confirm. You can also scroll down to fill out our detailed reservation form for special requests.`);
+            reservationFormMini.classList.remove('active');
+            document.getElementById('res-name').value = '';
+            document.getElementById('res-date').value = '';
+            document.getElementById('res-time').value = '';
+            document.getElementById('res-guests').value = '1';
+            scrollToBottom();
+            
+            // Scroll to reservation section
+            setTimeout(() => {
+                const reservationSection = document.getElementById('reservation');
+                if (reservationSection) {
+                    window.scrollTo({
+                        top: reservationSection.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 1000);
+        }
+
+        // Send user message
+        function sendMessage() {
+            const message = chatbotInput.value.trim();
+            if (message) {
+                addMessage('user', message);
+                chatbotInput.value = '';
+                
+                // Simulate bot response
+                setTimeout(() => {
+                    handleBotResponse(message);
+                }, 500);
+            }
+        }
+
+        // Handle bot responses
+        function handleBotResponse(message) {
+            message = message.toLowerCase();
+            
+            if (message.includes('reservation') || message.includes('book') || message.includes('table') || message.includes('reserve')) {
+                addMessage('bot', 'Would you like to make a reservation with us? You can use the quick form below or scroll down to our detailed reservation section.');
+                setTimeout(() => {
+                    reservationFormMini.classList.add('active');
+                    scrollToBottom();
+                }, 300);
+            } 
+            else if (message.includes('menu') || message.includes('food') || message.includes('dish') || message.includes('eat')) {
+                addMessage('bot', 'We offer a wide variety of authentic Indian cuisine. What type of food are you interested in?');
+                setTimeout(() => {
+                    addQuickReplies([
+                        'Vegetarian options',
+                        'Non-vegetarian options',
+                        'Desserts',
+                        'Full meal suggestions'
+                    ]);
+                }, 300);
+            }
+            else if (message.includes('contact') || message.includes('owner') || message.includes('manager') || message.includes('phone') || message.includes('email')) {
+                addMessage('bot', 'You can contact us at:<br><br><strong>Address:</strong> GPS Highway Restaurant, Chichbhawan, Nagpur, Maharashtra 440005<br><strong>Phone:</strong> <a href="tel:9021078335">9021078335</a> or <a href="tel:9665615666">9665615666</a><br><strong>Email:</strong> <a href="mailto:info@gpshighwayrestaurant.com">info@gpshighwayrestaurant.com</a>');
+            }
+            else if (message.includes('hours') || message.includes('open') || message.includes('close') || message.includes('time')) {
+                addMessage('bot', 'We are open every day from 10:00 AM to 10:00 PM. Looking forward to serving you!');
+            }
+            else if (message.includes('location') || message.includes('address') || message.includes('where') || message.includes('map')) {
+                addMessage('bot', 'We are located at:<br><br>GPS Highway Restaurant, Chichbhawan, Nagpur, Maharashtra 440005<br><br><a href="https://maps.google.com/?q=GPS+Highway+Restaurant,+Chichbhawan,+Nagpur,+Maharashtra+440005" target="_blank">View on Google Maps</a><br><br>You can also scroll down to see our location map.');
+            }
+            else if (message.includes('hi') || message.includes('hello') || message.includes('hey') || message.includes('greet')) {
+                addMessage('bot', 'Hello! Welcome to GPS Highway Restaurant. How can I assist you today? 😊');
+                setTimeout(() => {
+                    addQuickReplies([
+                        'Make a reservation',
+                        'View menu suggestions',
+                        'Contact information',
+                        'Opening hours'
+                    ]);
+                }, 300);
+            }
+            else {
+                addMessage('bot', 'I\'m here to help you with reservations, menu suggestions, and general information about GPS Highway Restaurant. What would you like to know?');
+                setTimeout(() => {
+                    addQuickReplies([
+                        'Make a reservation',
+                        'View menu suggestions',
+                        'Contact information',
+                        'Opening hours'
+                    ]);
+                }, 300);
+            }
+            
+            scrollToBottom();
+        }
+
+        // Add message to chat
+        function addMessage(sender, text) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${sender}-message`;
+            
+            if (sender === 'bot' && text.includes('<')) {
+                messageDiv.innerHTML = text;
+            } else {
+                messageDiv.textContent = text;
+            }
+            
+            chatbotMessages.appendChild(messageDiv);
+            scrollToBottom();
+        }
+
+        // Scroll to bottom of chat
+        function scrollToBottom() {
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+    </script>
+</body>
+</html>
