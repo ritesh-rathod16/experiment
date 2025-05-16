@@ -408,6 +408,7 @@
             flex: 1;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
         }
         
         .menu-item-content h3 {
@@ -422,7 +423,7 @@
             margin-bottom: 15px;
             line-height: 1.6;
             font-size: 1rem;
-            flex: 1;
+            opacity: 0.8;
         }
         
         .price {
@@ -484,30 +485,6 @@
             color: var(--primary-color);
             font-size: 1.2rem;
             font-family: 'Bebas Neue', sans-serif;
-        }
-        
-        /* Play button overlay for videos */
-        .video-play-btn {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            background-color: rgba(193, 154, 107, 0.8);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 24px;
-            opacity: 1;
-            transition: all 0.3s ease;
-            pointer-events: none;
-        }
-        
-        .video-item.playing .video-play-btn {
-            opacity: 0;
         }
         
         /* Reservation Section - Enhanced */
@@ -836,50 +813,48 @@
             font-size: 0.9rem;
         }
 
-        /* Parking Info */
-        .parking-info {
-            background-color: rgba(255, 255, 255, 0.1);
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 20px;
-            display: flex;
-            align-items: center;
+        /* Features Section */
+        .features {
+            background-color: var(--text-light);
         }
 
-        .parking-info i {
-            font-size: 1.5rem;
-            color: var(--secondary-color);
-            margin-right: 15px;
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
 
-        .parking-info p {
-            margin: 0;
-            font-size: 0.9rem;
-        }
-
-        /* Coupon Section */
-        .coupon-section {
-            background-color: var(--secondary-color);
-            padding: 40px 0;
+        .feature-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
             text-align: center;
-            color: var(--text-light);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
         }
 
-        .coupon-container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .coupon-section h2 {
+        .feature-icon {
             font-size: 2.5rem;
+            color: var(--secondary-color);
             margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
             font-family: 'Bebas Neue', sans-serif;
         }
 
-        .coupon-section p {
-            margin-bottom: 30px;
-            font-size: 1.1rem;
+        .feature-card p {
+            color: #666;
+            font-size: 1rem;
         }
 
         /* Chatbot Styles - Enhanced */
@@ -1180,45 +1155,42 @@
             }
         }
 
-        /* Event Booking Section */
-        .event-booking {
-            background-color: var(--primary-color);
-            color: var(--text-light);
-        }
-
-        .event-booking .section-title h2 {
-            color: var(--text-light);
-        }
-
-        .event-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .event-card {
-            background-color: rgba(255, 255, 255, 0.1);
+        /* Coupon Card */
+        .coupon-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             border-radius: 10px;
-            padding: 30px;
-            transition: all 0.3s ease;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 2px dashed var(--secondary-color);
+            text-align: center;
         }
 
-        .event-card:hover {
-            background-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-5px);
-        }
-
-        .event-card h3 {
+        .coupon-header {
             font-size: 1.8rem;
-            margin-bottom: 15px;
-            color: var(--secondary-color);
+            color: var(--primary-color);
+            margin-bottom: 10px;
             font-family: 'Bebas Neue', sans-serif;
         }
 
-        .event-card p {
-            margin-bottom: 20px;
-            color: var(--text-secondary);
+        .coupon-code {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin: 15px 0;
+            letter-spacing: 3px;
+        }
+
+        .coupon-details {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .coupon-terms {
+            font-size: 0.8rem;
+            color: #888;
+            font-style: italic;
         }
 
         /* Responsive Styles */
@@ -1502,6 +1474,45 @@
         </div>
     </section>
 
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>WHY CHOOSE US</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-parking"></i>
+                    </div>
+                    <h3>Wallet Parking</h3>
+                    <p>Convenient and secure parking available for all our guests</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-percentage"></i>
+                    </div>
+                    <h3>5% Coupon</h3>
+                    <p>Get a 5% discount coupon on your first visit to redeem next time</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Authentic Cuisine</h3>
+                    <p>Traditional recipes prepared with the freshest ingredients</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Event Booking</h3>
+                    <p>Host your private parties and special events with us</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Online Ordering Section -->
     <section class="online-ordering" id="ordering">
         <div class="container">
@@ -1522,7 +1533,7 @@
                     <a href="https://www.swiggy.com" target="_blank" class="btn">Order Now</a>
                 </div>
                 <div class="platform-card">
-                    <img src="https://i.ibb.co/5gTMFLh/restaurant-guru-logo.png" alt="Restaurant Guru">
+                    <img src="https://ibb.co/5gTMFLhd" alt="Restaurant Guru">
                     <h3>Restaurant Guru</h3>
                     <p>Enjoy our cuisine delivered by Restaurant Guru</p>
                     <a href="https://restaurant-guru.in/GPS-Highway-Restaurant-Nagpur" target="_blank" class="btn">Order Now</a>
@@ -1539,63 +1550,28 @@
             </div>
             <div class="video-container">
                 <div class="video-item">
-                    <video controls preload="none" poster="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg?Expires=1841954441&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dxts~jCXOor4vu3SLzcluPfBN9SJBbSiwL4qVWGIQLTP2fBQ3dl0dsAmPGsdx71h-RN0FybaTNwvBRkd4n3JFRR3XMRJkAXW0tERkLkQfuLfLm2B-TD7wVTJnSdiH4T6OvTfokGhcAzaKFPdiWMHug9L10jE4iHwgr930RzFIYzsFiQ9z9jNxCYxdMBx8Xix9xjG7uKwyACCBvQgxfIAhiGXXvttc3CRHrbFt9Jk-J9or4CEtxnKVVYQ1yd19aOs4WbN0T7e76N-~V7jjQ7NtXTKwQnl92peercTUr7tUhvIpixysgKrgT-kVzbRBTNrZsid-bNPcG2vLBqGeE8mhw__">
+                    <video controls preload="none">
                         <source src="https://media-hosting.imagekit.io/8b731b1f45c04a22/GPS%20highway%20.mp4?Expires=1841954573&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=I8yFkimpPX4ypv6LsiALuV2LwLD-zbRqHS3e~S44khNEmAzQxLITRuZGC4oFJ2BLb3BQrcRCPKrMhfW7auUW4PaGhuz13q8XuO-z2BBth-tV6Q-XFIZE4efdQxbeJQKOl0AJmf1kGzbnXKW52onefQpJiV6B-AgpZG~eWgVCa~Wnr9J-cVjM6y5r-pG-4s14inLRV3wTeBVKE0xQNPzC2WE99emhBd5o92OtWtHkp1AME989fJggPzz2RtkAsOOvBVFDom3zY161nIdlNobywgL9ZKPmfXXMMdQy9IOWIHhZJdkxNSEGKfukor~0Jlpti0ewFZaGhDlnFFKLNKRaOA__" type="video/mp4">
                     </video>
-                    <div class="video-play-btn">
-                        <i class="fas fa-play"></i>
-                    </div>
                     <div class="video-caption">
                         <h3>Restaurant Ambience</h3>
                     </div>
                 </div>
                 <div class="video-item">
-                    <video controls preload="none" poster="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg?Expires=1841954441&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dxts~jCXOor4vu3SLzcluPfBN9SJBbSiwL4qVWGIQLTP2fBQ3dl0dsAmPGsdx71h-RN0FybaTNwvBRkd4n3JFRR3XMRJkAXW0tERkLkQfuLfLm2B-TD7wVTJnSdiH4T6OvTfokGhcAzaKFPdiWMHug9L10jE4iHwgr930RzFIYzsFiQ9z9jNxCYxdMBx8Xix9xjG7uKwyACCBvQgxfIAhiGXXvttc3CRHrbFt9Jk-J9or4CEtxnKVVYQ1yd19aOs4WbN0T7e76N-~V7jjQ7NtXTKwQnl92peercTUr7tUhvIpixysgKrgT-kVzbRBTNrZsid-bNPcG2vLBqGeE8mhw__">
+                    <video controls preload="none">
                         <source src="https://media-hosting.imagekit.io/8da831ad515649fa/h1.mp4?Expires=1841961563&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=bXNZJU8fpYmF1e5W1xOGHH7fuXJB1lTyE5sPrvHQQQ6H1SjNhB0QWo5x6UGeGOfkt2A5zc99BnfD6Yda3WL1InmxXyDfr76SZu-ZrXNKLYOzGIi3G5nAthJ4N3fEjxlX4dhFMgmzEsWa1eNv8Rtxg89JnILstinAmVBM7F8b9~SnIkrJoXdxLnL5utHSgv18lwzcvyz~xxab2XvtLlZrVLlCSeo7lfgWOQgpeHL3ORXpNOGe8ju11OFxj294yKBzbCeYSHRW~Sza0WHGHlcq4wBY1DS5AuP93cGfdMXXOOE-J3pEwAJwxmubg4-uveZ06E6a1IwSEecyAAJXjzTMHg__" type="video/mp4">
                     </video>
-                    <div class="video-play-btn">
-                        <i class="fas fa-play"></i>
-                    </div>
                     <div class="video-caption">
                         <h3>Food Preparation</h3>
                     </div>
                 </div>
                 <div class="video-item">
-                    <video controls preload="none" poster="https://media-hosting.imagekit.io/55598457fb264896/403923188_655152343462104_4618773726312330113_n.jpg?Expires=1841954441&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=dxts~jCXOor4vu3SLzcluPfBN9SJBbSiwL4qVWGIQLTP2fBQ3dl0dsAmPGsdx71h-RN0FybaTNwvBRkd4n3JFRR3XMRJkAXW0tERkLkQfuLfLm2B-TD7wVTJnSdiH4T6OvTfokGhcAzaKFPdiWMHug9L10jE4iHwgr930RzFIYzsFiQ9z9jNxCYxdMBx8Xix9xjG7uKwyACCBvQgxfIAhiGXXvttc3CRHrbFt9Jk-J9or4CEtxnKVVYQ1yd19aOs4WbN0T7e76N-~V7jjQ7NtXTKwQnl92peercTUr7tUhvIpixysgKrgT-kVzbRBTNrZsid-bNPcG2vLBqGeE8mhw__">
+                    <video controls preload="none">
                         <source src="https://media-hosting.imagekit.io/7c2145ad8da34a28/h2.mp4?Expires=1841954846&Key-Pair-Id=K2ZIVPTIP2VGHC&Signature=Or2A~xzoM3I-TSAIaW7lvIZsROx-CEpg8nJY3x59IsAdsDXPU3LcNRIAekU2dOVY7iwHWYv4J3d2GH45cUQ8kVkqpS2tC7Ypi1-6VvM1RpNeq4DmiCEcSvzGb-xm8mGksi4rvaHpfTzf1x93UdVgYID4sxg1gFxoW9i2KpIYuZT35BpzzJFtcSmSTbbXzYnMcEWiUz7V0mYe5x02NkcommfzCptDQ7LB5HjEu~og0EN-1gVzh4OWOa1xKOSkkPBQ8xfeXAl6MwaFP8mP0tKPPadK~ooU~hrzYhrXgM3C0OXTZWpzc4Bq2vqCBh9g8dPNSggpnEOYZSRS3GkNb8sdRA__" type="video/mp4">
                     </video>
-                    <div class="video-play-btn">
-                        <i class="fas fa-play"></i>
-                    </div>
                     <div class="video-caption">
                         <h3>Customer Experience</h3>
                     </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Event Booking Section -->
-    <section class="event-booking" id="events">
-        <div class="container">
-            <div class="section-title">
-                <h2>EVENT BOOKING & PRIVATE DINING</h2>
-            </div>
-            <div class="event-cards">
-                <div class="event-card">
-                    <h3>Private Parties</h3>
-                    <p>Host your special occasions in our elegant private dining area. Perfect for birthdays, anniversaries, and family gatherings.</p>
-                    <a href="#reservation" class="btn">Book Now</a>
-                </div>
-                <div class="event-card">
-                    <h3>Corporate Events</h3>
-                    <p>Impress your clients and colleagues with our professional event hosting services and customized menus.</p>
-                    <a href="#reservation" class="btn">Book Now</a>
-                </div>
-                <div class="event-card">
-                    <h3>Catering Services</h3>
-                    <p>Let us bring the flavors of GPS Highway Restaurant to your location with our premium catering services.</p>
-                    <a href="#reservation" class="btn">Book Now</a>
                 </div>
             </div>
         </div>
@@ -1661,6 +1637,48 @@
         </div>
     </section>
 
+    <!-- Events Section -->
+    <section class="features" id="events">
+        <div class="container">
+            <div class="section-title">
+                <h2>EVENTS & PRIVATE DINING</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-birthday-cake"></i>
+                    </div>
+                    <h3>Birthday Parties</h3>
+                    <p>Celebrate your special day with us in a private dining area</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-glass-cheers"></i>
+                    </div>
+                    <h3>Anniversaries</h3>
+                    <p>Romantic settings for your anniversary celebrations</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Corporate Events</h3>
+                    <p>Host your business meetings and corporate gatherings</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <h3>Catering Services</h3>
+                    <p>Let us bring our authentic flavors to your location</p>
+                </div>
+            </div>
+            <div class="menu-btn-container">
+                <a href="#contact" class="btn">Contact Us for Events</a>
+            </div>
+        </div>
+    </section>
+
     <!-- Map Section -->
     <section class="map-section">
         <div class="container">
@@ -1670,15 +1688,6 @@
             <div class="map-container">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d52356.72936253133!2d78.9818823486328!3d21.066862200000006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4bfece213e8df%3A0xbafc5c14f7962ecd!2sGPS%20Highway%20Restaurant!5e1!3m2!1sen!2sin!4v1747341109593!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
-        </div>
-    </section>
-
-    <!-- Coupon Section -->
-    <section class="coupon-section">
-        <div class="coupon-container">
-            <h2>5% OFF YOUR NEXT VISIT</h2>
-            <p>Present this coupon on your next visit to receive 5% off your total bill. Valid for dine-in only.</p>
-            <a href="#reservation" class="btn btn-outline">Book Your Next Visit</a>
         </div>
     </section>
 
@@ -1712,10 +1721,6 @@
                         <i class="fas fa-envelope"></i>
                         <a href="mailto:info@gpshighwayrestaurant.com">info@gpshighwayrestaurant.com</a>
                     </div>
-                    <div class="parking-info">
-                        <i class="fas fa-parking"></i>
-                        <p>We offer free wallet parking for our customers</p>
-                    </div>
                 </div>
                 <div class="footer-column">
                     <h3>QUICK LINKS</h3>
@@ -1726,7 +1731,7 @@
                         <li><a href="index.html#ordering">Order Online</a></li>
                         <li><a href="index.html#gallery">Gallery</a></li>
                         <li><a href="index.html#reservation">Reservations</a></li>
-                        <li><a href="index.html#events">Event Booking</a></li>
+                        <li><a href="index.html#events">Events</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -1759,7 +1764,6 @@
                         <button class="quick-reply" data-message="Reserve a table">Reserve a table</button>
                         <button class="quick-reply" data-message="View menu">View menu</button>
                         <button class="quick-reply" data-message="Contact info">Contact info</button>
-                        <button class="quick-reply" data-message="Coupon details">Coupon details</button>
                     </div>
                 </div>
             </div>
@@ -1793,21 +1797,35 @@
     </div>
 
     <script>
-        // Loader Animation - Skip if coming back from menu.html
-        if (!sessionStorage.getItem('visitedMenu')) {
-            window.addEventListener('load', function() {
-                setTimeout(function() {
-                    const loader = document.getElementById('loader');
-                    loader.classList.add('loader-hidden');
-                    
-                    // Enable scrolling after loader disappears
-                    document.body.style.overflow = 'auto';
-                }, 1000); // 1 second delay
-            });
-        } else {
+        // Loader Animation
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loader = document.getElementById('loader');
+                loader.classList.add('loader-hidden');
+                
+                // Enable scrolling after loader disappears
+                document.body.style.overflow = 'auto';
+            }, 1000); // 1 second delay
+        });
+
+        // Check if coming back from menu.html to skip animation
+        if (sessionStorage.getItem('visitedMenu')) {
             document.getElementById('loader').style.display = 'none';
             document.body.style.overflow = 'auto';
             sessionStorage.removeItem('visitedMenu');
+            
+            // Scroll to the section if hash exists
+            if (window.location.hash) {
+                const targetElement = document.querySelector(window.location.hash);
+                if (targetElement) {
+                    setTimeout(() => {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }, 100);
+                }
+            }
         }
 
         // Mobile Menu Toggle
@@ -1927,39 +1945,23 @@
             sessionStorage.removeItem('scrollPosition');
         }
 
-        // Video play/pause functionality - single click to play, double click to pause
+        // Video play/pause functionality
         document.querySelectorAll('.video-item').forEach(videoItem => {
             const video = videoItem.querySelector('video');
-            const playBtn = videoItem.querySelector('.video-play-btn');
             
-            let clickCount = 0;
+            // Hide controls initially
+            video.removeAttribute('controls');
             
-            videoItem.addEventListener('click', () => {
-                clickCount++;
-                if (clickCount === 1) {
-                    setTimeout(() => {
-                        if (clickCount === 1) {
-                            // Single click
-                            if (video.paused) {
-                                video.play();
-                                videoItem.classList.add('playing');
-                            }
-                        } else {
-                            // Double click
-                            video.pause();
-                            videoItem.classList.remove('playing');
-                        }
-                        clickCount = 0;
-                    }, 300);
+            // Single click to play/pause
+            videoItem.addEventListener('click', (e) => {
+                // Check if the click was on the video itself or its container
+                if (e.target === video || e.target === videoItem) {
+                    if (video.paused) {
+                        video.play();
+                    } else {
+                        video.pause();
+                    }
                 }
-            });
-            
-            video.addEventListener('play', () => {
-                videoItem.classList.add('playing');
-            });
-            
-            video.addEventListener('pause', () => {
-                videoItem.classList.remove('playing');
             });
         });
 
@@ -2072,8 +2074,8 @@
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
         }
 
-        // Add menu suggestion
-        function addMenuSuggestion(title, description) {
+        // Add menu suggestion with nutrition info
+        function addMenuSuggestion(title, description, calories, protein, carbs, fat) {
             const suggestionDiv = document.createElement('div');
             suggestionDiv.classList.add('menu-suggestion');
             
@@ -2083,8 +2085,13 @@
             const descElement = document.createElement('p');
             descElement.textContent = description;
             
+            const nutritionElement = document.createElement('p');
+            nutritionElement.classList.add('nutrition-info');
+            nutritionElement.textContent = `Nutrition: ${calories} calories | ${protein}g protein | ${carbs}g carbs | ${fat}g fat`;
+            
             suggestionDiv.appendChild(titleElement);
             suggestionDiv.appendChild(descElement);
+            suggestionDiv.appendChild(nutritionElement);
             
             const messageDiv = document.createElement('div');
             messageDiv.classList.add('message');
@@ -2092,6 +2099,83 @@
             messageDiv.appendChild(suggestionDiv);
             chatbotMessages.appendChild(messageDiv);
             chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        // Add full menu category
+        function addMenuCategory(category, items) {
+            const categoryDiv = document.createElement('div');
+            categoryDiv.classList.add('menu-category');
+            
+            const categoryTitle = document.createElement('h4');
+            categoryTitle.textContent = category;
+            categoryTitle.style.fontFamily = "'Bebas Neue', sans-serif";
+            categoryTitle.style.fontSize = "1.2rem";
+            categoryTitle.style.marginBottom = "10px";
+            categoryTitle.style.color = "var(--primary-color)";
+            
+            categoryDiv.appendChild(categoryTitle);
+            
+            const itemsList = document.createElement('div');
+            itemsList.style.display = "grid";
+            itemsList.style.gridTemplateColumns = "1fr 1fr";
+            itemsList.style.gap = "10px";
+            
+            items.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.textContent = item;
+                itemDiv.style.fontSize = "0.9rem";
+                itemsList.appendChild(itemDiv);
+            });
+            
+            categoryDiv.appendChild(itemsList);
+            
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message');
+            messageDiv.classList.add('bot-message');
+            messageDiv.appendChild(categoryDiv);
+            chatbotMessages.appendChild(messageDiv);
+            chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+        }
+
+        // Generate a random coupon
+        function generateRandomCoupon() {
+            const coupons = [
+                {
+                    code: "GPS5OFF",
+                    discount: "5% OFF",
+                    details: "Present this coupon on your next visit to receive 5% discount",
+                    terms: "Valid for dine-in only. Not valid with other offers."
+                },
+                {
+                    code: "GPS10SPECIAL",
+                    discount: "10% OFF",
+                    details: "Special discount for first-time customers",
+                    terms: "Valid for orders above ₹1000. One-time use only."
+                },
+                {
+                    code: "FREEDEL25",
+                    discount: "FREE DELIVERY",
+                    details: "Free delivery on orders above ₹250",
+                    terms: "Valid for online orders only. Limited time offer."
+                },
+                {
+                    code: "COMBO15",
+                    discount: "15% OFF COMBO",
+                    details: "15% discount on all combo meals",
+                    terms: "Valid for selected combos only. Limited time offer."
+                }
+            ];
+            
+            const randomCoupon = coupons[Math.floor(Math.random() * coupons.length)];
+            
+            return `
+                <div class="coupon-card">
+                    <div class="coupon-header">${randomCoupon.discount}</div>
+                    <div class="coupon-code">${randomCoupon.code}</div>
+                    <div class="coupon-details">${randomCoupon.details}</div>
+                    <div class="coupon-terms">${randomCoupon.terms}</div>
+                </div>
+            `;
         }
 
         // Submit reservation from chatbot
@@ -2121,7 +2205,10 @@
             
             setTimeout(() => {
                 hideTypingIndicator(typingDiv);
-                addMessage(`Thank you, ${name}! Your reservation request for ${guests} people on ${formattedDate} at ${time} has been received. We will contact you shortly to confirm.`, 'bot');
+                addMessage(`Thank you, ${name}! Your reservation request for ${guests} people on ${formattedDate} at ${time} has been received. Here's a special coupon for your visit:`, 'bot');
+                
+                // Add random coupon
+                addMessage(generateRandomCoupon(), 'bot');
                 
                 // Reset form
                 document.getElementById('res-name').value = '';
@@ -2179,36 +2266,199 @@
                 addMessage('We offer a wide variety of authentic Indian dishes. Here are some recommendations:', 'bot');
                 addMenuSuggestion(
                     'Paneer Tikka',
-                    'Marinated cottage cheese grilled to perfection in tandoor with spices'
+                    'Marinated cottage cheese grilled to perfection in tandoor with spices',
+                    '320', '18', '12', '22'
                 );
                 addMenuSuggestion(
                     'Butter Chicken',
-                    'Tender chicken in rich tomato gravy with butter and cream'
+                    'Tender chicken in rich tomato gravy with butter and cream',
+                    '450', '30', '15', '30'
                 );
                 addMenuSuggestion(
                     'Gulab Jamun',
-                    'Soft milk balls soaked in sugar syrup'
+                    'Soft milk balls soaked in sugar syrup',
+                    '150', '3', '25', '5'
                 );
-                addMessage('Would you like to see more options or make a reservation?', 'bot');
+                addMessage('Would you like to see the full menu or make a reservation?', 'bot');
                 addQuickReplies([
-                    { text: 'More vegetarian options' },
-                    { text: 'More non-vegetarian options' },
-                    { text: 'Make a reservation' }
+                    { text: 'Show full menu' },
+                    { text: 'Make a reservation' },
+                    { text: 'Contact info' }
+                ]);
+            }
+            else if (lowerMessage.includes('full menu') || lowerMessage.includes('all items') || lowerMessage.includes('complete menu')) {
+                addMessage('Here is our complete menu:', 'bot');
+                
+                // Veg Tandoor Starters
+                addMenuCategory('Veg Tandoor Starters', [
+                    'Paneer Lahori Tikka',
+                    'Paneer Tikka',
+                    'Paneer Malai Tikka',
+                    'Paneer Afgani Tikka',
+                    'Paneer Achari Tikka',
+                    'Paneer Mastana Tikka',
+                    'Paneer Garlic Tikka',
+                    'Paneer Sheekh Kabab',
+                    'Tandoori Mushroom',
+                    'Veg Sheekh Kabab',
+                    'Veg Rimzim Kabab',
+                    'Veg Kangada Kabab',
+                    'Paneer Lajawab',
+                    'Paneer Pahadi Kabab'
+                ]);
+                
+                // Main Course - Veg
+                addMenuCategory('Main Course - Veg', [
+                    'Malai Kofta',
+                    'Veg Kofta Curry',
+                    'Veg Egg Curry',
+                    'Methi Mutter Masala',
+                    'Paneer Ki Bahar',
+                    'Paneer Takatak',
+                    'Palak Paneer',
+                    'Paneer Butter Masala',
+                    'Paneer Tikka Masala',
+                    'Paneer Mysoori',
+                    'Paneer Masala',
+                    'Paneer Saoji',
+                    'Paneer Lacchedar',
+                    'Paneer Kadai',
+                    'Paneer Patiyala',
+                    'Paneer Kolhapuri'
+                ]);
+                
+                // Dal
+                addMenuCategory('Dal', [
+                    'Dal Fry',
+                    'Butter Dal Fry',
+                    'Dal Tadka',
+                    'Dal Kolhapuri',
+                    'Jeera Dal',
+                    'Dal Snaks'
+                ]);
+                
+                // Non-Veg Main Course
+                addMenuCategory('Non-Veg Main Course', [
+                    'Chicken Tikka Masala (Full)',
+                    'Chicken Rara Masala (Full)',
+                    'Chicken Masala (Full)',
+                    'Chicken Curry (Full)',
+                    'Butter Chicken (Full)',
+                    'Dhaba Chicken (Full)',
+                    'Mysoori Chicken (Full)',
+                    'Kadai Chicken (Full)',
+                    'Chicken Patiyala (Full)',
+                    'GPS Style Chicken Saoji (Full)',
+                    'Mutton Shahi Korma (Full)',
+                    'Mutton Curry (Full)',
+                    'Mutton Rogan Josh (Full)',
+                    'GPS Style Mutton Saoji (Full)',
+                    'Bhuna Chicken (Full)',
+                    'Bhuna Mutton (Full)',
+                    'Mutton Rara Masala (Full)'
+                ]);
+                
+                // Chinese Veg Starter
+                addMenuCategory('Chinese Veg Starter', [
+                    'Paneer 65',
+                    'Chilli Paneer',
+                    'Crunchy Paneer',
+                    'Corn Cheese Ball',
+                    'Veg Crispy',
+                    'Veg Manchurian Ball'
+                ]);
+                
+                // Beverages
+                addMenuCategory('Beverages', [
+                    'Mineral Water',
+                    'Soft Drink (250ml)',
+                    'Soda',
+                    'Fresh Lime Soda',
+                    'Virgin Mojito'
+                ]);
+                
+                // Soup
+                addMenuCategory('Soup', [
+                    'Veg Sweet Corn Soup',
+                    'Non-Veg Sweet Corn Soup',
+                    'Veg Manchow Soup',
+                    'Non-Veg Manchow Soup',
+                    'Veg Hot and Sour Soup',
+                    'Non-Veg Hot and Sour Soup',
+                    'Veg Clear Soup',
+                    'Non-Veg Clear Soup'
+                ]);
+                
+                // Salad and Papad
+                addMenuCategory('Salad and Papad', [
+                    'Roasted Papad',
+                    'Fry Papad',
+                    'Masala Papad',
+                    'Green Salad',
+                    'Curd Salad',
+                    'French Fries',
+                    'Paneer Pakoda',
+                    'Veg Raita'
+                ]);
+                
+                // Breads Basket
+                addMenuCategory('Breads Basket', [
+                    'Tandoori Roti',
+                    'Butter Tandoori Roti',
+                    'Plain Naan',
+                    'Butter Naan',
+                    'Garlic Naan',
+                    'Laccha Paratha',
+                    'Plain Kulcha',
+                    'Stuff Kulcha',
+                    'Masala Garlic Roti',
+                    'Cheese Roti',
+                    'Cheese Garlic Naan'
+                ]);
+                
+                // Rice
+                addMenuCategory('Rice', [
+                    'Steam Rice',
+                    'Jeera Rice',
+                    'Garlic Jeera Rice',
+                    'Veg Pulao',
+                    'Veg Biryani',
+                    'Chicken Biryani',
+                    'Mutton Biryani',
+                    'Egg Biryani',
+                    'PNR Biryani',
+                    'Butter Dal Khichdi'
+                ]);
+                
+                // Dessert/Ice Cream
+                addMenuCategory('Dessert/Ice Cream', [
+                    'Vanilla Ice Cream',
+                    'Butter Scotch Ice Cream',
+                    'Chocolate Sauce',
+                    'Gulab Jamun'
+                ]);
+                
+                addQuickReplies([
+                    { text: 'Make a reservation' },
+                    { text: 'Contact info' }
                 ]);
             }
             else if (lowerMessage.includes('vegetarian') || lowerMessage.includes('veg')) {
                 addMessage('Our vegetarian specialties include:', 'bot');
                 addMenuSuggestion(
-                    'Paneer Lahori Tikka',
-                    'Paneer cubes marinated in special Lahori spices and grilled'
-                );
-                addMenuSuggestion(
-                    'Paneer Butter Masala',
-                    'Paneer cubes in rich tomato and butter gravy'
-                );
-                addMenuSuggestion(
                     'Dal Makhani',
-                    'Creamy black lentils slow-cooked with butter and spices'
+                    'Creamy black lentils slow-cooked with butter and spices',
+                    '350', '14', '40', '12'
+                );
+                addMenuSuggestion(
+                    'Palak Paneer',
+                    'Fresh spinach and cottage cheese in a creamy gravy',
+                    '300', '15', '20', '18'
+                );
+                addMenuSuggestion(
+                    'Vegetable Biryani',
+                    'Fragrant basmati rice with mixed vegetables and spices',
+                    '400', '8', '70', '12'
                 );
                 addQuickReplies([
                     { text: 'Make a reservation' },
@@ -2219,15 +2469,18 @@
                 addMessage('Our non-vegetarian specialties include:', 'bot');
                 addMenuSuggestion(
                     'Chicken Tikka Masala',
-                    'Grilled chicken chunks in spiced curry sauce'
+                    'Grilled chicken chunks in spiced curry sauce',
+                    '480', '35', '20', '28'
                 );
                 addMenuSuggestion(
                     'Lamb Rogan Josh',
-                    'Tender lamb in a rich, aromatic gravy'
+                    'Tender lamb in a rich, aromatic gravy',
+                    '520', '40', '15', '35'
                 );
                 addMenuSuggestion(
                     'Fish Curry',
-                    'Fresh fish cooked in tangy coconut gravy'
+                    'Fresh fish cooked in tangy coconut gravy',
+                    '380', '30', '10', '25'
                 );
                 addQuickReplies([
                     { text: 'Make a reservation' },
@@ -2250,19 +2503,19 @@
                     { text: 'View menu' }
                 ]);
             }
-            else if (lowerMessage.includes('coupon') || lowerMessage.includes('discount') || lowerMessage.includes('offer') || lowerMessage.includes('promo')) {
-                addMessage('We offer a 5% discount coupon for first-time visitors! Just present it when you pay your bill.', 'bot');
-                addMessage('The coupon is valid for dine-in only and cannot be combined with other offers. Ask our staff about how to redeem it.', 'bot');
+            else if (lowerMessage.includes('discount') || lowerMessage.includes('offer') || lowerMessage.includes('promo') || lowerMessage.includes('coupon')) {
+                addMessage('Here\'s a special coupon for your visit:', 'bot');
+                addMessage(generateRandomCoupon(), 'bot');
                 addQuickReplies([
                     { text: 'Make a reservation' },
                     { text: 'View menu' }
                 ]);
             }
-            else if (lowerMessage.includes('parking')) {
-                addMessage('We offer free wallet parking for our customers. Our parking area is secure and monitored.', 'bot');
+            else if (lowerMessage.includes('parking') || lowerMessage.includes('car') || lowerMessage.includes('vehicle')) {
+                addMessage('We offer convenient wallet parking for all our guests. Your vehicle will be safe and secure while you enjoy your meal.', 'bot');
                 addQuickReplies([
                     { text: 'Make a reservation' },
-                    { text: 'Contact info' }
+                    { text: 'View menu' }
                 ]);
             }
             else if (lowerMessage.includes('order') || lowerMessage.includes('delivery') || lowerMessage.includes('online')) {
@@ -2274,10 +2527,20 @@
                     { text: 'View menu' }
                 ]);
             }
-            else if (lowerMessage.includes('event') || lowerMessage.includes('party') || lowerMessage.includes('catering')) {
-                addMessage('We offer event booking and private dining options:', 'bot');
-                addMessage('• Private parties (birthdays, anniversaries)\n• Corporate events\n• Catering services\n\nYou can book these services through our website or by calling us directly.', 'bot');
+            else if (lowerMessage.includes('event') || lowerMessage.includes('party') || lowerMessage.includes('private') || lowerMessage.includes('catering')) {
+                addMessage('We offer event booking and private dining services:', 'bot');
+                addMessage('• Birthday Parties\n• Anniversaries\n• Corporate Events\n• Catering Services', 'bot');
+                addMessage('Contact us for more details and customized menus for your event.', 'bot');
                 addQuickReplies([
+                    { text: 'Contact info' },
+                    { text: 'View menu' }
+                ]);
+            }
+            else if (lowerMessage.includes('about') || lowerMessage.includes('story') || lowerMessage.includes('history')) {
+                addMessage('GPS Highway Restaurant has been serving authentic Indian cuisine since 2010. We are located conveniently on the highway and offer a welcoming dining space for travelers and locals alike.', 'bot');
+                addMessage('Our restaurant celebrates India\'s diverse culinary traditions with regional flavors and time-honored recipes prepared with the freshest ingredients.', 'bot');
+                addQuickReplies([
+                    { text: 'View menu' },
                     { text: 'Make a reservation' },
                     { text: 'Contact info' }
                 ]);
@@ -2287,17 +2550,15 @@
                 addQuickReplies([
                     { text: 'Reserve a table' },
                     { text: 'View menu' },
-                    { text: 'Contact info' },
-                    { text: 'Coupon details' }
+                    { text: 'Contact info' }
                 ]);
             }
             else {
-                addMessage("I'm sorry, I didn't understand that. I can help you with reservations, menu suggestions, or general inquiries. What would you like to know?", 'bot');
+                addMessage("I'm the GPS Highway Restaurant assistant. I can help you with reservations, menu information, ordering online, event bookings, and general inquiries about our restaurant. What would you like to know?", 'bot');
                 addQuickReplies([
                     { text: 'Reserve a table' },
                     { text: 'View menu' },
-                    { text: 'Contact info' },
-                    { text: 'Coupon details' }
+                    { text: 'Contact info' }
                 ]);
             }
         }
